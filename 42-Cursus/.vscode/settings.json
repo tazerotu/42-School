@@ -1,0 +1,10 @@
+{
+	"files.associations": {
+		"libft.h": "c",
+		"get_next_line.h": "c",
+		"ft_printf.h": "c",
+		"stdio.h": "c",
+		"push_swap.h": "c"
+	},
+	"C_Cpp.errorSquiggles": "disabled"
+}
