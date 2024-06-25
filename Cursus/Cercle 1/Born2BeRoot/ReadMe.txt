@@ -7,18 +7,3 @@
  
  
 xmlns:qemu='http://libvirt.org/schemas/domain/qemu/1.0'
-
-
-
-Hostname : ttas42
-MDP Root : MDPBorn2BeRoot
-
-Username : ttas42
-MDP : MDPttasBorn2BeRoot
-
-Encryption : MDPBorn2BeRoot
-
-Username : user2
-MDP : MDPuser-2B2BR
-
-
