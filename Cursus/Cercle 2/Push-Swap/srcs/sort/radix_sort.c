@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/13 09:06:52 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 16:33:13 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/25 18:22:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,7 @@ static int	get_max_bits(t_stack **stack)
 		head = head->next;
 	}
 	while ((max >> max_bits) != 0)
-	{
-		write(1, "1", 1);
 		max_bits++;
-	}
 	return (max_bits);
 }
 

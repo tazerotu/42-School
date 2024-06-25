@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lst.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:45:51 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/07 09:33:02 by ttas             ###   ########.fr       */
+/*   Updated: 2024/06/25 18:18:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ void	*ft_lstnew(int items)
 	if (!stack1)
 		return (NULL);
 	stack1->items = items;
+	stack1->index = -1;
 	stack1->next = NULL;
 	return (stack1);
 }

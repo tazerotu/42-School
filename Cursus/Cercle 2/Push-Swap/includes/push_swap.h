@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:09:31 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 16:21:26 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/25 18:19:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 
 # define FAILURE -1
 # define SUCCESS 1
-# define FD 100
+# define FD 1
 
 /* ======= Structures ======= */
 typedef struct s_stack
