@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 09:56:03 by ttas              #+#    #+#              #
-#    Updated: 2024/06/25 14:25:27 by marvin           ###   ########.fr        #
+#    Updated: 2024/06/25 15:58:12 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC_UTILS =		./srcs/utils/ft_lst.c \
 				./srcs/utils/ft_split.c \
 				./srcs/utils/movements_utils.c \
 				./srcs/utils/other_utils.c \
+				./srcs/utils/sort_utils.c \
 
 SRC_MOVES =		./srcs/movements/push.c \
 				./srcs/movements/swap.c \
@@ -34,7 +35,7 @@ SRC_MOVES =		./srcs/movements/push.c \
 SRC_SORT =		./srcs/sort/simple_sort.c \
 				./srcs/sort/is_sorted.c \
 				./srcs/sort/radix_sort.c \
-				
+
 
 SOURCES =		${SRC} ${SRC_PARSING} ${SRC_UTILS} ${SRC_MOVES} ${SRC_SORT}
 OBJECTS =		${SOURCES:.c=.o}
@@ -62,7 +63,7 @@ GREEN = \033[38;5;46m
 
 NBR_COMPILER = ${shell expr 100 \* ${FILE_COUNT} / ${FILE_TOTAL}}
 FILE_COUNT	= 0
-FILE_TOTAL	= 16
+FILE_TOTAL	= 17
 BAR_SIZE	= ${shell expr 100 \* ${FILE_COUNT} / ${FILE_TOTAL}}
 BAR_LOAD	= ${shell expr 23 \* ${FILE_COUNT} / ${FILE_TOTAL}}
 BAR_REST	= ${shell expr 23 - ${BAR_LOAD}}

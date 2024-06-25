@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:09:29 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 14:25:38 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/25 15:54:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ static void	initstack(t_stack **stack, int argc, char **argv)
 		ft_lstadd_back(stack, new);
 		i++;
 	}
+	index_stack(stack);
 	if (argc == 2)
 		ft_free(args);
 }

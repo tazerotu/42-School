@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:09:31 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 14:25:58 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/25 16:09:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,5 +89,6 @@ size_t				ft_strlen(char *s);
 int					ft_strcmp(char *str1, char *str2);
 void				ft_free(char **str);
 void				free_split_array(char **split);
+void				index_stack(t_stack **stack);
 
 #endif
