@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:09:29 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 18:19:00 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/25 20:04:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,6 @@ int	main(int argc, char *argv[])
 	*stack_a = NULL;
 	*stack_b = NULL;
 	initstack(stack_a, argc, argv);
-	if (sort(stack_a, stack_b) == SUCCESS)
-		ft_printf("\e[0;32mOK\n\e[0;37m");
 	sort(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
@@ -84,4 +82,5 @@ int	main(int argc, char *argv[])
 	free(stack_b);
 	return (0);
 }
+
 	// display(*stack_a, *stack_b);
