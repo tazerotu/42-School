@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:09:29 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 15:54:55 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/25 16:20:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,5 @@ int	main(int argc, char *argv[])
 	display(*stack_a, *stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
-	free(stack_a);
-	free(stack_b);
 	return (0);
 }
