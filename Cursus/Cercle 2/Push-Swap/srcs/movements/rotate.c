@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 12:04:57 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/24 09:08:59 by ttas             ###   ########.fr       */
+/*   Updated: 2024/06/26 11:47:20 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 void	ra(t_stack **stack_a)
 {
 	if (rotate(stack_a) == SUCCESS)
-		write(FD, "ra\n", 4);
+		write(FD, "ra\n", 3);
 }
 
 void	rb(t_stack **stack_b)
 {
 	if (rotate(stack_b) == SUCCESS)
-		write(FD, "rb\n", 4);
+		write(FD, "rb\n", 3);
 }
 
 static int	r(t_stack **stack_a, t_stack **stack_b)
@@ -42,5 +42,5 @@ static int	r(t_stack **stack_a, t_stack **stack_b)
 void	rr(t_stack **stack_a, t_stack **stack_b)
 {
 	if (r(stack_a, stack_b) == SUCCESS)
-		write(FD, "rr\n", 4);
+		write(FD, "rr\n", 3);
 }

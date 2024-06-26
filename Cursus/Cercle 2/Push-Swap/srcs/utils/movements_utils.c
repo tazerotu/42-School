@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movements_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/03 10:49:28 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 19:30:34 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/26 11:46:42 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	push(t_stack **stack_to, t_stack **stack_from)
 	t_stack	*head_to;
 	t_stack	*head_from;
 
-	if (ft_lstsize(*stack_from) == 0)
+	if (ft_lstsize(*stack_from) < 0)
 		return (FAILURE);
 	head_to = *stack_to;
 	head_from = *stack_from;

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:09:29 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/26 10:45:19 by ttas             ###   ########.fr       */
+/*   Updated: 2024/06/26 11:06:33 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	sort(t_stack **stack_a, t_stack **stack_b)
 {
 	if (is_sorted_stack(stack_a) == SUCCESS)
 		return (SUCCESS);
-	if (ft_lstsize(*stack_a) <= 5)
+	else if (ft_lstsize(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
 	else if (ft_lstsize(*stack_a) > 5)
 		radix_sort(stack_a, stack_b);
