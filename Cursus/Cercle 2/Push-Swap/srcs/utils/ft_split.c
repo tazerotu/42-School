@@ -6,119 +6,80 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 12:10:40 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/24 09:22:30 by ttas             ###   ########.fr       */
+/*   Updated: 2024/06/26 09:46:46 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-// Count the number of words in the string
-size_t	count_words(char *str, char c)
+size_t	count_words(char *s, char c)
 {
-	size_t	i;
-	int		trigger;
-
-	i = 0;
-	trigger = 0;
-	while (*str)
-	{
-		if (*str != c && trigger == 0)
-		{
-			trigger = 1;
-			i++;
-		}
-		else if (*str == c)
-		{
-			trigger = 0;
-		}
-		str++;
-	}
-	return (i);
-}
-
-// Duplicate a substring from str[start] to str[finish]
-static char	*word_dup(char *str, int start, int finish)
-{
-	char	*word;
-	int		i;
-
-	i = 0;
-	word = malloc((finish - start + 1) * sizeof(char));
-	if (!word)
-		return (NULL);
-	while (start < finish)
-	{
-		word[i++] = str[start++];
-	}
-	word[i] = '\0';
-	return (word);
-}
-
-// Free the memory allocated for the split words
-static void	free_split(char **split, size_t j)
-{
+	size_t	words;
 	size_t	i;
 
+	words = 0;
 	i = 0;
-	while (i < j)
+	while (s[i])
 	{
-		free(split[i]);
+		if (s[i] != c && (s[i + 1] == c || s[i + 1] == '\0'))
+			words++;
 		i++;
 	}
-	free(split);
+	return (words);
 }
 
-// Split the string s by the delimiter c
+static void	fill_tab(char *new, char *s, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] && s[i] != c)
+	{
+		new[i] = s[i];
+		i++;
+	}
+	new[i] = '\0';
+}
+
+static void	set_mem(char **tab, char *s, char c)
+{
+	size_t	count;
+	size_t	index;
+	size_t	i;
+
+	index = 0;
+	i = 0;
+	while (s[index])
+	{
+		count = 0;
+		while (s[index + count] && s[index + count] != c)
+			count++;
+		if (count > 0)
+		{
+			tab[i] = malloc(sizeof(char) * (count + 1));
+			if (!tab[i])
+				return ;
+			fill_tab(tab[i], (s + index), c);
+			i++;
+			index = index + count;
+		}
+		else
+			index++;
+	}
+	tab[i] = 0;
+}
+
 char	**ft_split(char *s, char c)
 {
-	size_t	i;
-	size_t	j;
-	int		index;
-	char	**split;
+	size_t	words;
+	char	**tab;
 
-	if (!s)
+	words = count_words(s, c);
+	tab = malloc(sizeof(char *) * (words + 1));
+	if (!tab)
 		return (NULL);
-	split = malloc((count_words(s, c) + 1) * sizeof(char *));
-	if (!split)
-		return (NULL);
-	j = 0;
-	i = 0;
-	index = -1;
-	while (i <= strlen(s))
-	{
-		if (s[i] != c && index < 0)
-		{
-			index = i;
-		}
-		else if ((s[i] == c || i == strlen(s)) && index >= 0)
-		{
-			split[j] = word_dup(s, index, i);
-			if (!split[j]) // Check if malloc in word_dup failed
-			{
-				free_split(split, j);
-				return (NULL);
-			}
-			index = -1;
-			j++;
-		}
-		i++;
-	}
-	split[j] = 0;
-	return (split);
-}
-
-// Helper function to free the split array after use
-void	free_split_array(char **split)
-{
-	size_t	i;
-
-	i = 0;
-	while (split[i])
-	{
-		free(split[i]);
-		i++;
-	}
-	free(split);
+	set_mem(tab, s, c);
+	return (tab);
 }
 
 // size_t	count_words(char *str, char c)

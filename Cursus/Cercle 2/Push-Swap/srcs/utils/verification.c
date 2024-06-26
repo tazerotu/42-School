@@ -6,11 +6,11 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:00:35 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/24 11:06:57 by ttas             ###   ########.fr       */
+/*   Updated: 2024/06/26 10:16:32 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	checker(char **argv, int argc)
 {
@@ -25,7 +25,10 @@ int	checker(char **argv, int argc)
 		tab = ft_split(argv[1], ' ');
 		check_args(tab);
 		if (is_sorted_str(tab) == SUCCESS)
+		{
+			ft_free(tab);
 			return (SUCCESS);
+		}
 	}
 	else
 	{
@@ -33,6 +36,8 @@ int	checker(char **argv, int argc)
 		if (is_sorted_str(argv + 1) == SUCCESS)
 			return (SUCCESS);
 	}
+	if (argc == 2)
+		ft_free(tab);
 	return (FAILURE);
 }
 

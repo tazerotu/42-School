@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/23 12:09:29 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 20:04:02 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/26 10:45:19 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	sort(t_stack **stack_a, t_stack **stack_b)
 {
+	if (is_sorted_stack(stack_a) == SUCCESS)
+		return (SUCCESS);
 	if (ft_lstsize(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
 	else if (ft_lstsize(*stack_a) > 5)
@@ -31,6 +33,7 @@ static void	free_stack(t_stack **stack)
 		free(*stack);
 		*stack = temp;
 	}
+	free(stack);
 }
 
 static void	initstack(t_stack **stack, int argc, char **argv)
@@ -65,7 +68,7 @@ int	main(int argc, char *argv[])
 
 	if (checker(argv, argc) == SUCCESS)
 	{
-		ft_printf("Already Sorted\n");
+		write(1, "Already Sorted\n", 15);
 		return (0);
 	}
 	stack_a = (t_stack **)malloc(sizeof(t_stack));
@@ -76,11 +79,10 @@ int	main(int argc, char *argv[])
 	*stack_b = NULL;
 	initstack(stack_a, argc, argv);
 	sort(stack_a, stack_b);
+	// display(*stack_a, *stack_b);
+	// if (is_sorted_stack(stack_a))
+	// 	ft_printf("OK\n");
 	free_stack(stack_a);
 	free_stack(stack_b);
-	free(stack_a);
-	free(stack_b);
 	return (0);
 }
-
-	// display(*stack_a, *stack_b);

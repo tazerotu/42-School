@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 09:56:03 by ttas              #+#    #+#              #
-#    Updated: 2024/06/25 16:23:34 by marvin           ###   ########.fr        #
+#    Updated: 2024/06/26 10:30:19 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ EXE = push_swap
 # Files
 SRC =			main.c
 
-SRC_PARSING =	./srcs/verification.c \
-				./srcs/display.c \
+SRC_PARSING =	./srcs/utils/verification.c \
+				./srcs/utils/display.c \
 
 SRC_UTILS =		./srcs/utils/ft_lst.c \
 				./srcs/utils/ft_to.c \
@@ -78,10 +78,10 @@ ${MAIN_PATH}%.o:%.c .
 # Makefile
 all:		${EXE}
 			@${RM} ${OBJECTS}
-			@${MAKE} --silent -C ./includes/ft_printf clean
+			@${MAKE}  --silent -C ./includes/ft_printf clean
 
 ${EXE}:		${OBJECTS} 
-		@${MAKE} --silent -C ./includes/ft_printf
+		@${MAKE} --silent -C ./includes/ft_printf 
 		@${CC} ${CFLAGS} ${OBJECTS} ./includes/ft_printf/libftprintf.a -o ${EXE}
 		@echo "\n\n\n ${RED}PUSH SWAP EST COMPILÉ 👏${RESET}\n"
 
@@ -98,6 +98,6 @@ fclean:		clean
 		@${MAKE} --silent -C ./includes/ft_printf fclean
 		@echo "${DARKBLUE}${ITALIQUE} -${EXE} est supprimé\n${RESET}"
 
-re:			fclean all clean
+re:			fclean all
 
 .PHONY: all clean fclean re ac

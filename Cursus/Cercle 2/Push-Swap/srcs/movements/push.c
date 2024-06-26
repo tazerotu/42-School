@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/28 12:04:55 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 19:48:43 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/26 08:59:50 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	pb(t_stack **stack_a, t_stack **stack_b)
 {
 	if (push(stack_b, stack_a) == SUCCESS)
-		write(FD, "pb\n", 4);	
+		write(FD, "pb\n", 4);
 }
 
 void	pa(t_stack **stack_a, t_stack **stack_b)

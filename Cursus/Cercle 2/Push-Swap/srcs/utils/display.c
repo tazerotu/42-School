@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/24 10:44:45 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 18:19:01 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/26 10:30:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	error_message(int i)
 {

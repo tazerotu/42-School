@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   other_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 10:48:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 20:03:04 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/26 09:51:34 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	ft_free(char **str)
 		i++;
 	while (i >= 0)
 		free(str[i--]);
+	free(str);
 }
 
 static t_stack	*get_next_min(t_stack **stack)
@@ -51,12 +52,12 @@ void	index_stack(t_stack **stack)
 {
 	t_stack	*head;
 	int		index;
-	
+
 	index = 0;
 	head = get_next_min(stack);
 	while (head)
 	{
 		head->index = index++;
-		head = get_next_min(stack);	
+		head = get_next_min(stack);
 	}
 }
