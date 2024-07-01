@@ -1,0 +1,40 @@
+Get Next line:
+	- Verification de fd, BUFFER_SIZE, read(fd, 0, 0) < 0 Sinon return NULL
+	- Appel fonction de lecture
+	- verifie l'etat de buffer (si vide return NULL)
+	- Appel fonction Verif ligne
+	- Appel fonction LIgne suivante
+
+Fonction lectures de fichiers:
+	- allocation de la variable buffer donner en parametre si la derniere est vide (avec calloc(1,1))
+	- creation et allocation d'une nouvelle variable temp buffer (avec calloc(BUFFER_SIZE+1, sizeof(char)))
+	- Boucle de lecture : tant que des characteres ont ete lu, lecture des characteres suivant
+	- Si lecture vide, free variable temp, return NULL
+	- Sinon initialiser temp a l'index bytes_read avec 0
+	- join et free buffer et temp
+	- chercher \n dans temp
+	- free temp
+	- return buffer
+
+Fonction ligne:
+	- Verifier contenu buffer
+	- Obtenir length de buffer
+	- initialiser nouvelle variable line (calloc(i +2, sizeof(char)))
+	- boucler buffer jusqu'a \n || \0
+	- line = buffer
+	- si fin de buffer
+		- ajouter \n a line
+
+Fonction Ligne Suivante:
+	- obtenir length de buffer
+	- verifier si fin du buffer -> free(buffer) -> return NULL
+	- Calloc nouvelle fonction line -> strlen(buffer) - i + 1, sizeof(char)
+	- i++
+	- tant que buffer existe -> line = buffer
+	- free buffer
+	- return line
+
+Fonction Free: 
+	- nouvelle fonction temp
+	- (Appel in read_file) -> strjoin(res, buffer)
+	- return temp
