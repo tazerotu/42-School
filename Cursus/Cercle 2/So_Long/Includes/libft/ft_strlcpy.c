@@ -1,24 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/23 10:00:07 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/24 10:23:34 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 {
-	if (argc == 2)
+	size_t	srcsize;
+	size_t	i;
+
+	if (!dst || !src)
+		return (0);
+	srcsize = ft_strlen(src);
+	i = 0;
+	if (size > 0)
 	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
+		while (src[i] != '\0' && i < (size - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	return (0);
+	return (srcsize);
 }

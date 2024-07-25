@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Init_Struct.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/07/25 09:24:36 by ttas              #+#    #+#             */
+/*   Updated: 2024/07/25 10:28:11 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "../../Includes/So_Long.h"
 
-int	main(int argc, char **argv)
+void	init_struct(char **argv)
 {
-	if (argc == 2)
-	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
-	}
-	return (0);
+	char *buffer;
+	buffer = ft_strjoin("./maps/", argv[1]);
+	if (parsing_map(buffer) == INVALID_MAP_SIZE)
+		return ;
+	// buffer = parsing_map(fd);
 }

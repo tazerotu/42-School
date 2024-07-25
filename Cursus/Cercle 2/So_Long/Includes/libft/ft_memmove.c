@@ -1,24 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/22 12:38:31 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/23 11:34:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (argc == 2)
+	char	*cdest;
+	char	*csrc;
+
+	cdest = (char *)dest;
+	csrc = (char *)src;
+	if (!dest && !src)
+		return (0);
+	if (dest <= src)
+		while (n--)
+			*cdest++ = *csrc++;
+	else if (dest > src)
 	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
+		cdest += n - 1;
+		csrc += n - 1;
+		while (n--)
+			*cdest-- = *csrc--;
 	}
-	return (0);
+	return (dest);
 }

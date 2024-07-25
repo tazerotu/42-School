@@ -1,24 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/03/18 10:06:32 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/23 14:00:41 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+size_t	ft_strlen(const char *s)
 {
-	if (argc == 2)
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
 	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
+		i++;
 	}
-	return (0);
+	return (i);
 }
+/*
+int	main(void)
+{
+	printf("le message est: ceci est un message de 73 characteres\n\n");
+	int i = ft_strlen("ceci est un message de 37 characteres");
+	printf("le nombres de characteres est de : %d characteres\n", i);
+	return (0);
+} */

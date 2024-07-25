@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstadd_front.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/29 10:24:21 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/29 13:17:49 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	ft_lstadd_front(t_list **lst, t_list *new)
 {
-	if (argc == 2)
+	if (*lst == NULL)
+		*lst = new;
+	else
 	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
+		new->next = *lst;
+		*lst = new;
 	}
-	return (0);
 }

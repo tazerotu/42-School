@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/29 09:39:22 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/29 13:21:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstnew(void *content)
 {
-	if (argc == 2)
-	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
-	}
-	return (0);
+	t_list	*list1;
+
+	list1 = malloc(sizeof(t_list));
+	if (!list1)
+		return (NULL);
+	list1->content = content;
+	list1->next = NULL;
+	return (list1);
 }

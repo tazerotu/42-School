@@ -1,24 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/29 10:53:34 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/29 13:19:53 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+t_list	*ft_lstlast(t_list *lst)
 {
-	if (argc == 2)
+	while (lst && lst->next != NULL)
 	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
+		lst = lst->next;
 	}
-	return (0);
+	return (lst);
 }

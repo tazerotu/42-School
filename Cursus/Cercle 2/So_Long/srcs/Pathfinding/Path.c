@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/07/25 09:25:42 by ttas              #+#    #+#             */
+/*   Updated: 2024/07/25 09:54:30 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "../../Includes/So_Long.h"
 
-int	main(int argc, char **argv)
+t_path	**path_finding(t_pos StartPos, t_pos EndPos)
 {
-	if (argc == 2)
-	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
-	}
-	return (0);
+	t_path **path;
+	return (path);
 }

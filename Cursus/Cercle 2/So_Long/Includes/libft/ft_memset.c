@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/22 11:12:55 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/24 08:49:20 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	if (argc == 2)
+	size_t			i;
+	unsigned char	*set;
+
+	set = (unsigned char *)s;
+	i = 0;
+	while (i < n)
 	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
+		set[i] = (unsigned char)c;
+		i++;
 	}
-	return (0);
+	return (s);
 }
+
+/*
+int	main(void)
+{
+	unsigned char str1[11];
+	unsigned char str2[11];
+	printf("%p\n", ft_memset(&str1, 'g', 11));
+	printf("%p", memset(&str2, 'g', 11));
+	return (0);
+}*/

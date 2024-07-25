@@ -1,24 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/22 12:37:29 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/25 10:00:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (argc == 2)
+	char	*csrc;
+	char	*cdest;
+	size_t	i;
+
+	csrc = (char *)src;
+	cdest = (char *)dest;
+	i = 0;
+	if (csrc < cdest && csrc + n > cdest)
 	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
+		ft_memmove(cdest, csrc, n);
 	}
-	return (0);
+	else
+	{
+		while (i < n)
+		{
+			cdest[i] = csrc[i];
+			i++;
+		}
+	}
+	return (cdest);
 }
+
+// i = n;
+// while (i > 0)
+// {
+// 	cdest[i - 1] = csrc[i - 1];
+// 	i--;
+// }

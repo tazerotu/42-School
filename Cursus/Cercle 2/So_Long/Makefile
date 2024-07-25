@@ -5,27 +5,25 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/06/03 09:56:03 by ttas              #+#    #+#              #
-#    Updated: 2024/07/25 09:19:19 by ttas             ###   ########.fr        #
+#    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
+#    Updated: 2024/07/25 10:44:28 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program Executable
-EXE = pipex
+EXE = So_Long
 
 # Files
-SRC =			main.c
+SRC =			./srcs/main.c
 
-SRCS =			./srcs/Error.c \
-				./srcs/Execute.c \
-				./srcs/Here_doc.c \
-				./srcs/Utils.c
+SRCS =			
 
-SRCS_UTILS =	./srcs/utils/ft_split.c \
-				./srcs/utils/ft_strjoin.c \
-				./srcs/utils/ft_strlen.c \
-				./srcs/utils/ft_strnstr.c
+SRCS_PARSING = 	./srcs/Parsing/Parsing_Map.c
 
+SRCS_UTILS =	
+
+GNL = 			./Includes/gnl/get_next_line.c\
+				./Includes/gnl/get_next_line_utils.c
 
 SOURCES =		${SRC} ${SRCS} ${SRCS_UTILS}
 OBJECTS =		${SOURCES:.c=.o}
@@ -34,6 +32,7 @@ OBJECTS =		${SOURCES:.c=.o}
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
 RM = rm -f
+LIBFT = ./Includes/libft
 
 RESET = \033[0m
 GRAS = \033[1m

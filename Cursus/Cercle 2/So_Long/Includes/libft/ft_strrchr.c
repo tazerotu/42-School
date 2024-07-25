@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:42:01 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/23 11:53:38 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/23 14:52:56 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/So_Long.h"
+#include "libft.h"
 
-int	main(int argc, char **argv)
+char	*ft_strrchr(const char *s, int c)
 {
-	if (argc == 2)
+	size_t	i;
+
+	i = ft_strlen(s);
+	while (i > 0)
 	{
-		parsing_map_size(argv[1]);
-		// init_struct(argv);
-		// flood_fill(map);
+		if (s[i] == (char)c)
+			return ((char *)s + i);
+		i--;
 	}
+	if (s[i] == (char)c)
+		return ((char *)s + i);
 	return (0);
 }
+/*
+int	main(void)
+{
+	printf("%s,\n", ft_strrchr("Ceci est un message", 's'));
+	printf("%s", strrchr("Ceci est un message", 's'));
+	return (0);
+}
+*/

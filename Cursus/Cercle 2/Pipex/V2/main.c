@@ -7,7 +7,7 @@ void ft_init_pipex(int argc, char **argv, t_ppx pipex)
 	pipex.cmd_count = argc - 3 - pipex.here_doc;
 }
 
-void	child_proccess(char *cmd, char **envp, int input_fd)
+void	child_proccess(char *cmd, char **envp, int inputfd)
 {
 	pid_t	pid;
 	int		pipefd[2];
@@ -24,7 +24,7 @@ void	child_proccess(char *cmd, char **envp, int input_fd)
 	{
 		close(pipefd[0]);
 		dup2(pipefd[1], STDOUT);
-		if (input_fd == STDIN)
+		if (inputfd == STDIN)
 			exit(1);
 		else
 			execute(cmd, envp);
