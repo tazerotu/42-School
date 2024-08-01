@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/27 09:00:35 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/26 10:16:32 by ttas             ###   ########.fr       */
+/*   Updated: 2024/08/01 12:00:10 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	checker(char **argv, int argc)
 
 	if (argc < 2)
 		error_message(1);
+	else if (!argv[1][0])
+		error_message(2);
 	else if (argc == 2)
 	{
 		if (count_words(argv[1], ' ') == 1)

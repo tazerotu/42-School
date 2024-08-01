@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 09:56:03 by ttas              #+#    #+#              #
-#    Updated: 2024/06/26 11:05:22 by ttas             ###   ########.fr        #
+#    Updated: 2024/08/01 12:05:42 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,13 +77,13 @@ ${MAIN_PATH}%.o:%.c .
 
 # Makefile
 all:		${EXE}
-			@${RM} ${OBJECTS}
-			@${MAKE}  --silent -C ./includes/ft_printf clean
 
-${EXE}:		${OBJECTS} 
-		@${MAKE} --silent -C ./includes/ft_printf 
-		@${CC} ${CFLAGS} ${OBJECTS} ./includes/ft_printf/libftprintf.a -o ${EXE}
-		@echo "\n\n\n ${RED}PUSH SWAP EST COMPILÉ 👏${RESET}\n"
+
+# Linking rule
+${EXE}: ${OBJECTS}
+	@${MAKE} --silent -C ${FT_PRINTF}
+	@${CC} ${CFLAGS} ${OBJECTS} ${FT_PRINTF}/libftprintf.a -o ${EXE}
+	@echo "\n\n\n ${RED}PUSH SWAP EST COMPILÉ 👏${RESET}\n"
 
 ac: all clean
 

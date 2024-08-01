@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/24 08:55:20 by ttas              #+#    #+#             */
-/*   Updated: 2024/06/25 20:02:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/08/01 12:02:09 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	is_sorted_stack(t_stack **stack_a)
 
 	if (!stack_a || !(*stack_a)->next)
 		return (FAILURE);
-	current = (*stack_a)->next;
+	current = (*stack_a);
 	while (current->next)
 	{
 		if (current->items > current->next->items)
