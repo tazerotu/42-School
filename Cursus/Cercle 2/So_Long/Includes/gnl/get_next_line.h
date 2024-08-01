@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/03 09:39:08 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:38:26 by ttas             ###   ########.fr       */
+/*   Updated: 2024/08/01 09:08:16 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 # define GET_NEXT_LINE_H
 
+# include "../libft/libft.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
@@ -30,10 +31,10 @@ char	*ft_current_line(char *buffer);
 char	*ft_read_file(int fd, char *res);
 char	*ft_next_line(char *buffer);
 
-char	*ft_strjoin(char *s1, char *s2);
-void	ft_bzero(void *s, size_t n);
-char	*ft_strchr(const char *s, int c);
-size_t	ft_strlen(const char *s);
-void	*ft_calloc(size_t nmemb, size_t size);
+// char	*ft_strjoin(char *s1, char *s2);
+// void	ft_bzero(void *s, size_t n);
+// char	*ft_strchr(const char *s, int c);
+// size_t	ft_strlen(const char *s);
+// void	*ft_calloc(size_t nmemb, size_t size);
 
 #endif

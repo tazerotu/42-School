@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:56:43 by ttas             ###   ########.fr       */
+/*   Updated: 2024/08/01 09:48:31 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,6 @@
 # define INVALID_MAP_EXIT -3
 # define INVALID_MAP_PLAYER -4
 # define INVALID_MAP_PATH -5
-# define INVALID_MAP_ -2
-# define INVALID_MAP_SIZE -2
-
 
 // Jeu
 # define PIX 16
@@ -48,8 +45,8 @@ typedef struct s_map
 {
 	int				x;
 	int				y;
-	struct s_pos	p_start;
-	struct s_pos	exit;
+	struct s_pos	*p_start;
+	struct s_pos	*exit;
 }					t_map;
 
 typedef struct s_character
@@ -61,14 +58,15 @@ typedef struct s_character
 typedef struct s_path
 {
 	struct s_pos	*pos;
-	struct s_path	*next;
+	struct s_path	*next_pos;
 }					t_path;
 
 // INIT
-void				init_struct(char **argv);
+t_map				*init_struct_map(char **argv, t_map *map);
+t_map				*init_map(int x, int y, char c, t_map *map);
 
 // PARSING
-int					parsing_map_size(char *map);
+int					parsing_map_size(char *path, t_map *map);
 
 // UTILS
 

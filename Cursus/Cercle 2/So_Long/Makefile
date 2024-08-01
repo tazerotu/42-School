@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
-#    Updated: 2024/07/25 10:44:28 by ttas             ###   ########.fr        #
+#    Updated: 2024/08/01 10:33:43 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,13 +19,16 @@ SRC =			./srcs/main.c
 SRCS =			
 
 SRCS_PARSING = 	./srcs/Parsing/Parsing_Map.c
+				
 
-SRCS_UTILS =	
+
+SRCS_INIT =		./srcs/Init/Init_Struct.c \
+				./srcs/Init/Init_Map.c \
+				
 
 GNL = 			./Includes/gnl/get_next_line.c\
-				./Includes/gnl/get_next_line_utils.c
 
-SOURCES =		${SRC} ${SRCS} ${SRCS_UTILS}
+SOURCES =		${SRC} ${SRCS_PARSING} ${SRCS_INIT} ${GNL}
 OBJECTS =		${SOURCES:.c=.o}
 
 # Variables
@@ -51,7 +54,7 @@ GREEN = \033[38;5;46m
 
 NBR_COMPILER = ${shell expr 100 \* ${FILE_COUNT} / ${FILE_TOTAL}}
 FILE_COUNT	= 0
-FILE_TOTAL	= 9
+FILE_TOTAL	= 5
 BAR_SIZE	= ${shell expr 100 \* ${FILE_COUNT} / ${FILE_TOTAL}}
 BAR_LOAD	= ${shell expr 23 \* ${FILE_COUNT} / ${FILE_TOTAL}}
 BAR_REST	= ${shell expr 23 - ${BAR_LOAD}}
@@ -67,8 +70,10 @@ ${MAIN_PATH}%.o:%.c .
 # Makefile
 all:		${EXE}
 			@${RM} ${OBJECTS}
+			@${MAKE}  --silent -C ${LIBFT} clean
 
 ${EXE}:		${OBJECTS}  
+		@${MAKE}  --silent -C ${LIBFT} clean
 		@${CC} ${CFLAGS} ${OBJECTS} ${EXE}
 		@echo "\n\n\n ${RED}PIPEX EST COMPILÉ 👏${RESET}\n"
 
@@ -76,11 +81,13 @@ ac: all clean
 
 clean:
 		@${RM} ${OBJECTS}
+		@${MAKE}  --silent -C ${LIBFT} clean
 		@echo "${ORANGE}\tNETTOYAGE 🛁${RESET}"
 		@echo "${DARKBLUE}${ITALIQUE} -les fichiers sont supprimés${RESET}"
 
 fclean:		clean
 		@${RM} ${EXE}
+		@${MAKE}  --silent -C ${LIBFT} clean
 		@echo "${DARKBLUE}${ITALIQUE} -${EXE} est supprimé\n${RESET}"
 
 re:			fclean all
