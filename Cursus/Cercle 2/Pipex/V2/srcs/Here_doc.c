@@ -2,19 +2,15 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   Here_doc.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/08/01 09:25:25 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 09:25:25 by ttas             ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/01 12:33:33 by ttas              #+#    #+#             */
+/*   Updated: 2024/08/01 12:40:53 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/Pipex.h"
-
 
 int	args_in(char *arg, t_ppx *pipex)
 {
@@ -37,7 +33,7 @@ void	here_doc(char *argv, t_ppx *pipex)
 
 	file = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 0000644);
 	if (file < 0)
-		msg_error(ERR_HEREDOC);
+		error(HERE_DOC_ERROR);
 	while (1)
 	{
 		write(1, "heredoc> ", 9);
@@ -51,10 +47,10 @@ void	here_doc(char *argv, t_ppx *pipex)
 	}
 	free(buf);
 	close(file);
-	pipex->infile = open(".heredoc_tmp", O_RDONLY);
-	if (pipex->infile < 0)
+	pipex->input_fd = open(".heredoc_tmp", O_RDONLY);
+	if (pipex->input_fd < 0)
 	{
 		unlink(".heredoc_tmp");
-		msg_error(ERR_HEREDOC);
+		error(HERE_DOC_ERROR);
 	}
 }

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Execute.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/01 12:33:10 by ttas              #+#    #+#             */
+/*   Updated: 2024/08/01 12:36:52 by ttas             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Includes/Pipex.h"
 
 char	*find_path(char *cmd, char **envp)
@@ -31,20 +43,20 @@ char	*find_path(char *cmd, char **envp)
 
 void	execute(char *argv, char **envp)
 {
-	char	**cmd;
-	int 	i;
-	char	*path;
-	
+	char **cmd;
+	int i;
+	char *path;
+
 	i = -1;
 	cmd = ft_split(argv, ' ');
 	path = find_path(cmd[0], envp);
-	if (!path)	
+	if (!path)
 	{
 		while (cmd[++i])
 			free(cmd[i]);
 		free(cmd);
-		error();
+		error(INVALID_PATH);
 	}
 	if (execve(path, cmd, envp) == -1)
-		error();
+		error(EXECUTE_ERROR);
 }

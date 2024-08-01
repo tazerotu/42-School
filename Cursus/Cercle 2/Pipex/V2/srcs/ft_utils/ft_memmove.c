@@ -1,26 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Error.c                                            :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 12:32:49 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 12:40:18 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/22 12:38:31 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/23 11:34:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Pipex.h"
+#include "libft.h"
 
-void	error(int error)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (error == INVALID_INPUT)
-		write(1, "Error, Invalid input", 20);
-	if (error == INVALID_PATH)
-		write(1, "Error, Invalid path", 19);
-	if (error == EXECUTE_ERROR)
-		write(1, "Error, Execution error", 22);
-	if (error == HERE_DOC_ERROR)
-		write(1, "Error, Here doc", 15);
-	exit(1);
+	char	*cdest;
+	char	*csrc;
+
+	cdest = (char *)dest;
+	csrc = (char *)src;
+	if (!dest && !src)
+		return (0);
+	if (dest <= src)
+		while (n--)
+			*cdest++ = *csrc++;
+	else if (dest > src)
+	{
+		cdest += n - 1;
+		csrc += n - 1;
+		while (n--)
+			*cdest-- = *csrc--;
+	}
+	return (dest);
 }

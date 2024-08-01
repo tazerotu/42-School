@@ -1,26 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Error.c                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/08/01 12:32:49 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 12:40:18 by ttas             ###   ########.fr       */
+/*   Created: 2024/04/22 12:37:29 by ttas              #+#    #+#             */
+/*   Updated: 2024/04/25 10:00:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Pipex.h"
+#include "libft.h"
 
-void	error(int error)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	if (error == INVALID_INPUT)
-		write(1, "Error, Invalid input", 20);
-	if (error == INVALID_PATH)
-		write(1, "Error, Invalid path", 19);
-	if (error == EXECUTE_ERROR)
-		write(1, "Error, Execution error", 22);
-	if (error == HERE_DOC_ERROR)
-		write(1, "Error, Here doc", 15);
-	exit(1);
+	char	*csrc;
+	char	*cdest;
+	size_t	i;
+
+	csrc = (char *)src;
+	cdest = (char *)dest;
+	i = 0;
+	if (csrc < cdest && csrc + n > cdest)
+	{
+		ft_memmove(cdest, csrc, n);
+	}
+	else
+	{
+		while (i < n)
+		{
+			cdest[i] = csrc[i];
+			i++;
+		}
+	}
+	return (cdest);
 }
+
+// i = n;
+// while (i > 0)
+// {
+// 	cdest[i - 1] = csrc[i - 1];
+// 	i--;
+// }

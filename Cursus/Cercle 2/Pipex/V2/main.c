@@ -2,19 +2,15 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+        
-	+:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+      
-	+#+        */
-/*                                                +#+#+#+#+#+  
-	+#+           */
-/*   Created: 2024/08/01 09:25:29 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 09:25:29 by ttas             ###   ########.fr       */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/08/01 12:34:33 by ttas              #+#    #+#             */
+/*   Updated: 2024/08/01 12:34:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./Includes/Pipex.h"
-
 
 void	ft_init_pipex(int argc, char **argv, t_ppx *pipex)
 {
@@ -25,8 +21,8 @@ void	ft_init_pipex(int argc, char **argv, t_ppx *pipex)
 
 void	child_proccess(char *cmd, char **envp, int inputfd)
 {
-	pid_t pid;
-	int pipefd[2];
+	pid_t	pid;
+	int		pipefd[2];
 
 	pipe(pipefd);
 	pid = fork();
@@ -49,13 +45,13 @@ void	child_proccess(char *cmd, char **envp, int inputfd)
 
 int	main(int argc, char **argv, char **envp)
 {
-	t_ppx *pipex;
-	pipex = NULL;
-	int i;
-	i = 0;
+	t_ppx	*pipex;
+	int		i;
 
+	pipex = NULL;
+	i = 0;
 	if (argc < args_in(argv[1], pipex))
-		return (error(INVALID_INPUT));
+		error(INVALID_INPUT);
 	ft_init_pipex(argc, argv, pipex);
 	dup2(pipex->input_fd, STDIN);
 	dup2(pipex->output_fd, STDOUT);

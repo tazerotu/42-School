@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/03 09:56:03 by ttas              #+#    #+#              #
-#    Updated: 2024/07/25 09:19:19 by ttas             ###   ########.fr        #
+#    Updated: 2024/08/01 12:44:12 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,12 @@ SRCS =			./srcs/Error.c \
 SRCS_UTILS =	./srcs/utils/ft_split.c \
 				./srcs/utils/ft_strjoin.c \
 				./srcs/utils/ft_strlen.c \
-				./srcs/utils/ft_strnstr.c
+				./srcs/utils/ft_strnstr.c \
+				./srcs/utils/ft_strncmp.c \
+				./srcs/utils/ft_memcpy.c \
+				./srcs/utils/ft_memmove.c \
+				./srcs/utils/ft_calloc.c \
+				./srcs/utils/get_next_line.c
 
 
 SOURCES =		${SRC} ${SRCS} ${SRCS_UTILS}
