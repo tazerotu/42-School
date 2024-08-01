@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 09:48:31 by ttas             ###   ########.fr       */
+/*   Updated: 2024/08/01 11:05:29 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,9 @@
 # define LEFT 0
 # define RIGHT 0
 
+// Others
+# define FD 1
+
 typedef struct s_pos
 {
 	int				x;
@@ -62,11 +65,14 @@ typedef struct s_path
 }					t_path;
 
 // INIT
-t_map				*init_struct_map(char **argv, t_map *map);
+int					init_struct_map(char **argv, t_map *map);
 t_map				*init_map(int x, int y, char c, t_map *map);
 
 // PARSING
 int					parsing_map_size(char *path, t_map *map);
+
+// ERROR
+void				error_message(int error);
 
 // UTILS
 
