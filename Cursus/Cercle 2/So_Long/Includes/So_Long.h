@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   So_Long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 11:05:29 by ttas             ###   ########.fr       */
+/*   Updated: 2024/08/05 16:22:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,26 @@
 // Others
 # define FD 1
 
-typedef struct s_pos
+typedef enum e_bool
+{
+	false = 0,
+	true = 1
+}	t_bool;
+
+struct s_pos
 {
 	int				x;
 	int				y;
-}					t_pos;
+};
 
 typedef struct s_map
 {
+	int 			fd_map;
 	int				x;
 	int				y;
 	struct s_pos	*p_start;
 	struct s_pos	*exit;
+	char 			**map;
 }					t_map;
 
 typedef struct s_character
@@ -69,7 +77,7 @@ int					init_struct_map(char **argv, t_map *map);
 t_map				*init_map(int x, int y, char c, t_map *map);
 
 // PARSING
-int					parsing_map_size(char *path, t_map *map);
+int					parsing_map_size(t_map *map);
 
 // ERROR
 void				error_message(int error);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:51:52 by ttas              #+#    #+#             */
-/*   Updated: 2024/05/24 09:27:31 by ttas             ###   ########.fr       */
+/*   Updated: 2024/08/05 17:14:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ char	*get_next_line(int fd)
 
 // int	main(void)
 // {
-// 	int fd = open("example.txt", O_RDONLY);
+// 	int fd = open("../../maps/map1.ber", O_RDONLY);
 // 	if (fd == -1)
 // 	{
 // 		perror("Error opening file");
@@ -124,7 +124,7 @@ char	*get_next_line(int fd)
 // 	}
 
 // 	char *line;
-// 	for (int i = 0; i < 25; i++)
+// 	for (int i = 0; i < 7; i++)
 // 	{
 // 		line = get_next_line(fd);
 // 		if (line)
@@ -138,7 +138,7 @@ char	*get_next_line(int fd)
 // 			break ;
 // 		}
 // 	}
-
+// 	printf("\n");
 // 	close(fd);
 // 	return (0);
 // }

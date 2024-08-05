@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 12:09:35 by ttas             ###   ########.fr       */
+/*   Updated: 2024/08/05 16:30:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	main(int argc, char **argv)
 {
-	t_map **map;
-	map = (t_map **)malloc(sizeof(t_map *));
+	t_map *map;
+	map = (t_map *)malloc(sizeof(t_map));
 	if (argc != 2)
 		return (INVALID_INPUT);
 	// parsing_map_size(argv[1], map);
-	// printf("%d", map);
-	init_struct_map(argv, *map);
+	init_struct_map(argv, map);
+	printf("X : %d\n", map->x);
+	printf("Y : %d\n", map->y);
 	// flood_fill(map);
 	free(map);
 	return (0);
