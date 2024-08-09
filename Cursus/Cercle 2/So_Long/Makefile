@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
-#    Updated: 2024/08/05 17:15:08 by marvin           ###   ########.fr        #
+#    Updated: 2024/08/09 09:02:31 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,8 +34,8 @@ OBJECTS =		${SOURCES:.c=.o}
 
 # Variables
 CC = cc
-# 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+# -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra 
 RM = rm -f
 LIBFT = ./Includes/libft
 
