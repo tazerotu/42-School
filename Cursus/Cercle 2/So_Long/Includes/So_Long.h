@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/05 16:22:57 by marvin           ###   ########.fr       */
+/*   Updated: 2024/08/15 10:42:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,14 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// Error Handling
+// Valid Return
+# define VALID 1
 # define VALID_MAP_SIZE 2
+# define VALID_MAP_COLLECTIBLES 3
+# define VALID_MAP_FLOODFILL 4
+
+// Error Handling
+# define INVALID 0
 # define INVALID_INPUT -1
 # define INVALID_MAP_SIZE -2
 # define INVALID_MAP_EXIT -3
@@ -46,15 +52,16 @@ typedef enum e_bool
 
 struct s_pos
 {
-	int				x;
-	int				y;
+	unsigned int	x;
+	unsigned int	y;
 };
 
 typedef struct s_map
 {
 	int 			fd_map;
-	int				x;
-	int				y;
+	unsigned int	x;
+	unsigned int	y;
+	unsigned int 	coins;
 	struct s_pos	*p_start;
 	struct s_pos	*exit;
 	char 			**map;
@@ -73,11 +80,13 @@ typedef struct s_path
 }					t_path;
 
 // INIT
-int					init_struct_map(char **argv, t_map *map);
-t_map				*init_map(int x, int y, char c, t_map *map);
+int					init_struct(char **argv, t_map *map);
+int					init_map(char **argv, t_map *map);
 
 // PARSING
-int					parsing_map_size(t_map *map);
+int					parsing_map_size(char **argv, t_map *map);
+int 				parsing_map_collectibles(t_map *map);
+int 				parsing_map_init(char **argv, t_map *map);
 
 // ERROR
 void				error_message(int error);

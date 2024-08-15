@@ -6,17 +6,14 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:24:36 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/05 16:22:12 by marvin           ###   ########.fr       */
+/*   Updated: 2024/08/15 10:07:56 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
 
-int	init_struct_map(char **argv, t_map *map)
+int	init_struct(char **argv, t_map *map)
 {
-	map->fd_map = open(argv[1], O_RDONLY);
-	if (!map->fd_map)
-		error_message(INVALID_INPUT);
-	parsing_map_size(map);
+	init_map(argv, map);
 	return (1);
 }
