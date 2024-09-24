@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   Parsing_Map_Char.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/05 11:24:12 by marvin            #+#    #+#             */
-/*   Updated: 2024/09/05 11:24:12 by marvin           ###   ########.fr       */
+/*   Created: 2024/09/24 09:07:18 by ttas              #+#    #+#             */
+/*   Updated: 2024/09/24 09:07:19 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
 
-int parsing_map_char(t_map *map)
+int	parsing_map_char(t_map *map)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
 	j = 0;
@@ -23,7 +23,9 @@ int parsing_map_char(t_map *map)
 	{
 		while (j < map->x)
 		{
-			if (map->map[i][j] != '1' && map->map[i][j] != '0' && map->map[i][j] != 'P' && map->map[i][j] != 'E' && map->map[i][j] != 'C')
+			if (map->map[i][j] != '1' && map->map[i][j] != '0'
+				&& map->map[i][j] != 'P' && map->map[i][j] != 'E'
+				&& map->map[i][j] != 'C')
 				error_message(INVALID_MAP_CHAR);
 			j++;
 		}
@@ -33,11 +35,11 @@ int parsing_map_char(t_map *map)
 	return (VALID_MAP_CHAR);
 }
 
-int parsing_map_char_player(t_map *map)
+int	parsing_map_char_player(t_map *map)
 {
-	unsigned int i;
-	unsigned int j;
-	unsigned int player;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	player;
 
 	i = 0;
 	j = 0;
@@ -58,11 +60,11 @@ int parsing_map_char_player(t_map *map)
 	return (VALID_MAP_PLAYER);
 }
 
-int parsing_map_char_exit(t_map *map)
+int	parsing_map_char_exit(t_map *map)
 {
-	unsigned int i;
-	unsigned int j;
-	unsigned int exit;
+	unsigned int	i;
+	unsigned int	j;
+	unsigned int	exit;
 
 	i = 0;
 	j = 0;

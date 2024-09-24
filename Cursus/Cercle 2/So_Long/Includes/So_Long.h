@@ -3,22 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   So_Long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/12 09:41:42 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/24 11:01:23 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
+# include "../minilibx-linux/mlx.h"
 # include "./gnl/get_next_line.h"
 # include "./libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../minilibx-linux/mlx.h"
 
 // Valid Return
 # define VALID 1
@@ -43,11 +43,15 @@
 
 // Jeu
 # define PIX 16
-# define ESC 0
-# define UP 0
-# define DOWN 0
-# define LEFT 0
-# define RIGHT 0
+# define W 119
+# define ARROW_UP 65362
+# define A 97
+# define ARROW_LEFT 65361
+# define S 115
+# define ARROW_DOWN 65364
+# define D 100
+# define ARROW_RIGHT 65363
+# define ESC 65307
 
 // Others
 # define ERROR_FD 1
@@ -86,8 +90,8 @@ typedef struct s_pos
 typedef struct s_character
 {
 	struct s_pos	*pos;
-	int 			dir;
-	int 			state;
+	int				dir;
+	int				state;
 	void			*img;
 
 }					t_character;
@@ -104,39 +108,47 @@ typedef struct s_mlx
 
 typedef struct s_map
 {
-	int 			fd_map;
+	int				fd_map;
 	unsigned int	x;
 	unsigned int	y;
-	unsigned int 	coins;
+	unsigned int	coins;
 	t_pos			*exit;
 	t_character		*player;
 	t_character		*ghost1;
 	t_character		*ghost2;
 	t_character		*ghost3;
-	char 			**map;
-	char 			**floodfill;
+	char			**map;
+	char			**floodfill;
 	t_mlx			*mlx;
 }					t_map;
 
-
 // INIT
 int					init_map(char **argv, t_map *map);
-int 				init_map_collectibles(t_map *map);
-int 				init_map_char_player(t_map *map);
+int					init_map_collectibles(t_map *map);
+int					init_map_char_player(t_map *map);
 int					init_map_char_exit(t_map *map);
 
 // PARSING
 int					parsing_map_size(char **argv, t_map *map);
-int 				parsing_map_init(char **argv, t_map *map);
-int 				parsing_map_closed(t_map *map);
-int 				parsing_map_char(t_map *map);
-int 				parsing_map_char_player(t_map *map);
-int 				parsing_map_char_exit(t_map *map);
+int					parsing_map_init(char **argv, t_map *map);
+int					parsing_map_closed(t_map *map);
+int					parsing_map_char(t_map *map);
+int					parsing_map_char_player(t_map *map);
+int					parsing_map_char_exit(t_map *map);
 
+// WALL
+void				wall_init(t_map *map, int i, int j);
 
 // ERROR
 void				error_message(int error);
 
+// MOVE
+void				move_up(t_map *map);
+void				move_down(t_map *map);
+void				move_left(t_map *map);
+void				move_right(t_map *map);
+
 // UTILS
+int					keypress(int keycode, t_map *map);
 
 #endif

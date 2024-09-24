@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Init_Map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 09:24:36 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/13 10:51:12 by marvin           ###   ########.fr       */
+/*   Created: 2024/09/24 09:06:53 by ttas              #+#    #+#             */
+/*   Updated: 2024/09/24 09:08:10 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,14 +23,15 @@ int	init_map(char **argv, t_map *map)
 	init_map_collectibles(map);
 	init_map_char_player(map);
 	init_map_char_exit(map);
-//	floodfill(map);
+	//	floodfill(map);
 	return (VALID);
 }
 
-int init_map_collectibles(t_map *map)
+int	init_map_collectibles(t_map *map)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
+
 	i = 0;
 	j = 0;
 	map->coins = 0;
@@ -50,10 +51,11 @@ int init_map_collectibles(t_map *map)
 	return (VALID_MAP_COLLECTIBLES);
 }
 
-int init_map_char_player(t_map *map)
+int	init_map_char_player(t_map *map)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
+
 	i = 0;
 	j = 0;
 	while (i < map->y)
@@ -78,10 +80,11 @@ int init_map_char_player(t_map *map)
 	return (INVALID_MAP_PLAYER);
 }
 
-int init_map_char_exit(t_map *map)
+int	init_map_char_exit(t_map *map)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
+
 	i = 0;
 	j = 0;
 	while (i < map->y)

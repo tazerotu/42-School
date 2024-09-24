@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parsing_Map.c                                      :+:      :+:    :+:   */
+/*   Win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 09:43:10 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/13 17:36:39 by marvin           ###   ########.fr       */
+/*   Created: 2024/09/24 09:05:24 by ttas              #+#    #+#             */
+/*   Updated: 2024/09/24 09:05:25 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
 
-int player_win(t_map *map)
+int	player_win(t_map *map)
 {
-	if(map->player->pos->x == map->exit->x && map->player->pos->y == map->exit->y)
+	if (map->player->pos->x == map->exit->x
+		&& map->player->pos->y == map->exit->y)
 	{
-		if(map->coins == 0)
+		if (map->coins == 0)
 		{
 			ft_printf("You win!\n");
 			exit(0);

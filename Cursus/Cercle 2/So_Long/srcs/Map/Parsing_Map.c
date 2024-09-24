@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parsing_Map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:43:10 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/12 10:03:10 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/24 09:07:57 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,11 @@
 
 int	parsing_map_size(char **argv, t_map *map)
 {
-	char *buffer;
-	unsigned int i;
-	unsigned int j;
-	int fd_map;
+	char			*buffer;
+	unsigned int	i;
+	unsigned int	j;
+	int				fd_map;
+
 	j = 0;
 	fd_map = open(argv[1], O_RDONLY);
 	if (!fd_map)
@@ -39,10 +40,11 @@ int	parsing_map_size(char **argv, t_map *map)
 	return (VALID_MAP_SIZE);
 }
 
-int parsing_map_init(char **argv, t_map *map)
+int	parsing_map_init(char **argv, t_map *map)
 {
-	char *buffer;
-	unsigned int i;
+	char			*buffer;
+	unsigned int	i;
+
 	i = 0;
 	map->fd_map = open(argv[1], O_RDONLY);
 	if (!map->fd_map)
@@ -62,10 +64,11 @@ int parsing_map_init(char **argv, t_map *map)
 	return (VALID_MAP_FLOODFILL);
 }
 
-int parsing_map_closed(t_map *map)
+int	parsing_map_closed(t_map *map)
 {
-	unsigned int i;
-	unsigned int j;
+	unsigned int	i;
+	unsigned int	j;
+
 	i = 0;
 	j = 0;
 	while (i < map->y)

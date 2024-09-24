@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
-#    Updated: 2024/09/12 10:00:35 by marvin           ###   ########.fr        #
+#    Updated: 2024/09/24 11:03:31 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ EXE = So_Long
 # Files
 SRC =			./srcs/main.c		
 
-SRCS_MAP = 		./srcs/Map/FloodFill.c \
-				./srcs/Map/Init_Map.c \
+SRCS_MAP = 		./srcs/Map/Init_Map.c \
 				./srcs/Map/Parsing_Map.c \
 				./srcs/Map/Parsing_Map_Char.c \
+				./srcs/Player/Moves.c \
+#				./srcs/Map/FloodFill.c \
 
 SRCS_PLAYER = 	
 
@@ -32,8 +33,8 @@ OBJECTS =		${SOURCES:.c=.o}
 
 # Variables
 CC = cc
-# -fsanitize=address -g
-CFLAGS = -Wall -Werror -Wextra 
+# 
+CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
 RM = rm -f
 
 # Libraries
