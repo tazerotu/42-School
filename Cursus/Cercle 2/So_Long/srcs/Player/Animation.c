@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Parsing_Map.c                                      :+:      :+:    :+:   */
+/*   Orientation.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/25 09:43:10 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/13 17:36:39 by marvin           ###   ########.fr       */
+/*   Created: 2024/09/09 16:16:03 by marvin            #+#    #+#             */
+/*   Updated: 2024/09/09 16:16:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
 
-int player_win(t_map *map)
+void	animation(t_map *map)
 {
-	if(map->player->pos->x == map->exit->x && map->player->pos->y == map->exit->y)
+	if(map->player->state == 1 || map->player->state == 5)
 	{
-		if(map->coins == 0)
-		{
-			ft_printf("You win!\n");
-			exit(0);
-		}
-		else
-		{
-			ft_printf("You need to collect all the coins!\n");
-		}
+		map->player->state++;
+		if (map->player->state == 6)
+			map->player->state = 1;
+	}
+	if(map->player->state == 2 || map->player->state == 4)
+	{
+		map->player->state++;
+	}
+	if(map->player->state == 3)
+	{
+		map->player->state++;
 	}
 }

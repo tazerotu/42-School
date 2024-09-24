@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:57:48 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/13 10:53:53 by marvin           ###   ########.fr       */
+/*   Updated: 2024/09/11 16:18:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,8 @@
 
 void	error_message(int error)
 {
-	if (error == INVALID_INPUT)
-		write(FD, "Error, Invalid Input", 20);
-	if (error == INVALID_MAP_SIZE)
-		write(FD, "Error, Map Size", 15);
-	if (error == INVALID_MAP_EXIT)
-		write(FD, "Error, Missing map exit", 23);
-	if (error == INVALID_MAP_PLAYER)
-		write(FD, "Error, Missing player", 21);
-	if (error == INVALID_MAP_PATH)
-		write(FD, "Error, Missing valid path to exit", 33);
+	ft_putstr_fd("Error code : ", ERROR_FD);
+	ft_putnbr_fd(error, ERROR_FD);
+	ft_putstr_fd("\n", ERROR_FD);
 	exit(1);
 }
