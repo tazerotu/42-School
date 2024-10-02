@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 12:33:33 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 12:49:43 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@
 # define D 100
 # define ARROW_RIGHT 65363
 # define ESC 65307
+# define DELAY 30
 
 // Others
 # define ERROR_FD 1
