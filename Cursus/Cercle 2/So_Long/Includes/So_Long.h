@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   So_Long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/24 11:01:23 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/01 15:07:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,14 +141,12 @@ void				wall_init(t_map *map, int i, int j);
 
 // ERROR
 void				error_message(int error);
+// GAME
+int					player_win(t_map *map);
 
 // MOVE
-void				move_up(t_map *map);
-void				move_down(t_map *map);
-void				move_left(t_map *map);
-void				move_right(t_map *map);
-
-// UTILS
+void				move(t_map *map, int x, int y);
 int					keypress(int keycode, t_map *map);
+
 
 #endif

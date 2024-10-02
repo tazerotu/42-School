@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
-#    Updated: 2024/09/24 11:03:31 by ttas             ###   ########.fr        #
+#    Updated: 2024/10/01 15:08:11 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS_MAP = 		./srcs/Map/Init_Map.c \
 				./srcs/Map/Parsing_Map.c \
 				./srcs/Map/Parsing_Map_Char.c \
 				./srcs/Player/Moves.c \
+				./srcs/Player/Win.c \
 #				./srcs/Map/FloodFill.c \
 
 SRCS_PLAYER = 	

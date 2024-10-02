@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FloodFill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:32 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/24 10:24:18 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/01 15:16:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,16 +50,47 @@ void	wall_check(t_map *map, int i, int j)
 	E = 0;
 	W = 0;
 	// Check sides to see which wall type to use
-	if (map->map[i][j] == 1 && map->map[i][j + 1] == 1 && j < map->y)
+	if (map->map[i][j] == '1' && j < map->y - 1 && map->map[i][j + 1] == '1')
 		N = 1;
-	if (map->map[i][j] == 1 && map->map[i][j - 1] == 1 && j > 0)
+	if (map->map[i][j] == '1' && j > 0 && map->map[i][j - 1] == '1')
 		S = 1;
-	if (map->map[i][j] == 1 && map->map[i + 1][j] == 1 && i < map->x)
+	if (map->map[i][j] == '1' && i < map->x - 1 && map->map[i + 1][j] == '1')
 		E = 1;
-	if (map->map[i][j] == 1 && map->map[i - 1][j] == 1 && i > 0)
+	if (map->map[i][j] == '1' && i > 0 && map->map[i - 1][j] == '1')
 		W = 1;
 
-		
 	// Set correct Wall type
+	if (N && S && E && W)
+		map->floodfill[i][j] = 'X'; // Surrounded by walls
+	else if (N && S && E)
+		map->floodfill[i][j] = 'T'; // T-junction
+	else if (N && S && W)
+		map->floodfill[i][j] = 'T'; // T-junction
+	else if (N && E && W)
+		map->floodfill[i][j] = 'T'; // T-junction
+	else if (S && E && W)
+		map->floodfill[i][j] = 'T'; // T-junction
+	else if (N && S)
+		map->floodfill[i][j] = '|'; // Vertical wall
+	else if (E && W)
+		map->floodfill[i][j] = '-'; // Horizontal wall
+	else if (N && E)
+		map->floodfill[i][j] = '┌'; // Corner
+	else if (N && W)
+		map->floodfill[i][j] = '┐'; // Corner
+	else if (S && E)
+		map->floodfill[i][j] = '└'; // Corner
+	else if (S && W)
+		map->floodfill[i][j] = '┘'; // Corner
+	else if (N)
+		map->floodfill[i][j] = '^'; // Top end
+	else if (S)
+		map->floodfill[i][j] = 'v'; // Bottom end
+	else if (E)
+		map->floodfill[i][j] = '>'; // Right end
+	else if (W)
+		map->floodfill[i][j] = '<'; // Left end
+	else
+		map->floodfill[i][j] = '1'; // Single wall
 }
 

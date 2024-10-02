@@ -3,14 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/24 11:11:52 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/01 15:06:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
+
+void kill_switch(t_map *map)
+{
+	mlx_destroy_window(map->mlx->mlx, map->mlx->win);
+	free(map->exit);
+	free(map->player);
+	free(map->map);
+	free(map);
+	exit(0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -31,9 +41,5 @@ int	main(int argc, char **argv)
 	printf("\n");
 	mlx_hook(map->mlx->win, 2, (1L << 0), keypress, map);
 	mlx_loop(map->mlx);
-	free(map->exit);
-	free(map->player);
-	free(map->map);
-	free(map);
 	return (0);
 }

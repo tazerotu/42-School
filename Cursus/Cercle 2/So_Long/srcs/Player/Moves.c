@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:40 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/24 11:27:59 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/01 15:13:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,52 +15,30 @@
 int	keypress(int keycode, t_map *map)
 {
 	if (keycode == W || keycode == ARROW_UP)
-		move_up(map);
+		move(map, 0, -1);
 	if (keycode == S || keycode == ARROW_DOWN)
-		move_down(map);
+		move(map, 0, 1);
 	if (keycode == D || keycode == ARROW_RIGHT)
-		move_right(map);
+		move(map, 1, 0);
 	if (keycode == A || keycode == ARROW_LEFT)
-		move_left(map);
+		move(map, -1, 0);
 	for (unsigned int i = 0; i < map->y; i++)
 		printf("map[%d] : %s", i, map->map[i]);
-	printf("\n");
+	printf("\n%d\n", map->coins);
 	printf("\n");
 	return (0);
 }
 
-void	move_up(t_map *map)
+void	move(t_map *map, int x, int y)
 {
-	if (map->player->pos->y == map->y)
+	if (map->map[map->player->pos->y + y][map->player->pos->x + x] == 'E')
+		player_win(map);
+	if (map->map[map->player->pos->y + y][map->player->pos->x + x] == '1')
 		return ;
+	if (map->map[map->player->pos->y + y][map->player->pos->x + x] == 'C')
+		map->coins--;
 	map->map[map->player->pos->y][map->player->pos->x] = '0';
-	map->player->pos->y++;
-	map->map[map->player->pos->y][map->player->pos->x] = 'P';
-}
-
-void	move_down(t_map *map)
-{
-	if (map->player->pos->y == 0)
-		return ;
-	map->map[map->player->pos->y][map->player->pos->x] = '0';
-	map->player->pos->y--;
-	map->map[map->player->pos->y][map->player->pos->x] = 'P';
-}
-
-void	move_left(t_map *map)
-{
-	if (map->player->pos->x == 0)
-		return ;
-	map->map[map->player->pos->y][map->player->pos->x] = '0';
-	map->player->pos->x--;
-	map->map[map->player->pos->y][map->player->pos->x] = 'P';
-}
-
-void	move_right(t_map *map)
-{
-	if (map->player->pos->x == 0)
-		return ;
-	map->map[map->player->pos->y][map->player->pos->x] = '0';
-	map->player->pos->x++;
+	map->player->pos->x += x;
+	map->player->pos->y += y;
 	map->map[map->player->pos->y][map->player->pos->x] = 'P';
 }
