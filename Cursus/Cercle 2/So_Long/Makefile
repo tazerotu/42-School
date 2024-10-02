@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
-#    Updated: 2024/10/02 11:33:00 by ttas             ###   ########.fr        #
+#    Updated: 2024/10/02 11:43:53 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -53,7 +53,7 @@ all:		${EXE}
 ${EXE}:		${OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
 		@${MAKE} -C ${MINILIBX} > /dev/null 2>&1
-		${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -L${MINILIBX} -lmlx -lX11 -lXext -lm -o ${EXE}
+		${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -L${MINILIBX} -lmlx -lX11 -lXext -o ${EXE}
 
 ac: all clean
 

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 11:39:26 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 11:44:21 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 	init_map(argv, map);
 	map->mlx.mlx = mlx_init();
 	if (!map->mlx.mlx)
-		error(INVALID_MLX_INIT);
+		error_message(INVALID_MLX_INIT);
 	map->mlx.win = mlx_new_window(map->mlx.mlx, 1280, 720, "Hello world!");
 	printf("X : %d\n", map->x);
 	printf("Y : %d\n", map->y);
