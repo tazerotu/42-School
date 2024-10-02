@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:40 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 10:51:06 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 12:36:19 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,10 @@
 
 int	keypress(int keycode, t_map *map)
 {
+	unsigned int	i;
+
+	i = 0;
+	map->moves++;
 	if (keycode == W || keycode == ARROW_UP)
 		move(map, 0, -1);
 	if (keycode == S || keycode == ARROW_DOWN)
@@ -24,10 +28,14 @@ int	keypress(int keycode, t_map *map)
 		move(map, -1, 0);
 	if (keycode == ESC)
 		return (0);
-	for (unsigned int i = 0; i < map->y; i++)
-		printf("map[%d] : %s", map->y - i, map->map[i]);
-	printf("\nCoins : %d\n", map->coins);
-	printf("\n");
+	while (i < map->y)
+	{
+		ft_printf("map[%d] : %s", map->y - i, map->map[i]);
+		i++;
+	}
+	ft_printf("\nCoins : %d\n", map->coins);
+	ft_printf("Moves : %d\n", map->moves);
+	ft_printf("\n");
 	return (0);
 }
 

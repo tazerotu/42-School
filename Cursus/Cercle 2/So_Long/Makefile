@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
-#    Updated: 2024/10/02 11:43:53 by ttas             ###   ########.fr        #
+#    Updated: 2024/10/02 12:32:45 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,28 +42,31 @@ RM = rm -f
 # Libraries
 MINILIBX	=	./minilibx-linux
 LIBFT = ./Includes/libft
+PRINTF = ./Includes/ft_printf
 
 # Makefile
 %.o:		%.c
 		${CC} ${CFLAGS} -c $? -o $@
 
 all:		${EXE}
-		@${MAKE}  --silent -C ${LIBFT} clean 
 
 ${EXE}:		${OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
+		@${MAKE} --silent -C ./Includes/ft_printf
 		@${MAKE} -C ${MINILIBX} > /dev/null 2>&1
-		${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -L${MINILIBX} -lmlx -lX11 -lXext -o ${EXE}
+		${CC} ${CFLAGS} ${OBJECTS} ./Includes/ft_printf/libftprintf.a ./Includes/libft/libft.a -L${MINILIBX} -lmlx -lX11 -lXext -o ${EXE}
 
 ac: all clean
 
 clean:
 		@${RM} ${OBJECTS}
 		@${MAKE} --silent -C ${LIBFT} clean
+		@${MAKE} --silent -C ./Includes/ft_printf clean
 
 fclean:		clean
 		@${RM} ${EXE}
 		@${MAKE} --silent -C ${LIBFT} fclean
+		@${MAKE} --silent -C ./Includes/ft_printf fclean
 
 re:			fclean all
 

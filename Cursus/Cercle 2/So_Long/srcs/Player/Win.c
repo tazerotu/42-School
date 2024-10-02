@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Win.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:24 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/01 15:09:39 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/02 12:09:04 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,6 @@ int	player_win(t_map *map)
 		exit(0);
 	}
 	else
-	{
 		printf("You need to collect all the coins!\n");
-	}
-	return 0;
+	return (0);
 }

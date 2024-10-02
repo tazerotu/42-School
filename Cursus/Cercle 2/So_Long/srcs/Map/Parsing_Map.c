@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:43:10 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 11:08:56 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 12:08:18 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ int	parsing_map_size(char **argv, t_map *map)
 	return (VALID_MAP_SIZE);
 }
 
+// map->map[i] = NULL;
+
 int	parsing_map_init(char **argv, t_map *map)
 {
 	char			*buffer;
@@ -61,7 +63,6 @@ int	parsing_map_init(char **argv, t_map *map)
 		i++;
 	}
 	close(map->fd_map);
-	// map->map[i] = NULL;
 	return (VALID_MAP_FLOODFILL);
 }
 

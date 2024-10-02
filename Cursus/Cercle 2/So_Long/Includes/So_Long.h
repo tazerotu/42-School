@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 11:42:33 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 12:33:33 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define SO_LONG_H
 
 # include "../minilibx-linux/mlx.h"
+# include "./ft_printf/ft_printf.h"
 # include "./gnl/get_next_line.h"
 # include "./libft/libft.h"
 # include <limits.h>
@@ -114,6 +115,7 @@ typedef struct s_map
 	unsigned int	x;
 	unsigned int	y;
 	unsigned int	coins;
+	unsigned int	moves;
 	t_pos			*exit;
 	t_character		*player;
 	t_character		*ghost1;

@@ -6,11 +6,23 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 11:44:21 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 12:36:27 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/So_Long.h"
+
+void	init_malloc(t_map *map)
+{
+	map->moves = 0;
+	map->player = malloc(sizeof(t_character));
+	if (map->player == NULL)
+		error_message(INVALID_MAP_PLAYER);
+	map->player->pos = malloc(sizeof(t_pos));
+	if (map->player->pos == NULL)
+		error_message(INVALID_MAP_PLAYER);
+	return ;
+}
 
 void	kill_switch(t_map *map)
 {
@@ -28,23 +40,32 @@ void	kill_switch(t_map *map)
 
 int	main(int argc, char **argv)
 {
+	unsigned int	i;
+	t_map			*map;
+
+	i = 0;
 	if (argc != 2)
 		error_message(INVALID_INPUT);
-	t_map *map;
 	map = (t_map *)malloc(sizeof(t_map));
 	if (!map)
 		error_message(INVALID);
+	init_malloc(map);
 	init_map(argv, map);
 	map->mlx.mlx = mlx_init();
 	if (!map->mlx.mlx)
 		error_message(INVALID_MLX_INIT);
 	map->mlx.win = mlx_new_window(map->mlx.mlx, 1280, 720, "Hello world!");
-	printf("X : %d\n", map->x);
-	printf("Y : %d\n", map->y);
-	for (unsigned int i = 0; i < map->y; i++)
-		printf("map[%d] : %s", map->y - i, map->map[i]);
-	printf("\nCoins : %d\n", map->coins);
-	printf("\n");
+	mlx_mouse_hide(map->mlx.mlx, map->mlx.win);
+	ft_printf("X : %d\n", map->x);
+	ft_printf("Y : %d\n", map->y);
+	while (i < map->y)
+	{
+		ft_printf("map[%d] : %s", map->y - i, map->map[i]);
+		i++;
+	}
+	ft_printf("\nCoins : %d\n", map->coins);
+	ft_printf("Moves : %d\n", map->moves);
+	ft_printf("\n");
 	mlx_hook(map->mlx.win, 2, (1L << 0), keypress, map);
 	mlx_loop(map->mlx.mlx);
 	kill_switch(map);
