@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:53 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/24 09:08:10 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 11:11:56 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,8 @@ int	init_map_char_player(t_map *map)
 			if (map->map[i][j] == 'P')
 			{
 				map->player = malloc(sizeof(t_character));
+				if (map->player == NULL)
+					return (INVALID_MAP_PLAYER);
 				map->player->pos = malloc(sizeof(t_pos));
 				if (map->player->pos == NULL)
 					return (INVALID_MAP_PLAYER);

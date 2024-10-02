@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
-#    Updated: 2024/10/01 15:08:11 by marvin           ###   ########.fr        #
+#    Updated: 2024/10/02 11:33:00 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRCS_PLAYER =
 SRCS_UTILS = 	./srcs/utils/Error.c
 
 GNL = 			./Includes/gnl/get_next_line.c\
+#				./Includes/gnl/get_next_line_utils.c\
 
 SOURCES =		${SRC} ${SRCS_MAP} ${SRCS_UTILS} ${GNL}
 OBJECTS =		${SOURCES:.c=.o}
@@ -35,7 +36,7 @@ OBJECTS =		${SOURCES:.c=.o}
 # Variables
 CC = cc
 # 
-CFLAGS = -Wall -Werror -Wextra -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=address -g
 RM = rm -f
 
 # Libraries
@@ -43,14 +44,16 @@ MINILIBX	=	./minilibx-linux
 LIBFT = ./Includes/libft
 
 # Makefile
+%.o:		%.c
+		${CC} ${CFLAGS} -c $? -o $@
+
 all:		${EXE}
-		@${RM} ${OBJECTS}
 		@${MAKE}  --silent -C ${LIBFT} clean 
 
 ${EXE}:		${OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
 		@${MAKE} -C ${MINILIBX} > /dev/null 2>&1
-		@${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -L${MINILIBX} -lmlx -lX11 -lXext -lm -o ${EXE}
+		${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -L${MINILIBX} -lmlx -lX11 -lXext -lm -o ${EXE}
 
 ac: all clean
 

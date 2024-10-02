@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   So_Long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/01 15:07:32 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/02 11:42:33 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../minilibx-linux/mlx.h"
 # include "./gnl/get_next_line.h"
 # include "./libft/libft.h"
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -40,6 +41,7 @@
 # define INVALID_MAP_PATH -6
 # define INVALID_MAP_CLOSE -7
 # define INVALID_MAP_CHAR -8
+# define INVALID_MLX_INIT -11
 
 // Jeu
 # define PIX 16
@@ -119,7 +121,7 @@ typedef struct s_map
 	t_character		*ghost3;
 	char			**map;
 	char			**floodfill;
-	t_mlx			*mlx;
+	t_mlx			mlx;
 }					t_map;
 
 // INIT
@@ -147,6 +149,6 @@ int					player_win(t_map *map);
 // MOVE
 void				move(t_map *map, int x, int y);
 int					keypress(int keycode, t_map *map);
-
+void				kill_switch(t_map *map);
 
 #endif

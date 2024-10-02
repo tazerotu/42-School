@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   FloodFill.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:32 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/01 15:16:15 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/02 08:59:44 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,6 @@ void	wall_check(t_map *map, int i, int j)
 		E = 1;
 	if (map->map[i][j] == '1' && i > 0 && map->map[i - 1][j] == '1')
 		W = 1;
-
 	// Set correct Wall type
 	if (N && S && E && W)
 		map->floodfill[i][j] = 'X'; // Surrounded by walls
@@ -90,7 +89,4 @@ void	wall_check(t_map *map, int i, int j)
 		map->floodfill[i][j] = '>'; // Right end
 	else if (W)
 		map->floodfill[i][j] = '<'; // Left end
-	else
-		map->floodfill[i][j] = '1'; // Single wall
 }
-

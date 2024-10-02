@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:43:10 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/24 09:07:57 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 11:08:56 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,18 +49,19 @@ int	parsing_map_init(char **argv, t_map *map)
 	map->fd_map = open(argv[1], O_RDONLY);
 	if (!map->fd_map)
 		error_message(INVALID_INPUT);
-	map->map = (char **)malloc(sizeof(char *) * (map->y + 1));
+	map->map = (char **)malloc(sizeof(char *) * (map->y));
+	if (!map->map)
+		return (INVALID);
 	buffer = get_next_line(map->fd_map);
 	while (buffer)
 	{
-		map->map[i] = (char *)malloc(sizeof(char) * (ft_strlen(buffer) + 1));
 		map->map[i] = ft_strdup(buffer);
 		free(buffer);
 		buffer = get_next_line(map->fd_map);
 		i++;
 	}
 	close(map->fd_map);
-	map->map[i] = NULL;
+	// map->map[i] = NULL;
 	return (VALID_MAP_FLOODFILL);
 }
 
