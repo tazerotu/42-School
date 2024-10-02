@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:34:06 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 12:34:09 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/02 10:11:20 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	get_input_fd(char **argv, t_ppx *pipex)
 	{
 		pipex->input_fd = open(argv[1], O_RDONLY);
 		if (pipex->input_fd < 0)
-			error_msg(ERR_INPUT_FD);
+			error(-7);
 	}
 }
 
@@ -31,5 +31,5 @@ void	get_output_fd(char *argv, t_ppx *pipex)
 	else
 		pipex->output_fd = open(argv, O_CREAT | O_RDWR | O_TRUNC, 777);
 	if (pipex->output_fd < 0)
-		error_msg(ERR_OUTPUT_FD);
+		error(-6);
 }
