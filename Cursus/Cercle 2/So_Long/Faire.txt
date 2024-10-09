@@ -1,9 +1,7 @@
 Pathfinding
 
-Ghosts 1, 2, 3 (Move, pathfinding, colision)
-
 display (sprite, ....)
 
-Animations
-
 FPS (Milli time stamp)
+Animations
+Ghosts 1, 2, 3 (Move, pathfinding, colision)
