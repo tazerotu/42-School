@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/09 10:21:47 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/09 12:22:40 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,12 +80,6 @@
 # define WALL_FACE_NONE
 
 // Struct
-typedef enum e_bool
-{
-	false = 0,
-	true = 1
-}					t_bool;
-
 typedef struct s_pos
 {
 	unsigned int	x;
