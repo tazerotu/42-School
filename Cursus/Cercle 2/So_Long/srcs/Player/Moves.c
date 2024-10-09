@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:40 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 12:36:19 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/09 09:27:31 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	keypress(int keycode, t_map *map)
 	if (keycode == A || keycode == ARROW_LEFT)
 		move(map, -1, 0);
 	if (keycode == ESC)
-		return (0);
+		kill_switch(map);
 	while (i < map->y)
 	{
 		ft_printf("map[%d] : %s", map->y - i, map->map[i]);
