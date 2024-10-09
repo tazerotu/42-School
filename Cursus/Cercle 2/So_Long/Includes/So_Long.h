@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 12:49:43 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/09 10:21:47 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <time.h>
 # include <unistd.h>
 
 // Valid Return
@@ -153,5 +154,6 @@ int					player_win(t_map *map);
 void				move(t_map *map, int x, int y);
 int					keypress(int keycode, t_map *map);
 void				kill_switch(t_map *map);
+int					bfs(t_pos *start, t_pos *goal, t_map *map);
 
 #endif

@@ -6,8 +6,19 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 12:10:45 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 12:10:50 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/09 10:09:02 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
+
+int	wall_draw(t_map *map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+
+	return (VALID);
+}

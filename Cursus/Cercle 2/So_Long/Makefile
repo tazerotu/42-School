@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/07/25 09:21:00 by ttas              #+#    #+#              #
-#    Updated: 2024/10/02 12:44:00 by ttas             ###   ########.fr        #
+#    Updated: 2024/10/09 10:12:13 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ SRCS_MAP = 		./srcs/Map/Init_Map.c \
 				./srcs/Map/Parsing_Map_Char.c \
 				./srcs/Player/Moves.c \
 				./srcs/Player/Win.c \
+				./srcs/Pathfinding/Path.c \
 #				./srcs/Map/FloodFill.c \
 
 SRCS_PLAYER = 	

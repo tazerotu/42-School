@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 12:44:05 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/09 10:21:55 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	kill_switch(t_map *map)
 	free(map->player);
 	free(map->map);
 	free(map->mlx.mlx);
-	free(map->mlx.win);
 	free(map);
 	exit(0);
 }
@@ -51,10 +50,11 @@ int	main(int argc, char **argv)
 		error_message(INVALID);
 	init_malloc(map);
 	init_map(argv, map);
-	map->mlx.mlx = mlx_init();
-	if (!map->mlx.mlx)
-		error_message(INVALID_MLX_INIT);
-	map->mlx.win = mlx_new_window(map->mlx.mlx, 1280, 720, "Hello world!");
+
+	// map->mlx.mlx = mlx_init();
+	// if (!map->mlx.mlx)
+	// 	error_message(INVALID_MLX_INIT);
+	// map->mlx.win = mlx_new_window(map->mlx.mlx, 1280, 720, "Hello world!");
 	ft_printf("X : %d\n", map->x);
 	ft_printf("Y : %d\n", map->y);
 	while (i < map->y)
@@ -65,8 +65,8 @@ int	main(int argc, char **argv)
 	ft_printf("\nCoins : %d\n", map->coins);
 	ft_printf("Moves : %d\n", map->moves);
 	ft_printf("\n");
-	mlx_hook(map->mlx.win, 2, (1L << 0), keypress, map);
-	mlx_loop(map->mlx.mlx);
-	kill_switch(map);
+	bfs(map->player->pos, map->exit, map);
+	// mlx_hook(map->mlx.win, 2, (1L << 0), keypress, map);
+	// mlx_loop(map->mlx.mlx);
 	return (0);
 }
