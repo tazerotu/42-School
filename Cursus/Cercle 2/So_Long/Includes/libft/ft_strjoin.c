@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:33:04 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 10:34:55 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/15 10:03:18 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,11 @@ char	*ft_strjoin(char *s1, char *s2)
 	return (ret);
 }
 
-// char	*ft_strjoin(char const *s1, char const *s2)
+// char	*ft_strjoin(char *s1, char *s2)
 // {
-// 	char	*tab;
-// 	int		i;
-// 	int		j;
+// 	char *tab;
+// 	int i;
+// 	int j;
 
 // 	i = 0;
 // 	j = 0;

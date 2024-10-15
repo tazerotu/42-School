@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:43:10 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/09 09:35:44 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/15 09:49:05 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	parsing_map_init(char **argv, t_map *map)
 
 int	parsing_map_closed(t_map *map)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

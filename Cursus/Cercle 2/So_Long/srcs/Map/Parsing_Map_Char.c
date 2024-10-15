@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:07:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/09/24 09:07:19 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/15 09:31:41 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	parsing_map_char(t_map *map)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -37,8 +37,8 @@ int	parsing_map_char(t_map *map)
 
 int	parsing_map_char_player(t_map *map)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 	unsigned int	player;
 
 	i = 0;
@@ -62,8 +62,8 @@ int	parsing_map_char_player(t_map *map)
 
 int	parsing_map_char_exit(t_map *map)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 	unsigned int	exit;
 
 	i = 0;

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2024/07/25 10:03:14 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/15 10:09:40 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,7 @@ void				ft_putnbr_fd(int n, int fd);
  * @return greater than the corresponding character in `s2`.
  */
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+int					ft_strcmp(char *s1, char *s2);
 
 /**
  * @brief - It allocates memory for a new string.

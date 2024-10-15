@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:53 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 12:08:03 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/15 10:11:49 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	init_map(char **argv, t_map *map)
 
 int	init_map_collectibles(t_map *map)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -53,8 +53,8 @@ int	init_map_collectibles(t_map *map)
 
 int	init_map_char_player(t_map *map)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -78,8 +78,8 @@ int	init_map_char_player(t_map *map)
 
 int	init_map_char_exit(t_map *map)
 {
-	unsigned int	i;
-	unsigned int	j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;

@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:25:42 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/14 15:37:19 by marvin           ###   ########.fr       */
+/*   Updated: 2024/10/15 09:33:48 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
-
-typedef struct s_queue_node
-{
-	t_pos			pos;
-	struct s_queue_node	*next;
-}					t_queue_node;
-
-typedef struct s_queue
-{
-	t_queue_node	*front;
-	t_queue_node	*rear;
-}					t_queue;
 
 void	enqueue(t_queue *queue, t_pos pos)
 {
@@ -63,7 +51,7 @@ t_pos	dequeue(t_queue *queue)
 	return (pos);
 }
 
-int	isValidMove(int x, int y, t_map *map, int **visited)
+int	is_valid_move(int x, int y, t_map *map, int **visited)
 {
 	if (x >= 0 && x < map->x && y >= 0 && y < map->y && map->map[y][x] != '1'
 		&& !visited[y][x])
@@ -77,35 +65,59 @@ int	**initialize_visited(t_map *map)
 {
 	int	**visited;
 	int	i;
+
+	i = 0;
 	visited = (int **)malloc(map->y * sizeof(int *));
-	for (i = 0; i < map->y; i++)
+	while (i < map->y)
 	{
 		visited[i] = (int *)malloc(map->x * sizeof(int));
 		ft_memset(visited[i], 0, map->x * sizeof(int));
+		i++;
 	}
 	return (visited);
 }
+
 void	free_visited(int **visited, int y)
 {
 	int	i;
-		for (i = 0; i < y; i++)
+
+	i = 0;
+	while (i < y)
+	{
 		free(visited[i]);
+		i++;
+	}
 	free(visited);
 }
-	int	bfs(t_pos *start, t_pos *goal, t_map *map)
+
+void	init_direction(t_pos *directions)
 {
-	int	**visited;
+	directions[0] = (t_pos){0, 1};
+	directions[1] = (t_pos){1, 0};
+	directions[2] = (t_pos){0, -1};
+	directions[3] = (t_pos){-1, 0};
+}
+
+int	bfs(t_pos *start, t_pos *goal, t_map *map)
+{
+	int		**visited;
 	t_queue	queue;
-	t_pos	directions[4] = {{0, 1}, {1, 0}, {0, -1}, {-1, 0}};
-	int	i;
-		visited = initialize_visited(map);
+	t_pos	directions[4];
+	t_pos	current;
+	t_pos	newPos;
+	int		i;
+	int		newX;
+	int		newY;
+
+	init_direction(directions);
+	visited = initialize_visited(map);
 	queue.front = NULL;
 	queue.rear = NULL;
 	enqueue(&queue, *start);
 	visited[start->y][start->x] = 1;
 	while (queue.front != NULL)
 	{
-		t_pos current = dequeue(&queue);
+		current = dequeue(&queue);
 		if (current.x == goal->x && current.y == goal->y)
 		{
 			free_visited(visited, map->y);
@@ -113,12 +125,12 @@ void	free_visited(int **visited, int y)
 		}
 		for (i = 0; i < 4; i++)
 		{
-		int newX = current.x + directions[i].x;
-			int newY = current.y + directions[i].y;
-			if (isValidMove(newX, newY, map, visited))
+			newX = current.x + directions[i].x;
+			newY = current.y + directions[i].y;
+			if (is_valid_move(newX, newY, map, visited))
 			{
 				visited[newY][newX] = 1;
-				t_pos newPos = {newX, newY};
+				newPos = (t_pos){newX, newY};
 				enqueue(&queue, newPos);
 			}
 		}
@@ -126,4 +138,3 @@ void	free_visited(int **visited, int y)
 	free_visited(visited, map->y);
 	return (0); // Path not found
 }
-	
