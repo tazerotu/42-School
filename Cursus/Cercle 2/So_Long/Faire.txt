@@ -6,4 +6,4 @@ display (sprite, ....)
 Ghosts 1, 2, 3 (Move, pathfinding, colision)
 Animations
 
-restart function
+Optionnel restart function
