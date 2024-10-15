@@ -6,13 +6,13 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 12:37:29 by ttas              #+#    #+#             */
-/*   Updated: 2024/04/25 10:00:00 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/15 08:44:38 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../../Includes/Pipex.h"
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
+void	*ft_memcpy(void *dest, void *src, size_t n)
 {
 	char	*csrc;
 	char	*cdest;

@@ -6,11 +6,11 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:51:52 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 12:42:18 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/15 08:47:55 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "../../Includes/Pipex.h"
 
 char	*ft_free_join(char *str1, char *str2)
 {
