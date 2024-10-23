@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 12:34:33 by ttas              #+#    #+#             */
-/*   Updated: 2024/08/01 12:34:35 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/21 11:38:39 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ int	main(int argc, char **argv, char **envp)
 	t_ppx	*pipex;
 	int		i;
 
+	pipex = malloc(sizeof(t_ppx));
 	pipex = NULL;
 	i = 0;
 	if (argc < args_in(argv[1], pipex))
