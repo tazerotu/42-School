@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_fdprintf.h                                      :+:      :+:    :+:   */
+/*   ft_fprintf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:56:29 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 09:15:59 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/24 12:50:28 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <string.h>
 # include <unistd.h>
 
-int	ft_fdprintf(int fd, char *format, ...);
+int	ft_fprintf(int fd, char *format, ...);
 int	ft_putchar_fd(int fd, char c);
 int	ft_putstr_fd(int fd, char *s);
 int	ft_putnbr_fd(int fd, int n);
