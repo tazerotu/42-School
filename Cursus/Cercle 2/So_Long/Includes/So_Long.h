@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 11:27:06 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/24 12:42:08 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,6 +124,7 @@ typedef struct s_map
 {
 	int					fd_map;
 	int					win;
+	int					offset;
 	int					x;
 	int					y;
 	unsigned int		coins;

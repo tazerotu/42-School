@@ -1,9 +1,10 @@
+display (sprite, offset, ....)
+
+
 Pathfinding
-
-display (sprite, ....)
-
 		✓ FPS 
 Ghosts 1, 2, 3 (Move, pathfinding, colision)
 Animations
+
 
 Optionnel restart function
