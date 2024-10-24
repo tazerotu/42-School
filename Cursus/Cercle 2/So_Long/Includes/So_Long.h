@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 10:22:31 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/24 11:27:06 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,21 +63,24 @@
 // Others
 # define ERROR_FD 1
 
-// Wall
-# define WALL_FACE_TOP "../pacman-art/xpm/walls/wall_I_top.xpm"
-# define WALL_FACE_BOTTOM "../pacman-art/xpm/walls/wall_I_down.xpm"
-# define WALL_FACE_LEFT "../pacman-art/xpm/walls/wall_I_left.xpm"
-# define WALL_FACE_RIGHT "../pacman-art/xpm/walls/wall_I_right.xpm"
-# define WALL_FACE_TOP_LEFT "../pacman-art/xpm/walls/wall_L_top_left.xpm"
-# define WALL_FACE_TOP_RIGHT "../pacman-art/xpm/walls/wall_L_top_right.xpm"
-# define WALL_FACE_BOTTOM_LEFT "../pacman-art/xpm/walls/wall_L_down_left.xpm"
-# define WALL_FACE_BOTTOM_RIGHT "../pacman-art/xpm/walls/wall_L_down_right.xpm"
-# define WALL_FACE_TOP_BOTTOM "../pacman-art/xpm/walls/wall_horizontal.xpm"
-# define WALL_FACE_LEFT_RIGHT "../pacman-art/xpm/walls/wall_vertical.xpm"
-# define WALL_FACE_TOP_LEFT_RIGHT "../pacman-art/xpm/walls/wall_U_upper.xpm"
-# define WALL_FACE_TOP_RIGHT_BOTTOM "../pacman-art/xpm/walls/wall/U_right.xpm"
-# define WALL_FACE_TOP_BOTTOM_LEFT "../pacman-art/xpm/walls/wall_U_left.xpm"
-# define WALL_FACE_BOTTOM_LEFT_RIGHT "../pacman-art/xpm/walls/wall_U_down.xpm"
+// Sprite
+# define WALL_FACE_TOP "./pacman-art/xpm/walls/wall_I_top.xpm"
+# define WALL_FACE_BOTTOM "./pacman-art/xpm/walls/wall_I_down.xpm"
+# define WALL_FACE_LEFT "./pacman-art/xpm/walls/wall_I_left.xpm"
+# define WALL_FACE_RIGHT "./pacman-art/xpm/walls/wall_I_right.xpm"
+# define WALL_FACE_TOP_LEFT "./pacman-art/xpm/walls/wall_L_top_left.xpm"
+# define WALL_FACE_TOP_RIGHT "./pacman-art/xpm/walls/wall_L_top_right.xpm"
+# define WALL_FACE_BOTTOM_LEFT "./pacman-art/xpm/walls/wall_L_down_left.xpm"
+# define WALL_FACE_BOTTOM_RIGHT "./pacman-art/xpm/walls/wall_L_down_right.xpm"
+# define WALL_FACE_TOP_BOTTOM "./pacman-art/xpm/walls/wall_horizontal.xpm"
+# define WALL_FACE_LEFT_RIGHT "./pacman-art/xpm/walls/wall_vertical.xpm"
+# define WALL_FACE_TOP_LEFT_RIGHT "./pacman-art/xpm/walls/wall_U_upper.xpm"
+# define WALL_FACE_TOP_RIGHT_BOTTOM "./pacman-art/xpm/walls/wall/U_right.xpm"
+# define WALL_FACE_TOP_BOTTOM_LEFT "./pacman-art/xpm/walls/wall_U_left.xpm"
+# define WALL_FACE_BOTTOM_LEFT_RIGHT "./pacman-art/xpm/walls/wall_U_down.xpm"
+
+// Player
+# define PLAYER_RIGHT "./pacman-art/xpm/pacman-right/1.xpm"
 
 // Struct
 
@@ -112,7 +115,6 @@ typedef struct s_mlx
 {
 	void				*mlx;
 	void				*win;
-	void				*img;
 	char				*addr;
 	int					line_length;
 	int					endian;
@@ -170,5 +172,7 @@ int						bfs(t_pos *start, t_pos *goal, t_map *map);
 void					frame_per_second(t_map *map);
 
 // UTILS
+void					init_spite_player(t_map *map);
+void					init_sprite(t_map *map);
 
 #endif

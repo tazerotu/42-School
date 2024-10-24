@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 10:23:35 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/24 11:26:24 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ int	main(int argc, char **argv)
 {
 	int		i;
 	t_map	*map;
+	int		width;
+	int		height;
 
 	i = 0;
 	check_args(argc, argv);
@@ -76,6 +78,11 @@ int	main(int argc, char **argv)
 	map->mlx.win = mlx_new_window(map->mlx.mlx, 1280, 720, "Hello world!");
 	init_malloc(map);
 	init_map(argv, map);
+	// init_sprite(map);
+	map->player->img = mlx_xpm_file_to_image(map->mlx.mlx, PLAYER_RIGHT, &width,
+			&height);
+	mlx_put_image_to_window(map->mlx.mlx, map->mlx.win, map->player->img,
+		map->player->pos->x, map->player->pos->y);
 	ft_printf("X : %d\n", map->x);
 	ft_printf("Y : %d\n", map->y);
 	while (i < map->y)
