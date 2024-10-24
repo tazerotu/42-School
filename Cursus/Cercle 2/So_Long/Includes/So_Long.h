@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/15 12:39:45 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/24 10:22:31 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,22 +64,20 @@
 # define ERROR_FD 1
 
 // Wall
-# define WALL_FACE_TOP
-# define WALL_FACE_BOTTOM
-# define WALL_FACE_LEFT
-# define WALL_FACE_RIGHT
-# define WALL_FACE_TOP_LEFT
-# define WALL_FACE_TOP_RIGHT
-# define WALL_FACE_BOTTOM_LEFT
-# define WALL_FACE_BOTTOM_RIGHT
-# define WALL_FACE_TOP_BOTTOM
-# define WALL_FACE_LEFT_RIGHT
-# define WALL_FACE_TOP_LEFT_RIGHT
-# define WALL_FACE_TOP_RIGHT_BOTTOM
-# define WALL_FACE_TOP_BOTTOM_LEFT
-# define WALL_FACE_BOTTOM_LEFT_RIGHT
-# define WALL_FACE_ALL
-# define WALL_FACE_NONE
+# define WALL_FACE_TOP "../pacman-art/xpm/walls/wall_I_top.xpm"
+# define WALL_FACE_BOTTOM "../pacman-art/xpm/walls/wall_I_down.xpm"
+# define WALL_FACE_LEFT "../pacman-art/xpm/walls/wall_I_left.xpm"
+# define WALL_FACE_RIGHT "../pacman-art/xpm/walls/wall_I_right.xpm"
+# define WALL_FACE_TOP_LEFT "../pacman-art/xpm/walls/wall_L_top_left.xpm"
+# define WALL_FACE_TOP_RIGHT "../pacman-art/xpm/walls/wall_L_top_right.xpm"
+# define WALL_FACE_BOTTOM_LEFT "../pacman-art/xpm/walls/wall_L_down_left.xpm"
+# define WALL_FACE_BOTTOM_RIGHT "../pacman-art/xpm/walls/wall_L_down_right.xpm"
+# define WALL_FACE_TOP_BOTTOM "../pacman-art/xpm/walls/wall_horizontal.xpm"
+# define WALL_FACE_LEFT_RIGHT "../pacman-art/xpm/walls/wall_vertical.xpm"
+# define WALL_FACE_TOP_LEFT_RIGHT "../pacman-art/xpm/walls/wall_U_upper.xpm"
+# define WALL_FACE_TOP_RIGHT_BOTTOM "../pacman-art/xpm/walls/wall/U_right.xpm"
+# define WALL_FACE_TOP_BOTTOM_LEFT "../pacman-art/xpm/walls/wall_U_left.xpm"
+# define WALL_FACE_BOTTOM_LEFT_RIGHT "../pacman-art/xpm/walls/wall_U_down.xpm"
 
 // Struct
 
@@ -154,6 +152,8 @@ int						parsing_map_char_exit(t_map *map);
 
 // WALL
 void					wall_init(t_map *map, int i, int j);
+int						wall_draw(t_map *map, void *image);
+void					wall_check(t_map *map, int i, int j);
 
 // ERROR
 void					error_message(int error);

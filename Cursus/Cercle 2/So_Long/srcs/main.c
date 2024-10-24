@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/15 12:10:12 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/24 10:23:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int	main(int argc, char **argv)
 	if (!map)
 		error_message(INVALID);
 	map->win = 0;
-	init_malloc(map);
-	init_map(argv, map);
 	map->mlx.mlx = mlx_init();
 	if (!map->mlx.mlx)
 		error_message(INVALID_MLX_INIT);
 	map->mlx.win = mlx_new_window(map->mlx.mlx, 1280, 720, "Hello world!");
+	init_malloc(map);
+	init_map(argv, map);
 	ft_printf("X : %d\n", map->x);
 	ft_printf("Y : %d\n", map->y);
 	while (i < map->y)

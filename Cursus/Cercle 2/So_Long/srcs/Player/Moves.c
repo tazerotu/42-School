@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:40 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/15 12:28:47 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/24 09:54:46 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,27 +18,27 @@ int	keypress(int keycode, t_map *map)
 
 	i = 0;
 	// if(map->win == -1 && keycode == 114)
-	else if (map->win != -1)
+	// else if (map->win != -1)
+	// {
+	if (keycode == W || keycode == ARROW_UP)
+		move(map, 0, -1);
+	if (keycode == S || keycode == ARROW_DOWN)
+		move(map, 0, 1);
+	if (keycode == D || keycode == ARROW_RIGHT)
+		move(map, 1, 0);
+	if (keycode == A || keycode == ARROW_LEFT)
+		move(map, -1, 0);
+	if (keycode == ESC)
+		kill_switch(map);
+	while (i < map->y)
 	{
-		if (keycode == W || keycode == ARROW_UP)
-			move(map, 0, -1);
-		if (keycode == S || keycode == ARROW_DOWN)
-			move(map, 0, 1);
-		if (keycode == D || keycode == ARROW_RIGHT)
-			move(map, 1, 0);
-		if (keycode == A || keycode == ARROW_LEFT)
-			move(map, -1, 0);
-		if (keycode == ESC)
-			kill_switch(map);
-		while (i < map->y)
-		{
-			ft_printf("map[%d] : %s", map->y - i, map->map[i]);
-			i++;
-		}
-		ft_printf("\nCoins : %d\n", map->coins);
-		ft_printf("Moves : %d\n", map->moves);
-		ft_printf("\n");
+		ft_printf("map[%d] : %s", map->y - i, map->map[i]);
+		i++;
 	}
+	ft_printf("\nCoins : %d\n", map->coins);
+	ft_printf("Moves : %d\n", map->moves);
+	ft_printf("\n");
+	// }
 	return (0);
 }
 
