@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2024/05/03 08:57:04 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/24 09:03:24 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 # define LIBFT_H
 
+# include "./ft_printf/ft_printf.h"
+# include <fcntl.h>
+# include <limits.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <string.h>
@@ -262,6 +265,13 @@ void				ft_striteri(char *s, void (*f)(unsigned int, char *));
  */
 int					ft_atoi(const char *nptr);
 
+/**
+ * @brief Converts `nbtr` an array (string) of numbers to an Long.
+ * @param s The array to be converted.
+ * @return Returns the Long of the converted array `nptr`.
+ */
+long				ft_atol(char *nptr);
+
 /*----------------------*/
 /*          ARRAY       */
 /*----------------------*/
@@ -443,5 +453,15 @@ void				ft_lstiter(t_list *lst, void (*f)(void *));
  */
 t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 						void (*del)(void *));
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 15
+# endif
+
+char				*get_next_line(int fd);
+char				*ft_free_join(char *s1, char *s2);
+char				*ft_current_line(char *buffer);
+char				*ft_read_file(int fd, char *res);
+char				*ft_next_line(char *buffer);
 
 #endif
