@@ -3,7 +3,7 @@ display (sprite, offset, ....)
 Agrandir taille pacman
 
 Pathfinding
-		✓ FPS 
+		 FPS 
 Ghosts 1, 2, 3 (Move, pathfinding, colision)
 Animations
 
