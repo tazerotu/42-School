@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:54:48 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 09:46:12 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 12:06:13 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,4 +18,6 @@ void	init_spite_player(t_map *map, void *dir)
 	int height;
 	map->player->img = mlx_xpm_file_to_image(map->mlx.mlx, dir, &width,
 			&height);
+	mlx_put_image_to_window(map->mlx.mlx, map->mlx.win, map->player->img,
+		(map->player->pos->x * PIX), (map->player->pos->y * PIX));
 }

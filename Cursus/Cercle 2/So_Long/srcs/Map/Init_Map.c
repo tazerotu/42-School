@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:06:53 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 09:40:10 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 12:06:57 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@ int	init_map(char **argv, t_map *map)
 	init_map_collectibles(map);
 	init_map_char_player(map);
 	init_map_char_exit(map);
-	map->mheight = 1280;
-	map->mwidth = 720;
-	map->offseth = map->mheight / map->y;
-	map->offsetw = map->mwidth / map->x;
 	return (VALID);
 }
 

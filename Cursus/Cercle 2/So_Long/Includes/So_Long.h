@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 10:11:59 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 12:07:26 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@
 # define INVALID_MLX_INIT -301
 
 // Jeu
-# define PIX 16
+# define PIX 64
 # define W 119
 # define ARROW_UP 65362
 # define A 97
@@ -81,6 +81,9 @@
 
 // Player
 # define PLAYER_RIGHT "./pacman-art/xpm/pacman-right/1.xpm"
+# define PLAYER_LEFT "./pacman-art/xpm/pacman-left/1.xpm"
+# define PLAYER_UP "./pacman-art/xpm/pacman-up/1.xpm"
+# define PLAYER_DOWN "./pacman-art/xpm/pacman-down/1.xpm"
 
 // Struct
 
@@ -124,10 +127,6 @@ typedef struct s_map
 {
 	int					fd_map;
 	int					win;
-	int					offseth;
-	int					offsetw;
-	int					mheight;
-	int					mwidth;
 	int					x;
 	int					y;
 	unsigned int		coins;
@@ -166,11 +165,12 @@ int						player_win(t_map *map);
 void					player_animation(t_map *map);
 
 // MOVE
-void					move(t_map *map, int x, int y);
+void					move(t_map *map, int x, int y, void *dir);
 int						keypress(int keycode, t_map *map);
 void					kill_switch(t_map *map);
 int						bfs(t_pos *start, t_pos *goal, t_map *map);
 void					frame_per_second(t_map *map);
+int						player_draw(t_map *map, char *dir, int x, int y);
 
 // UTILS
 void					init_spite_player(t_map *map, void *dir);

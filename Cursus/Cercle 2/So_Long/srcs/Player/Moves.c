@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:40 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 09:54:46 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 12:02:52 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@ int	keypress(int keycode, t_map *map)
 	// else if (map->win != -1)
 	// {
 	if (keycode == W || keycode == ARROW_UP)
-		move(map, 0, -1);
+		move(map, 0, -1, PLAYER_UP);
 	if (keycode == S || keycode == ARROW_DOWN)
-		move(map, 0, 1);
+		move(map, 0, 1, PLAYER_DOWN);
 	if (keycode == D || keycode == ARROW_RIGHT)
-		move(map, 1, 0);
+		move(map, 1, 0, PLAYER_RIGHT);
 	if (keycode == A || keycode == ARROW_LEFT)
-		move(map, -1, 0);
+		move(map, -1, 0, PLAYER_LEFT);
 	if (keycode == ESC)
 		kill_switch(map);
 	while (i < map->y)
@@ -42,7 +42,7 @@ int	keypress(int keycode, t_map *map)
 	return (0);
 }
 
-void	move(t_map *map, int x, int y)
+void	move(t_map *map, int x, int y, void *dir)
 {
 	map->moves++;
 	if (map->map[map->player->pos->y + y][map->player->pos->x + x] == 'E')
@@ -59,4 +59,5 @@ void	move(t_map *map, int x, int y)
 	map->player->pos->x += x;
 	map->player->pos->y += y;
 	map->map[map->player->pos->y][map->player->pos->x] = 'P';
+	player_draw(map, dir, map->player->pos->x, map->player->pos->y);
 }

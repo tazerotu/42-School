@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:24 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/15 12:27:27 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 10:45:14 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,10 @@ int	player_win(t_map *map)
 	if (map->coins == 0)
 	{
 		ft_printf("You win!\n");
+		ft_printf("\n\nstats :");
+		ft_printf("\nCoins left: %d\n", map->coins);
+		ft_printf("Moves : %d\n", map->moves);
+		ft_printf("\n");
 		kill_switch(map);
 	}
 	else
