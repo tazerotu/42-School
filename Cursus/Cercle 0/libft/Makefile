@@ -63,10 +63,27 @@ SRC_TO = 	./to/ft_atoi.c \
 			./to/ft_itoa.c \
 			./to/ft_atol.c \
 
+SRC_PRINTF =	./ft_printf/ft_printf.c	\
+				./ft_printf/src/ft_putchar.c	\
+				./ft_printf/src/ft_putHexa.c	\
+				./ft_printf/src/ft_putnbr.c	\
+				./ft_printf/src/ft_putptr.c	\
+				./ft_printf/src/ft_putstr.c	\
+				./ft_printf/src/ft_putunbr.c	\
+
+SRC_FT_FPRINTF =	./ft_fprintf/ft_fprintf.c	\
+					./ft_fprintf/src/ft_putchar.c	\
+					./ft_fprintf/src/ft_putHexa.c	\
+					./ft_fprintf/src/ft_putnbr.c	\
+					./ft_fprintf/src/ft_putptr.c	\
+					./ft_fprintf/src/ft_putstr.c	\
+					./ft_fprintf/src/ft_putunbr.c	\
+
+
 
 # SRC_OTHER = 
 
-SRCSALL = ${SRC_BOOL} ${SRC_LST} ${SRC_MEM} ${SRC_PUT} ${SRC_STR} ${SRC_TO}
+SRCSALL = ${SRC_BOOL} ${SRC_LST} ${SRC_MEM} ${SRC_PUT} ${SRC_STR} ${SRC_TO} ${SRC_FT_PRINTF} ${SRC_FT_FPRINTF}
 
 OBJS = ${SRCSALL:.c=.o}
 
@@ -80,9 +97,7 @@ all:		${LIB}
 		${CC} ${CFLAGS}  -c $? -o $@
 
 ${LIB}:	${OBJS}
-		@${MAKE} --silent -C ./ft_printf
-		@${MAKE} --silent -C ./ft_fdprintf
-		ar rcs ${LIB} ${OBJS} ./ft_printf/libftprintf.a ./ft_fdprintf/libftfdprintf.a
+		ar rcs ${LIB} ${OBJS}
 
 clean:
 		@${RM} ${OBJS}

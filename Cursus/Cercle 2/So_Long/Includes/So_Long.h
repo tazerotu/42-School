@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 12:42:08 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 10:11:59 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,18 +124,17 @@ typedef struct s_map
 {
 	int					fd_map;
 	int					win;
-	int					offset;
+	int					offseth;
+	int					offsetw;
+	int					mheight;
+	int					mwidth;
 	int					x;
 	int					y;
 	unsigned int		coins;
 	unsigned int		moves;
 	t_pos				*exit;
 	t_character			*player;
-	t_character			*inky;
-	t_character			*blinky;
-	t_character			*oly;
 	char				**map;
-	char				**floodfill;
 	t_mlx				mlx;
 }						t_map;
 
@@ -155,8 +154,9 @@ int						parsing_map_char_exit(t_map *map);
 
 // WALL
 void					wall_init(t_map *map, int i, int j);
-int						wall_draw(t_map *map, void *image);
+int						wall_draw(t_map *map, char *image, int i, int j);
 void					wall_check(t_map *map, int i, int j);
+int						overflow(t_map *map, int i, int j);
 
 // ERROR
 void					error_message(int error);
@@ -173,7 +173,7 @@ int						bfs(t_pos *start, t_pos *goal, t_map *map);
 void					frame_per_second(t_map *map);
 
 // UTILS
-void					init_spite_player(t_map *map);
+void					init_spite_player(t_map *map, void *dir);
 void					init_sprite(t_map *map);
 
 #endif

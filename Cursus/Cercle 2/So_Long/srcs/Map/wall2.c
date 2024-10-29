@@ -1,19 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_sprite.c                                      :+:      :+:    :+:   */
+/*   wall2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/24 11:05:48 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 09:47:33 by ttas             ###   ########.fr       */
+/*   Created: 2024/10/29 10:09:30 by ttas              #+#    #+#             */
+/*   Updated: 2024/10/29 10:14:18 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
 
-void	init_sprite(t_map *map)
+int	overflow(t_map *map, int i, int j)
 {
-	wall_init(map, 0, 0);
-	// init_spite_player(map);
+	if (i < map->x && i > 0 && j < map->y && j > 0)
+		return (1);
+	return (-1);
 }

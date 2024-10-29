@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 09:03:24 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 09:15:59 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -463,5 +463,23 @@ char				*ft_free_join(char *s1, char *s2);
 char				*ft_current_line(char *buffer);
 char				*ft_read_file(int fd, char *res);
 char				*ft_next_line(char *buffer);
+
+// FPRINTF
+int					ft_fprintf(int fd, char *format, ...);
+int					ft_putchar_fd(int fd, char c);
+int					ft_putstr_fd(int fd, char *s);
+int					ft_putnbr_fd(int fd, int n);
+int					ft_hexa_fd(int fd, unsigned int n, char *base);
+int					ft_putptr_fd(int fd, size_t *ptr);
+int					ft_putunbr_fd(int fd, unsigned int n);
+
+// PRINTF
+int					ft_printf(const char *format, ...);
+int					ft_putchar(char c);
+int					ft_putstr(char *s);
+int					ft_putnbr(int n);
+int					ft_hexa(unsigned int n, char *base);
+int					ft_putptr(size_t *ptr);
+int					ft_putunbr(unsigned int n);
 
 #endif

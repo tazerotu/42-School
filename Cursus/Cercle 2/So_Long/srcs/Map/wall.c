@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:01:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 10:22:56 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 10:12:46 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 void	wall_set1(t_map *map, int i, int j, int N, int So, int E, int We)
 {
 	if (N == 1 && So == 1 && E == 1)
-		int wall_draw(map, WALL_FACE_TOP_RIGHT_BOTTOM);
+		wall_draw(map, WALL_FACE_TOP_RIGHT_BOTTOM, i, j);
 	else if (N == 1 && So == 1 && We == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_TOP_BOTTOM_LEFT;
+		wall_draw(map, WALL_FACE_TOP_BOTTOM_LEFT, i, j);
 	}
 	else if (N == 1 && E == 1 && We == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_TOP_LEFT_RIGHT;
+		wall_draw(map, WALL_FACE_TOP_LEFT_RIGHT, i, j);
 	}
 	else if (So == 1 && E == 1 && We == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_BOTTOM_LEFT_RIGHT;
+		wall_draw(map, WALL_FACE_BOTTOM_LEFT_RIGHT, i, j);
 	}
 	else if (N == 1 && So == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_TOP_BOTTOM;
+		wall_draw(map, WALL_FACE_TOP_BOTTOM, i, j);
 	}
 }
 
@@ -38,19 +38,19 @@ void	wall_set2(t_map *map, int i, int j, int N, int So, int E, int We)
 {
 	if (E == 1 && We == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_LEFT_RIGHT;
+		wall_draw(map, WALL_FACE_LEFT_RIGHT, i, j);
 	}
 	else if (N == 1 && E == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_TOP_LEFT;
+		wall_draw(map, WALL_FACE_TOP_LEFT, i, j);
 	}
 	else if (N == 1 && We == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_TOP_RIGHT;
+		wall_draw(map, WALL_FACE_TOP_RIGHT, i, j);
 	}
 	else if (So == 1 && E == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_BOTTOM_LEFT;
+		wall_draw(map, WALL_FACE_BOTTOM_LEFT, i, j);
 	}
 }
 
@@ -58,23 +58,23 @@ void	wall_set3(t_map *map, int i, int j, int N, int So, int E, int We)
 {
 	if (So == 1 && We == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_BOTTOM_RIGHT;
+		wall_draw(map, WALL_FACE_BOTTOM_RIGHT, i, j);
 	}
 	else if (N == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_TOP;
+		wall_draw(map, WALL_FACE_TOP, i, j);
 	}
 	else if (So == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_BOTTOM;
+		wall_draw(map, WALL_FACE_BOTTOM, i, j);
 	}
 	else if (E == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_RIGHT;
+		wall_draw(map, WALL_FACE_RIGHT, i, j);
 	}
 	else if (We == 1)
 	{
-		map->floodfill[i][j] = WALL_FACE_LEFT;
+		wall_draw(map, WALL_FACE_LEFT, i, j);
 	}
 }
 
@@ -90,15 +90,30 @@ void	wall_check(t_map *map, int i, int j)
 	E = 0;
 	We = 0;
 	// Check sides to see which wall type to use
-	if (map->map[i][j] == '1' && j < map->y - 1 && map->map[i][j + 1] == '1')
+	if (overflow(map, i, j) == 1 && map->map[i][j] == '1' && j < map->y - 1
+		&& map->map[i][j + 1] == '1')
 		N = 1;
-	if (map->map[i][j] == '1' && j > 0 && map->map[i][j - 1] == '1')
+	if (overflow(map, i, j) == 1 && map->map[i][j] == '1' && j > 0
+		&& map->map[i][j - 1] == '1')
 		So = 1;
-	if (map->map[i][j] == '1' && i < map->x - 1 && map->map[i + 1][j] == '1')
+	if (overflow(map, i, j) == 1 && map->map[i][j] == '1' && i < map->x - 1
+		&& map->map[i + 1][j] == '1')
 		E = 1;
-	if (map->map[i][j] == '1' && i > 0 && map->map[i - 1][j] == '1')
+	if (overflow(map, i, j) == 1 && map->map[i][j] == '1' && i > 0 && map->map[i
+		- 1][j] == '1')
 		We = 1;
 	wall_set1(map, i, j, N, So, E, We);
 	wall_set2(map, i, j, N, So, E, We);
 	wall_set3(map, i, j, N, So, E, We);
+}
+
+void	wall_init(t_map *map, int i, int j)
+{
+	if (i < 0 || j < 0 || i > map->x || j > map->y)
+		return ;
+	wall_check(map, i, j);
+	wall_init(map, i + 1, j);
+	wall_init(map, i - 1, j);
+	wall_init(map, i, j + 1);
+	wall_init(map, i, j - 1);
 }
