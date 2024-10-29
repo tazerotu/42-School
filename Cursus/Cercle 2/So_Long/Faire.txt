@@ -1,3 +1,4 @@
+PRIORITE Path check free exit
 display (sprite, offset, ....)
 Agrandir taille pacman
 
