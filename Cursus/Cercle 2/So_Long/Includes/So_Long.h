@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 12:07:26 by ttas             ###   ########.fr       */
+/*   Updated: 2024/10/29 12:15:53 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@
 # define VALID_MAP_CLOSE 205
 # define VALID_MAP_PLAYER 206
 # define VALID_MAP_EXIT 207
+# define VALID_MAP_PATH 208
 # define HIT 301
 # define NO_HIT 302
 
@@ -58,7 +59,7 @@
 # define D 100
 # define ARROW_RIGHT 65363
 # define ESC 65307
-# define DELAY 30
+# define FPS 30
 
 // Others
 # define ERROR_FD 1
@@ -150,6 +151,7 @@ int						parsing_map_closed(t_map *map);
 int						parsing_map_char(t_map *map);
 int						parsing_map_char_player(t_map *map);
 int						parsing_map_char_exit(t_map *map);
+int						floodfill(t_map *map);
 
 // WALL
 void					wall_init(t_map *map, int i, int j);
