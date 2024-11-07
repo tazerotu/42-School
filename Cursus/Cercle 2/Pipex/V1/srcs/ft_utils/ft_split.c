@@ -22,7 +22,7 @@ static size_t	count_words(char *str, char c)
 	return (i);
 }
 
-static char	*word_dup(const char *str, int start, int finish)
+static char	*word_dup(char *str, int start, int finish)
 {
 	char	*word;
 	int		i;
@@ -35,7 +35,7 @@ static char	*word_dup(const char *str, int start, int finish)
 	return (word);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(char *s, char c)
 {
 	size_t	i;
 	size_t	j;

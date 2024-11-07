@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/24 13:17:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/05 09:52:21 by marvin           ###   ########.fr       */
+/*   Created: 2024/04/23 14:04:37 by ttas              #+#    #+#             */
+/*   Updated: 2024/11/05 09:54:13 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/Pipex.h"
 
-char	*ft_strnstr(char *big, char *little, size_t len)
+void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	little_len;
+	unsigned int	i;
 
-	little_len = ft_strlen(little);
-	if (little_len == 0)
+	i = 0;
+	if (!s)
+		return ;
+	while (s[i] != '\0')
 	{
-		return ((char *)big);
+		write(fd, &s[i], 1);
+		i++;
 	}
-	while (*big && len >= little_len)
-	{
-		if (ft_strncmp(big, little, little_len) == 0)
-		{
-			return ((char *)big);
-		}
-		big++;
-		len--;
-	}
-	return (NULL);
 }
