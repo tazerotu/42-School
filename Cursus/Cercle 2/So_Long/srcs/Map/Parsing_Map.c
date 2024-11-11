@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Parsing_Map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:43:10 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/15 09:49:05 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/11 20:43:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,14 @@ int	parsing_map_init(char **argv, t_map *map)
 	if (!map->fd_map)
 		error_message(INVALID_INPUT);
 	map->map = (char **)malloc(sizeof(char *) * (map->y));
+	map->floodfill = (char **)malloc(sizeof(char *) * (map->y));
 	if (!map->map)
 		return (INVALID);
 	buffer = get_next_line(map->fd_map);
 	while (buffer)
 	{
 		map->map[i] = ft_strdup(buffer);
+		map->floodfill[i] = ft_strdup(buffer);
 		free(buffer);
 		buffer = get_next_line(map->fd_map);
 		i++;

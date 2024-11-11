@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   So_Long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 12:15:53 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/11 20:38:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ typedef struct s_map
 	t_pos				*exit;
 	t_character			*player;
 	char				**map;
+	char				**floodfill;
 	t_mlx				mlx;
 }						t_map;
 

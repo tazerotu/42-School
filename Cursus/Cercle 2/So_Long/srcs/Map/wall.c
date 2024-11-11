@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:01:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 10:17:28 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/11 20:45:46 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,18 +89,17 @@ void	wall_check(t_map *map, int i, int j)
 	So = 0;
 	E = 0;
 	We = 0;
-	// Check sides to see which wall type to use
 	if (overflow(map, i, j) == 1)
 	{
-		if (map->map[i][j] == '1' && j < map->y - 1 && map->map[i][j
+		if (map->floodfill[i][j] == '1' && j < map->y - 1 && map->floodfill[i][j
 			+ 1] == '1')
 			N = 1;
-		if (map->map[i][j] == '1' && j > 0 && map->map[i][j - 1] == '1')
+		if (map->floodfill[i][j] == '1' && j > 0 && map->floodfill[i][j - 1] == '1')
 			So = 1;
-		if (map->map[i][j] == '1' && i < map->x - 1 && map->map[i
+		if (map->floodfill[i][j] == '1' && i < map->x - 1 && map->floodfill[i
 			+ 1][j] == '1')
 			E = 1;
-		if (map->map[i][j] == '1' && i > 0 && map->map[i - 1][j] == '1')
+		if (map->floodfill[i][j] == '1' && i > 0 && map->floodfill[i - 1][j] == '1')
 			We = 1;
 	}
 	wall_set1(map, i, j, N, So, E, We);

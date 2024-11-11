@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 12:40:44 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/11 20:26:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,6 @@ void	init_malloc(t_map *map)
 		error_message(INVALID_MAP_PLAYER);
 	return ;
 }
-
-// static void	init_struct(t_map *map)
-// {
-// }
 
 void	kill_switch(t_map *map)
 {
