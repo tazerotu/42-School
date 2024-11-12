@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   So_Long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/11 20:38:01 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/12 10:12:17 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,7 +152,8 @@ int						parsing_map_closed(t_map *map);
 int						parsing_map_char(t_map *map);
 int						parsing_map_char_player(t_map *map);
 int						parsing_map_char_exit(t_map *map);
-int						floodfill(t_map *map);
+void					parsing_map_exit_path(t_map *map);
+// int						floodfill(t_map *map);
 
 // WALL
 void					wall_init(t_map *map, int i, int j);

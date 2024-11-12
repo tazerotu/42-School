@@ -6,15 +6,15 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/29 10:09:30 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 10:18:35 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/12 10:28:20 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
 
-int	overflow(t_map *map, int i, int j)
+int	overflow(t_map *map, int x, int y)
 {
-	if (i > 0 && i < map->x && j > 0 && j < map->y)
+	if (x >= 0 && x <= map->x && y >= 0 && y <= map->y)
 		return (1);
 	return (-1);
 }

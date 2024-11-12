@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:01:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/11 20:45:46 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/12 10:15:44 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,19 +89,16 @@ void	wall_check(t_map *map, int i, int j)
 	So = 0;
 	E = 0;
 	We = 0;
-	if (overflow(map, i, j) == 1)
-	{
-		if (map->floodfill[i][j] == '1' && j < map->y - 1 && map->floodfill[i][j
-			+ 1] == '1')
-			N = 1;
-		if (map->floodfill[i][j] == '1' && j > 0 && map->floodfill[i][j - 1] == '1')
-			So = 1;
-		if (map->floodfill[i][j] == '1' && i < map->x - 1 && map->floodfill[i
-			+ 1][j] == '1')
-			E = 1;
-		if (map->floodfill[i][j] == '1' && i > 0 && map->floodfill[i - 1][j] == '1')
-			We = 1;
-	}
+	if (map->floodfill[j][i] == '1' && j < map->y - 1 && map->floodfill[j][i
+		+ 1] == '1')
+		N = 1;
+	if (map->floodfill[j][i] == '1' && j > 0 && map->floodfill[j][i - 1] == '1')
+		So = 1;
+	if (map->floodfill[j][i] == '1' && i < map->x - 1 && map->floodfill[j
+		+ 1][i] == '1')
+		E = 1;
+	if (map->floodfill[j][i] == '1' && i > 0 && map->floodfill[j - 1][i] == '1')
+		We = 1;
 	wall_set1(map, i, j, N, So, E, We);
 	wall_set2(map, i, j, N, So, E, We);
 	wall_set3(map, i, j, N, So, E, We);
@@ -109,7 +106,7 @@ void	wall_check(t_map *map, int i, int j)
 
 void	wall_init(t_map *map, int i, int j)
 {
-	if (i < 0 || j < 0 || i > map->x || j > map->y)
+	if (overflow(map, i, j) == 1 || map->floodfill[j][i] == 'F')
 		return ;
 	wall_check(map, i, j);
 	wall_init(map, i + 1, j);

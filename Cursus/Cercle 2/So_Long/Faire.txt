@@ -1,6 +1,6 @@
 PRIORITE Path check free exit
 display (sprite, offset, ....)
-Agrandir taille pacman
+Agrandir taille pacman OU diminuer taille wall
 
 Pathfinding
 		 FPS 
