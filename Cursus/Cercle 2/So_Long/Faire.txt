@@ -1,11 +1,7 @@
-PRIORITE Path check free exit
-display (sprite, offset, ....)
 Agrandir taille pacman OU diminuer taille wall
 
-Pathfinding
-		 FPS 
-Ghosts 1, 2, 3 (Move, pathfinding, colision)
-Animations
+MAKE SPRITE EXIT
 
+display WALL
 
 Optionnel restart function

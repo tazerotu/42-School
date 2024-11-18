@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:40 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/29 12:02:52 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/18 14:47:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,9 +55,9 @@ void	move(t_map *map, int x, int y, void *dir)
 		return ;
 	if (map->map[map->player->pos->y + y][map->player->pos->x + x] == 'C')
 		map->coins--;
+	player_draw(map, dir, x, y);
 	map->map[map->player->pos->y][map->player->pos->x] = '0';
 	map->player->pos->x += x;
 	map->player->pos->y += y;
 	map->map[map->player->pos->y][map->player->pos->x] = 'P';
-	player_draw(map, dir, map->player->pos->x, map->player->pos->y);
 }

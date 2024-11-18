@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   So_Long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/12 10:12:17 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/18 20:51:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define INVALID_MLX_INIT -301
 
 // Jeu
-# define PIX 64
+# define PIX 32
 # define W 119
 # define ARROW_UP 65362
 # define A 97
@@ -65,26 +65,30 @@
 # define ERROR_FD 1
 
 // Sprite
-# define WALL_FACE_TOP "./pacman-art/xpm/walls/wall_I_top.xpm"
-# define WALL_FACE_BOTTOM "./pacman-art/xpm/walls/wall_I_down.xpm"
-# define WALL_FACE_LEFT "./pacman-art/xpm/walls/wall_I_left.xpm"
-# define WALL_FACE_RIGHT "./pacman-art/xpm/walls/wall_I_right.xpm"
-# define WALL_FACE_TOP_LEFT "./pacman-art/xpm/walls/wall_L_top_left.xpm"
-# define WALL_FACE_TOP_RIGHT "./pacman-art/xpm/walls/wall_L_top_right.xpm"
-# define WALL_FACE_BOTTOM_LEFT "./pacman-art/xpm/walls/wall_L_down_left.xpm"
-# define WALL_FACE_BOTTOM_RIGHT "./pacman-art/xpm/walls/wall_L_down_right.xpm"
-# define WALL_FACE_TOP_BOTTOM "./pacman-art/xpm/walls/wall_horizontal.xpm"
-# define WALL_FACE_LEFT_RIGHT "./pacman-art/xpm/walls/wall_vertical.xpm"
-# define WALL_FACE_TOP_LEFT_RIGHT "./pacman-art/xpm/walls/wall_U_upper.xpm"
-# define WALL_FACE_TOP_RIGHT_BOTTOM "./pacman-art/xpm/walls/wall/U_right.xpm"
-# define WALL_FACE_TOP_BOTTOM_LEFT "./pacman-art/xpm/walls/wall_U_left.xpm"
-# define WALL_FACE_BOTTOM_LEFT_RIGHT "./pacman-art/xpm/walls/wall_U_down.xpm"
+# define WALL_FACE_TOP "./pacman-art/xpm/32px/walls/wall_I_top.xpm"
+# define WALL_FACE_BOTTOM "./pacman-art/xpm/32px/walls/wall_I_down.xpm"
+# define WALL_FACE_LEFT "./pacman-art/xpm/32px/walls/wall_I_left.xpm"
+# define WALL_FACE_RIGHT "./pacman-art/xpm/32px/walls/wall_I_right.xpm"
+# define WALL_FACE_TOP_LEFT "./pacman-art/xpm/32px/walls/wall_L_top_left.xpm"
+# define WALL_FACE_TOP_RIGHT "./pacman-art/xpm/32px/walls/wall_L_top_right.xpm"
+# define WALL_FACE_BOTTOM_LEFT "./pacman-art/xpm/32px/walls/wall_L_down_left.xpm"
+# define WALL_FACE_BOTTOM_RIGHT "./pacman-art/xpm/32px/walls/wall_L_down_right.xpm"
+# define WALL_FACE_TOP_BOTTOM "./pacman-art/xpm/32px/walls/wall_horizontal.xpm"
+# define WALL_FACE_LEFT_RIGHT "./pacman-art/xpm/32px/walls/wall_vertical.xpm"
+# define WALL_FACE_TOP_LEFT_RIGHT "./pacman-art/xpm/32px/walls/wall_U_upper.xpm"
+# define WALL_FACE_TOP_RIGHT_BOTTOM "./pacman-art/xpm/32px/walls/wall/U_right.xpm"
+# define WALL_FACE_TOP_BOTTOM_LEFT "./pacman-art/xpm/32px/walls/wall_U_left.xpm"
+# define WALL_FACE_BOTTOM_LEFT_RIGHT "./pacman-art/xpm/32px/walls/wall_U_down.xpm"
+# define GROUND "./pacman-art/xpm/32px/ground.xpm"
+# define COIN "./pacman-art/xpm/32px/other/apple.xpm"
+# define EXIT "./pacman-art/xpm/32px/other/exit.xpm"
+# define WALL "./pacman-art/xpm/32px/walls/wall.xpm"
 
 // Player
-# define PLAYER_RIGHT "./pacman-art/xpm/pacman-right/1.xpm"
-# define PLAYER_LEFT "./pacman-art/xpm/pacman-left/1.xpm"
-# define PLAYER_UP "./pacman-art/xpm/pacman-up/1.xpm"
-# define PLAYER_DOWN "./pacman-art/xpm/pacman-down/1.xpm"
+# define PLAYER_RIGHT "./pacman-art/xpm/32px/pacman-right/1.xpm"
+# define PLAYER_LEFT "./pacman-art/xpm/32px/pacman-left/1.xpm"
+# define PLAYER_UP "./pacman-art/xpm/32px/pacman-up/1.xpm"
+# define PLAYER_DOWN "./pacman-art/xpm/32px/pacman-down/1.xpm"
 
 // Struct
 
@@ -158,7 +162,7 @@ void					parsing_map_exit_path(t_map *map);
 // WALL
 void					wall_init(t_map *map, int i, int j);
 int						wall_draw(t_map *map, char *image, int i, int j);
-void					wall_check(t_map *map, int i, int j);
+void					wall_check(t_map *map);
 int						overflow(t_map *map, int i, int j);
 
 // ERROR
@@ -179,5 +183,7 @@ int						player_draw(t_map *map, char *dir, int x, int y);
 // UTILS
 void					init_spite_player(t_map *map, void *dir);
 void					init_sprite(t_map *map);
+int						exit_draw(t_map *map);
+int						get_wall_orientation(t_map *map, int x, int y);
 
 #endif
