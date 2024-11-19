@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/19 09:59:21 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/19 11:50:12 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ void					player_animation(t_map *map);
 // MOVE
 void					move(t_map *map, int x, int y, void *dir);
 int						keypress(int keycode, t_map *map);
-void					kill_switch(t_map *map);
+int						kill_switch(t_map *map);
 int						bfs(t_pos *start, t_pos *goal, t_map *map);
 void					frame_per_second(t_map *map);
 int						player_draw(t_map *map, char *dir, int x, int y);

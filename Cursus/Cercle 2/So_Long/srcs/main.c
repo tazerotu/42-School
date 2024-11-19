@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/19 09:44:42 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/19 11:49:48 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ int	main(int argc, char **argv)
 	ft_printf("Moves : %d\n", map->moves);
 	ft_printf("\n");
 	mlx_hook(map->mlx.win, 2, (1L << 0), keypress, map);
+	mlx_hook(map->mlx.win, 17, 0L, kill_switch, map);
 	mlx_loop(map->mlx.mlx);
 	return (0);
 }

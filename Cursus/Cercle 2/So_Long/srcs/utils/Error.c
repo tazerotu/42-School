@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/08/01 10:57:48 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/19 09:45:25 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/19 11:49:58 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static void	free_tab(t_map *map)
 	free(map->map);
 }
 
-void	kill_switch(t_map *map)
+int	kill_switch(t_map *map)
 {
 	mlx_destroy_image(map->mlx.mlx, map->player->img);
 	mlx_destroy_window(map->mlx.mlx, map->mlx.win);
