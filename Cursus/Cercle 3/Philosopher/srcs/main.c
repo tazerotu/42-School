@@ -6,7 +6,13 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:15 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/19 10:27:16 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/19 10:29:49 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../Includes/Philosopher.h"
+
+int main(int argc, char **argv)
+{
+	return (0);
+}
