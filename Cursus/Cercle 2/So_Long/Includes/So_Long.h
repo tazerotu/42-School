@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/19 11:50:12 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/19 13:29:17 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,6 +150,7 @@ typedef struct s_map
 	int					x;
 	int					y;
 	unsigned int		coins;
+	unsigned int		tempcoin;
 	unsigned int		moves;
 	t_pos				*exit;
 	t_character			*player;
