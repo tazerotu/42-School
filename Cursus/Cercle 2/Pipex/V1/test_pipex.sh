@@ -15,3 +15,16 @@ cat test2.txt
 
 printf "\nReference :\n"
 cat test.txt | wc -l
+
+
+printf "\n\n\n"
+printf "\nCommande effectuer : ./pipex test.txt 'cat -e' 'grep '$'' test2.txt\n"
+printf "Equivalent bash : cat -e test.txt | grep '$' > test2.txt\n"
+./pipex test.txt "cat -e" "grep '$'" test2.txt
+printf "\nContenu du ficher test.txt :\n"
+cat test.txt
+printf "\nResultat du programme :\n"
+cat test2.txt
+
+printf "\nReference :\n"
+cat -e test.txt | grep "$"
