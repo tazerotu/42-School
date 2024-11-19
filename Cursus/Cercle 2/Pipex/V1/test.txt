@@ -1,6 +1,7 @@
 ceci
-est
+sera
 un
-fichier
-de
-test
+f
+d
+t
+g
