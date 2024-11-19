@@ -12,8 +12,6 @@
 
 #include "../Includes/Pipex.h"
 
-/* Function that will look for the path line inside the environment, will
- split and test each command path and then return the right one. */
 char	*find_path(char *cmd, char **envp)
 {
 	char	**paths;
@@ -29,6 +27,7 @@ char	*find_path(char *cmd, char **envp)
 	while (paths[i])
 	{
 		part_path = ft_strjoin(paths[i], "/");
+		path = ft_strjoin(part_path, cmd);
 		free(part_path);
 		if (access(path, F_OK) == 0)
 			return (path);
@@ -42,15 +41,12 @@ char	*find_path(char *cmd, char **envp)
 	return (0);
 }
 
-/* A simple error displaying function. */
 void	error(void)
 {
 	perror("\033[31mError");
 	exit(EXIT_FAILURE);
 }
 
-/* Function that take the command and send it to find_path
- before executing it. */
 void	execute(char *argv, char **envp)
 {
 	char	**cmd;
@@ -71,7 +67,6 @@ void	execute(char *argv, char **envp)
 		error();
 }
 
-/* Function that will read input from the terminal and return line. */
 int	get_next_line(char **line)
 {
 	char	*buffer;

@@ -12,8 +12,6 @@
 
 #include "../Includes/Pipex.h"
 
-/* Child process that run inside a fork, take the filein, put the output inside
- a pipe and then close with the exec function */
 void	child_process(char **argv, char **envp, int *fd)
 {
 	int		filein;
@@ -27,8 +25,6 @@ void	child_process(char **argv, char **envp, int *fd)
 	execute(argv[2], envp);
 }
 
-/* Parent process that take the data from the pipe, change the output for the
- fileout and also close with the exec function */
 void	parent_process(char **argv, char **envp, int *fd)
 {
 	int		fileout;
