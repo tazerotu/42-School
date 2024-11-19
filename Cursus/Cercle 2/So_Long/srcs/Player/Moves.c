@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Moves.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 09:05:40 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/18 14:47:20 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/19 09:55:43 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,6 @@ int	keypress(int keycode, t_map *map)
 	int	i;
 
 	i = 0;
-	// if(map->win == -1 && keycode == 114)
-	// else if (map->win != -1)
-	// {
 	if (keycode == W || keycode == ARROW_UP)
 		move(map, 0, -1, PLAYER_UP);
 	if (keycode == S || keycode == ARROW_DOWN)
@@ -38,7 +35,6 @@ int	keypress(int keycode, t_map *map)
 	ft_printf("\nCoins : %d\n", map->coins);
 	ft_printf("Moves : %d\n", map->moves);
 	ft_printf("\n");
-	// }
 	return (0);
 }
 

@@ -1,7 +1,1 @@
-Agrandir taille pacman OU diminuer taille wall
-
-MAKE SPRITE EXIT
-
-display WALL
-
 Optionnel restart function

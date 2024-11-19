@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   So_Long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:43 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/18 20:51:12 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/19 09:59:21 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,20 +65,35 @@
 # define ERROR_FD 1
 
 // Sprite
-# define WALL_FACE_TOP "./pacman-art/xpm/32px/walls/wall_I_top.xpm"
-# define WALL_FACE_BOTTOM "./pacman-art/xpm/32px/walls/wall_I_down.xpm"
-# define WALL_FACE_LEFT "./pacman-art/xpm/32px/walls/wall_I_left.xpm"
-# define WALL_FACE_RIGHT "./pacman-art/xpm/32px/walls/wall_I_right.xpm"
-# define WALL_FACE_TOP_LEFT "./pacman-art/xpm/32px/walls/wall_L_top_left.xpm"
-# define WALL_FACE_TOP_RIGHT "./pacman-art/xpm/32px/walls/wall_L_top_right.xpm"
-# define WALL_FACE_BOTTOM_LEFT "./pacman-art/xpm/32px/walls/wall_L_down_left.xpm"
-# define WALL_FACE_BOTTOM_RIGHT "./pacman-art/xpm/32px/walls/wall_L_down_right.xpm"
-# define WALL_FACE_TOP_BOTTOM "./pacman-art/xpm/32px/walls/wall_horizontal.xpm"
-# define WALL_FACE_LEFT_RIGHT "./pacman-art/xpm/32px/walls/wall_vertical.xpm"
-# define WALL_FACE_TOP_LEFT_RIGHT "./pacman-art/xpm/32px/walls/wall_U_upper.xpm"
-# define WALL_FACE_TOP_RIGHT_BOTTOM "./pacman-art/xpm/32px/walls/wall/U_right.xpm"
-# define WALL_FACE_TOP_BOTTOM_LEFT "./pacman-art/xpm/32px/walls/wall_U_left.xpm"
-# define WALL_FACE_BOTTOM_LEFT_RIGHT "./pacman-art/xpm/32px/walls/wall_U_down.xpm"
+/* # define WALL_FACE_TOP 
+"./pacman-art/xpm/32px/walls/wall_I_top.xpm"
+# define WALL_FACE_BOTTOM 
+"./pacman-art/xpm/32px/walls/wall_I_down.xpm"
+# define WALL_FACE_LEFT 
+"./pacman-art/xpm/32px/walls/wall_I_left.xpm"
+# define WALL_FACE_RIGHT 
+"./pacman-art/xpm/32px/walls/wall_I_right.xpm"
+# define WALL_FACE_TOP_LEFT 
+"./pacman-art/xpm/32px/walls/wall_L_top_left.xpm"
+# define WALL_FACE_TOP_RIGHT 
+"./pacman-art/xpm/32px/walls/wall_L_top_right.xpm"
+# define WALL_FACE_BOTTOM_LEFT 
+"./pacman-art/xpm/32px/walls/wall_L_down_left.xpm"
+# define WALL_FACE_BOTTOM_RIGHT 
+"./pacman-art/xpm/32px/walls/wall_L_down_right.xpm"
+# define WALL_FACE_TOP_BOTTOM 
+"./pacman-art/xpm/32px/walls/wall_horizontal.xpm"
+# define WALL_FACE_LEFT_RIGHT 
+"./pacman-art/xpm/32px/walls/wall_vertical.xpm"
+# define WALL_FACE_TOP_LEFT_RIGHT 
+"./pacman-art/xpm/32px/walls/wall_U_upper.xpm"
+# define WALL_FACE_TOP_RIGHT_BOTTOM 
+"./pacman-art/xpm/32px/walls/wall/U_right.xpm"
+# define WALL_FACE_TOP_BOTTOM_LEFT 
+"./pacman-art/xpm/32px/walls/wall_U_left.xpm"
+# define WALL_FACE_BOTTOM_LEFT_RIGHT 
+"./pacman-art/xpm/32px/walls/wall_U_down.xpm"
+*/
 # define GROUND "./pacman-art/xpm/32px/ground.xpm"
 # define COIN "./pacman-art/xpm/32px/other/apple.xpm"
 # define EXIT "./pacman-art/xpm/32px/other/exit.xpm"

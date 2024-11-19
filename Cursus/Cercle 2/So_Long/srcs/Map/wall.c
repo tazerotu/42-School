@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   wall.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:01:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/18 20:51:01 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/19 09:55:11 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@
 // 	{
 // 		wall_draw(map, GROUND, i, j);
 // 	}
-	
 // }
 
 /*
@@ -92,8 +91,8 @@ West = 1000
 
 void	wall_check(t_map *map)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	while (i < map->x)
@@ -103,13 +102,14 @@ void	wall_check(t_map *map)
 		{
 			if (map->floodfill[j][i] == '1')
 			{
-				wall_draw(map, WALL, i, j);	
+				wall_draw(map, WALL, i, j);
 			}
 			j++;
 		}
 		i++;
 	}
 }
+
 /*
 				if (j < map->y - 1 && map->floodfill[j + 1][i] == '1')
 					orientation += 1;
@@ -152,7 +152,8 @@ void	wall_check(t_map *map)
 
 // void	wall_init(t_map *map, int x, int y)
 // {
-// 	if(overflow(map, x, y) == -1 || map->floodfill[y][x] == 'F' || map->floodfill[y][x] == 'W')
+// 	if(overflow(map, x, y) == -1 || map->floodfill[y][x] == 'F' 
+// || map->floodfill[y][x] == 'W')
 // 		return ;
 // 	if(map->floodfill[y][x] == '1')
 // 		map->floodfill[y][x] = 'W';

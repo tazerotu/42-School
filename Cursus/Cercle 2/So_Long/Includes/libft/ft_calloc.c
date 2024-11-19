@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 08:49:23 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/02 10:33:16 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/19 09:58:47 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	*ft_calloc(size_t nmemb, size_t size)
 {
-	void *str;
+	void	*str;
 
 	if (nmemb == 0 || size == 0)
 	{

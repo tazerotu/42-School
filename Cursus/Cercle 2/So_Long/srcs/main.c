@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/26 12:39:41 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/18 17:36:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/11/19 09:44:42 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,33 +43,15 @@ void	init_malloc(t_map *map)
 	return ;
 }
 
-static void free_tab(t_map *map)
+void	init_mlx(t_map *map)
 {
-	int	i;
-
-	i = 0;
-	while (i < map->y)
-	{
-		free(map->map[i]);
-		free(map->floodfill[i]);
-		i++;
-	}
-	free(map->map);
+	map->win = 0;
+	map->mlx.mlx = mlx_init();
+	if (!map->mlx.mlx)
+		error_message(INVALID_MLX_INIT);
+	map->mlx.win = mlx_new_window(map->mlx.mlx, map->x * PIX, map->y * PIX,
+			"So Long");
 }
-
-void	kill_switch(t_map *map)
-{
-	mlx_destroy_image(map->mlx.mlx, map->player->img);
-	mlx_destroy_window(map->mlx.mlx, map->mlx.win);
-	mlx_destroy_display(map->mlx.mlx);
-	free(map->exit);
-	free(map->player->pos);
-	free(map->player);
-	free(map->mlx.mlx);
-	free_tab(map);
-	exit(0);
-}
-
 
 int	main(int argc, char **argv)
 {
@@ -83,15 +65,8 @@ int	main(int argc, char **argv)
 		error_message(INVALID);
 	init_malloc(map);
 	init_map(argv, map);
-	map->win = 0;
-	map->mlx.mlx = mlx_init();
-	if (!map->mlx.mlx)
-		error_message(INVALID_MLX_INIT);
-	map->mlx.win = mlx_new_window(map->mlx.mlx, map->x * PIX, map->y * PIX,
-			"So Long");
+	init_mlx(map);
 	init_sprite(map);
-	ft_printf("X : %d\n", map->x);
-	ft_printf("Y : %d\n", map->y);
 	while (i < map->y)
 	{
 		ft_printf("map[%d] : %s", map->y - i, map->map[i]);

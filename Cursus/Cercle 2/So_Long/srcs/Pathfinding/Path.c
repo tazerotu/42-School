@@ -6,12 +6,13 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/25 09:25:42 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/15 12:44:02 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/19 09:45:05 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/So_Long.h"
 
+/*
 void	enqueue(t_queue *queue, t_pos pos)
 {
 	t_queue_node	*new_node;
@@ -138,3 +139,4 @@ int	bfs(t_pos *start, t_pos *goal, t_map *map)
 	free_visited(visited, map->y);
 	return (0); // Path not found
 }
+*/
