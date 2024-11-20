@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:26:59 by ttas              #+#    #+#              #
-#    Updated: 2024/11/20 09:50:08 by ttas             ###   ########.fr        #
+#    Updated: 2024/11/20 10:45:17 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,8 +28,8 @@ OBJECTS =		${SOURCES:.c=.o}
 
 # Variables
 CC = cc
-# -Wall -Werror -Wextra 
-CFLAGS = -Includes -fsanitize=address -g
+# 
+CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=thread -g
 RM = rm -f
 
 # Makefile
