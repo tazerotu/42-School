@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/20 09:47:03 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/20 10:45:45 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define ERROR_PHILO_INIT -201
 
 // Struct
-// Boolean
 typedef enum e_bool
 {
 	false = 0,
