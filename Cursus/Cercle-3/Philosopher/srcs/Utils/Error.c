@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 10:27:15 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/20 09:44:20 by ttas             ###   ########.fr       */
+/*   Created: 2024/11/20 09:35:35 by ttas              #+#    #+#             */
+/*   Updated: 2024/11/20 09:44:18 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Philosopher.h"
+#include "../../Includes/Philosopher.h"
 
-int	main(int argc, char **argv)
+void	error(int error_code)
 {
-	if (argc != 4)
-		error(ERROR_INPUT);
-	else
-		printf("%s", argv[0]);
-	return (0);
+	printf("Error : %d", error_code);
+	exit(1);
 }

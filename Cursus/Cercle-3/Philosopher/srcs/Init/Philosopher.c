@@ -1,22 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Philosopher.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 10:27:15 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/20 09:44:20 by ttas             ###   ########.fr       */
+/*   Created: 2024/11/20 09:31:18 by ttas              #+#    #+#             */
+/*   Updated: 2024/11/20 09:44:16 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Philosopher.h"
+#include "../../Includes/Philosopher.h"
 
-int	main(int argc, char **argv)
+int	init_philosopher(t_philo *philo, int argc, char **argv)
 {
-	if (argc != 4)
-		error(ERROR_INPUT);
-	else
-		printf("%s", argv[0]);
-	return (0);
+	return (1);
 }

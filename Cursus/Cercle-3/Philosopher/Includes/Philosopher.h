@@ -6,12 +6,12 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/20 09:12:49 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/20 09:43:34 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef PHILOSOPHER_H
+# define PHILOSOPHER_H
 
 // Includes
 # include <fcntl.h>
@@ -22,7 +22,32 @@
 # include <unistd.h>
 # include <pthread.h>
 
+// Error Handling
+# define ERROR_INPUT -101
+# define ERROR_PHILO_INIT -201
+
+// Struct
+// Boolean
+typedef enum e_bool
+{
+	false = 0,
+	true = 1
+}	t_bool;
+
+typedef struct s_philo
+{
+	int		amount;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	bool	is_eating;
+}	t_philo;
+
 // Functions
+// Init
+int		init_philosopher(t_philo *philo, int argc, char **argv);
 
+// Utils
+void	error(int error_code);
 
-# endif
+#endif
