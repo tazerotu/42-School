@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:35:35 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/20 09:44:18 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/20 09:51:21 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 void	error(int error_code)
 {
-	printf("Error : %d", error_code);
+	printf("\e[0;31mError \e[0;97m: %d", error_code);
 	exit(1);
 }

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/20 09:43:34 by ttas             ###   ########.fr       */
+/*   Updated: 2024/11/20 09:47:03 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ typedef struct s_philo
 	int		time_to_die;
 	int		time_to_eat;
 	int		time_to_sleep;
-	bool	is_eating;
+	t_bool	is_eating;
 }	t_philo;
 
 // Functions

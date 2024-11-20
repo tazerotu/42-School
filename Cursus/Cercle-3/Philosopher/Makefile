@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:26:59 by ttas              #+#    #+#              #
-#    Updated: 2024/11/20 09:13:47 by ttas             ###   ########.fr        #
+#    Updated: 2024/11/20 09:50:08 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,14 +15,21 @@ EXE = philosopher
 
 # Files
 SRC =			./srcs/main.c \
+				
 
-SOURCES =		${SRC}
+SRCS_INIT =		./srcs/Init/Philosopher.c \
+				
+
+SRCS_UTILS =	./srcs/Utils/Error.c \
+
+
+SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_UTILS}
 OBJECTS =		${SOURCES:.c=.o}
 
 # Variables
 CC = cc
-# 
-CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=address -g
+# -Wall -Werror -Wextra 
+CFLAGS = -Includes -fsanitize=address -g
 RM = rm -f
 
 # Makefile
