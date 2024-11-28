@@ -1,5 +1,6 @@
+#include "get_next_line.h"
 
-int ft_strdup(char *src)
+char *ft_strdup(char *src)
 {
 	char *dest;
 	int i = 0;
@@ -33,7 +34,7 @@ char *get_next_line(int fd)
 		{
 			buffer_read = read(fd, buffer, BUFFER_SIZE);
 			buffer_pos = 0;
-			if(buffer8read <= 0)
+			if(buffer_read <= 0)
 				break;
 		}
 		if(buffer[buffer_pos] == '\n')
