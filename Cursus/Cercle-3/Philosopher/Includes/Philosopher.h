@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 10:35:22 by ttas             ###   ########.fr       */
+/*   Updated: 2024/12/03 11:20:21 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,36 +26,40 @@
 # undef __bool_true_false_are_defined
 
 // VALID Handling
-# define VALID_PHILO_INIT 201
-
+# define VALID_DATA_INIT 101
+# define VALID_PHILO_INIT 102
 
 // ERROR Handling
 # define ERROR_INPUT -101
-# define ERROR_PHILO_INIT -201
+# define ERROR_INPUT_VALUE -102
+# define ERROR_DATA_INIT -201
+# define ERROR_PHILO_INIT -202
 
 // Struct
 typedef struct s_philo
 {
-	int			n;
-	int 		last_eat;
-	bool		is_eating;
-}				t_philo;
+	int				n;
+	int 			last_eat;
+	bool			is_eating;
+}					t_philo;
 
 typedef struct s_info
 {
-	int 		n_philo;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			n_eat;
+	int				n_philo;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				n_eat;
 	long int		t_start;
-	bool 		stop;
-	t_philo		*philo;
-}				t_info;
+	int 			stop;
+	t_philo			*philo;
+}					t_info;
 
 // Functions
 // Init
-int		init_philosopher(t_philo *philo, int argc, char **argv);
+int		init_data(t_info *data, int argc, char **argv);
+int		init_philosopher(t_info *data);
+int 	parsing(int argc, char **argv);
 
 // Utils
 void	error(int error_code);
