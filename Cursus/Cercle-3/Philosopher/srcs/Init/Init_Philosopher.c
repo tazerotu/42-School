@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:31:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 12:11:16 by ttas             ###   ########.fr       */
+/*   Updated: 2024/12/03 12:32:44 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,21 @@ t_info	*init_data(t_info *data, int argc, char **argv)
 	data->time_to_sleep = ft_atoi(argv[4]);
 	if(argc == 6)
 		data->n_eat = ft_atoi(argv[5]);
+	init_philosopher(data);
 	return (data);
 }
 
-// int init_philosopher(t_info *data)
-// {
-	
-// }
+int init_philosopher(t_info *data)
+{
+	int i;
+
+	i = 0;
+	data->philo = (t_philo *)malloc(data->n_philo);
+	while (i < data->n_philo)
+	{
+		data->philo[i].n = i;
+		data->philo[i].last_eat = data->time_to_eat;
+		i++;
+	}
+	return 0;
+}
