@@ -1,30 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Init_Philosopher.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 10:27:15 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 11:19:18 by ttas             ###   ########.fr       */
+/*   Created: 2024/11/20 09:31:18 by ttas              #+#    #+#             */
+/*   Updated: 2024/12/03 11:23:39 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Philosopher.h"
+#include "../../Includes/Philosopher.h"
 
-void freeall(t_info data)
+int parsing(int argc, char **argv)
 {
-	
+	int i;
+	int j;
+	i = 1;
+	while(i <= (argc - 1))
+	{
+		j = 0;
+		while(argv[i][j])
+		{
+			if(ft_isdigit(argv[i][j]) == -1)
+				error(ERROR_INPUT_VALUE);
+			j++;
+		}		
+		i++;
+	}
 }
 
-int	main(int argc, char **argv)
+int	init_data(t_info *data, int argc, char **argv)
 {
-	t_info	*data;
+	data->n_philo = ft_atoi(argv[1]);
+	return (VALID_DATA_INIT);
+}
 
-	if (argc < 5 && argc > 6)
-		error(ERROR_INPUT);
-	data = NULL;
-	parsing(argc, argv);
-	init_data(data, argc, argv);
-	return (0);
+int init_philosopher(t_info *data)
+{
+	
 }

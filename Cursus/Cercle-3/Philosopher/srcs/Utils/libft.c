@@ -1,18 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Philosopher.c                                      :+:      :+:    :+:   */
+/*   libft.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/20 09:31:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 10:29:42 by ttas             ###   ########.fr       */
+/*   Created: 2024/12/03 11:17:39 by ttas              #+#    #+#             */
+/*   Updated: 2024/12/03 11:18:31 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/Philosopher.h"
-
-int	init_philosopher(t_philo *philo, int argc, char **argv)
+int ft_atoi(char *nbr)
 {
-	return (VALID_PHILO_INIT);
+
+}
+
+int ft_isdigit(char c)
+{
+	
 }
