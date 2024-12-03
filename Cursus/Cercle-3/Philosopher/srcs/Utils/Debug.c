@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 10:27:15 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 12:11:38 by ttas             ###   ########.fr       */
+/*   Created: 2024/12/03 12:03:16 by ttas              #+#    #+#             */
+/*   Updated: 2024/12/03 12:06:12 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Philosopher.h"
+#include "../../Includes/Philosopher.h"
 
-// void freeall(t_info data)
-// {
-	
-// }
-
-int	main(int argc, char **argv)
+void debug(t_info *data)
 {
-	t_info	*data;
-
-	if (argc < 5 || argc > 6)
-		error(ERROR_INPUT);
-	data = NULL;
-	parsing(argc, argv);
-	data = init_data(data, argc, argv);
-	debug(data);
-	return (0);
+	printf("n_philo : %d\n", data->n_philo);
+	printf("time_to_die : %d\n", data->time_to_die);
+	printf("time_to_eat : %d\n", data->time_to_eat);
+	printf("time_to_sleep : %d\n", data->time_to_sleep);
+	printf("n_eat : %d\n", data->n_eat);
 }

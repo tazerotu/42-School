@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:26:59 by ttas              #+#    #+#              #
-#    Updated: 2024/11/28 09:29:07 by ttas             ###   ########.fr        #
+#    Updated: 2024/12/03 12:03:13 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,11 +17,13 @@ EXE = philosopher
 SRC =			./srcs/main.c \
 				
 
-SRCS_INIT =		./srcs/Init/Philosopher.c \
+SRCS_INIT =		./srcs/Init/Init_Philosopher.c \
 				
 
 SRCS_UTILS =	./srcs/Utils/Error.c \
-
+				./srcs/Utils/libft.c \
+				./srcs/Utils/Debug.c
+				
 
 SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_UTILS}
 OBJECTS =		${SOURCES:.c=.o}

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 11:59:34 by ttas             ###   ########.fr       */
+/*   Updated: 2024/12/03 12:10:51 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct s_info
 
 // Functions
 // Init
-int		init_data(t_info *data, int argc, char **argv);
+t_info		*init_data(t_info *data, int argc, char **argv);
 int		init_philosopher(t_info *data);
 int 	parsing(int argc, char **argv);
 
@@ -69,5 +69,7 @@ void	error(int error_code);
 int		ft_atoi(char *nbr);
 int		ft_isdigit(int c);
 
+// Debug
+void debug(t_info *data);
 
 #endif
