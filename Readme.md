@@ -1,17 +1,3 @@
-# List of projects : 
+- **[Cursus](https://github.com/tazerotu/42-School/Cursus/):** 
 
-## Circle 0
-- **[Libft](https://github.com/tazerotu/42-School/Cursus/Cercle-0/libft):** Your first own library
-
-## Circle 1
-- **[Printf](https://github.com/tazerotu/42-School/Cursus/Cercle-1/ft_printf):** Because ft_putnbr() and ft_putstr() aren't enough
-- **[GNL](https://github.com/tazerotu/42-School/Cursus/Cercle-1/gnl):** Reading a line on a fd is way too tedious
-
-## Circle 2
-- **[Push Swap](https://github.com/tazerotu/42-School/Cursus/Cercle-2/Push-Swap):** Because Swap_push isn't as natural
-- **[Pipex](https://github.com/tazerotu/42-School/Cursus/Cercle-2/Pipex):** Unix Pipes in C
-- **[So long](https://github.com/tazerotu/42-School/Cursus/Cercle-2/So_long):** And thanks for the fish ! (Small game)
-
-## Circle 3
-- **[Philospher](https://github.com/tazerotu/42-School/Cursus/Cercle-2/So_long):** I never thought philosophy would be so deadly (Threads)
-- **[MiniShell](https://github.com/tazerotu/42-School/Cursus/Cercle-2/So_long):** As beautiful as a shell
+- **[Piscine](https://github.com/tazerotu/42-School/Piscine/)** 
