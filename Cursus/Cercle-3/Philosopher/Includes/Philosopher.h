@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 11:20:21 by ttas             ###   ########.fr       */
+/*   Updated: 2024/12/03 11:59:34 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,9 @@
 # undef __bool_true_false_are_defined
 
 // VALID Handling
-# define VALID_DATA_INIT 101
-# define VALID_PHILO_INIT 102
+# define VALID_INPUT 101
+# define VALID_DATA_INIT 201
+# define VALID_PHILO_INIT 202
 
 // ERROR Handling
 # define ERROR_INPUT -101
@@ -63,5 +64,10 @@ int 	parsing(int argc, char **argv);
 
 // Utils
 void	error(int error_code);
+
+// Libft
+int		ft_atoi(char *nbr);
+int		ft_isdigit(int c);
+
 
 #endif
