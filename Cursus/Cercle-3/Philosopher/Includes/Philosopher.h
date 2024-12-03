@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 12:45:16 by ttas             ###   ########.fr       */
+/*   Updated: 2024/12/03 12:45:55 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_philo
 	bool			is_sleeping;
 	bool			is_thinking;
 	bool			is_dead;
+	pthread_t		thread;
 
 }					t_philo;
 
