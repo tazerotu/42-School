@@ -20,3 +20,4 @@ printf "program for 500 random numbers between -2147483648 and 2147483647\n"
 printf "Testeur linux :\n"
 ARG=$(awk 'BEGIN {srand(); for(i=0; i<500; i++) print int(rand() * (4294967296) - 2147483648)}'); ./push_swap $ARG | ./checker_linux $ARG
 
+make clean

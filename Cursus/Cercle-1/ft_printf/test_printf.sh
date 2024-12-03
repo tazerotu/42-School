@@ -8,3 +8,4 @@ printf "\n\n\n"
 cc ./42-Test/Cercle-1/Printf/Printf-Main.c libftprintf.a
 rm -rf 42-Test
 ./a.out
+make clean

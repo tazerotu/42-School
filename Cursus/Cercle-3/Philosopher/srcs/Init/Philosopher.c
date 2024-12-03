@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:31:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/11/28 09:29:10 by ttas             ###   ########.fr       */
+/*   Updated: 2024/12/03 10:29:42 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	init_philosopher(t_philo *philo, int argc, char **argv)
 {
-	return (1);
+	return (VALID_PHILO_INIT);
 }
