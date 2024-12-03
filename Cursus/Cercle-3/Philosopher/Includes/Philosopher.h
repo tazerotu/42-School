@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 12:10:51 by ttas             ###   ########.fr       */
+/*   Updated: 2024/12/03 12:45:16 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,10 @@ typedef struct s_philo
 	int				n;
 	int 			last_eat;
 	bool			is_eating;
+	bool			is_sleeping;
+	bool			is_thinking;
+	bool			is_dead;
+
 }					t_philo;
 
 typedef struct s_info
