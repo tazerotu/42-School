@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 09:38:53 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/07 09:43:06 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char **argv)
 	data = NULL;
 	parsing(argc, argv);
 	data = init_data(data, argc, argv);
-	state(data->philo[0], data->t_start);
+	// state(data->philo[0], data->t_start);
 	// debug(data);
 	return (0);
 }
