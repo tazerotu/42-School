@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 12:22:21 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/07 12:23:22 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 // eat, think, sleep
 // if not eaten for time >= time_to_eat then die	
 
-void routine(t_data data)
+int routine(t_data data)
 {
 	
 }
