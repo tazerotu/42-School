@@ -5,52 +5,41 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/01/07 10:28:09 by ttas             ###   ########.fr        #
+#    Created: 2024/05/07 10:49:44 by ttas              #+#    #+#              #
+#    Updated: 2024/10/24 09:24:17 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Program Executable
-EXE = Minishell
+LIB = libftfdprintf.a
 
-# Files
-SRC =			./srcs/main.c \
-				
+SRCS =  ft_fdprintf.c \
+		./src/ft_putstr.c \
+		./src/ft_putchar.c \
+		./src/ft_putnbr.c \
+		./src/ft_putHexa.c \
+		./src/ft_putunbr.c \
+		./src/ft_putptr.c \
 
-SRCS_INIT =		
-				
-				
+OBJS = ${SRCS:.c=.o}
 
-SOURCES =		${SRC}
-OBJECTS =		${SOURCES:.c=.o}
-LIBFT = ./Includes/libft
-
-# Variables
-CC = cc
-# 
-CFLAGS = -Wall -Werror -Wextra -Includes -lreadline -fsanitize=address -g 
+CC = gcc
+CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 
-# Makefile
+all:		${LIB}
+
 %.o:		%.c
 		${CC} ${CFLAGS} -c $? -o $@
 
-all:		${EXE}
-
-${EXE}:		${OBJECTS} 
-		@${MAKE} --silent -C ${LIBFT}
-		@${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -o ${EXE}
-
-ac: all clean
+${LIB}:	${OBJS}
+		ar rcs ${LIB} ${OBJS}
 
 clean:
-		@${MAKE} --silent -C ${LIBFT} clean
-		@${RM} ${OBJECTS}
+		@${RM} ${OBJS}
 
 fclean:		clean
-		@${MAKE} --silent -C ${LIBFT} fclean
-		@${RM} ${EXE}
+		@${RM} ${LIB}
 
 re:			fclean all
 
-.PHONY: all clean fclean re ac
+.PHONY: all clean fclean re
