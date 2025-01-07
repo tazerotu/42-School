@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:29:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 10:22:23 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/07 12:49:14 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,10 @@ typedef struct s_history
 	struct s_history *next;
 }	t_history;
 
-
+typedef struct s_splice
+{
+	int length;
+	char *str;
+}	t_splice;
 
 #endif
