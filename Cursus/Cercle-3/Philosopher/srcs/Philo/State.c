@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 09:25:39 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 09:38:24 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/07 11:14:22 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,19 @@ void state(t_philo philo, long int time)
 		printf("Philo %d, is sleeping\n", philo.n);
 	else if(philo.is_dead)
 		printf("Philo %d, is dead\n", philo.n);
+}
+
+void eating(t_philo philo, long int time)
+{
+	
+}
+
+void thinking(t_philo philo, long int time)
+{
+	
+}
+
+void sleeping(t_philo philo, long int time)
+{
+
 }
