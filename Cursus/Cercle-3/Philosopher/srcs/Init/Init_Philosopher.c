@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/20 09:31:18 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 12:34:59 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/07 09:36:09 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,10 @@ int parsing(int argc, char **argv)
 
 t_info	*init_data(t_info *data, int argc, char **argv)
 {
+	struct timeval  tv;
+	gettimeofday(&tv, NULL);
 	data = (t_info *)malloc(sizeof(t_info));
+	data->t_start = (tv.tv_sec) * 1000 + (tv.tv_usec) / 1000;
 	data->n_philo = ft_atoi(argv[1]);
 	data->time_to_die = ft_atoi(argv[2]);
 	data->time_to_eat = ft_atoi(argv[3]);
@@ -54,6 +57,10 @@ int init_philosopher(t_info *data)
 	{
 		data->philo[i].n = i;
 		data->philo[i].last_eat = data->time_to_eat;
+		data->philo[i].is_dead = 0;
+		data->philo[i].is_eating = 0;
+		data->philo[i].is_thinking = 1;
+		data->philo[i].is_sleeping = 0;
 		i++;
 	}
 	return 0;

@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Fork.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 10:27:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 09:38:53 by ttas             ###   ########.fr       */
+/*   Created: 2025/01/07 09:14:11 by ttas              #+#    #+#             */
+/*   Updated: 2025/01/07 09:17:41 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Philosopher.h"
+#include "../../Includes/Philosopher.h"
 
-// void freeall(t_info data)
-// {
-	
-// }
-
-int	main(int argc, char **argv)
+void lock_fork(t_philo philo, bool side)
 {
-	t_info	*data;
+	
+}
 
-	if (argc < 5 || argc > 6)
-		error(ERROR_INPUT);
-	data = NULL;
-	parsing(argc, argv);
-	data = init_data(data, argc, argv);
-	state(data->philo[0], data->t_start);
-	// debug(data);
-	return (0);
+void unlock_fork(t_philo philo, bool side)
+{
+	
 }

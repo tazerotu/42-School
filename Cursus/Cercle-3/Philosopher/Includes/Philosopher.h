@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:27:12 by ttas              #+#    #+#             */
-/*   Updated: 2024/12/03 12:45:55 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/07 09:36:29 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <sys/time.h>
 # include <stdbool.h>
 # include <pthread.h>
 
@@ -46,7 +47,8 @@ typedef struct s_philo
 	bool			is_thinking;
 	bool			is_dead;
 	pthread_t		thread;
-
+	pthread_mutex_t	lfork;
+	pthread_mutex_t	rfork;
 }					t_philo;
 
 typedef struct s_info
@@ -57,24 +59,26 @@ typedef struct s_info
 	int				time_to_sleep;
 	int				n_eat;
 	long int		t_start;
-	int 			stop;
 	t_philo			*philo;
 }					t_info;
 
 // Functions
 // Init
 t_info		*init_data(t_info *data, int argc, char **argv);
-int		init_philosopher(t_info *data);
-int 	parsing(int argc, char **argv);
+int			init_philosopher(t_info *data);
+int 		parsing(int argc, char **argv);
+
+// State
+void state(t_philo philo, long int time);
 
 // Utils
-void	error(int error_code);
+void		error(int error_code);
 
 // Libft
-int		ft_atoi(char *nbr);
-int		ft_isdigit(int c);
+int			ft_atoi(char *nbr);
+int			ft_isdigit(int c);
 
 // Debug
-void debug(t_info *data);
+void 		debug(t_info *data);
 
 #endif

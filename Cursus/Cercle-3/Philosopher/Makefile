@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:26:59 by ttas              #+#    #+#              #
-#    Updated: 2024/12/03 12:03:13 by ttas             ###   ########.fr        #
+#    Updated: 2025/01/07 09:40:34 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,8 +24,15 @@ SRCS_UTILS =	./srcs/Utils/Error.c \
 				./srcs/Utils/libft.c \
 				./srcs/Utils/Debug.c
 				
+SRCS_Mutex =	./srcs/Mutex/Eating.c \
+				./srcs/Mutex/Fork.c \
+				
+				
+SRCS_PHILO =	./srcs/Philo/State.c \
+				
+				
 
-SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_UTILS}
+SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_UTILS} ${SRCS_STATE}
 OBJECTS =		${SOURCES:.c=.o}
 
 # Variables
