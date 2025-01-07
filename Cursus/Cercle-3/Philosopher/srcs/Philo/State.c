@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 09:25:39 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 11:14:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/07 12:33:58 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ void thinking(t_philo philo, long int time)
 }
 
 void sleeping(t_philo philo, long int time)
+{
+
+}
+
+void dead(t_philo philo, long int time)
 {
 
 }
