@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   Splicer.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/19 10:28:51 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/14 10:02:47 by ttas             ###   ########.fr       */
+/*   Created: 2025/01/14 09:27:33 by ttas              #+#    #+#             */
+/*   Updated: 2025/01/14 09:29:23 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Minishell.h"
+#include "../../Includes/Minishell.h"
 
-int main(void)
+t_splice	*splicer(char *input)
 {
-        char *input;
-
-        int i = 0;
-        system("clear");
-        while ( i < 10 )
-        {
-                input = readline("\033[0;32mMinishell>\033[0m");
-                add_history(input);
-                // printf("%s\n", input);
-                tokenizer(input);
-                // splicer(input);
-                i++;
-        }
-	return (0);
+	t_splice *splice;
+	while(input)
+	{
+		
+		input++;
+	}
+	return (splice);
 }

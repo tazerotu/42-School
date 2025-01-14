@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/01/07 10:28:09 by ttas             ###   ########.fr        #
+#    Updated: 2025/01/14 09:53:44 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,16 +19,21 @@ SRC =			./srcs/main.c \
 
 SRCS_INIT =		
 				
+
+
+SRCS_TOKEN =	./srcs/Token/Verify_token.c \
+				
+				
 				
 
-SOURCES =		${SRC}
+SOURCES =		${SRC} ${SRCS_TOKEN}
 OBJECTS =		${SOURCES:.c=.o}
 LIBFT = ./Includes/libft
 
 # Variables
 CC = cc
 # 
-CFLAGS = -Wall -Werror -Wextra -Includes -lreadline -fsanitize=address -g 
+CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=address -g 
 RM = rm -f
 
 # Makefile
@@ -39,7 +44,7 @@ all:		${EXE}
 
 ${EXE}:		${OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
-		@${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -o ${EXE}
+		@${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -lreadline -o ${EXE}
 
 ac: all clean
 

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:29:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 12:49:14 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/14 10:06:27 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define MINISHELL_H
 
 // Includes
-# include "../libft.h"
+# include "./libft/libft.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <readline/readline.h>
@@ -34,5 +34,8 @@ typedef struct s_splice
 	int length;
 	char *str;
 }	t_splice;
+
+int tokenizer(char *input);
+int quote(char *input, int start);
 
 #endif
