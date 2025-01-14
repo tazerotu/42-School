@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 10:28:51 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/14 10:02:47 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/14 12:05:36 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ int main(void)
         {
                 input = readline("\033[0;32mMinishell>\033[0m");
                 add_history(input);
-                // printf("%s\n", input);
                 tokenizer(input);
                 // splicer(input);
                 i++;
