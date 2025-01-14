@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:09:33 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/14 11:24:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/14 11:25:03 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int quote(char *input, int start)
 		i++;
 	}
 	splice.str[i] = '\0';
-	// printf("\n");
 	printf("Splice :\n\tlength : %i\n\tstr : %s\n", splice.length, splice.str);
 	if(input[end] == '\0')
 		end--;
