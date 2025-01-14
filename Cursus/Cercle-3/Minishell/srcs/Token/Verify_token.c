@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 10:09:33 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/14 10:19:16 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/14 11:24:22 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int tokenizer(char *input)
 	{
 		// printf("%i,\n", i);
 		if(input[i] == 39)
-			i = quote(input, i);
+			i = quote(input, (i+1));
 		i++;
 	}
 	return 0;
@@ -29,24 +29,28 @@ int tokenizer(char *input)
 int quote(char *input, int start)
 {
 	int end;
+	int i;
+	t_splice splice;
+	i = 0;
 	end = start;
-	// t_splice splice;
-	while(input[end] != '\0' || input[end] != 39)
+	while(input[end])
 		end++;
-	printf("%i\n", end);
-	if(input[end] != 39)
-		return 0;
-	// splice.length = end;
-	// splice.str = malloc(end);
-	while(start <= end)
+	if(input[end-1] == 39)
+		end--;
+	splice.length = (end - start);
+	splice.str = malloc(splice.length * sizeof(char *) + 1);
+	while(start <= splice.length)
 	{
-	// 	// splice.str[start] = input[start];
-		printf("%c", input[start]);
+		splice.str[i] = input[start];
 		start++;
+		i++;
 	}
+	splice.str[i] = '\0';
 	// printf("\n");
-	// printf("%s\n", splice.str);
-	return end;
+	printf("Splice :\n\tlength : %i\n\tstr : %s\n", splice.length, splice.str);
+	if(input[end] == '\0')
+		end--;
+	return (end);
 }
 /*
 int d_quote(char *input)
