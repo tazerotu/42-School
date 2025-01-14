@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/01/14 09:53:44 by ttas             ###   ########.fr        #
+#    Updated: 2025/01/14 12:30:39 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,16 +17,19 @@ EXE = Minishell
 SRC =			./srcs/main.c \
 				
 
-SRCS_INIT =		
+SRCS_INIT =	
 				
-
+	
+SRCS_EXECUTE =	./srcs/Execute/Execute.c \
+				
+				
 
 SRCS_TOKEN =	./srcs/Token/Verify_token.c \
 				
 				
 				
 
-SOURCES =		${SRC} ${SRCS_TOKEN}
+SOURCES =		${SRC} ${SRCS_EXECUTE}
 OBJECTS =		${SOURCES:.c=.o}
 LIBFT = ./Includes/libft
 
