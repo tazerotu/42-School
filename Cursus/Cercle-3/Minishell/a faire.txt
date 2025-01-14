@@ -1,0 +1,9 @@
+Splice -> 
+	struct pipe :
+		input
+		output
+		struct cmd :
+			cmd
+			arg
+
+Here_doc
