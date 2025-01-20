@@ -1,10 +1,17 @@
-Splice -> 
+Splice	-> 
 	struct pipe :
-		input
-		output
-		error_output
-		struct cmd :
-			cmd
-			args
+		int		input;
+		int		output;
+		int		error_output;
+		struct s_splice *cmd;
+		char	**envp;
 
-Here_doc
+		->
+	count pipe -> n_pipe -> n_splice -> splicer;
+	
+
+Pipex ->
+	Infinite cmd
+	Better input/output
+	error_output
+	Here_doc
