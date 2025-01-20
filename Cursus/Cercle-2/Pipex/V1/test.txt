@@ -1,13 +1,3 @@
-g
-d
-
-g
-g
-fbd
-b
-n
-grj
-mytr
-rd
-gsd
-nfd
+ceci est
+un
+test

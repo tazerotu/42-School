@@ -2,8 +2,9 @@ Splice ->
 	struct pipe :
 		input
 		output
+		error_output
 		struct cmd :
 			cmd
-			arg
+			args
 
 Here_doc

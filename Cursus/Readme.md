@@ -13,8 +13,8 @@
 - **[So long](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-2/So_long):** And thanks for the fish ! (Small game)
 
 ## Circle 3
-- **[Philospher](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-2/So_long):** I never thought philosophy would be so deadly (Threads)
-- **[MiniShell](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-2/So_long):** As beautiful as a shell
+- **[Philospher](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-3/Philosopher):** I never thought philosophy would be so deadly (Threads)
+- **[MiniShell](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-3/Minishell):** As beautiful as a shell
 
 ## CPP
 - **[Module 00](https://github.com/tazerotu/42-School/tree/main/Cursus/CPP/CPP_Module_00):**
