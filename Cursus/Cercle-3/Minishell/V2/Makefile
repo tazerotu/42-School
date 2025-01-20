@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/01/20 11:22:40 by ttas             ###   ########.fr        #
+#    Updated: 2025/01/20 12:29:19 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,14 +16,14 @@ EXE = Executor
 # Files
 SRC =			./srcs/main.c 
 
-SRCS_INIT =	
+SRCS_INIT =		./srcs/Init/Init.c
 				
 	
 SRCS_PIPEX =	
 				
 				
 
-SOURCES =		${SRC}
+SOURCES =		${SRC} ${SRCS_INIT}
 OBJECTS =		${SOURCES:.c=.o}
 LIBFT = ./Includes/libft
 

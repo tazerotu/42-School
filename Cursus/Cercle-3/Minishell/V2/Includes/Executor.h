@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/20 11:52:23 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/20 13:02:13 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,16 @@ typedef struct s_splice
 typedef struct s_pipe
 {
 	int input;
+	int here_doc;
 	int output;
 	int err_output;
-	struct s_splice *cmd;
+	int n_pipe;
+	char **cmd;
 	char **envp;
 }	t_pipe;
 
 // Functions
-void init(char *str);
-void splicer(char *str);
+t_pipe init(t_pipe pipe, char *str, char **envp);
+// t_splice *splicer(t_pipe pipe, char *str);
 
 #endif
