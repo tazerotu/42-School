@@ -5,6 +5,7 @@
 		"philosopher.h": "c",
 		"stdbool.h": "c",
 		"pthread.h": "c",
-		"minishell.h": "c"
+		"minishell.h": "c",
+		"executor.h": "c"
 	}
 }
