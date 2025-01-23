@@ -1,6 +1,11 @@
+typedef struct s_command
+{
+	char **redir_tok;
+	char **arg_tok;
+}	t_cmd;
+
 typedef struct s_pipe
 {
-
 	int n_pipe;
 	int semicolon;
 	char **envp;
@@ -9,10 +14,12 @@ typedef struct s_pipe
 	
 
 Pipex ->
-	Infinite cmd
+	multiple cmd
 	Better input/output
 	error_output
 	Here_doc
+	builtin (echo, cd, pwd, env, unset, export, exit)
+	
 
 Lexer (assigned to laicar) ->
 	read line

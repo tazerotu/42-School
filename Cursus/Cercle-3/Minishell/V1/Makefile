@@ -6,30 +6,24 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/01/14 12:30:39 by ttas             ###   ########.fr        #
+#    Updated: 2025/01/20 12:29:19 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program Executable
-EXE = Minishell
+EXE = Executor
 
 # Files
-SRC =			./srcs/main.c \
-				
+SRC =			./srcs/main.c 
 
-SRCS_INIT =	
+SRCS_INIT =		./srcs/Init/Init.c
 				
 	
-SRCS_EXECUTE =	./srcs/Execute/Execute.c \
+SRCS_PIPEX =	
 				
 				
 
-SRCS_TOKEN =	./srcs/Token/Verify_token.c \
-				
-				
-				
-
-SOURCES =		${SRC} ${SRCS_EXECUTE}
+SOURCES =		${SRC} ${SRCS_INIT}
 OBJECTS =		${SOURCES:.c=.o}
 LIBFT = ./Includes/libft
 
