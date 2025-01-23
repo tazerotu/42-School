@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/23 10:13:04 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/23 10:18:37 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ typedef struct s_command
 
 typedef struct s_pipe
 {
-	int n_pipe;
 	int semicolon;
+	int n_pipe;
 	char **envp;
 	t_cmd *cmd;
 }	t_pipe;
