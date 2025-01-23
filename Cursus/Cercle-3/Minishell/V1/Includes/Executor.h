@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/23 09:59:00 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/23 10:13:04 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,14 +58,15 @@ void get_path(void);
 void child_process(void);
 void parent_process(void);
 void redir(void);
+		// Built-in
 // with option -n
-void echo(char *option, char *str);
+void bi_echo(char *option, char *str);
 // with absolute or relative path
-void cd(char *path);
-void pwd(void);
-void export(void);
-void unset(void);
-void env(void);
-void exit(void);
+void bi_cd(char *path);
+void bi_pwd(void);
+void bi_export(void);
+void bi_unset(void);
+void bi_env(void);
+void bi_exit(void);
 
 #endif
