@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/23 10:18:37 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/23 10:29:26 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void parent_process(void);
 void redir(void);
 		// Built-in
 // with option -n
-void bi_echo(char *option, char *str);
+void bi_echo(char *str, int fd);
 // with absolute or relative path
 void bi_cd(char *path);
 void bi_pwd(void);
