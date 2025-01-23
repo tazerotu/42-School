@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/23 10:48:03 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/23 10:49:48 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ static char **parsing_echo(char *str)
 void bi_echo(char *str)
 {
 	int i;
-	i = 0;
 	char **echo;
 	echo = parsing_echo(str);
 	if(!fd)
@@ -51,6 +50,7 @@ void bi_echo(char *str)
 		ft_printf("%s\n", echo[1]);
 	else
 	{
+		i = 0;
 		while(echo[1][i])
 		{
 			if(echo[1][i] == "\n")
