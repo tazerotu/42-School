@@ -1,13 +1,11 @@
-Splice	-> 
-	struct pipe :
-		int		input;
-		int		output;
-		int		error_output;
-		struct s_splice *cmd;
-		char	**envp;
+typedef struct s_pipe
+{
 
-		->
-	count pipe -> n_pipe -> n_splice -> splicer;
+	int n_pipe;
+	int semicolon;
+	char **envp;
+	t_cmd cmd;
+}	t_pipe;
 	
 
 Pipex ->
@@ -15,3 +13,37 @@ Pipex ->
 	Better input/output
 	error_output
 	Here_doc
+
+Lexer (assigned to laicar) ->
+	read line
+//later task:	put it in input history (double linked list? I have that in my push_swap)
+	check simple/double quotes correct (opening with ending, no mix of type eg "'"' although "''" is ok), else error
+	expand: replace environment variables (eg $USER, except if between simple quotes. If not found give empty string, also handle $?)
+	trim spaces outside quotes
+	split into different words (can be empty string if eg "", but hola"   ciao     "bonjour is 1 word)
+	split again according to < > << >> |. If multiple (eg <<<<, <> and 2>&1 are not supported) or following token isn't a word -> error
+	check if last token is a pipe -> error
+	do not interpret ; and \ as special characters
+	last token is NULL
+	output: char **prompt_str;
+	if nothing is actually in the prompt... handle it at some point
+
+Parser (assigned to laicar) ->
+	typedef struct s_command
+	{
+		char	**redir_tok; //includes redirection symbols and their one following token in order, eg ">" "a" "<" "file.txt" ">" "b". Ends with NULL.
+		char	**arg_tok; //includes everything after stripping redirections. Includes command name/given path. Ends with NULL.
+	}	t_cmd;
+	do a t_list *prompt_cmds containing different t_cmd in the main structure (they are separated by pipes)
+	Research Heredocs (<<)
+
+Redirections/pipes
+	check https://github.com/DimitriDaSilva/42_minishell#72-pipes for how to handle pipes and redirections. Multiple of the same type will create files but only write in the last (our school terminals behave differently)
+	check fd validity (!= -1)
+
+Signal ->
+	Handle CTRL-C, CTRL-D, CTRL-\
+
+Misc. ->
+	check if first token of subgroup is a command or redirection, else -> error
+	for each cmd args check 1st word of args, if supported builtin command (then NULL), or absolute path (then directly into cmd_path), or relative path (use PATH environment variable to look for it)
