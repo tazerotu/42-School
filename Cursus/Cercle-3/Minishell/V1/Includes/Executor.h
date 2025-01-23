@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/23 09:53:54 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/23 09:59:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ t_pipe init(t_pipe pipe, char *str, char **envp);
 
 	// Command initialization
 void verify_semicolon(void);
-void verify_cmd(void);
+void verify_builtin(void);
 void here_doc(void);
 void split(void);
 
@@ -57,6 +57,7 @@ void execute(void);
 void get_path(void);
 void child_process(void);
 void parent_process(void);
+void redir(void);
 // with option -n
 void echo(char *option, char *str);
 // with absolute or relative path
