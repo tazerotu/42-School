@@ -3,10 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/23 10:05:13 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/03 10:03:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../../../Includes/Executor.h"
+
+void bi_unset(void)
+{
+	// Parsing 	-> Variable == Found
+	// Variable -> env_delone
+}
