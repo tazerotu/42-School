@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 10:26:04 by ttas             ###   ########.fr       */
+/*   Updated: 2025/01/31 16:00:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define LIBFT_H
 
 # include "./ft_printf/ft_printf.h"
+# include "./ft_fprintf/ft_fprintf.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
@@ -253,6 +254,8 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
  * @param f The function to apply to each character
  */
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
+
+char				*ft_strstr(char *str, char *to_find);
 
 /*----------------------*/
 /*         MATHS        */

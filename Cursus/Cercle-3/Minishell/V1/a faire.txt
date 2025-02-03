@@ -1,18 +1,3 @@
-typedef struct s_command
-{
-	char **redir_tok;
-	char **arg_tok;
-}	t_cmd;
-
-typedef struct s_pipe
-{
-	int n_pipe;
-	int semicolon;
-	char **envp;
-	t_cmd cmd;
-}	t_pipe;
-	
-
 Pipex ->
 	multiple cmd
 	Better input/output

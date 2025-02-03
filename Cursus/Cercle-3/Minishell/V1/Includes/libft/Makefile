@@ -71,7 +71,7 @@ SRC_PRINTF =	./ft_printf/ft_printf.c	\
 				./ft_printf/src/ft_putstr.c	\
 				./ft_printf/src/ft_putunbr.c	\
 
-SRC_FT_FPRINTF =	./ft_fprintf/ft_fprintf.c	\
+SRC_FPRINTF =		./ft_fprintf/ft_fprintf.c	\
 					./ft_fprintf/src/ft_putchar.c	\
 					./ft_fprintf/src/ft_putHexa.c	\
 					./ft_fprintf/src/ft_putnbr.c	\
@@ -82,10 +82,12 @@ SRC_FT_FPRINTF =	./ft_fprintf/ft_fprintf.c	\
 
 
 # SRC_OTHER = 
-
-SRCSALL = ${SRC_BOOL} ${SRC_LST} ${SRC_MEM} ${SRC_PUT} ${SRC_STR} ${SRC_TO} ${SRC_FT_PRINTF} ${SRC_FT_FPRINTF}
+SRCSALL = ${SRC_BOOL} ${SRC_LST} ${SRC_MEM} ${SRC_PUT} ${SRC_STR} ${SRC_TO} ${SRC_PRINTF} ${SRC_FPRINTF}
 
 OBJS = ${SRCSALL:.c=.o}
+
+FPRINTF = ./ft_fprintf
+PRINTF = ./ft_printf
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -97,7 +99,7 @@ all:		${LIB}
 		${CC} ${CFLAGS}  -c $? -o $@
 
 ${LIB}:	${OBJS}
-		ar rcs ${LIB} ${OBJS}
+		ar rcs ${LIB}  ${OBJS}
 
 clean:
 		@${RM} ${OBJS}
