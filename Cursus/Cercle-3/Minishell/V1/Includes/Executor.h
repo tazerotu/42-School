@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/03 10:02:58 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/10 20:56:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ typedef struct s_cmd
 {
 	char *redir;
 	char *cmd;
-	struct s_cmd *previous;
 	struct s_cmd *next;
 }	t_cmd;
 
@@ -80,7 +79,7 @@ void bi_cd(char *path);
 
 void bi_pwd(void);
 void bi_export(void);
-void bi_unset(void);
+void bi_unset(t_env *envp, char **str);
 void bi_env(t_pipe *pipex, char **envp);
 void bi_exit(void);
 

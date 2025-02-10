@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/03 11:09:09 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/04 16:50:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static t_env *verify_exist(t_pipe *pipe, char *str)
 
 // Add Variable -> env_addback if not existing
 // Modify Variable if already existing
+// If export VARIABLE_NAME1=$VARIABLE_NAME2 -> find variable in env and set VARIABLE_NAME2 value to VARIABLE_NAME1
+// Multiple variables possible
 void bi_export(t_pipe *pipe, char *str)
 {
 	if(!syntax(str))

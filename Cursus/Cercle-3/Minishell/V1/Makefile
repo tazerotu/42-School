@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/02/03 10:03:01 by marvin           ###   ########.fr        #
+#    Updated: 2025/02/10 20:43:28 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS_PIPEX =
 SRCS_BUILT_IN =	./srcs/Pipex/Built-in/Env.c \
 				./srcs/Pipex/Built-in/utils/env_utils.c \
 				./srcs/Pipex/Built-in/Pwd.c \
+				./srcs/Pipex/Built-in/Unset.c \
 								
 				
 

@@ -34,7 +34,6 @@ void env_delone(t_env *envp)
 	previous = envp->previous;
 	next = envp->next;
 	next->previous = previous;
-	free(envp->env);
 	envp = envp->previous;
 	envp->next = next;
 }
