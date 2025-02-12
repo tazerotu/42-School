@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/10 20:59:33 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/12 18:08:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,14 @@ int main(int argc, char **argv, char **envp)
 	pipe = malloc(sizeof(t_pipe));
     system("clear");
 	// pipe = init(pipe, input, envp);
+	pipe = init_env(pipe, envp);
 
 	char *unset[] = {"unset", "TEST1", "TEST2", "TEST3", NULL};
-	bi_env(pipe, envp);
+	bi_env(pipe->envp);
 	bi_unset(pipe->envp, unset);
+	ft_printf("\n\n\n");
+	bi_env(pipe->envp);
 	// bi_pwd();
-	while(pipe->envp->next)
-	{
-		ft_printf("%s\n", pipe->envp->env);
-		pipe->envp = pipe->envp->next;
-	}
-
-
 
     // while ( i < 10 )
     // {
