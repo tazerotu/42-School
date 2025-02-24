@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:06:28 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/12 18:07:24 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/24 17:42:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_pipe *init_env(t_pipe *pipex, char **envp)
 {
 	int i;
 	i = 1;
-	pipex->envp = env_new(envp[0]);
+	pipex->envp = malloc(sizeof(t_env *));
+	pipex->envp[0] = env_new(envp[0]);
 	while (envp[i])
 	{
 		env_add_back(pipex->envp, env_new(envp[i]));

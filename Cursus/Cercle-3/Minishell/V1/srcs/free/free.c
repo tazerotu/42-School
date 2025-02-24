@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Env.c                                              :+:      :+:    :+:   */
+/*   Free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 10:04:54 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/24 17:31:49 by marvin           ###   ########.fr       */
+/*   Created: 2025/01/20 12:23:16 by ttas              #+#    #+#             */
+/*   Updated: 2025/02/24 16:05:05 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Includes/Executor.h"
+#include "../../Includes/Executor.h"
 
-void bi_env(t_env **envp)
+void free_all(t_pipe *pipe)
 {
-	while(envp && (*envp)->next)
+	t_cmd *tmp;
+	t_cmd *tmp2;
+
+	tmp = pipe->cmd;
+	while(tmp)
 	{
-		ft_printf("%s\n", (*envp)->env);
-		(*envp) = (*envp)->next;
+		tmp2 = tmp->next;
+		free(tmp->cmd);
+		free(tmp->redir);
+		free(tmp);
+		tmp = tmp2;
 	}
+	free(pipe->envp);
+	free(pipe);
 }

@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/02/12 15:34:47 by marvin           ###   ########.fr        #
+#    Updated: 2025/02/24 16:06:19 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ EXE = Executor
 # Files
 SRC =			./srcs/main.c 
 
-SRCS_INIT =		./srcs/Init/Init.c
-				
+SRCS_INIT =		./srcs/Init/Init.c \
+				./srcs/free/free.c \
 	
 SRCS_PIPEX =	
 

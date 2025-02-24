@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/12 15:38:17 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/24 17:42:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,6 @@
 # include <readline/history.h>
 
 // Struct
-typedef struct s_splice
-{
-	int length;
-	char *str;
-}	t_splice;
-
 typedef struct s_env
 {
 	char *env;
@@ -39,8 +33,8 @@ typedef struct s_env
 
 typedef struct s_cmd
 {
-	char *redir;
-	char *cmd;
+	char **redir;
+	char **cmd;
 	struct s_cmd *next;
 }	t_cmd;
 
@@ -48,7 +42,7 @@ typedef struct s_pipe
 {
 	int semicolon;
 	int n_pipe;
-	struct s_env *envp;
+	struct s_env **envp;
 	t_cmd *cmd;
 }	t_pipe;
 
@@ -56,6 +50,9 @@ typedef struct s_pipe
 	// Init
 t_pipe *init(t_pipe *pipe, char *str, char **envp);
 t_pipe *init_env(t_pipe *pipe, char **envp);
+
+	// Free
+void free_pipe(t_pipe *pipe);
 
 	// Command initialization
 void verify_semicolon(void);
@@ -79,14 +76,14 @@ void bi_cd(char *path);
 
 void bi_pwd(void);
 void bi_export(void);
-void bi_unset(t_env *envp, char **str);
-void bi_env(t_env *envp);
+void bi_unset(t_env **envp, char **str);
+void bi_env(t_env **envp);
 void bi_exit(void);
 
 		// Utils
-void env_add_back(t_env *envp, t_env *new);
+void env_add_back(t_env **envp, t_env *new);
 void env_delone(t_env *envp);
-t_env	*env_new(char *content);
+void	*env_new(char *content);
 t_env *env_last(t_env *env);
 int env_size(t_env *env);
 

@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:23:16 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/20 12:24:43 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/24 16:14:07 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../Includes/Executor.h"
 
-void free_pipe(t_pipe)
+void free_pipe(t_pipe *pipe)
 {
-	free(pipe.cmd);
-	free(pipe.envp);
-	
+	free(pipe);
 }
+
