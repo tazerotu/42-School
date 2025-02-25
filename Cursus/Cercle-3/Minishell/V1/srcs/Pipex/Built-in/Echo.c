@@ -6,62 +6,76 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/23 10:49:48 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/25 11:17:20 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Includes/Executor.h"
 
-static char **parsing_echo(char *str)
+// Verifies the number of arguments to see if it can print something
+int echo_args(char **str)
+{
+	int i;
+	i = 0;
+	while(str[i])
+		i++;
+	return(i);
+}
+
+// if there is a variable in the argument (ex: test a la valeur : $TEST) 
+// it will verify if it exists and print it if it does
+void print_variable(char *str)
+{
+	
+}
+
+//
+int print_redirection(char **redir)
+{
+	int fd;
+	if(redir[0] == ">")
+		open(redir[1], O_RDWR | O_CREAT);
+	else if(redir[0] == ">>")
+		open(redir[1], O_RDWR | O_CREAT);
+	if(fd == -1)
+	{
+		perror(ERROR_FD);
+		return(-1);
+	}
+	return(fd);
+}
+
+// Prints the argument, ex: "ceci est un test"
+void echo_print(t_pipe *pipe, char *str)
+{
+	int fd;
+	if(pipe->cmd->redir)
+		fd = print_redirection(pipe->cmd->redir);
+	else 
+		fd = 1;
+	ft_fprintf(fd, "%s", str);
+}
+
+// The echo function, with only the -n option
+void bi_echo(t_pipe *pipe)
 {
 	int i;
 	int j;
-	char **echo;
-	if(ft_strnstr(str, "-n", 2))
+	bool option;
+	char **str;
+	str = pipe->cmd->cmd;
+	j = 1;
+	option = false;
+	if(echo_args(str) == 1)
+		return ;
+	if(str[j] == "-n")
 	{
-		i = 2;
-		j = 0;
-		echo = malloc(2 * sizeof(char *));
-		echo[0] == "-n";
-		while(str[i])
-		{
-			echo[1][j] = str[i];	
-			i++;
-			j++;
-		}
+		option = true;
+		j++;
 	}
-	else
+	while(str[j])
 	{
-		echo = malloc(2 * sizeof(char *));
-		echo[0] = "\0";
-		echo[1] = ft_strdup(*str + 2);
+		echo_print(pipe, str[j]);
+		j++;
 	}
-	return (echo);
-}
-
-void bi_echo(char *str)
-{
-	int i;
-	char **echo;
-	echo = parsing_echo(str);
-	if(!fd)
-		fd = 1;
-	if(echo[0] != "-n")
-		ft_printf("%s\n", echo[1]);
-	else
-	{
-		i = 0;
-		while(echo[1][i])
-		{
-			if(echo[1][i] == "\n")
-			{
-				if(echo[1][i+1] != "\0")
-					ft_printf(" ");
-				i++;
-			}
-			ft_printf("%c", echo[1][i]);
-			i++;	
-		}
-	}
-	free(echo);
 }

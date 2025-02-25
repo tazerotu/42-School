@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/24 17:42:55 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/25 10:16:43 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 # include <stdbool.h>
 # include <readline/readline.h>
 # include <readline/history.h>
+
+// ERROR HANDLING
+#define ERROR_FD 1001
 
 // Struct
 typedef struct s_env

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/24 17:14:03 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/25 10:16:45 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int main(int argc, char **argv, char **envp)
 
 	char *unset[] = {"unset", "TEST1", "TEST2", "TEST3", NULL};
 	bi_env(pipe->envp);
-	bi_unset(pipe->envp, unset);
-	ft_printf("\n\n\n");
-	bi_env(pipe->envp);
+	// bi_unset(pipe->envp, unset);
+	// ft_printf("\n\n\n");
+	// bi_env(pipe->envp);
 	// pipe->envp = env_last(pipe->envp);
 	// while (pipe->envp)
 	// {

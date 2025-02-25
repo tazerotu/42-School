@@ -6,18 +6,18 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/23 10:11:51 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/25 10:18:48 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../Includes/Executor.h"
 
-void verify_builtin(void)
+void verify_builtin(t_pipe *pipe)
 {
 	char *str;
-	
+	str = pipe->cmd->cmd[0]	
 	if(ft_strnstr(str, "echo", 4))
-		bi_echo(void);
+		bi_echo(pipe);
 	if(ft_strnstr(str, "cd", 2))
 		bi_cd(void);
 	if(ft_strnstr(str, "pwd", 3))
