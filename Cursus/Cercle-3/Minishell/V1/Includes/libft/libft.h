@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/31 16:00:22 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/25 12:24:58 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,9 @@ int					ft_isprint(int c);
 	and `0` if not.
  */
 int					ft_isascii(int c);
+
+int 				ft_isupper(char c);
+int 				ft_islower(char c);
 
 /*----------------------*/
 /*       STRING         */
