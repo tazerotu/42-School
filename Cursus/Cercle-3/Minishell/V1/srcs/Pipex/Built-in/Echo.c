@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/25 11:17:20 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/25 12:14:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,38 @@ int echo_args(char **str)
 	return(i);
 }
 
-// if there is a variable in the argument (ex: test a la valeur : $TEST) 
-// it will verify if it exists and print it if it does
-void print_variable(char *str)
+// if there is a param in the argument (ex: test a la valeur : $TEST) 
+// it will verify if it exists
+// get the value of the param
+// and join the value of the param at the spot in the string it should be
+char *print_variable(char *str)
 {
-	
+	char *new;
+	int i;
+	int j;
+	i = 0;
+	while(str[i])
+	{
+		if(str[i] == '$')
+		{
+			j = i + 1;
+			while(isupper(str[j]))
+				j++;
+			
+		}
+		i++;
+	}
+	return(new);
 }
 
-//
+// find the type of redirection and opens the file accordingly
 int print_redirection(char **redir)
 {
 	int fd;
 	if(redir[0] == ">")
 		open(redir[1], O_RDWR | O_CREAT);
 	else if(redir[0] == ">>")
-		open(redir[1], O_RDWR | O_CREAT);
+		open(redir[1], O_RDWR | O_CREAT | O_APPEND);
 	if(fd == -1)
 	{
 		perror(ERROR_FD);
@@ -53,7 +70,7 @@ void echo_print(t_pipe *pipe, char *str)
 		fd = print_redirection(pipe->cmd->redir);
 	else 
 		fd = 1;
-	ft_fprintf(fd, "%s", str);
+	ft_fprintf(fd, "%s", print_variable(str));
 }
 
 // The echo function, with only the -n option
