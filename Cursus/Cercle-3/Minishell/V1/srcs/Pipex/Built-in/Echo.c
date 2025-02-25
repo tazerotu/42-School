@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/25 12:14:35 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/25 12:19:59 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char *print_variable(char *str)
 		if(str[i] == '$')
 		{
 			j = i + 1;
-			while(isupper(str[j]))
+			while(ft_isupper(str[j]))
 				j++;
 			
 		}
