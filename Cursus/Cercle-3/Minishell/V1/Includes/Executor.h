@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/25 10:16:43 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/26 15:26:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef struct s_pipe
 	int n_pipe;
 	struct s_env **envp;
 	t_cmd *cmd;
+	bool exit;
 }	t_pipe;
 
 // Functions

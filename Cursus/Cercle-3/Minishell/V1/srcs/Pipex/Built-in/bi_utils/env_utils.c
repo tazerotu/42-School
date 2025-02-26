@@ -18,7 +18,7 @@ void env_add_back(t_env **envp, t_env *new)
 		return ;
 	if (envp)
 	{
-		new->previous = *envp;
+		new->previous = env_last(*envp);
 		env_last(*envp)->next = new;
 	}
 	else
@@ -27,13 +27,15 @@ void env_add_back(t_env **envp, t_env *new)
 
 void env_delone(t_env *envp)
 {
-	if (!envp)
+	t_env *tmp;
+	tmp = envp;
+	if (!tmp)
 		return ;
-	if (envp->previous)
-		envp->previous->next = envp->next;
-	if (envp->next)	
-		envp->next->previous = envp->previous;
-	// free(envp->env);
+	if (tmp->previous)
+		tmp->previous->next = tmp->next;
+	if (tmp->next)	
+		tmp->next->previous = tmp->previous;
+	free(tmp);
 }
 
 void	*env_new(char *content)

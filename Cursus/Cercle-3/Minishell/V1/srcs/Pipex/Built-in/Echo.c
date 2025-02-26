@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/25 12:19:59 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/26 16:57:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,9 +51,9 @@ int print_redirection(char **redir)
 {
 	int fd;
 	if(redir[0] == ">")
-		open(redir[1], O_RDWR | O_CREAT);
+		open(redir[1], O_RDWR | O_CREAT | O_TRUNC, S_IWUSR);
 	else if(redir[0] == ">>")
-		open(redir[1], O_RDWR | O_CREAT | O_APPEND);
+		open(redir[1], O_RDWR | O_CREAT | O_APPEND, S_IWUSR);
 	if(fd == -1)
 	{
 		perror(ERROR_FD);

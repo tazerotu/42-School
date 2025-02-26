@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:54 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/24 17:31:49 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/26 16:45:45 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 void bi_env(t_env **envp)
 {
-	while(envp && (*envp)->next)
+	t_env *tmp;
+	tmp = *envp;
+	while(tmp && tmp->next)
 	{
-		ft_printf("%s\n", (*envp)->env);
-		(*envp) = (*envp)->next;
+		ft_printf("%s\n", tmp->env);
+		tmp = tmp->next;
 	}
 }
