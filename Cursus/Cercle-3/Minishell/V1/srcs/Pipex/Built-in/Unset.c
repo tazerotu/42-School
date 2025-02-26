@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/24 17:48:03 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/26 16:53:09 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,15 @@ static int variable_amount(char **str)
 static int variable_pos(t_env *envp, char *str)
 {
 	int pos;
-	pos = 0;
-	while(envp && envp->next != NULL)
+	pos = 1;
+	t_env *tmp;
+	tmp = envp;
+	while(tmp && tmp->next != NULL)
 	{
-		if(ft_strncmp(envp->env, str, ft_strlen(str)) == 0)
+		if(ft_strncmp(tmp->env, str, ft_strlen(str)) == 0)
 			return(pos);
 		pos++;
-		envp = envp->next;
+		tmp = tmp->next;
 	}
 	return (-1);
 }
@@ -43,12 +45,15 @@ void delete_variable(t_env *envp, int pos)
 {
 	t_env *tmp;
 	tmp = envp;
-	while(tmp && tmp->next && pos > 0)
+	if(pos != -1)
 	{
-		tmp = tmp->next;
-		pos--;
+		while(tmp && tmp->next && pos > 0)
+		{
+			tmp = tmp->next;
+			pos--;
+		}
+		env_delone(tmp);
 	}
-	// env_delone(tmp->next);
 }
 
 // Parsing 	-> Variable == Found
@@ -61,9 +66,11 @@ void bi_unset(t_env **envp, char **str)
 	if(variable_amount(str) <= 1)
 		return ;
 	i = 1;
+	printf("\n");
 	while(str[i])
 	{
 		delete_variable(tmp, variable_pos(tmp->next, str[i]));
 		i++;
 	}
+
 }
