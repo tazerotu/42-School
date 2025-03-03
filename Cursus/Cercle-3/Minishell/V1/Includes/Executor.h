@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/26 15:26:57 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/28 11:26:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_pipe
 {
 	int semicolon;
 	int n_pipe;
-	struct s_env **envp;
+	struct s_env *envp;
 	t_cmd *cmd;
 	bool exit;
 }	t_pipe;
@@ -80,12 +80,12 @@ void bi_cd(char *path);
 
 void bi_pwd(void);
 void bi_export(void);
-void bi_unset(t_env **envp, char **str);
-void bi_env(t_env **envp);
+void bi_unset(t_env *envp, char **str);
+void bi_env(t_env *envp);
 void bi_exit(void);
 
 		// Utils
-void env_add_back(t_env **envp, t_env *new);
+void env_add_back(t_env *envp, t_env *new);
 void env_delone(t_env *envp);
 void	*env_new(char *content);
 t_env *env_last(t_env *env);

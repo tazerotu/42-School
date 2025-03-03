@@ -10,4 +10,11 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Includes/Executor.h"
+#include "../../../../Includes/Executor.h"
+
+char *variable_expand(t_pipe *pipe, char *str)
+{
+	char *new_str;
+	int i;
+	return(new_str);
+}

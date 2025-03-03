@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/26 16:53:09 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/27 15:22:18 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,11 @@ void delete_variable(t_env *envp, int pos)
 
 // Parsing 	-> Variable == Found
 // Variable -> env_delone
-void bi_unset(t_env **envp, char **str)
+void bi_unset(t_env *envp, char **str)
 {
 	int i;
 	t_env *tmp;
-	tmp = *envp;
+	tmp = envp;
 	if(variable_amount(str) <= 1)
 		return ;
 	i = 1;

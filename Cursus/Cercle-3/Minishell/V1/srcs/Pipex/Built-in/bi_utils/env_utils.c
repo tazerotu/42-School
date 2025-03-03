@@ -12,17 +12,17 @@
 
 #include "../../../../Includes/Executor.h"
 
-void env_add_back(t_env **envp, t_env *new)
+void env_add_back(t_env *envp, t_env *new)
 {
 	if (!envp || !new)
 		return ;
 	if (envp)
 	{
-		new->previous = env_last(*envp);
-		env_last(*envp)->next = new;
+		new->previous = env_last(envp);
+		env_last(envp)->next = new;
 	}
 	else
-		*envp = new;
+		envp = new;
 }
 
 void env_delone(t_env *envp)

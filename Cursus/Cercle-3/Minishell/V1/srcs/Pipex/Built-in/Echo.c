@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/26 16:57:12 by marvin           ###   ########.fr       */
+/*   Updated: 2025/02/27 15:25:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,30 +20,6 @@ int echo_args(char **str)
 	while(str[i])
 		i++;
 	return(i);
-}
-
-// if there is a param in the argument (ex: test a la valeur : $TEST) 
-// it will verify if it exists
-// get the value of the param
-// and join the value of the param at the spot in the string it should be
-char *print_variable(char *str)
-{
-	char *new;
-	int i;
-	int j;
-	i = 0;
-	while(str[i])
-	{
-		if(str[i] == '$')
-		{
-			j = i + 1;
-			while(ft_isupper(str[j]))
-				j++;
-			
-		}
-		i++;
-	}
-	return(new);
 }
 
 // find the type of redirection and opens the file accordingly
@@ -70,7 +46,7 @@ void echo_print(t_pipe *pipe, char *str)
 		fd = print_redirection(pipe->cmd->redir);
 	else 
 		fd = 1;
-	ft_fprintf(fd, "%s", print_variable(str));
+	ft_fprintf(fd, "%s", str);
 }
 
 // The echo function, with only the -n option
