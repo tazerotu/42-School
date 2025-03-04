@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/04 11:17:53 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/04 11:23:12 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,17 @@ static void change_dir(t_env *env, char **str, bool home)
 				ft_fprintf(1, "cd: no such file or directory: %s", tmp->env);
 				return ;
 			}
+		else
+			change_pwd(tmp, "PWD");
 	}
-	new_str = expand_pwd(env, str[1]);
-	if(!chdir(new_str))
-		ft_fprintf(1, "cd: no such file or directory: %s", new_str);
 	else
-		change_pwd(tmp, "PWD");
+	{
+		new_str = expand_pwd(env, str[1]);
+		if(!chdir(new_str))
+			ft_fprintf(1, "cd: no such file or directory: %s", new_str);
+		else
+			change_pwd(tmp, "PWD");
+	}
 	return ;
 }
 
