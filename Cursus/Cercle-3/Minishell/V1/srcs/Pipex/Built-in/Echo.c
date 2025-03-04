@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/27 15:25:43 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/04 09:55:21 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,8 @@ void echo_print(t_pipe *pipe, char *str)
 		fd = print_redirection(pipe->cmd->redir);
 	else 
 		fd = 1;
+	if(echo_args(str) == 1)
+		ft_fprintf(fd, "\n", str);
 	ft_fprintf(fd, "%s", str);
 }
 
@@ -60,7 +62,10 @@ void bi_echo(t_pipe *pipe)
 	j = 1;
 	option = false;
 	if(echo_args(str) == 1)
+	{
+		echo_print(pipe, str)
 		return ;
+	}
 	if(str[j] == "-n")
 	{
 		option = true;
