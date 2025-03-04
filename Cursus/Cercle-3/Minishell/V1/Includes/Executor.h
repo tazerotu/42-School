@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/04 10:15:00 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/04 10:34:50 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@
 // ERROR HANDLING
 # define ERROR_FD 101
 # define ERROR_DIR 111
+# define ERROR_PWD 121
+# define ERROR_ENV 131
 
 // Struct
 typedef struct s_env
