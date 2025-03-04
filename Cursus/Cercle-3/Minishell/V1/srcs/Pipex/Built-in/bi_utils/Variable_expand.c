@@ -12,9 +12,10 @@
 
 #include "../../../../Includes/Executor.h"
 
-char *variable_expand(t_pipe *pipe, char *str)
+char	*variable_expand(t_pipe *pipe, char *str)
 {
-	char *new_str;
-	int i;
-	return(new_str);
+	char	*new_str;
+	int		i;
+
+	return (new_str);
 }

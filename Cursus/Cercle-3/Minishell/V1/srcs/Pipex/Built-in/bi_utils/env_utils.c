@@ -12,7 +12,7 @@
 
 #include "../../../../Includes/Executor.h"
 
-void env_add_back(t_env *envp, t_env *new)
+void	env_add_back(t_env *envp, t_env *new)
 {
 	if (!envp || !new)
 		return ;
@@ -25,15 +25,16 @@ void env_add_back(t_env *envp, t_env *new)
 		envp = new;
 }
 
-void env_delone(t_env *envp)
+void	env_delone(t_env *envp)
 {
-	t_env *tmp;
+	t_env	*tmp;
+
 	tmp = envp;
 	if (!tmp)
 		return ;
 	if (tmp->previous)
 		tmp->previous->next = tmp->next;
-	if (tmp->next)	
+	if (tmp->next)
 		tmp->next->previous = tmp->previous;
 	free(tmp);
 }
@@ -51,7 +52,7 @@ void	*env_new(char *content)
 	return (env1);
 }
 
-t_env *env_last(t_env *env)
+t_env	*env_last(t_env *env)
 {
 	while (env && env->next)
 	{
@@ -60,7 +61,7 @@ t_env *env_last(t_env *env)
 	return (env);
 }
 
-int env_size(t_env *env)
+int	env_size(t_env *env)
 {
 	int	size;
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/27 15:22:18 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/04 10:09:31 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int variable_amount(char **str)
 }
 
 // Verify Exist
-static int variable_pos(t_env *envp, char *str)
+int variable_pos(t_env *envp, char *str)
 {
 	int pos;
 	pos = 1;
@@ -41,7 +41,7 @@ static int variable_pos(t_env *envp, char *str)
 	return (-1);
 }
 
-void delete_variable(t_env *envp, int pos)
+static void delete_variable(t_env *envp, int pos)
 {
 	t_env *tmp;
 	tmp = envp;
