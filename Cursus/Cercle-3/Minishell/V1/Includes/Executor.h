@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/04 10:34:50 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/04 11:04:55 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ t_pipe	*init(t_pipe *pipe, char *str, char **envp);
 t_pipe	*init_env(t_pipe *pipe, char **envp);
 
 	// Free
-void	free_pipe(t_pipe *pipe);
+void	free_all(t_pipe *pipe);
 
 	// Command initialization
 void	verify_semicolon(void);

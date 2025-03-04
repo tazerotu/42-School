@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/04 10:45:03 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/04 11:17:53 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static t_env *find_env_pos(t_env *env, int pos)
 	return (env);
 }
 
-static void change_pwd(t_env *env, char **str, char *path)
+static void change_pwd(t_env *env, char *path)
 {
 	char *cwd;
     t_env *tmp;
@@ -42,18 +42,42 @@ static void change_pwd(t_env *env, char **str, char *path)
 	return ;
 }
 
+static char *expand_pwd(t_env *env, char *str)
+{
+	char *new_str;
+	int i;
+
+	i = 0;
+	while(str[i])
+	{
+		if(str[i] == '~')
+		{
+			
+		}
+	}
+	return(new_str);
+}
+
 static void change_dir(t_env *env, char **str, bool home)
 {
 	t_env *tmp;
-
+	char *new_str;
+	
 	tmp = env;
-	change_pwd(tmp, str, "OLDPWD");
+	change_pwd(tmp, "OLDPWD");
 	if(home == true)
-		chdir(find_env_pos(tmp, variable_pos(tmp, "HOME")));
-	if(str[1][0] == "~")
 	{
-		
+		if(!chdir(find_env_pos(tmp, variable_pos(tmp, "HOME"))))
+			{
+				ft_fprintf(1, "cd: no such file or directory: %s", tmp->env);
+				return ;
+			}
 	}
+	new_str = expand_pwd(env, str[1]);
+	if(!chdir(new_str))
+		ft_fprintf(1, "cd: no such file or directory: %s", new_str);
+	else
+		change_pwd(tmp, "PWD");
 	return ;
 }
 
@@ -65,13 +89,7 @@ void bi_cd(t_env *env, char **str)
 		return ;
 	}
 	if(amount_arg(str) == 1)
-	{
 		change_dir(env, str, true);
-		return ;
-	}
 	else
-	{
 		change_dir(env, str, false);
-		return ;
-	}
 }

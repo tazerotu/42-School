@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/02/28 11:26:29 by marvin           ###   ########.fr        #
+#    Updated: 2025/03/04 11:05:36 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,10 +21,10 @@ SRCS_INIT =		./srcs/Init/Init.c \
 	
 SRCS_PIPEX =	
 
-SRCS_BUILT_IN =	./srcs/Pipex/Built-in/Env.c \
+SRCS_BUILT_IN =	./srcs/Pipex/Built-in/env.c \
 				./srcs/Pipex/Built-in/bi_utils/env_utils.c \
-				./srcs/Pipex/Built-in/Pwd.c \
-				./srcs/Pipex/Built-in/Unset.c \
+				./srcs/Pipex/Built-in/pwd.c \
+				./srcs/Pipex/Built-in/unset.c \
 								
 				
 

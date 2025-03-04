@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 10:05:42 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 10:27:43 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/04 11:07:05 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	ft_hexa_ptr(int fd, size_t decimal_number, char *base)
 	return (i);
 }
 
-int	ft_putptr_fd_fprintf(int fd, size_t *ptr)
+int	ft_putptr_fd(int fd, size_t *ptr)
 {
 	int	i;
 
