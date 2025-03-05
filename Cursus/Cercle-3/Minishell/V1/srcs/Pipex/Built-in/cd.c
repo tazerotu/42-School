@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/04 12:53:57 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/05 12:03:37 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,22 +42,22 @@ static void	change_pwd(t_env *env, char *path)
 	return ;
 }
 
-static char	*expand_pwd(t_env *env, char *str)
+static char	*expand_pwd(t_env *envp, char *str)
 {
 	t_env	*tmp;
 	char	*new_str;
 	char	*env;
 	int		i;
 
-	tmp = env;
-	i = 0;
+	tmp = envp;
+	i = 1;
+	if (str[0] == '~')
+	{
+		env = ft_strnstr(find_env_pos(tmp, variable_pos(tmp, "HOME")), '=', 5);
+		new_str = ft_strjoin(new_str, env);
+	}
 	while (str[i])
 	{
-		if (str[i] == '~')
-		{
-			env = ft_strnstr(find_env_pos(tmp, variable_pos(tmp, "HOME")), '=', 5);
-			new_str = ft_strjoin(new_str, env);
-		}
 		i++;
 	}
 	return (new_str);
