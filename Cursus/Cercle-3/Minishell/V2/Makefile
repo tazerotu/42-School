@@ -6,7 +6,7 @@
 #    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/02/28 17:25:10 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/03/05 12:42:40 by clai-ton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ ac: all clean
 
 clean:
 		@${MAKE} --silent -C ${LIBFT} clean
-		@${RM}  ${PARSE_OBJECTS}
+		@${RM} ${PARSE_OBJECTS}
 
 fclean:		clean
 		@${MAKE} --silent -C ${LIBFT} fclean

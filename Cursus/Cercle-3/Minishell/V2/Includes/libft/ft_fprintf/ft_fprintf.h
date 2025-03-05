@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_fprintf.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:56:29 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 10:25:41 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/05 16:22:32 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
+#ifndef FT_FPRINTF_H
 
-# define FT_PRINTF_H
+# define FT_FPRINTF_H
 
 # include <stdarg.h>
 # include <stdio.h>

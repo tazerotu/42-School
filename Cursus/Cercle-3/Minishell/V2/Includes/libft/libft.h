@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/28 17:31:10 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:21:45 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -487,8 +487,10 @@ void				ft_dblstclear(t_dblst **lst, void (*del)(void *));
 void				ft_dblstclear_before(t_dblst **lst, void (*del)(void *));
 void				ft_dblstclear_after(t_dblst **lst, void (*del)(void *));
 void				ft_dblstdelone(t_dblst *node, void (*del)(void *));
-void				ft_dblstdel_n_before(t_dblst *node, void (*del)(void *), size_t n);
-void				ft_dblstdel_n_after(t_dblst *node, void (*del)(void *), size_t n);
+void				ft_dblstdel_n_before(
+						t_dblst *node, void (*del)(void *), size_t n);
+void				ft_dblstdel_n_after(
+						t_dblst *node, void (*del)(void *), size_t n);
 t_dblst				*ft_dblstfirst(t_dblst *lst);
 t_dblst				*ft_dblstlast(t_dblst *lst);
 void				ft_dblstinsert_before(t_dblst *lst_node, t_dblst *new);

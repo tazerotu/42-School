@@ -6,15 +6,15 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:44:12 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/28 18:07:25 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/03/05 17:32:13 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/lexer_parser.h"
 
+
 //temporary
-/*
-static int	parser_main(void)
+/*void	parser_main(void)
 {
 	char *input = NULL;
     int i = 0;
@@ -43,8 +43,7 @@ static int	parser_main(void)
 	return (0);
 }
 */
-/*
-void	test_quotes(void)
+/*void	test_quotes(void)
 {
 	char	str1[] = "je \'ne\' marche\" pas\' \"du\' tout";
 	char	str2[] = "je \'ne\' marche\" pas \"non\' plus";
@@ -63,8 +62,7 @@ void	test_quotes(void)
 	printf("%i; %s\n", check_incorrect_quotes(str7), str7);
 }
 */
-/*
-void	test_tokenizer_1_helper(char *src, char *idx)
+/*void	test_tokenizer_1_helper(char *src, char *idx)
 {
 	t_list **tok_lst;
 	t_list *cur;
@@ -80,14 +78,14 @@ void	test_tokenizer_1_helper(char *src, char *idx)
 		if (cur->content)
 		{
 			tok = (t_tok *) cur->content;
-			printf("str: %s\n", tok->str);
+			printf("str %i: %s\n", tok->quote_type, tok->str);
 		}
 		ft_lstdelone(cur, del_token_1);
 		cur = next;
 	}
 }
-*/
-/*
+
+
 void	test_tokenizer_1(void)
 {
 	char	str3[] = "";
@@ -116,8 +114,7 @@ void	test_tokenizer_1(void)
 	test_tokenizer_1_helper(str5d, "5d");
 }
 */
-/*
-void	test_trim_helper(char *str, char *idx)
+/*void	test_trim_helper(char *str, char *idx)
 {
 	t_list **tok_lst;
 	t_list *cur;
@@ -141,8 +138,7 @@ void	test_trim_helper(char *str, char *idx)
 	}
 }
 */
-/*
-void	test_trim(void)
+/*void	test_trim(void)
 {
 	char	str2[] = "test   no  quote";
 	char	str1a[] = "'  simplestart  'test   simple + without  ";
@@ -156,8 +152,7 @@ void	test_trim(void)
 	test_trim_helper(str4b, "4b");
 }
 */
-
-void	test_var_helper(char *str, char *idx)
+/*void	test_var_helper(char *str, char *idx)
 {
 	t_list **lst;
 	t_list *cur;
@@ -196,6 +191,27 @@ void	test_var(void)
 	test_var_helper(str6, "6");
 	test_var_helper(str7, "7");
 }
+*/
+/*void	test_join_multi(void)
+{
+	char	**strs;
+	char	*final;
+
+	strs = malloc(4 * sizeof(char *));
+	strs[0] = ft_strdup("This");
+	strs[1] = ft_strdup("String");
+	strs[2] = ft_strdup("Rocks");
+	strs[3] = ft_strdup("");
+	final = ft_strjoin_multi(4, strs, "");
+	printf("%s\n", final);
+	free(strs[0]);
+	free(strs[1]);
+	free(strs[2]);
+	free(strs[3]);
+	free(strs);
+	free(final);
+}
+*/
 
 int main(void)
 {
@@ -204,5 +220,6 @@ int main(void)
 	//test_trim();
 	//test_tokenizer_1();
 	//test_trim();
-	test_var();
+	//test_var();
+	//test_join_multi();
 }

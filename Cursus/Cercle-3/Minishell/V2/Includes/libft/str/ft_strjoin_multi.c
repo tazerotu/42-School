@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:24:39 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/28 18:15:26 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/03/05 12:51:34 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,14 @@ static int	ft_get_malloc_size(int strs_size, char **strs, char *sep)
 {
 	int	i;
 	int	malloc_size;
-printf("entering ft_get_malloc_size\n");
+
 	if (!sep || !sep[0])
-		malloc_size = 0;
+		malloc_size = 1;
 	else
-		malloc_size = ft_strlen(sep) * (strs_size - 1);
-printf("gone past checking sep\n");
+		malloc_size = ft_strlen(sep) * (strs_size - 1) + 1;
 	i = 0;
 	while (i < strs_size && strs[i])
 	{
-printf("i = %i, %s\n", i, strs[i]);
 		malloc_size += ft_strlen(strs[i++]);
 	}
 	return (malloc_size);
@@ -40,7 +38,7 @@ static char	*ft_strcat_join(char *dest, char *src, int *dest_idx)
 	{
 		dest[*dest_idx] = src[i];
 		++i;
-		(*dest_idx)++;
+		++(*dest_idx);
 	}
 	return (dest);
 }
@@ -55,17 +53,15 @@ static void	ft_my_join(int size, char **strs, char *sep, char *dest)
 	while (i < size && strs[i])
 	{
 		ft_strcat_join(dest, strs[i], &j);
-		if (i < size - 1)
-		{
+		if (sep && strs[i + 1] && i < size - 1)
 			ft_strcat_join(dest, sep, &j);
-		}
 		++i;
 	}
 	dest[j] = '\0';
 }
 
 /*
-** Joins the strs_size first strings of strs,
+** Joins up to the strs_size first strings of strs,
 ** adding the string sep in-between.
 ** sep can be empty or NULL.
 ** The join will stop at the first NULL string,
@@ -75,7 +71,7 @@ char	*ft_strjoin_multi(int strs_size, char **strs, char *sep)
 {
 	int		malloc_size;
 	char	*dest;
-printf("entering ft_strjoin_multi\n");
+
 	if (strs_size == 0)
 	{
 		dest = (char *) malloc(sizeof(char));

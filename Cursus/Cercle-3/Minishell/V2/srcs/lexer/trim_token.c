@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 17:05:10 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/27 16:35:41 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:20:27 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static size_t	token_new_size(char *src)
 {
-	int	was_word;
+	int		was_word;
 	size_t	src_i;
 	size_t	dest_size;
 
@@ -45,7 +45,7 @@ char	*ft_trim_token(char *src)
 	size_t	dest_i;
 	size_t	dest_size;
 	char	*dest;
-	
+
 	src_i = 0;
 	dest_i = 0;
 	dest_size = token_new_size(src);
@@ -71,7 +71,7 @@ void	trim_spaces(t_list	**tok_lst)
 	t_list	*cur_lst;
 	t_tok	*tok;
 	char	*new;
-	
+
 	cur_lst = *tok_lst;
 	while (cur_lst)
 	{

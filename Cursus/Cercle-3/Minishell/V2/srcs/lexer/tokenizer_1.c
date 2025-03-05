@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/20 16:47:25 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/02/27 14:51:22 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:21:06 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	del_token_1(void *tok_void)
 {
-	t_tok *tok;
+	t_tok	*tok;
 
 	if (!tok_void)
 		return ;

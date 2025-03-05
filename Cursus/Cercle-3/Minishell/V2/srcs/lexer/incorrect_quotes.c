@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 14:25:59 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/01/23 16:59:16 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/03/05 16:19:40 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static int	check_double(t_quote *quote, int i)
 	quote->last_d = i;
 	return (0);
 }
+
 /*
 * Returns 1 if quotes are incorrect, 0 otherwise.
 * Incorrect is defined as quotes opening but not ending.
@@ -74,7 +75,7 @@ int	check_incorrect_quotes(char *input)
 		else if (input[i] == '"')
 			ret_val |= check_double(quote, i);
 		if (ret_val)
-			break;
+			break ;
 		++i;
 	}
 	ret_val |= quote->s_count % 2 != 0;

@@ -16,7 +16,8 @@ Lexer (assigned to laicar) ->
 	read line
 ✓	check simple/double quotes correct (opening with ending, no mix of type eg "'"' although "''" is ok), else error
 ✓	trim spaces outside quotes
-	expand: replace environment variables (eg $USER, except if between simple quotes. If not found give empty string, also handle $?)
+✓	expand: replace environment variables (eg $USER, except if between simple quotes. If non-set variable, give empty string)
+	also handle $?, probably NOT handle $$ (PID) and $1 (positional argument)
 	split into different words (can be empty string if eg "", but hola"   ciao     "bonjour is 1 word without quotes)
 	/!\ quotes resulting from expansion aren't removed
 	split again according to < > << >> |. If multiple (eg <<<<, <> and 2>&1 are not supported) or following token isn't an alphanumeric (?) word -> error
