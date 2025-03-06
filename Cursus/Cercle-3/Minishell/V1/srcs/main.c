@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/06 10:57:25 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/06 12:47:32 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,11 @@ int main(int argc, char **argv, char **envp)
 	// pipe = init(pipe, input, envp);
 	pipe = init_env(pipe, envp);
 	bi_env(pipe->envp);
-	char *cd[] = {"cd", "~/42-School", NULL};
+	char *cd[] = {"cd", "/home/ttas/42-School", NULL};
 	bi_cd(pipe->envp, cd);
-	printf("\n\n\n%s\n", getcwd(NULL, 0));
 	// chdir("/home/ttas/42-School");
+	printf("\n%s\n\n", getcwd(NULL, 0));
+	bi_env(pipe->envp);
 	free_all(pipe);
 	return(0);
 }

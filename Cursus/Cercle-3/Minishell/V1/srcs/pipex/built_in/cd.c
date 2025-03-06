@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/06 11:03:33 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/06 12:47:19 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,36 +24,38 @@ static t_env	*find_env_pos(t_env *env, int pos)
 	return (env);
 }
 
-static char	*expand_pwd(t_env *envp, char *str)
-{
-	t_env	*tmp;
-	char	*new_str;
-	char	*env;
+// static char	*expand_pwd(t_env *envp, char *str)
+// {
+// 	t_env	*tmp;
+// 	char	*new_str;
+// 	char	*env;
 
-	tmp = envp;
-	if (str[0] == '~')
-	{
-		// int pos = variable_pos(tmp, "HOME");
-		// while(pos > 0)
-		// {
-		// 	printf("%s\t\t%d\n", tmp->env, pos);
-		// 	pos--;
-		// 	tmp = tmp->next;
-		// }
-		tmp = find_env_pos(tmp->next, variable_pos(tmp->next, "HOME"));
-		printf("\n%s\n", tmp->env);
-		env = ft_strnstr(tmp->env , "=", 5);
-		new_str = ft_strjoin(new_str, env);
-	}
-	new_str = ft_strjoin(new_str, str);
-	return (new_str);
-}
+// 	tmp = envp;
+// 	if (str[0] == '~')
+// 	{
+// 		// int pos = variable_pos(tmp, "HOME");
+// 		// while(pos > 0)
+// 		// {
+// 		// 	printf("%s\t\t%d\n", tmp->env, pos);
+// 		// 	pos--;
+// 		// 	tmp = tmp->next;
+// 		// }
+// 		tmp = find_env_pos(tmp, variable_pos(tmp->next, "HOME"));
+// 		printf("\n%s\n", tmp->env);
+// 		env = ft_strnstr(tmp->env , "=", 5);
+// 		new_str = ft_strjoin(new_str, env);
+// 	}
+// 	new_str = ft_strjoin(new_str, str);
+// 	return (new_str);
+// }
 
 static void	change_pwd(t_env *env, char *path)
 {
 	char	*cwd;
+	char 	*new_str;
 	t_env	*tmp;
 
+	new_str = NULL;
 	tmp = env;
 	cwd = getcwd(NULL, 0);
 	if (!cwd)
@@ -61,8 +63,10 @@ static void	change_pwd(t_env *env, char *path)
 		ft_fprintf(1, "ERROR : %d\n", ERROR_PWD);
 		return ;
 	}
-	tmp = find_env_pos(tmp, variable_pos(tmp, path));
-	// tmp->env = cwd;
+	tmp = find_env_pos(tmp, variable_pos(tmp->next, path));
+	new_str = path;
+	new_str = ft_strjoin(new_str, cwd);
+	ft_strlcpy(tmp->env, new_str, ft_strlen(new_str) + 1);
 	free(cwd);
 	return ;
 }
@@ -70,29 +74,26 @@ static void	change_pwd(t_env *env, char *path)
 static void	change_dir(t_env *env, char *str, bool home)
 {
 	t_env	*tmp;
-	char	*new_str;
 
 	tmp = env;
-	change_pwd(tmp, "OLDPWD");
+	change_pwd(tmp, "OLDPWD=");
 	if (home == true)
 	{
 		tmp = find_env_pos(tmp, variable_pos(tmp, "HOME"));
-		if (!chdir(tmp->env))
+		if (chdir(tmp->env))
 		{
 			ft_fprintf(1, "cd: no such file or directory: %s", tmp->env);
 			return ;
 		}
 		else
-			change_pwd(tmp, "PWD");
+			change_pwd(tmp, "PWD=");
 	}
 	else
 	{
-		new_str = expand_pwd(env, str);
-		printf("%s\n", new_str);
-		if (!chdir(new_str))
-			ft_fprintf(1, "cd: no such file or directory: %s", new_str);
+		if (chdir(str))
+			ft_fprintf(1, "cd: no such file or directory: %s", str);
 		else
-			change_pwd(tmp, "PWD");
+			change_pwd(tmp, "PWD=");
 	}
 	return ;
 }
