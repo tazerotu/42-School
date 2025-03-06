@@ -6,11 +6,11 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/04 09:55:21 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/06 10:05:38 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Includes/Executor.h"
+#include "../../../includes/executor.h"
 
 // Verifies the number of arguments to see if it can print something
 int echo_args(char **str)
@@ -39,7 +39,7 @@ int print_redirection(char **redir)
 }
 
 // Prints the argument, ex: "ceci est un test"
-void echo_print(t_pipe *pipe, char *str)
+void echo_print(t_pipe *pipe, char *str, bool option)
 {
 	int fd;
 	if(pipe->cmd->redir)
@@ -49,6 +49,7 @@ void echo_print(t_pipe *pipe, char *str)
 	if(echo_args(str) == 1)
 		ft_fprintf(fd, "\n", str);
 	ft_fprintf(fd, "%s", str);
+	option ? return ; : ft_fprintf(fd, "\n");		
 }
 
 // The echo function, with only the -n option
@@ -63,7 +64,7 @@ void bi_echo(t_pipe *pipe)
 	option = false;
 	if(echo_args(str) == 1)
 	{
-		echo_print(pipe, str)
+		echo_print(pipe, str, false)
 		return ;
 	}
 	if(str[j] == "-n")
@@ -73,7 +74,7 @@ void bi_echo(t_pipe *pipe)
 	}
 	while(str[j])
 	{
-		echo_print(pipe, str[j]);
+		echo_print(pipe, str[j], option);
 		j++;
 	}
 }

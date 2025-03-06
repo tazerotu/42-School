@@ -1,14 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Here_doc.c                                         :+:      :+:    :+:   */
+/*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/20 14:18:23 by ttas             ###   ########.fr       */
+/*   Created: 2025/01/23 10:04:54 by ttas              #+#    #+#             */
+/*   Updated: 2025/03/06 10:36:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/Executor.h"
+#include "../../../includes/executor.h"
 
+void bi_env(t_env *envp)
+{
+	t_env *tmp;
+	tmp = envp;
+	while(tmp && tmp->next)
+	{
+		ft_printf("%s\n", tmp->env);
+		tmp = tmp->next;
+	}
+}

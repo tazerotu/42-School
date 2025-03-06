@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Executor.h                                         :+:      :+:    :+:   */
+/*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/05 12:02:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/06 10:46:23 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ void	redir(void);
 void	bi_echo(char *str);
 
 //	with absolute or relative path
-void	bi_cd(char *path);
+void	bi_cd(t_env *env, char **path);
 
 void	bi_pwd(void);
 void	bi_export(void);
@@ -93,7 +93,7 @@ void	bi_exit(void);
 		// Utils
 void	env_add_back(t_env *envp, t_env *new);
 void	env_delone(t_env *envp);
-void	*env_new(char *content);
+t_env	*env_new(char *content);
 t_env	*env_last(t_env *env);
 int		env_size(t_env *env);
 int		variable_pos(t_env *envp, char *str);

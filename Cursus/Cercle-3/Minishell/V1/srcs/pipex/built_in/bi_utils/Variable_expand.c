@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../Includes/Executor.h"
+#include "../../../../includes/executor.h"
 
 char	*variable_expand(t_pipe *pipe, char *str)
 {

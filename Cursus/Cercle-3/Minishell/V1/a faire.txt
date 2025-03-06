@@ -29,7 +29,7 @@ Parser (assigned to laicar) ->
 	do a t_list *prompt_cmds containing different t_cmd in the main structure (they are separated by pipes)
 	Research Heredocs (<<)
 
-Redirections/pipes
+Redirections/pipes (assigned to tazerotu) -> 
 	check https://github.com/DimitriDaSilva/42_minishell#72-pipes for how to handle pipes and redirections. Multiple of the same type will create files but only write in the last (our school terminals behave differently)
 	check fd validity (!= -1)
 

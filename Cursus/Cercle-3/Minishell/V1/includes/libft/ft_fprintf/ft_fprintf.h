@@ -6,13 +6,13 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/07 11:56:29 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 10:25:41 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/06 10:05:26 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
+#ifndef FT_FPRINTF_H
 
-# define FT_PRINTF_H
+# define FT_FPRINTF_H
 
 # include <stdarg.h>
 # include <stdio.h>

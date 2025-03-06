@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   Export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/27 15:24:57 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/06 09:39:11 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Includes/Executor.h"
+#include "../../../includes/executor.h"
 
 // Verify syntax
 // Syntax :		Starts with either isalpha or '_'

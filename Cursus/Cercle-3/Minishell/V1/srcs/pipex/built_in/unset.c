@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Unset.c                                            :+:      :+:    :+:   */
+/*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/04 10:09:31 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/06 10:58:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Includes/Executor.h"
+#include "../../../includes/executor.h"
 
 // Verify if Variable given with command or not (ex: "unset VAR1 ..." or only "unset")
 // Works with multiple variables
@@ -28,8 +28,9 @@ static int variable_amount(char **str)
 int variable_pos(t_env *envp, char *str)
 {
 	int pos;
-	pos = 1;
 	t_env *tmp;
+	
+	pos = 1;
 	tmp = envp;
 	while(tmp && tmp->next != NULL)
 	{

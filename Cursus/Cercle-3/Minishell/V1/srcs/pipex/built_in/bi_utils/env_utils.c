@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../../Includes/Executor.h"
+#include "../../../../includes/executor.h"
 
 void	env_add_back(t_env *envp, t_env *new)
 {
@@ -39,7 +39,7 @@ void	env_delone(t_env *envp)
 	free(tmp);
 }
 
-void	*env_new(char *content)
+t_env	*env_new(char *content)
 {
 	t_env	*env1;
 

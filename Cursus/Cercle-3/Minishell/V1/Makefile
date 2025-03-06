@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/03/05 12:02:24 by marvin           ###   ########.fr        #
+#    Updated: 2025/03/06 10:41:39 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,21 +16,22 @@ EXE = Executor
 # Files
 SRC =			./srcs/main.c 
 
-SRCS_INIT =		./srcs/Init/Init.c \
+SRCS_INIT =		./srcs/init/init.c \
 				./srcs/free/free.c \
 	
 SRCS_PIPEX =	
 
-SRCS_BUILT_IN =	./srcs/Pipex/Built-in/env.c \
-				./srcs/Pipex/Built-in/bi_utils/env_utils.c \
-				./srcs/Pipex/Built-in/pwd.c \
-				./srcs/Pipex/Built-in/unset.c \
+SRCS_BUILT_IN =	./srcs/pipex/built_in/env.c \
+				./srcs/pipex/built_in/bi_utils/env_utils.c \
+				./srcs/pipex/built_in/pwd.c \
+				./srcs/pipex/built_in/unset.c \
+				./srcs/pipex/built_in/cd.c \
 								
 				
 
 SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_BUILT_IN}
 OBJECTS =		${SOURCES:.c=.o}
-LIBFT = ./Includes/libft
+LIBFT = ./includes/libft
 
 # Variables
 CC = cc
@@ -46,7 +47,7 @@ all:		${EXE}
 
 ${EXE}:		${OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
-		@${CC} ${CFLAGS} ${OBJECTS} ./Includes/libft/libft.a -lreadline -o ${EXE}
+		@${CC} ${CFLAGS} ${OBJECTS} ./includes/libft/libft.a -lreadline -o ${EXE}
 
 ac: all clean
 

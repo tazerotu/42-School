@@ -6,11 +6,11 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/04 09:19:21 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/06 09:39:22 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../../Includes/Executor.h"
+#include "../../../includes/executor.h"
 
 void verify_builtin(t_pipe *pipe)
 {

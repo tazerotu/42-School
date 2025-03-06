@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/05 12:02:26 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/06 10:57:25 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../Includes/Executor.h"
+#include "../includes/executor.h"
 
 int main(int argc, char **argv, char **envp)
 {
@@ -22,8 +22,11 @@ int main(int argc, char **argv, char **envp)
     system("clear");
 	// pipe = init(pipe, input, envp);
 	pipe = init_env(pipe, envp);
-	chdir("/home/ttas/42-School");
-	printf("%s\n", getcwd(NULL, 0));
+	bi_env(pipe->envp);
+	char *cd[] = {"cd", "~/42-School", NULL};
+	bi_cd(pipe->envp, cd);
+	printf("\n\n\n%s\n", getcwd(NULL, 0));
+	// chdir("/home/ttas/42-School");
 	free_all(pipe);
 	return(0);
 }
