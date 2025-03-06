@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   Env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 10:53:34 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/24 17:37:05 by marvin           ###   ########.fr       */
+/*   Created: 2025/01/23 10:04:54 by ttas              #+#    #+#             */
+/*   Updated: 2025/02/27 15:22:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../../Includes/Executor.h"
 
-t_list	*ft_lstlast(t_list *lst)
+void bi_env(t_env *envp)
 {
-	while (lst && lst->next != NULL)
+	t_env *tmp;
+	tmp = envp;
+	while(tmp && tmp->next)
 	{
-		lst = lst->next;
+		ft_printf("%s\n", tmp->env);
+		tmp = tmp->next;
 	}
-	return (lst);
 }

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   ft_islower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 10:53:34 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/24 17:37:05 by marvin           ###   ########.fr       */
+/*   Created: 2025/02/25 12:20:19 by ttas              #+#    #+#             */
+/*   Updated: 2025/02/25 12:22:30 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-t_list	*ft_lstlast(t_list *lst)
+int ft_isupper(char c)
 {
-	while (lst && lst->next != NULL)
-	{
-		lst = lst->next;
-	}
-	return (lst);
+	if(c >= 'a' && c <= 'z')
+		return(1);
+	return(0);
 }

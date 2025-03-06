@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/05/07 10:49:44 by ttas              #+#    #+#              #
-#    Updated: 2024/10/24 09:24:17 by ttas             ###   ########.fr        #
+#    Updated: 2025/01/31 16:05:44 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 LIB = libftfdprintf.a
 
-SRCS =  ft_fdprintf.c \
+SRCS =  ft_fprintf.c \
 		./src/ft_putstr.c \
 		./src/ft_putchar.c \
 		./src/ft_putnbr.c \

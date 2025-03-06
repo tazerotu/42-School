@@ -1,22 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstlast.c                                       :+:      :+:    :+:   */
+/*   Utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/29 10:53:34 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/24 17:37:05 by marvin           ###   ########.fr       */
+/*   Created: 2025/01/20 11:37:11 by ttas              #+#    #+#             */
+/*   Updated: 2025/01/23 10:08:22 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
-
-t_list	*ft_lstlast(t_list *lst)
-{
-	while (lst && lst->next != NULL)
-	{
-		lst = lst->next;
-	}
-	return (lst);
-}
+#include "../../Includes/Executor.h"

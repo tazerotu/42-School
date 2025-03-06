@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/01/07 10:26:04 by ttas             ###   ########.fr       */
+/*   Updated: 2025/02/25 12:24:58 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # define LIBFT_H
 
 # include "./ft_printf/ft_printf.h"
+# include "./ft_fprintf/ft_fprintf.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
@@ -63,6 +64,9 @@ int					ft_isprint(int c);
 	and `0` if not.
  */
 int					ft_isascii(int c);
+
+int 				ft_isupper(char c);
+int 				ft_islower(char c);
 
 /*----------------------*/
 /*       STRING         */
@@ -253,6 +257,8 @@ char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
  * @param f The function to apply to each character
  */
 void				ft_striteri(char *s, void (*f)(unsigned int, char *));
+
+char				*ft_strstr(char *str, char *to_find);
 
 /*----------------------*/
 /*         MATHS        */

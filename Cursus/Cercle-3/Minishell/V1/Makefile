@@ -3,33 +3,32 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/01/14 12:30:39 by ttas             ###   ########.fr        #
+#    Updated: 2025/03/05 12:02:24 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program Executable
-EXE = Minishell
+EXE = Executor
 
 # Files
-SRC =			./srcs/main.c \
-				
+SRC =			./srcs/main.c 
 
-SRCS_INIT =	
-				
+SRCS_INIT =		./srcs/Init/Init.c \
+				./srcs/free/free.c \
 	
-SRCS_EXECUTE =	./srcs/Execute/Execute.c \
-				
+SRCS_PIPEX =	
+
+SRCS_BUILT_IN =	./srcs/Pipex/Built-in/env.c \
+				./srcs/Pipex/Built-in/bi_utils/env_utils.c \
+				./srcs/Pipex/Built-in/pwd.c \
+				./srcs/Pipex/Built-in/unset.c \
+								
 				
 
-SRCS_TOKEN =	./srcs/Token/Verify_token.c \
-				
-				
-				
-
-SOURCES =		${SRC} ${SRCS_EXECUTE}
+SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_BUILT_IN}
 OBJECTS =		${SOURCES:.c=.o}
 LIBFT = ./Includes/libft
 
