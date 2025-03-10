@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/03/06 10:41:39 by ttas             ###   ########.fr        #
+#    Updated: 2025/03/10 17:00:14 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,10 +26,13 @@ SRCS_BUILT_IN =	./srcs/pipex/built_in/env.c \
 				./srcs/pipex/built_in/pwd.c \
 				./srcs/pipex/built_in/unset.c \
 				./srcs/pipex/built_in/cd.c \
+
+SRCS_UTILS =	./srcs/utils/error.c \
+				
 								
 				
 
-SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_BUILT_IN}
+SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_BUILT_IN} ${SRCS_UTILS}
 OBJECTS =		${SOURCES:.c=.o}
 LIBFT = ./includes/libft
 

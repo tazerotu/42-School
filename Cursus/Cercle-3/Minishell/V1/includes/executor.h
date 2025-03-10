@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/06 10:46:23 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/10 16:59:41 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,5 +97,6 @@ t_env	*env_new(char *content);
 t_env	*env_last(t_env *env);
 int		env_size(t_env *env);
 int		variable_pos(t_env *envp, char *str);
+int		error_message(int error, char *str);
 
 #endif

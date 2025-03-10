@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/06 12:47:19 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/10 17:00:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,15 +49,13 @@ static t_env	*find_env_pos(t_env *env, int pos)
 // 	return (new_str);
 // }
 
-static void	change_pwd(t_env *env, char *path)
+static void	change_pwd(t_env *env, char *path, char *cwd)
 {
-	char	*cwd;
 	char 	*new_str;
 	t_env	*tmp;
 
 	new_str = NULL;
 	tmp = env;
-	cwd = getcwd(NULL, 0);
 	if (!cwd)
 	{
 		ft_fprintf(1, "ERROR : %d\n", ERROR_PWD);
@@ -67,35 +65,34 @@ static void	change_pwd(t_env *env, char *path)
 	new_str = path;
 	new_str = ft_strjoin(new_str, cwd);
 	ft_strlcpy(tmp->env, new_str, ft_strlen(new_str) + 1);
-	free(cwd);
+	free(new_str);
 	return ;
 }
 
-static void	change_dir(t_env *env, char *str, bool home)
+static int	change_dir(t_env *env, char *str, bool home)
 {
 	t_env	*tmp;
+	char	*pwd_previous;
 
 	tmp = env;
-	change_pwd(tmp, "OLDPWD=");
+	pwd_previous = getcwd(NULL, 0);
 	if (home == true)
 	{
 		tmp = find_env_pos(tmp, variable_pos(tmp, "HOME"));
 		if (chdir(tmp->env))
-		{
-			ft_fprintf(1, "cd: no such file or directory: %s", tmp->env);
-			return ;
-		}
-		else
-			change_pwd(tmp, "PWD=");
+			return (error_message(ERROR_DIR, tmp->env));
+		change_pwd(tmp, "OLDPWD=", pwd_previous);
+		change_pwd(tmp, "PWD=", getcwd(NULL, 0));
 	}
 	else
 	{
 		if (chdir(str))
-			ft_fprintf(1, "cd: no such file or directory: %s", str);
-		else
-			change_pwd(tmp, "PWD=");
+			return (error_message(ERROR_DIR, str));
+		change_pwd(tmp, "OLDPWD=", pwd_previous);
+		change_pwd(tmp, "PWD=", getcwd(NULL, 0));
 	}
-	return ;
+	free(pwd_previous);
+	return (0);
 }
 
 void	bi_cd(t_env *env, char **path)
@@ -114,4 +111,5 @@ void	bi_cd(t_env *env, char **path)
 		change_dir(env, path[0], true);
 	else
 		change_dir(env, path[1], false);
+	return ;
 }
