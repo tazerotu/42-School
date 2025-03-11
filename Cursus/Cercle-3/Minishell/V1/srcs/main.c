@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 10:49:24 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/11 12:27:13 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,28 @@ int main(int argc, char **argv, char **envp)
 	t_pipe *pipe;
 	pipe = malloc(sizeof(t_pipe));
     system("clear");
-	// pipe = init(pipe, input, envp);
-	char *echo[] = {"echo", "-n", "ceci est\nun\ntest", "\ntest", NULL};
-	pipe->cmd->cmd = echo;
-	bi_echo(pipe->cmd);
+	// pipe = init(pipe, input, envp);	
 	pipe = init_env(pipe, envp);
-	
 	free_all(pipe);
 	return(0);
 }
 
-
 // bi_pwd();
+/* TEST Echo
+	pipe->cmd = malloc(sizeof(t_cmd));
+	pipe->cmd->redir = NULL;
+	pipe->cmd->cmd = malloc(sizeof(char *) * 5);
+	pipe->cmd->cmd[0] = malloc(5);
+	pipe->cmd->cmd[1] = malloc(3);
+	pipe->cmd->cmd[2] = malloc(17);
+	pipe->cmd->cmd[3] = malloc(6);
+	pipe->cmd->cmd[0] = "echo";
+	pipe->cmd->cmd[1] = "aaa";
+	pipe->cmd->cmd[2] = "ceci est un test";
+	pipe->cmd->cmd[3] = "test";
+	pipe->cmd->cmd[4] = NULL;
+	bi_echo(pipe->cmd);
+*/
 /* TEST Export, Unset
 //	char *export[] = {"export", "TEST1=1", "TEST2=2", "TEST3=3", NULL};
 // 	char *unset[] = {"unset", "TEST1", "TEST2", NULL};
