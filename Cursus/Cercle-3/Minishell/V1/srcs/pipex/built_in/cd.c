@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/10 17:00:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/11 09:35:05 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static t_env	*find_env_pos(t_env *env, int pos)
 
 static void	change_pwd(t_env *env, char *path, char *cwd)
 {
-	char 	*new_str;
+	char	*new_str;
 	t_env	*tmp;
 
 	new_str = NULL;
@@ -100,7 +100,7 @@ void	bi_cd(t_env *env, char **path)
 	int	i;
 
 	i = 0;
-	while(path[i])
+	while (path[i])
 		i++;
 	if (i > 2)
 	{

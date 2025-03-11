@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 09:28:03 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/11 09:48:08 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ void bi_export(t_pipe *pipe, char *str)
 	else
 	{
 		pipe->envp = verify_exist(pipe, str);
-		ft_strlcpy(pipe->envp->str, str, ft_strlen(str));
+		ft_strlcpy(pipe->envp->env, str, ft_strlen(str));
 	}	
 }

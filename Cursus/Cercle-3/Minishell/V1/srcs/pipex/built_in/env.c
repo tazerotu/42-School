@@ -6,17 +6,18 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:54 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/06 10:36:35 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/11 09:53:01 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-void bi_env(t_env *envp)
+void	bi_env(t_env *envp)
 {
-	t_env *tmp;
+	t_env	*tmp;
+
 	tmp = envp;
-	while(tmp && tmp->next)
+	while (tmp && tmp->next)
 	{
 		ft_printf("%s\n", tmp->env);
 		tmp = tmp->next;
