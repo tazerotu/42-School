@@ -6,13 +6,13 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 09:35:05 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/11 10:05:08 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-static t_env	*find_env_pos(t_env *env, int pos)
+t_env	*find_env_pos(t_env *env, int pos)
 {
 	if (pos == -1)
 	{
