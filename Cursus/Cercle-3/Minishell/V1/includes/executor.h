@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/10 16:59:41 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/11 10:50:02 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,13 +79,13 @@ void	redir(void);
 
 	//	Built-in
 //	with option -n
-void	bi_echo(char *str);
+void	bi_echo(t_cmd *cmd);
 
 //	with absolute or relative path
 void	bi_cd(t_env *env, char **path);
 
 void	bi_pwd(void);
-void	bi_export(void);
+t_env	*bi_export(t_env *pipe, char **str);
 void	bi_unset(t_env *envp, char **str);
 void	bi_env(t_env *envp);
 void	bi_exit(void);
@@ -97,6 +97,7 @@ t_env	*env_new(char *content);
 t_env	*env_last(t_env *env);
 int		env_size(t_env *env);
 int		variable_pos(t_env *envp, char *str);
+t_env	*find_env_pos(t_env *env, int pos);
 int		error_message(int error, char *str);
 
 #endif

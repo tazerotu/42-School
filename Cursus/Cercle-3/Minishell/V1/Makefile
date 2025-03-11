@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/03/10 17:00:14 by marvin           ###   ########.fr        #
+#    Updated: 2025/03/11 10:50:22 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,6 +26,8 @@ SRCS_BUILT_IN =	./srcs/pipex/built_in/env.c \
 				./srcs/pipex/built_in/pwd.c \
 				./srcs/pipex/built_in/unset.c \
 				./srcs/pipex/built_in/cd.c \
+				./srcs/pipex/built_in/export.c \
+				./srcs/pipex/built_in/Echo.c \
 
 SRCS_UTILS =	./srcs/utils/error.c \
 				

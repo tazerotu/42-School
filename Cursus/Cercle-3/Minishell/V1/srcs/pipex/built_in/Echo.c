@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 09:28:05 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/11 11:06:21 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,58 +23,63 @@ int echo_args(char **str)
 }
 
 // find the type of redirection and opens the file accordingly
-int print_redirection(char **redir)
+int	print_redirection(char **redir)
 {
-	int fd;
-	if(redir[0] == ">")
-		open(redir[1], O_RDWR | O_CREAT | O_TRUNC, S_IWUSR);
-	else if(redir[0] == ">>")
-		open(redir[1], O_RDWR | O_CREAT | O_APPEND, S_IWUSR);
+	int	fd;
+	
+	fd = 0;
+	if(ft_strnstr(redir[0], ">>", 2))
+		fd = open(redir[1], O_RDWR | O_CREAT | O_APPEND, S_IWUSR);
+	else if(ft_strnstr(redir[0], ">", 1))
+		fd = open(redir[1], O_RDWR | O_CREAT | O_TRUNC, S_IWUSR);
 	if(fd == -1)
 	{
-		perror(ERROR_FD);
+		error_message(ERROR_FD, NULL);
 		return(-1);
 	}
 	return(fd);
 }
 
 // Prints the argument, ex: "ceci est un test"
-void echo_print(t_pipe *pipe, char *str, bool option)
+void echo_print(t_cmd *cmd, char *str, bool option)
 {
 	int fd;
-	if(pipe->cmd->redir)
-		fd = print_redirection(pipe->cmd->redir);
+	if(cmd->redir)
+		fd = print_redirection(cmd->redir);
 	else 
 		fd = 1;
 	if(echo_args(str) == 1)
 		ft_fprintf(fd, "\n", str);
 	ft_fprintf(fd, "%s", str);
-	option ? return ; : ft_fprintf(fd, "\n");		
+	if(!option)
+		ft_fprintf(fd, "\n");
 }
 
 // The echo function, with only the -n option
-void bi_echo(t_pipe *pipe)
+void bi_echo(t_cmd *cmd)
 {
-	int i;
+	int args;
 	int j;
 	bool option;
 	char **str;
-	str = pipe->cmd->cmd;
+	
+	str = cmd->cmd;
 	j = 1;
 	option = false;
-	if(echo_args(str) == 1)
+	args = echo_args(str);
+	if(args == 1)
 	{
-		echo_print(pipe, str, false)
+		echo_print(cmd, str, false);
 		return ;
 	}
-	if(str[j] == "-n")
+	if(ft_strnstr(str[j], "-n", 2))
 	{
 		option = true;
 		j++;
 	}
 	while(str[j])
 	{
-		echo_print(pipe, str[j], option);
+		echo_print(cmd, str[j], option);
 		j++;
 	}
 }
