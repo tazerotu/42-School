@@ -6,13 +6,13 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:23:16 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/18 09:16:02 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/18 12:26:32 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/executor.h"
 
-void free_all(t_pipe *pipe)
+void free_pipe_env(t_pipe *pipe)
 {
 	t_env *tmp;
 	while(pipe->envp->previous)
@@ -25,4 +25,14 @@ void free_all(t_pipe *pipe)
 	}
 	free(pipe->envp);
 	free(pipe);
+}
+
+void free_env(char **env)
+{
+	int	i;
+	
+	i = -1;
+	while(env[++i])
+		free(env[i]);
+	free(env);	
 }

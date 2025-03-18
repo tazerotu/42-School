@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/18 11:11:27 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/18 12:45:21 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,21 +16,32 @@ int main(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
-	(void)envp;
-	// t_pipe *pipe;
-
+	t_pipe *pipe;
     system("clear");
-	// pipe = malloc(sizeof(t_pipe));
+	pipe = malloc(sizeof(t_pipe));
 	// init(pipe, NULL, envp);
-	// init_env(pipe, envp);
-	char *heredoc = here_doc("delimiteur");
-	ft_printf("\n%s", heredoc);
-	free(heredoc);
-	// free_all(pipe);
+	init_env(pipe, envp);
+	free_pipe_env(pipe);
 	return(0);
 }
 
-// bi_pwd();
+// Others
+/* TEST get_env
+	char **env = get_env(pipe->envp);
+	int i = -1;
+	printf("\n\n");
+	while(env[++i])
+		ft_printf("\n%s", env[i]);
+	free_env(env);
+*/
+
+// Pipex
+/*	TEST Heredoc
+char *heredoc = here_doc("delimiteur");
+	ft_printf("\n%s", heredoc);
+	free(heredoc); */
+
+// Built-in
 /* TEST Echo
 	pipe->cmd = malloc(sizeof(t_cmd));
 	pipe->cmd->redir = NULL;
@@ -61,6 +72,8 @@ int main(int argc, char **argv, char **envp)
 // chdir("/home/ttas/42-School");
 // printf("\n%s\n\n", getcwd(NULL, 0));
 */
+
+// Main
 /* Readline
 // while ( i < 10 )
 // {

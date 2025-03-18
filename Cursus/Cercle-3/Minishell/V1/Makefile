@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/03/18 10:24:09 by ttas             ###   ########.fr        #
+#    Updated: 2025/03/18 12:22:49 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,28 +14,31 @@
 EXE = Executor
 
 # Files
-SRC =			./srcs/main.c 
+SRC =				./srcs/main.c 
 
-SRCS_INIT =		./srcs/init/init.c \
-				./srcs/free/free.c \
+SRCS_INIT =			./srcs/init/init.c \
+					./srcs/free/free.c \
 	
-SRCS_PIPEX =	./srcs/pipex/here_doc.c \
+SRCS_PIPEX =		./srcs/pipex/here_doc.c \
 				
 
-SRCS_BUILT_IN =	./srcs/pipex/built_in/env.c \
-				./srcs/pipex/built_in/bi_utils/env_utils.c \
-				./srcs/pipex/built_in/pwd.c \
-				./srcs/pipex/built_in/unset.c \
-				./srcs/pipex/built_in/cd.c \
-				./srcs/pipex/built_in/export.c \
-				./srcs/pipex/built_in/echo.c \
+SRCS_PIPEX_UTILS =	./srcs/pipex/pipex_utils/get_env.c \
 
-SRCS_UTILS =	./srcs/utils/error.c \
+
+SRCS_BUILT_IN =		./srcs/pipex/built_in/env.c \
+					./srcs/pipex/built_in/bi_utils/env_utils.c \
+					./srcs/pipex/built_in/pwd.c \
+					./srcs/pipex/built_in/unset.c \
+					./srcs/pipex/built_in/cd.c \
+					./srcs/pipex/built_in/export.c \
+					./srcs/pipex/built_in/echo.c \
+
+SRCS_UTILS =		./srcs/utils/error.c \
 				
 								
 				
 
-SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_BUILT_IN} ${SRCS_UTILS} ${SRCS_PIPEX}
+SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_BUILT_IN} ${SRCS_UTILS} ${SRCS_PIPEX} ${SRCS_PIPEX_UTILS}
 OBJECTS =		${SOURCES:.c=.o}
 LIBFT = ./includes/libft
 

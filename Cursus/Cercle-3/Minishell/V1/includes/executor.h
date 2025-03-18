@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/18 09:41:16 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/18 12:26:42 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,8 @@ t_pipe	*init(t_pipe *pipe, char *str, char **envp);
 t_pipe	*init_env(t_pipe *pipe, char **envp);
 
 	// Free
-void	free_all(t_pipe *pipe);
+void	free_pipe_env(t_pipe *pipe);
+void	free_env(char **env);
 
 	// Command initialization
 void	verify_builtin(t_pipe *pipe);
@@ -74,7 +75,7 @@ void	parent_process(void);
 void	set_redirection(char **redir);
 
 	// Execute Utils
-char	**struct_to_char(t_env *env);
+char	**get_env(t_env *env);
 
 	// Signals
 
