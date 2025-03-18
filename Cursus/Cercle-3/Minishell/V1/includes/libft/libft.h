@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/25 12:24:58 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/18 11:07:18 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -464,6 +464,7 @@ t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
 #  define BUFFER_SIZE 15
 # endif
 
+char				*ft_strjoin_gnl(char *s1, char *s2);
 char				*get_next_line(int fd);
 char				*ft_free_join(char *s1, char *s2);
 char				*ft_current_line(char *buffer);

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:06:28 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/06 10:46:05 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/18 09:21:09 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,13 @@
 
 // t_pipe *init(t_pipe *pipe, char *str, char **envp)
 // {
-// 	pipe->n_pipe = 0;
-// 	return (pipe);
+// 	init_env(pipe, envp);
 // }
 
 t_pipe *init_env(t_pipe *pipex, char **envp)
 {
 	int i;
 	i = 1;
-	pipex->envp = malloc(sizeof(t_env *));
 	pipex->envp = env_new(envp[0]);
 	while (envp[i])
 	{

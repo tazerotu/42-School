@@ -6,11 +6,39 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/25 10:33:04 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 08:52:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/18 11:07:07 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
+
+char	*ft_strjoin_gnl(char *s1, char *s2)
+{
+	size_t	i;
+	size_t	j;
+	char	*ret;
+
+	i = 0;
+	j = 0;
+	ret = malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (ret == NULL)
+	{
+		return (NULL);
+	}
+	while (s1[i])
+	{
+		ret[i] = s1[i];
+		i++;
+	}
+	while (s2[j])
+	{
+		ret[i + j] = s2[j];
+		j++;
+	}
+	ret[i + j] = '\0';
+	free((char *)s1);
+	return (ret);
+}
 
 char	*isempty(char const *s1, char const *s2)
 {
@@ -56,12 +84,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (res);
 	}
 }
-
-// while (i < ft_strlen(s1))
-// 		{
-// 			res[i] = s1[i];
-// 			i++;
-// 		}
 
 // char	*ft_strjoin(char const *s1, char const *s2)
 // {

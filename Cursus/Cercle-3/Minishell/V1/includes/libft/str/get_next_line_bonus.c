@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:51:52 by ttas              #+#    #+#             */
-/*   Updated: 2024/10/24 09:30:18 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/18 11:07:26 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ char	*ft_read_file(int fd, char *res)
 		if (bytes_read == -1)
 			return (ft_free_join(buffer, res));
 		buffer[bytes_read] = '\0';
-		res = ft_strjoin(res, buffer);
+		res = ft_strjoin_gnl(res, buffer);
 		if (res == NULL)
 			return (ft_free_join(buffer, NULL));
 	}

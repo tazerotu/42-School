@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 12:27:13 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/18 11:11:27 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@ int main(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
-	t_pipe *pipe;
-	pipe = malloc(sizeof(t_pipe));
+	(void)envp;
+	// t_pipe *pipe;
+
     system("clear");
-	// pipe = init(pipe, input, envp);	
-	pipe = init_env(pipe, envp);
-	free_all(pipe);
+	// pipe = malloc(sizeof(t_pipe));
+	// init(pipe, NULL, envp);
+	// init_env(pipe, envp);
+	char *heredoc = here_doc("delimiteur");
+	ft_printf("\n%s", heredoc);
+	free(heredoc);
+	// free_all(pipe);
 	return(0);
 }
 

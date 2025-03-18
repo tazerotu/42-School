@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/03/11 12:26:32 by ttas             ###   ########.fr        #
+#    Updated: 2025/03/18 10:24:09 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ SRC =			./srcs/main.c
 SRCS_INIT =		./srcs/init/init.c \
 				./srcs/free/free.c \
 	
-SRCS_PIPEX =	
+SRCS_PIPEX =	./srcs/pipex/here_doc.c \
+				
 
 SRCS_BUILT_IN =	./srcs/pipex/built_in/env.c \
 				./srcs/pipex/built_in/bi_utils/env_utils.c \
@@ -34,7 +35,7 @@ SRCS_UTILS =	./srcs/utils/error.c \
 								
 				
 
-SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_BUILT_IN} ${SRCS_UTILS}
+SOURCES =		${SRC} ${SRCS_INIT} ${SRCS_BUILT_IN} ${SRCS_UTILS} ${SRCS_PIPEX}
 OBJECTS =		${SOURCES:.c=.o}
 LIBFT = ./includes/libft
 
