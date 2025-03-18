@@ -6,6 +6,7 @@
 		"stdbool.h": "c",
 		"pthread.h": "c",
 		"minishell.h": "c",
-		"executor.h": "c"
-	}
+		"executor.h": "c",
+		"libft.h": "c"
+	},
 }
