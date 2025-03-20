@@ -6,15 +6,15 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/25 12:20:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/02/25 12:25:35 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 10:16:57 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int ft_isupper(char c)
+int	ft_isupper(char c)
 {
-	if(c >= 'A' && c <= 'Z')
-		return(1);
-	return(0);
+	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
 }

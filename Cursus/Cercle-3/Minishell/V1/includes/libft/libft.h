@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/18 11:07:18 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 10:18:10 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ int					ft_isprint(int c);
  */
 int					ft_isascii(int c);
 
-int 				ft_isupper(char c);
-int 				ft_islower(char c);
+int					ft_isupper(char c);
+int					ft_islower(char c);
 
 /*----------------------*/
 /*       STRING         */
