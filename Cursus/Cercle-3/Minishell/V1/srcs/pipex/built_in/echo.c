@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/20 12:16:56 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 12:37:56 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,10 @@ int	echo_args(char **str)
 	i = 0;
 	while (str[i])
 		i++;
+	if(i >= 2)
+		if(ft_strnstr(str[1], "-n", 2))
+			i--;
+	i--;
 	return (i);
 }
 
@@ -52,25 +56,40 @@ int	print_redirection(char **redir)
 }
 
 // Prints the argument, ex: "ceci est un test"
-void	echo_print(t_cmd *cmd, char *str, bool option, int args)
+void	echo_print(char *str, int fd)
 {
+	if (args != 0)
+		ft_fprintf(fd, "%s", str);
+	else if (option == false && args == 0)
+		ft_fprintf(fd, "\n");
+	if (fd != 1)
+		close(fd);
+}
+
+/*
 	int	fd;
 
 	if (cmd->redir)
 		fd = print_redirection(cmd->redir);
 	else
 		fd = 1;
-	if (args != 0)
-		ft_fprintf(fd, "%s", str);
-	if (option == false && args == 3)
-		ft_fprintf(fd, "\n");
-	if (fd != 1)
-		close(fd);
-}
+*/
 
 // The echo function, with only the -n option
 void	bi_echo(t_cmd *cmd)
 {
+	char	**str;
+	int		i;
+	int		args;
+	int		fd;
+
+	str = cmd->cmd;
+	i = 0;
+	args = echo_args(str);
+	if(args == 0)
+		
+}
+/*
 	int		args;
 	int		j;
 	bool	option;
@@ -94,4 +113,4 @@ void	bi_echo(t_cmd *cmd)
 		if(args > 2)
 			ft_printf(" ");
 	}
-}
+*/
