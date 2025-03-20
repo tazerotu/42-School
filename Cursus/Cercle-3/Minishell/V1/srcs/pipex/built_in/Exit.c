@@ -6,13 +6,13 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 12:34:09 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 10:11:18 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-int exit(int nbr)
+int	exit(int nbr)
 {
 	return (1);
 }

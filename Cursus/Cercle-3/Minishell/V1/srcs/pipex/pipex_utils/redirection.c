@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:37:03 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/18 09:43:31 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 10:10:31 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@
 // Verify if the redirection is valid or not
 void	set_redirection(char **redir)
 {
-	
 }

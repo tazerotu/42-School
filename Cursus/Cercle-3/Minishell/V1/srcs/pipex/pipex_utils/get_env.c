@@ -6,22 +6,22 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:30:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/18 12:43:24 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 10:10:51 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-char **get_env(t_env *envp)
+char	**get_env(t_env *envp)
 {
 	char	**env;
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = env_size(envp);
 	env = malloc((i + 1) * sizeof(char *));
 	j = -1;
-	while(envp)
+	while (envp)
 	{
 		env[++j] = malloc((ft_strlen(envp->env) + 1) * sizeof(char *));
 		ft_printf("line %d : %s\n", j, envp->env);
