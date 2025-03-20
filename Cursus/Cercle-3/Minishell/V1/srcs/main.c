@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/20 12:01:40 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 12:17:09 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,36 @@ int main(int argc, char **argv, char **envp)
 	pipe = malloc(sizeof(t_pipe));
 	// init(pipe, NULL, envp);
 	init_env(pipe, envp);
+	pipe->cmd = malloc(sizeof(t_cmd));
+	pipe->cmd->redir = malloc(sizeof(char *) * 9);
+	pipe->cmd->redir[0] = malloc(2);
+	pipe->cmd->redir[1] = malloc(9);
+	pipe->cmd->redir[2] = malloc(1);
+	pipe->cmd->redir[3] = malloc(9);
+	pipe->cmd->redir[4] = malloc(1);
+	pipe->cmd->redir[5] = malloc(9);
+	pipe->cmd->redir[6] = malloc(2);
+	pipe->cmd->redir[7] = malloc(9);
+	pipe->cmd->redir[0] = ">>";
+	pipe->cmd->redir[1] = "1test.txt";
+	pipe->cmd->redir[2] = ">";
+	pipe->cmd->redir[3] = "2test.txt";
+	pipe->cmd->redir[4] = ">";
+	pipe->cmd->redir[5] = "3test.txt";
+	pipe->cmd->redir[6] = ">";
+	pipe->cmd->redir[7] = "4test.txt";
+	pipe->cmd->redir[8] = NULL;
+	pipe->cmd->cmd = malloc(sizeof(char *) * 5);
+	pipe->cmd->cmd[0] = malloc(5);
+	pipe->cmd->cmd[1] = malloc(3);
+	pipe->cmd->cmd[2] = malloc(17);
+	pipe->cmd->cmd[3] = malloc(6);
+	pipe->cmd->cmd[0] = "echo";
+	pipe->cmd->cmd[1] = "-n";
+	pipe->cmd->cmd[2] = "ceci est un test";
+	pipe->cmd->cmd[3] = "test";
+	pipe->cmd->cmd[4] = NULL;
+	bi_echo(pipe->cmd);
 	free_pipe_env(pipe);
 	return(0);
 }
@@ -57,6 +87,7 @@ char *heredoc = here_doc("delimiteur");
 	pipe->cmd->cmd[4] = NULL;
 	bi_echo(pipe->cmd);
 */
+
 /* TEST Echo + redir
 	pipe->cmd = malloc(sizeof(t_cmd));
 	pipe->cmd->redir = malloc(sizeof(char *) * 9);

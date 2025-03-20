@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/20 12:01:12 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 12:16:56 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	echo_print(t_cmd *cmd, char *str, bool option, int args)
 		fd = 1;
 	if (args != 0)
 		ft_fprintf(fd, "%s", str);
-	if (!option && args == 0)
+	if (option == false && args == 3)
 		ft_fprintf(fd, "\n");
 	if (fd != 1)
 		close(fd);
