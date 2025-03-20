@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 12:29:31 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/20 12:01:12 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,14 +27,22 @@ int	echo_args(char **str)
 int	print_redirection(char **redir)
 {
 	int	fd;
+	int	i;
 
-	fd = 0;
+	i = 0;
+	fd = 1;
 	if (!redir)
 		return (fd);
-	if (ft_strnstr(redir[0], ">>", 2))
-		fd = open(redir[1], O_RDWR | O_CREAT | O_APPEND, S_IWUSR);
-	else if (ft_strnstr(redir[0], ">", 1))
-		fd = open(redir[1], O_RDWR | O_CREAT | O_TRUNC, S_IWUSR);
+	while (redir[i] && redir[i + 1])
+	{
+		if (fd)
+		 close(fd);
+		if (ft_strnstr(redir[i], ">>", 2))
+			fd = open(redir[++i], O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
+		else if (ft_strnstr(redir[i], ">", 1))
+			fd = open(redir[++i], O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+		i++;
+	}
 	if (fd == -1)
 	{
 		error_message(ERROR_FD, NULL);
@@ -53,9 +61,11 @@ void	echo_print(t_cmd *cmd, char *str, bool option, int args)
 	else
 		fd = 1;
 	if (args != 0)
-		ft_fprintf(fd, "%s ", str);
+		ft_fprintf(fd, "%s", str);
 	if (!option && args == 0)
 		ft_fprintf(fd, "\n");
+	if (fd != 1)
+		close(fd);
 }
 
 // The echo function, with only the -n option
@@ -75,15 +85,13 @@ void	bi_echo(t_cmd *cmd)
 		echo_print(cmd, str[1], false, 0);
 		return ;
 	}
-	if (ft_strnstr(str[j], "-n", 2))
-	{
+	if (ft_strnstr(str[j++], "-n", 2))
 		option = true;
-		j++;
-	}
 	while (str[j])
 	{
-		echo_print(cmd, str[j], option, args);
-		j++;
+		echo_print(cmd, str[j++], option, args);
 		args--;
+		if(args > 2)
+			ft_printf(" ");
 	}
 }
