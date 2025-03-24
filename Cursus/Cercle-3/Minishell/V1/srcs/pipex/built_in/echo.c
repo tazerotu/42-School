@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/20 12:37:56 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/24 15:51:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,68 +27,43 @@ int	echo_args(char **str)
 	return (i);
 }
 
-// find the type of redirection and opens the file accordingly
-int	print_redirection(char **redir)
-{
-	int	fd;
-	int	i;
-
-	i = 0;
-	fd = 1;
-	if (!redir)
-		return (fd);
-	while (redir[i] && redir[i + 1])
-	{
-		if (fd)
-		 close(fd);
-		if (ft_strnstr(redir[i], ">>", 2))
-			fd = open(redir[++i], O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
-		else if (ft_strnstr(redir[i], ">", 1))
-			fd = open(redir[++i], O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
-		i++;
-	}
-	if (fd == -1)
-	{
-		error_message(ERROR_FD, NULL);
-		return (-1);
-	}
-	return (fd);
-}
-
 // Prints the argument, ex: "ceci est un test"
-void	echo_print(char *str, int fd)
+void	echo_print(char **str, int args, int i, bool option)
 {
-	if (args != 0)
-		ft_fprintf(fd, "%s", str);
-	else if (option == false && args == 0)
-		ft_fprintf(fd, "\n");
-	if (fd != 1)
-		close(fd);
+	while (str[i])
+	{
+		ft_printf("%s", str[i]);
+		i++;
+		args--;
+		if(args > 0)
+			ft_printf(" ");
+	}
+	if (option == false)
+		ft_printf("\n");	
 }
-
-/*
-	int	fd;
-
-	if (cmd->redir)
-		fd = print_redirection(cmd->redir);
-	else
-		fd = 1;
-*/
 
 // The echo function, with only the -n option
-void	bi_echo(t_cmd *cmd)
+void	bi_echo(char **str)
 {
-	char	**str;
 	int		i;
 	int		args;
-	int		fd;
+	bool 	option;
 
-	str = cmd->cmd;
-	i = 0;
+	i = 1;
+	option = false;
 	args = echo_args(str);
-	if(args == 0)
-		
+	if (str[1] && ft_strnstr(str[1], "-n", 2))
+		option = true;
+	if (option == true)
+	i++;
+	if (args == 0 && option == false)
+	{
+		ft_printf("\n");
+		return ;
+	}
+	echo_print(str, args, i, option);
 }
+
 /*
 	int		args;
 	int		j;
@@ -114,3 +89,31 @@ void	bi_echo(t_cmd *cmd)
 			ft_printf(" ");
 	}
 */
+
+// find the type of redirection and opens the file accordingly
+// int	print_redirection(char **redir)
+// {
+// 	int	fd;
+// 	int	i;
+
+// 	i = 0;
+// 	fd = 1;
+// 	if (!redir)
+// 		return (fd);
+// 	while (redir[i] && redir[i + 1])
+// 	{
+// 		if (fd)
+// 		 close(fd);
+// 		if (ft_strnstr(redir[i], ">>", 2))
+// 			fd = open(redir[++i], O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
+// 		else if (ft_strnstr(redir[i], ">", 1))
+// 			fd = open(redir[++i], O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+// 		i++;
+// 	}
+// 	if (fd == -1)
+// 	{
+// 		error_message(ERROR_FD, NULL);
+// 		return (-1);
+// 	}
+// 	return (fd);
+// }
