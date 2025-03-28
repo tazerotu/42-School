@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/24 15:45:16 by marvin           ###   ########.fr       */
+/*   Updated: 2025/03/28 16:14:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ typedef struct s_cmd
 
 typedef struct s_pipe
 {
-	int				semicolon;
+	int				exit_status;
 	int				n_pipe;
+	int				input;
+	int				output;
 	struct s_env	*envp;
 	t_cmd			*cmd;
-	bool			exit;
 }	t_pipe;
 
 // Functions
@@ -75,7 +76,8 @@ void	parent_process(void);
 void	set_redirection(char **redir);
 
 	// Execute Utils
-char	**get_env(t_env *env);
+char	**get_env_char(t_env *envp);
+char	*get_env(t_env *envp, char *str);
 
 	// Signals
 

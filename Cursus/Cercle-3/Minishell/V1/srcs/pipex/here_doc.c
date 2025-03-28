@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/20 10:10:17 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/28 15:30:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/executor.h"
 
-char	*here_doc(char *delimiter)
+char	*here_doc(t_pipe *pipe, char *delimiter)
 {
 	char	*heredoc;
 	char	*buffer;
@@ -23,6 +23,7 @@ char	*here_doc(char *delimiter)
 	buffer = get_next_line(STDIN_FILENO);
 	while (ft_strnstr(buffer, delimiter, ft_strlen(delimiter)) == NULL)
 	{
+		expander(buffer, pipe)
 		tmp = ft_strjoin(heredoc, buffer);
 		free(buffer);
 		if (heredoc)

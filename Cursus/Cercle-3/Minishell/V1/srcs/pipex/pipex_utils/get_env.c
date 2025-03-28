@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:30:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/20 10:10:51 by ttas             ###   ########.fr       */
+/*   Updated: 2025/03/28 16:15:28 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-char	**get_env(t_env *envp)
+char	**get_env_char(t_env *envp)
 {
 	char	**env;
 	int		i;
@@ -31,4 +31,23 @@ char	**get_env(t_env *envp)
 	j++;
 	env[j] = NULL;
 	return (env);
+}
+
+char	*get_env(t_env *envp, char *str);
+{
+	int		i;
+	char	*env;
+
+	i = 0;
+	while (envp)
+	{
+		if (ft_strnstr(envp->env, str, ft_strlen(str)))
+		{
+			env = malloc((ft_strlen(envp->env) + 1) * sizeof(char *));
+			ft_strlcpy(env, envp->env, (ft_strlen(envp->env) + 1));
+			return (env);
+		}
+		envp = envp->next;
+	}
+	return (NULL);
 }
