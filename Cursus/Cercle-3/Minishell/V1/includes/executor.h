@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/28 16:14:33 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/01 14:39:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	free_env(char **env);
 
 	// Command initialization
 void	verify_builtin(t_pipe *pipe);
-char	*here_doc(char *delimiter);
+char	*here_doc(t_pipe *pipe, char *delimiter);
 
 	// Execute
 void	execute(void);

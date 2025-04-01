@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/28 15:57:38 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/01 14:47:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,8 @@ int main(int argc, char **argv, char **envp)
 	pipe = malloc(sizeof(t_pipe));
 	// init(pipe, NULL, envp);
 	init_env(pipe, envp);
-	pipe->cmd = malloc(sizeof(t_cmd));
-	pipe->cmd->redir = NULL;
-	pipe->cmd->cmd = malloc(sizeof(char *) * 5);
-	pipe->cmd->cmd[0] = malloc(5);
-	pipe->cmd->cmd[1] = malloc(3);
-	pipe->cmd->cmd[2] = malloc(17);
-	pipe->cmd->cmd[3] = malloc(6);
-	pipe->cmd->cmd[0] = "echo";
-	pipe->cmd->cmd[1] = "aaa";
-	pipe->cmd->cmd[2] = "ceci est un test";
-	pipe->cmd->cmd[3] = "test";
-	pipe->cmd->cmd[4] = NULL;
-	bi_echo(pipe->cmd->cmd);
+	char *str = get_env(pipe->envp, "USER");
+	ft_printf("\nUSER = %s\n\n", str);
 	free_pipe_env(pipe);
 	return(0);
 }
