@@ -6,11 +6,11 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/01 09:36:07 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/01 14:57:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../Includes/Executor.h"
+#include "../../includes/executor.h"
 
 // Get the path of the command
 // If the command is not found, return an error

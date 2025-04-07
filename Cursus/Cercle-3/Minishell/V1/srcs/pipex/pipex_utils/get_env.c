@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:30:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/01 14:46:49 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/03 15:40:08 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,21 @@ char	**get_env_char(t_env *envp)
 char	*get_env(t_env *envp, char *str)
 {
 	char	*env;
-	char 	*tmp;
+	char	*tmp;
+	int		i;
 
+	i = 0;
 	tmp = NULL;
 	while (envp)
 	{
 		if (ft_strnstr(envp->env, str, ft_strlen(str)))
 		{
 			env = ft_strdup(envp->env);
-			env = ft_strchr(env, '=');
-			env++;
-			tmp = env;
+			while(env[i] && env[i] != '=')
+				i++;
+			i++;
+			tmp = ft_substr(env, i, ft_strlen(env) - i);
+			free(env);
 			return (tmp);
 		}
 		envp = envp->next;

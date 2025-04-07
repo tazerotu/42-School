@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/01 14:47:04 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/07 15:30:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@ int main(int argc, char **argv, char **envp)
 	pipe = malloc(sizeof(t_pipe));
 	// init(pipe, NULL, envp);
 	init_env(pipe, envp);
-	char *str = get_env(pipe->envp, "USER");
-	ft_printf("\nUSER = %s\n\n", str);
+	// char *str = get_env(pipe->envp, "USER");
+	// ft_printf("\nUSER = %s\n\n", str);
+	ft_printf("%s", expander("$USER a un message: ceci est un test", pipe->envp));
 	free_pipe_env(pipe);
 	return(0);
 }

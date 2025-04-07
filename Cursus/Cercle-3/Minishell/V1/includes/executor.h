@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/01 14:39:04 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/07 08:55:12 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,8 @@ void	set_redirection(char **redir);
 	// Execute Utils
 char	**get_env_char(t_env *envp);
 char	*get_env(t_env *envp, char *str);
+char	*expander(char *str, t_env *envp);
+
 
 	// Signals
 

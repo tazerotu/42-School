@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/04/01 09:36:01 by marvin           ###   ########.fr        #
+#    Updated: 2025/04/07 08:55:10 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,11 @@ SRCS_INIT =			./srcs/init/init.c \
 					./srcs/free/free.c \
 	
 SRCS_PIPEX =		./srcs/pipex/here_doc.c \
+					# ./srcs/pipex/pipex.c \
 				
 
 SRCS_PIPEX_UTILS =	./srcs/pipex/pipex_utils/get_env.c \
-
+					./srcs/pipex/pipex_utils/expander.c \
 
 SRCS_BUILT_IN =		./srcs/pipex/built_in/env.c \
 					./srcs/pipex/built_in/bi_utils/env_utils.c \
@@ -45,7 +46,7 @@ LIBFT = ./includes/libft
 # Variables
 CC = cc
 # 
-CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=address -g 
+CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=address -g
 RM = rm -f
 
 # Makefile
