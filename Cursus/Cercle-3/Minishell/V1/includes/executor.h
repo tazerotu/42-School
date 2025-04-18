@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/07 08:55:12 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/18 14:48:54 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,15 @@ typedef struct s_env
 	struct s_env	*next;
 }	t_env;
 
+typedef struct s_expander
+{
+	char	*ret;
+	char	*var;
+	char	*tmp;
+	int		start;
+	int		end;
+}	t_expander;
+
 typedef struct s_cmd
 {
 	char			**redir;
@@ -49,15 +58,15 @@ typedef struct s_pipe
 {
 	int				exit_status;
 	int				n_pipe;
-	int				input;
-	int				output;
+	int				fd_in;
+	int				fd_out;
 	struct s_env	*envp;
 	t_cmd			*cmd;
 }	t_pipe;
 
 // Functions
 	// Init
-t_pipe	*init(t_pipe *pipe, char *str, char **envp);
+t_pipe	*init(t_pipe *pipe, char **envp);
 t_pipe	*init_env(t_pipe *pipe, char **envp);
 
 	// Free
@@ -78,7 +87,7 @@ void	set_redirection(char **redir);
 	// Execute Utils
 char	**get_env_char(t_env *envp);
 char	*get_env(t_env *envp, char *str);
-char	*expander(char *str, t_env *envp);
+char	*expander(char *str, t_env *envp, t_pipe *pipe);
 
 
 	// Signals

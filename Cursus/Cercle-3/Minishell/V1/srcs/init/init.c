@@ -3,19 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:06:28 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/20 10:14:13 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/18 16:23:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/executor.h"
 
-// t_pipe *init(t_pipe *pipe, char *str, char **envp)
-// {
-// 	init_env(pipe, envp);
-// }
+static void	init_pipe(t_pipe *pipe)
+{
+	pipe->exit_status = 1;
+	pipe->n_pipe = 0;
+	pipe->cmd = NULL;
+	pipe->envp = NULL;
+	pipe->fd_in = 0;
+	pipe->fd_out = 1;
+}
+
+t_pipe *init(t_pipe *pipe, char **envp)
+{
+	init_pipe(pipe);
+	init_env(pipe, envp);
+	return (pipe);
+}
 
 t_pipe	*init_env(t_pipe *pipex, char **envp)
 {
