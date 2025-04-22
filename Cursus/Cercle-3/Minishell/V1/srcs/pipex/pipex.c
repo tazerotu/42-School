@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/22 15:17:50 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/22 18:04:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,25 @@ void	parent_process(void);
 
 void	pipex(t_pipe *pipe)
 {
-	
+	int fd[2];
+
+	while(pipe->cmd)
+	{
+		if(!pipe->env)
+		{
+			free_env(pipe->env);
+			pipe->env = get_env_char(pipe->envp);
+		}
+		else
+			pipe->env = get_env_char(pipe->envp);
+		fd = set_redirection(pipe->cmd->redir);
+		pipe->fd_in = dup2(set_redirection(fd[0], 0));
+		pipe->fd_out = dup2(set_redirection(fd[1], 1));
+		if (pipe->fd_in < 0 || pipe->fd_out < 0)
+		{
+			perror("Error FD");
+			return (ERROR_FD);
+		}
+	}
+	free_env(pipe->env);
 }
