@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/18 14:48:54 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/22 15:21:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,9 @@ typedef struct s_pipe
 	int				n_pipe;
 	int				fd_in;
 	int				fd_out;
+	char			**env;
 	struct s_env	*envp;
-	t_cmd			*cmd;
+	struct t_cmd	*cmd;
 }	t_pipe;
 
 // Functions

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/18 16:43:16 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/22 16:49:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int main(int argc, char **argv, char **envp)
 	
 	// char *str = get_env(pipe->envp, "USER");
 	// ft_printf("\nUSER = %s\n\n", str);
-	ft_printf("%s", expander("$USER t $USER a $USER un $USER message : $? ceci est un test \n", pipe->envp, pipe));
+	// ft_printf("%s", expander("$USER t $USER a $USER un $USER message : $? ceci est un test \n", pipe->envp, pipe));
 	free_pipe_env(pipe);
 	return(0);
 }
@@ -60,6 +60,7 @@ char *heredoc = here_doc("delimiteur");
 	pipe->cmd->cmd[4] = NULL;
 	bi_echo(pipe->cmd->cmd);
 */
+
 /* TEST Echo + redir
 	pipe->cmd = malloc(sizeof(t_cmd));
 	pipe->cmd->redir = malloc(sizeof(char *) * 9);
@@ -92,6 +93,7 @@ char *heredoc = here_doc("delimiteur");
 	pipe->cmd->cmd[4] = NULL;
 	bi_echo(pipe->cmd->cmd);
 */
+
 /* TEST Export, Unset
 //	char *export[] = {"export", "TEST1=1", "TEST2=2", "TEST3=3", NULL};
 // 	char *unset[] = {"unset", "TEST1", "TEST2", NULL};

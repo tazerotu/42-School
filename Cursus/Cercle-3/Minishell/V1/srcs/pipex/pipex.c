@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/01 14:57:53 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/22 15:17:50 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,8 @@ char	*get_path(char *cmd, char **envp)
 void	execute(void);
 void	child_process(void);
 void	parent_process(void);
-void	pipex(void);
+
+void	pipex(t_pipe *pipe)
+{
+	
+}
