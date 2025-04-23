@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/23 13:46:24 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/23 14:29:02 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ typedef struct s_pipe
 	int				n_pipe;
 	int				fd_in;
 	int				fd_out;
+	char			*heredoc;
 	char			**env;
 	struct s_env	*envp;
 	struct s_cmd	*cmd;
@@ -90,9 +91,6 @@ void	set_redirection(char **redir);
 char	**get_env_char(t_env *envp);
 char	*get_env(t_env *envp, char *str);
 char	*expander(char *str, t_env *envp, t_pipe *pipe);
-
-
-	// Signals
 
 	//	Built-in
 //	with option -n
