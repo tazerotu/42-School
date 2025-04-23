@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:37:03 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/22 10:47:58 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:39:21 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,51 +15,52 @@
 // Verify if the redirection is valid or not
 int	*set_redirection(char **redir)
 {
-	int fd[2];
-	int i;
+	int	fd[2];
+	int	i;
 
 	i = 0;
 	fd[0] = -1;
 	fd[1] = -1;
 	if (!redir)
 		return (0);
-	while(redir[i++])
+	while (redir[i++])
 	{
 		if (redir[i][0] == '<')
 			fd[0] = set_redir_input(redir, i);
 		else if (redir[i][0] == '>')
 			fd[1] = set_redir_output(redir, i);
 		i++;
-	}	
+	}
 	return (fd);
 }
+
 int	set_redir_input(char **redir, int i)
 {
-	int fd;
+	int	fd;
 
 	fd = -1;
 	if (redir[i][0] == '<')
 	{
-			fd[1] = open(redir[i + 1], O_RDONLY);
-			if (fd < 0)
-				return (ERROR_FD);
+		fd[1] = open(redir[i + 1], O_RDONLY);
+		if (fd < 0)
+			return (ERROR_FD);
 	}
 	return (fd);
 }
 
 int	set_redir_output(char **redir, int i)
 {
-	int fd;
+	int	fd;
 
 	fd = -1;
 	if (redir[i][0] == '>')
-		{
-			if (redir[i][1] == '>')
-				fd[0] = open(redir[i + 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
-			else
-				fd[0] = open(redir[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
-			if (fd < 0)
-				return (ERROR_FD);
-		}
+	{
+		if (redir[i][1] == '>')
+			fd[0] = open(redir[i + 1], O_WRONLY | O_CREAT | O_APPEND, 0644);
+		else
+			fd[0] = open(redir[i + 1], O_WRONLY | O_CREAT | O_TRUNC, 0644);
+		if (fd < 0)
+			return (ERROR_FD);
+	}
 	return (fd);
 }

@@ -6,25 +6,28 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:07 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 09:52:35 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/23 10:09:39 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
 // Get the current working directory
-void	bi_pwd(void)
+void	bi_pwd(t_pipe *pipe)
 {
 	char	*cwd;
 
 	cwd = getcwd(NULL, 0);
 	if (!cwd)
 	{
+		pipe->exit_status = 127;
 		ft_fprintf(1, "ERROR : %d", ERROR_PWD);
 		return ;
 	}
 	ft_printf("%s\n", cwd);
 	free(cwd);
+	pipe->exit_status = 0;
+	return ;
 }
 
 // ft_printf("%s\n", ft_strnstr(cwd, "Minishell", ft_strlen(cwd)));

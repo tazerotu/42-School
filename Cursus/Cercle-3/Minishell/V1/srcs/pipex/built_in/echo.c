@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   echo.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:56 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/16 15:15:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:37:48 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int	echo_args(char **str)
 	i = 0;
 	while (str[i])
 		i++;
-	if(i >= 2)
-		if(ft_strnstr(str[1], "-n", 2))
+	if (i >= 2)
+		if (ft_strnstr(str[1], "-n", 2))
 			i--;
 	i--;
 	return (i);
@@ -35,19 +35,19 @@ void	echo_print(char **str, int args, int i, bool option)
 		ft_printf("%s", str[i]);
 		i++;
 		args--;
-		if(args > 0)
+		if (args > 0)
 			ft_printf(" ");
 	}
 	if (option == false)
-		ft_printf("\n");	
+		ft_printf("\n");
 }
 
 // The echo function, with only the -n option
-void	bi_echo(char **str)
+void	bi_echo(char **str, t_pipe *pipe)
 {
 	int		i;
 	int		args;
-	bool 	option;
+	bool	option;
 
 	i = 1;
 	option = false;
@@ -55,13 +55,15 @@ void	bi_echo(char **str)
 	if (str[1] && ft_strnstr(str[1], "-n", 2))
 		option = true;
 	if (option == true)
-	i++;
+		i++;
 	if (args == 0 && option == false)
 	{
 		ft_printf("\n");
 		return ;
 	}
 	echo_print(str, args, i, option);
+	pipe->exit_status = 0;
+	return ;
 }
 
 /*
@@ -105,9 +107,11 @@ void	bi_echo(char **str)
 // 		if (fd)
 // 		 close(fd);
 // 		if (ft_strnstr(redir[i], ">>", 2))
-// 			fd = open(redir[++i], O_RDWR | O_CREAT | O_APPEND, S_IRUSR | S_IWUSR);
+// 			fd = open(redir[++i], O_RDWR | O_CREAT 
+//	| O_APPEND, S_IRUSR | S_IWUSR);
 // 		else if (ft_strnstr(redir[i], ">", 1))
-// 			fd = open(redir[++i], O_RDWR | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+// 			fd = open(redir[++i], O_RDWR | O_CREAT 
+//  | O_TRUNC, S_IRUSR | S_IWUSR);
 // 		i++;
 // 	}
 // 	if (fd == -1)

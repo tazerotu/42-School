@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/01 14:39:35 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/23 14:02:10 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 // 	buffer = get_next_line(STDIN_FILENO);
 // 	while (ft_strnstr(buffer, delimiter, ft_strlen(delimiter)) == NULL)
 // 	{
-// 		// expander(buffer, pipe);
+// 		expander(buffer, pipe);
 // 		tmp = ft_strjoin(heredoc, buffer);
 // 		free(buffer);
 // 		if (heredoc)

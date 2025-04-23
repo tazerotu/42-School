@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 10:05:08 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/23 12:35:39 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ t_env	*find_env_pos(t_env *env, int pos)
 {
 	if (pos == -1)
 	{
-		ft_fprintf(1, "ERROR : %d\n", ERROR_ENV);
+		ft_fprintf(2, "ERROR : %d\n", ERROR_ENV);
 		return (NULL);
 	}
 	while (pos-- > 0)
@@ -29,7 +29,7 @@ t_env	*find_env_pos(t_env *env, int pos)
 // 	t_env	*tmp;
 // 	char	*new_str;
 // 	char	*env;
-
+//
 // 	tmp = envp;
 // 	if (str[0] == '~')
 // 	{
@@ -95,21 +95,28 @@ static int	change_dir(t_env *env, char *str, bool home)
 	return (0);
 }
 
-void	bi_cd(t_env *env, char **path)
+void	bi_cd(t_env *env, char **path, t_pipe *pipe)
 {
 	int	i;
+	int	err;
 
+	err = 0;
 	i = 0;
 	while (path[i])
 		i++;
 	if (i > 2)
 	{
-		ft_fprintf(1, "ERROR : %d", ERROR_DIR);
+		ft_fprintf(2, "ERROR : %d", ERROR_DIR);
+		pipe->exit_status = 127;
 		return ;
 	}
 	if (i == 1)
-		change_dir(env, path[0], true);
+		err = change_dir(env, path[0], true);
 	else
-		change_dir(env, path[1], false);
+		err = change_dir(env, path[1], false);
+	if (err == 0)
+		pipe->exit_status = 0;
+	else
+		pipe->exit_status = 127;
 	return ;
 }

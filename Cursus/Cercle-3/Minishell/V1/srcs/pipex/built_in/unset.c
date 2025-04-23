@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 10:04:57 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/23 12:36:17 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,17 @@ static void	delete_variable(t_env *envp, int pos)
 
 // Parsing 	-> Variable == Found
 // Variable -> env_delone
-void	bi_unset(t_env *envp, char **str)
+void	bi_unset(t_env *envp, char **str, t_pipe *pipe)
 {
 	int		i;
 	t_env	*tmp;
 
 	tmp = envp;
 	if (variable_amount(str) <= 1)
+	{
+		pipe->exit_status = 1;
 		return ;
+	}
 	i = 1;
 	ft_printf("\n");
 	while (str[i])
@@ -76,4 +79,6 @@ void	bi_unset(t_env *envp, char **str)
 		delete_variable(tmp, variable_pos(tmp->next, str[i]));
 		i++;
 	}
+	pipe->exit_status = 0;
+	return ;
 }

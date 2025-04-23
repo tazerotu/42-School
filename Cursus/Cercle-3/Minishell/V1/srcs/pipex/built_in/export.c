@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/03/11 10:44:05 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/23 10:23:50 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static t_env	*verify_exist(t_env *env, char *str)
 // If export VARIABLE_NAME1=$VARIABLE_NAME2 -> 
 // find variable in env and set VARIABLE_NAME2 value to VARIABLE_NAME1
 // Multiple variables possible
-t_env	*bi_export(t_env *env, char **str)
+t_env	*bi_export(t_pipe *pipe, t_env *env, char **str)
 {
 	int		i;
 	t_env	*tmp;
@@ -82,7 +82,10 @@ t_env	*bi_export(t_env *env, char **str)
 	while (str[i])
 	{
 		if (syntax(str[i]))
+		{
+			pipe->exit_status = 1;
 			return (NULL);
+		}
 		if (verify_exist(tmp, str[i]) == NULL)
 			env_add_back(tmp, env_new(str[i]));
 		else
@@ -92,5 +95,6 @@ t_env	*bi_export(t_env *env, char **str)
 		}
 		i++;
 	}
+	pipe->exit_status = 0;
 	return (tmp);
 }

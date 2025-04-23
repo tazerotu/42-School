@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/22 16:49:47 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/23 14:05:23 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,9 @@ int main(int argc, char **argv, char **envp)
 	
 	// char *str = get_env(pipe->envp, "USER");
 	// ft_printf("\nUSER = %s\n\n", str);
-	// ft_printf("%s", expander("$USER t $USER a $USER un $USER message : $? ceci est un test \n", pipe->envp, pipe));
+	char *exp = expander("$USER t $USER a $USER un $USER message : $? ceci est un test \n", pipe->envp, pipe);
+	ft_printf("%s", exp);
+	free(exp);
 	free_pipe_env(pipe);
 	return(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:30:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/22 16:46:56 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:41:28 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ char	**get_env_char(t_env *envp)
 	char	**env;
 	int		i;
 	int		j;
-	
+
 	i = env_size(envp);
 	env = malloc((i + 1) * sizeof(char *));
 	j = -1;
@@ -46,7 +46,7 @@ char	*get_env(t_env *envp, char *str)
 		if (ft_strnstr(envp->env, str, ft_strlen(str)))
 		{
 			env = ft_strdup(envp->env);
-			while(env[i] && env[i] != '=')
+			while (env[i] && env[i] != '=')
 				i++;
 			i++;
 			tmp = ft_substr(env, i, ft_strlen(env) - i);

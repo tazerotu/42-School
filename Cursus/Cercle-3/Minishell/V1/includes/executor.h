@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/22 15:21:27 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/23 13:46:24 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ typedef struct s_expander
 
 typedef struct s_cmd
 {
-	char			**redir;
+	char			**redir; // ">>" "test1.txt" "...."
 	char			**cmd;
 	struct s_cmd	*next;
 }	t_cmd;
@@ -62,7 +62,7 @@ typedef struct s_pipe
 	int				fd_out;
 	char			**env;
 	struct s_env	*envp;
-	struct t_cmd	*cmd;
+	struct s_cmd	*cmd;
 }	t_pipe;
 
 // Functions
@@ -76,6 +76,7 @@ void	free_env(char **env);
 
 	// Command initialization
 void	verify_builtin(t_pipe *pipe);
+void	launch_builtin(t_pipe *pipe);
 char	*here_doc(t_pipe *pipe, char *delimiter);
 
 	// Execute
@@ -95,16 +96,16 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe);
 
 	//	Built-in
 //	with option -n
-void	bi_echo(char **str);
+void	bi_echo(char **str, t_pipe *pipe);
 
 //	with absolute or relative path
-void	bi_cd(t_env *env, char **path);
+void	bi_cd(t_env *env, char **path, t_pipe *pipe);
 
-void	bi_pwd(void);
-t_env	*bi_export(t_env *pipe, char **str);
-void	bi_unset(t_env *envp, char **str);
-void	bi_env(t_env *envp);
-void	bi_exit(void);
+void	bi_pwd(t_pipe *pipe);
+t_env	*bi_export(t_pipe *pipe, t_env *env, char **str);
+void	bi_unset(t_env *envp, char **str, t_pipe *pipe);
+void	bi_env(t_env *envp, t_pipe *pipe);
+void	bi_exit(t_pipe *pipe);
 
 		// Utils
 void	env_add_back(t_env *envp, t_env *new);

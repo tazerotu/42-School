@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/22 18:04:20 by marvin           ###   ########.fr       */
+/*   Updated: 2025/04/23 12:46:15 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,18 +43,17 @@ char	*get_path(char *cmd, char **envp)
 	return (0);
 }
 
-
 void	execute(void);
 void	child_process(void);
 void	parent_process(void);
 
 void	pipex(t_pipe *pipe)
 {
-	int fd[2];
+	int	fd[2];
 
-	while(pipe->cmd)
+	while (pipe->cmd)
 	{
-		if(!pipe->env)
+		if (pipe->env)
 		{
 			free_env(pipe->env);
 			pipe->env = get_env_char(pipe->envp);
@@ -65,10 +64,11 @@ void	pipex(t_pipe *pipe)
 		pipe->fd_in = dup2(set_redirection(fd[0], 0));
 		pipe->fd_out = dup2(set_redirection(fd[1], 1));
 		if (pipe->fd_in < 0 || pipe->fd_out < 0)
-		{
-			perror("Error FD");
 			return (ERROR_FD);
-		}
+		if (verify_builtin(pipe) == 0)
+			launch_builtin(pipe);
+		else
+			execute(void);
 	}
 	free_env(pipe->env);
 }

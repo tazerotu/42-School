@@ -12,7 +12,7 @@
 
 #include "../../../includes/executor.h"
 
-
+// printf("ret : %s\n\n", expander->ret);
 static t_expander	*expand_dollar(t_expander *expander, t_pipe *pipe)
 {
 	char	*itoa;
@@ -20,9 +20,8 @@ static t_expander	*expand_dollar(t_expander *expander, t_pipe *pipe)
 	itoa = ft_itoa(pipe->exit_status);
 	expander->tmp = ft_strjoin(expander->ret, itoa);
 	free(itoa);
-	ft_strlcpy(expander->ret, expander->tmp, ft_strlen(expander->tmp)+1);
+	ft_strlcpy(expander->ret, expander->tmp, ft_strlen(expander->tmp) + 1);
 	free(expander->tmp);
-	// printf("ret : %s\n\n", expander->ret);
 	expander->start++;
 	expander->end = expander->start;
 	return (expander);
@@ -40,14 +39,15 @@ static t_expander	*expand_copy(t_expander *expander, char *str)
 	return (expander);
 }
 
-// ft_strlcpy(expander->ret, str + expander->end, expander->start - expander->end);
+// ft_strlcpy(expander->ret, str + expander->end, 
+// expander->start - expander->end);
 static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 {
 	char	*value;
 	char	*tmp;
 
 	value = NULL;
-	while(str[expander->end] != ' ')
+	while (str[expander->end] != ' ')
 		expander->end++;
 	value = ft_substr(str, expander->start, expander->end - expander->start);
 	expander->var = get_env(envp, value);
@@ -72,13 +72,13 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe)
 	expander->start = 0;
 	expander->end = 0;
 	expander->ret = NULL;
-	while(str[expander->start])
+	while (str[expander->start])
 	{
-		if(str[expander->start] == '$')
+		if (str[expander->start] == '$')
 		{
 			expander = expand_copy(expander, str);
 			expander->end = expander->start;
-			if(str[++expander->start] == '?')
+			if (str[++expander->start] == '?')
 				expander = expand_dollar(expander, pipe);
 			else
 				expander = expand(expander, str, envp);
@@ -90,7 +90,6 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe)
 	free(expander);
 	return (ret);
 }
-
 
 /*
 char	*extract_variable(char *str, int *start, int *end)
@@ -151,8 +150,6 @@ char	*expander(char *str, t_env *envp)
 }
 */
 
-
-
 /*
 char	*extract_variable(char *str, int *start, int *end)
 {
@@ -199,15 +196,18 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe)
 		{
 			if(str[expander->start] == '?')
 			{
-				expander->ret = replace_variable(expander->ret, ft_itoa(pipe->exit_status));
+				expander->ret = replace_variable
+				(expander->ret, ft_itoa(pipe->exit_status));
 			}
 			else
 			{
 				expander->ret = malloc(sizeof(char) * (expander->start + 1));
 				ft_strlcpy(expander->ret, str, expander->start);
-				expander->var = extract_variable(str, &expander->start, &expander->end);
+				expander->var = extract_variable
+				(str, &expander->start, &expander->end);
 				if (expander->var)
-					expander->ret = replace_variable(expander->ret, get_env(envp, expander->var));
+					expander->ret = replace_variable
+					(expander->ret, get_env(envp, expander->var));
 			}
 		}
 	}
@@ -215,8 +215,6 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe)
 	return (ret);
 }
 */
-
-
 
 /*
 char	*ret;
