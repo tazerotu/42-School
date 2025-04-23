@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:06:28 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/23 14:08:08 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/23 14:29:51 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	init_pipe(t_pipe *pipe)
 	pipe->fd_out = 1;
 }
 
-t_pipe *init(t_pipe *pipe, char **envp)
+t_pipe	*init(t_pipe *pipe, char **envp)
 {
 	init_pipe(pipe);
 	init_env(pipe, envp);
