@@ -1,6 +1,0 @@
-cat << test < test1.txt
-g
-g
-g
-g
-test
