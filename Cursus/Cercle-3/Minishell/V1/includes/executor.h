@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 11:20:42 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 11:35:58 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ typedef struct s_cmd
 
 typedef struct s_pipe
 {
+	int				exit;
 	int				exit_status;
 	int				n_pipe;
 	int				fd_in;
@@ -104,7 +105,7 @@ void	bi_pwd(t_pipe *pipe);
 t_env	*bi_export(t_pipe *pipe, t_env *env, char **str);
 void	bi_unset(t_env *envp, char **str, t_pipe *pipe);
 void	bi_env(t_env *envp, t_pipe *pipe);
-void	bi_exit(t_pipe *pipe);
+void	bi_exit(t_pipe *pipe, char **cmd);
 
 		// Utils
 void	env_add_back(t_env *envp, t_env *new);

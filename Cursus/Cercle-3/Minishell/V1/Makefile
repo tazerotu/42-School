@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/04/25 10:01:03 by ttas             ###   ########.fr        #
+#    Updated: 2025/04/25 11:36:25 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRCS_BUILT_IN =		./srcs/pipex/built_in/env.c \
 					./srcs/pipex/built_in/cd.c \
 					./srcs/pipex/built_in/export.c \
 					./srcs/pipex/built_in/echo.c \
+					./srcs/pipex/built_in/exit.c
 
 SRCS_UTILS =		./srcs/utils/error.c \
 				
