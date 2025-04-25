@@ -1,4 +1,5 @@
 ✓ Here doc (add to redirection input)
+Expander Syntax (Only Uppercase, syntax of export)
 Pipex (execution)
 ✓ Exit (built_in)
 Merge
