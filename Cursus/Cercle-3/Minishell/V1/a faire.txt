@@ -1,5 +1,5 @@
-Here doc (add to redirection input)
+✓  Here doc (add to redirection input)
 Pipex (execution)
 Exit (built_in)
-Readline
 Merge
+Readline
