@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/23 10:23:50 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 13:03:48 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,26 +20,26 @@
 //	Has to have a '=' between VARIABLE_NAME and value ex: VARIABLE_NAME=value
 //	If value contains spaces, only take value until first space
 //	if value contains spaces but is encapslutated by "" or '' take entire string
-static bool	syntax(char *str)
+static int	syntax(char *str)
 {
 	int	i;
 
 	i = 0;
 	if (!ft_isalpha(str[i]) && str[i] != '_')
-		return (0);
-	while (str[i] || str[i] != '=')
+		return (-1);
+	while (str[i] && str[i] != '=')
 	{
 		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (0);
+			return (-2);
 		i++;
 	}
 	if (!str[i])
-		return (0);
+		return (-3);
 	else
 	{
 		i++;
 		if (str[i] == ' ')
-			return (0);
+			return (-4);
 		return (1);
 	}
 }
@@ -81,7 +81,7 @@ t_env	*bi_export(t_pipe *pipe, t_env *env, char **str)
 		return (NULL);
 	while (str[i])
 	{
-		if (syntax(str[i]))
+		if (syntax(str[i]) < 0)
 		{
 			pipe->exit_status = 1;
 			return (NULL);

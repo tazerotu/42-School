@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 11:17:42 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 13:05:46 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,24 @@ int main(int argc, char **argv, char **envp)
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
 	
+	test_export(pipe);
+
 	// char *str = get_env(pipe->envp, "USER");
 	// ft_printf("\nUSER = %s\n\n", str);
 	// char *exp = expander("$USER t $USER a $USER un $USER message : $? ceci est un test\n", pipe->envp, pipe);
 	// ft_printf("%s", exp);
 	// free(exp);
-	here_doc(pipe, "delimiteur");
-	int fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp", O_RDONLY);
-	ft_printf("\n");
-	char *buffer = get_next_line(fd);
-	while(buffer)
-	{
-		ft_printf("%s", buffer);
-		free(buffer);
-		buffer = get_next_line(fd);
-	}
-	close(fd);
+	// here_doc(pipe, "delimiteur");
+	// int fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp", O_RDONLY);
+	// ft_printf("\n");
+	// char *buffer = get_next_line(fd);
+	// while(buffer)
+	// {
+	// 	ft_printf("%s", buffer);
+	// 	free(buffer);
+	// 	buffer = get_next_line(fd);
+	// }
+	// close(fd);
 	free_pipe_env(pipe);
 	return(0);
 }
@@ -108,15 +110,19 @@ free(heredoc);
 	bi_echo(pipe->cmd->cmd);
 */
 
-/* TEST Export, Unset
-//	char *export[] = {"export", "TEST1=1", "TEST2=2", "TEST3=3", NULL};
-// 	char *unset[] = {"unset", "TEST1", "TEST2", NULL};
-// 	bi_export(pipe->envp, export);
-// 	bi_env(pipe->envp);
-// 	ft_printf("\n\n\n");
-// 	bi_unset(pipe->envp, unset);
-// 	bi_env(pipe->envp);
-*/
+// TEST Export, Unset
+
+static void test_export(t_pipe *pipe)
+{
+	char *export[] = {"export", "TEST1=1", "TEST2=2", "TEST3=3", NULL};
+	char *unset[] = {"unset", "TEST1", "TEST2", NULL};
+	bi_export(pipe->envp, export);
+	bi_env(pipe->envp);
+	ft_printf("\n\n\n");
+	bi_unset(pipe->envp, unset);
+	bi_env(pipe->envp);
+}
+
 /* TEST CD
 // char *cd[] = {"cd", "/home/clai-ton/42-School", NULL};
 // bi_cd(pipe->envp, cd);
