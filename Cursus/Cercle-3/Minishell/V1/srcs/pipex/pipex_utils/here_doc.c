@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 10:56:31 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 11:13:41 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,12 @@ void	here_doc(t_pipe *pipe, char *delimiter)
 		buffer = get_next_line(STDIN_FILENO);
 	}
 	free(buffer);
-	if(heredoc)
+	if (heredoc)
 		tmp = expander(heredoc, pipe->envp, pipe);
 	free(heredoc);
-	fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp", O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if(tmp)
+	fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp",
+			O_WRONLY | O_CREAT | O_TRUNC, 0644);
+	if (tmp)
 		ft_fprintf(fd, "%s", tmp);
 	close(fd);
 	free(tmp);
