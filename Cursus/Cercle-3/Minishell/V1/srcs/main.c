@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 13:41:43 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 14:03:17 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int main(int argc, char **argv, char **envp)
 	
 	// char *str = get_env(pipe->envp, "USER");
 	// ft_printf("\nUSER = %s\n\n", str);
-	char *exp = expander("$USER t $USER a $USER un $USER message : $? ceci est un test\n", pipe->envp, pipe);
+	char *exp = expander("USEr : $USEr \n9USER : $9USER \nUSERt : $USERt \nUSER : $USER \n? : $? \n", pipe->envp, pipe);
 	ft_printf("%s", exp);
 	free(exp);
 	// here_doc(pipe, "delimiteur");

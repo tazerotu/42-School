@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 13:30:55 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 14:04:08 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void	set_redirection(t_pipe *pipe, char **redir);
 char	**get_env_char(t_env *envp);
 char	*get_env(t_env *envp, char *str);
 char	*expander(char *str, t_env *envp, t_pipe *pipe);
-int		expander_syntax(char *str, int *end);
+char	*verify_syntax(char *str, t_expander *expander);
 
 	//	Built-in
 //	with option -n

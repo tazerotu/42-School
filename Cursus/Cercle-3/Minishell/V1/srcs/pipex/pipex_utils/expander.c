@@ -51,9 +51,10 @@ static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 
 	value = NULL;
 	i = 0;
-	while (str[expander->end] && str[expander->end] != ' ')
-		expander->end++;
-	value = ft_substr(str, expander->start, expander->end - expander->start);
+	// while (str[expander->end] && str[expander->end] != ' ')
+	// 	expander->end++;
+	// value = ft_substr(str, expander->start, expander->end - expander->start);
+	value = verify_syntax(str, &expander);
 	expander->var = get_env(envp, value);
 	free(value);
 	expander->tmp = ft_strjoin(expander->ret, expander->var);
