@@ -19,6 +19,7 @@ SRC_BOOL = 	./bool/ft_isalpha.c \
 			./bool/ft_isalnum.c \
 			./bool/ft_tolower.c \
 			./bool/ft_toupper.c \
+			./bool/ft_isupper.c \
 
 SRC_LST =	./lst/ft_lstnew.c \
 			./lst/ft_lstadd_front.c \

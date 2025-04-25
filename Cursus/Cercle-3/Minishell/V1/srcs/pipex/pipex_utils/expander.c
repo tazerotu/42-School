@@ -12,6 +12,22 @@
 
 #include "../../../includes/executor.h"
 
+// static int			syntax(char *value)
+// {
+// 	int	i;
+
+// 	i = 0;
+// 	while(value[i])
+// 	{
+// 		if(ft_isupper(value[i++]) == 0)
+// 		{
+// 			free(value);
+// 			return (0);
+// 		}
+// 	}
+// 	return (1);
+// }
+
 // printf("ret : %s\n\n", expander->ret);
 static t_expander	*expand_dollar(t_expander *expander, t_pipe *pipe)
 {
@@ -24,6 +40,7 @@ static t_expander	*expand_dollar(t_expander *expander, t_pipe *pipe)
 	free(expander->tmp);
 	expander->start++;
 	expander->end = expander->start;
+	expander->dollar = 1;
 	return (expander);
 }
 
@@ -31,6 +48,7 @@ static t_expander	*expand_copy(t_expander *expander, char *str)
 {
 	char	*tmp;
 
+	expander->dollar = 0;
 	tmp = ft_substr(str, expander->end, expander->start - (expander->end));
 	expander->tmp = ft_strjoin(expander->ret, tmp);
 	free(tmp);
@@ -39,16 +57,19 @@ static t_expander	*expand_copy(t_expander *expander, char *str)
 	return (expander);
 }
 
-// ft_strlcpy(expander->ret, str + expander->end, 
-// expander->start - expander->end);
+// if(syntax(value) == 1)
+// {
+// }
 static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 {
 	char	*value;
 	char	*tmp;
+	int		i;
 
 	value = NULL;
-	while (str[expander->end] != ' ')
-		expander->end++;
+	i = 0;
+	while (str[expander->end] && str[expander->end] != ' ')
+	expander->end++;
 	value = ft_substr(str, expander->start, expander->end - expander->start);
 	expander->var = get_env(envp, value);
 	free(value);
@@ -60,6 +81,8 @@ static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 	ft_strlcpy(expander->ret, tmp, ft_strlen(tmp)+1);
 	free(tmp);
 	expander->start = expander->end;
+	if(str[expander->end] == '\0')
+		expander->start--;
 	return (expander);
 }
 
@@ -83,10 +106,11 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe)
 			else
 				expander = expand(expander, str, envp);
 		}
-		expander->start++;
+			expander->start++;
 	}
 	ret = ft_strjoin(expander->ret, str + expander->end);
-	free(expander->ret);
+	if(expander->dollar == 1)
+		free(expander->ret);
 	free(expander);
 	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/23 14:29:02 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 09:43:44 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_expander
 	char	*tmp;
 	int		start;
 	int		end;
+	int		dollar;
 }	t_expander;
 
 typedef struct s_cmd
@@ -78,7 +79,7 @@ void	free_env(char **env);
 	// Command initialization
 void	verify_builtin(t_pipe *pipe);
 void	launch_builtin(t_pipe *pipe);
-char	*here_doc(t_pipe *pipe, char *delimiter);
+void	here_doc(t_pipe *pipe, char *delimiter);
 
 	// Execute
 void	execute(void);

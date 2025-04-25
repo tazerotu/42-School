@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/23 14:05:23 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 10:47:45 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,20 @@ int main(int argc, char **argv, char **envp)
 	
 	// char *str = get_env(pipe->envp, "USER");
 	// ft_printf("\nUSER = %s\n\n", str);
-	char *exp = expander("$USER t $USER a $USER un $USER message : $? ceci est un test \n", pipe->envp, pipe);
-	ft_printf("%s", exp);
-	free(exp);
+	// char *exp = expander("$USER t $USER a $USER un $USER message : $? ceci est un test\n", pipe->envp, pipe);
+	// ft_printf("%s", exp);
+	// free(exp);
+	here_doc(pipe, "delimiteur");
+	int fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp", O_RDONLY);
+	ft_printf("\n");
+	char *buffer = get_next_line(fd);
+	while(buffer)
+	{
+		ft_printf("%s", buffer);
+		free(buffer);
+		buffer = get_next_line(fd);
+	}
+	close(fd);
 	free_pipe_env(pipe);
 	return(0);
 }
@@ -43,8 +54,9 @@ int main(int argc, char **argv, char **envp)
 // Pipex
 /*	TEST Heredoc
 char *heredoc = here_doc("delimiteur");
-	ft_printf("\n%s", heredoc);
-	free(heredoc); */
+ft_printf("\n%s", heredoc);
+free(heredoc); 
+*/
 
 // Built-in
 /* TEST Echo
