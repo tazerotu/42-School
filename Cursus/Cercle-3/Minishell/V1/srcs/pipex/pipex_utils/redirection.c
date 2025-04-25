@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:37:03 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 11:20:21 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 11:22:12 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,15 @@ int	*set_redirection(t_pipe *pipe, char **redir)
 	while (redir[i++])
 	{
 		if (redir[i][0] == '<')
+		{
+			close(fd[0]);
 			fd[0] = set_redir_input(redir, i);
+		}
 		else if (redir[i][0] == '>')
+		{
+			close(fd[1]);
 			fd[1] = set_redir_output(redir, i);
+		}
 		i++;
 	}
 	return (fd);
