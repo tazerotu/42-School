@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 11:16:54 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 11:17:42 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int main(int argc, char **argv, char **envp)
 	}
 	close(fd);
 	free_pipe_env(pipe);
-	remove("./srcs/pipex/pipex_utils/.heredoc.tmp");
 	return(0);
 }
 

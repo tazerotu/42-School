@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 09:43:44 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 11:20:42 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	execute(void);
 void	get_path(void);
 void	child_process(void);
 void	parent_process(void);
-void	set_redirection(char **redir);
+void	set_redirection(t_pipe *pipe, char **redir);
 
 	// Execute Utils
 char	**get_env_char(t_env *envp);
