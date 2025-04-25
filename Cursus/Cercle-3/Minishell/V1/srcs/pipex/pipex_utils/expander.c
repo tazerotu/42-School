@@ -12,22 +12,6 @@
 
 #include "../../../includes/executor.h"
 
-// static int			syntax(char *value)
-// {
-// 	int	i;
-
-// 	i = 0;
-// 	while(value[i])
-// 	{
-// 		if(ft_isupper(value[i++]) == 0)
-// 		{
-// 			free(value);
-// 			return (0);
-// 		}
-// 	}
-// 	return (1);
-// }
-
 // printf("ret : %s\n\n", expander->ret);
 static t_expander	*expand_dollar(t_expander *expander, t_pipe *pipe)
 {
@@ -57,9 +41,8 @@ static t_expander	*expand_copy(t_expander *expander, char *str)
 	return (expander);
 }
 
-// if(syntax(value) == 1)
-// {
-// }
+// ft_strlcpy(expander->ret, str + expander->end, 
+// expander->start - expander->end);
 static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 {
 	char	*value;
@@ -81,7 +64,7 @@ static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 	ft_strlcpy(expander->ret, tmp, ft_strlen(tmp)+1);
 	free(tmp);
 	expander->start = expander->end;
-	if (str[expander->end] == '\0')
+	if(str[expander->end] == '\0')
 		expander->start--;
 	return (expander);
 }
@@ -106,10 +89,10 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe)
 			else
 				expander = expand(expander, str, envp);
 		}
-		expander->start++;
+			expander->start++;
 	}
 	ret = ft_strjoin(expander->ret, str + expander->end);
-	if (expander->dollar == 1)
+	if(expander->dollar == 1)
 		free(expander->ret);
 	free(expander);
 	return (ret);

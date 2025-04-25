@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/04/25 11:36:25 by ttas             ###   ########.fr        #
+#    Updated: 2025/04/25 13:30:20 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ SRCS_INIT =			./srcs/init/init.c \
 
 SRCS_PIPEX_UTILS =	./srcs/pipex/pipex_utils/get_env.c \
 					./srcs/pipex/pipex_utils/expander.c \
+					./srcs/pipex/pipex_utils/expander_utils.c \
 					./srcs/pipex/pipex_utils/here_doc.c \
 
 SRCS_BUILT_IN =		./srcs/pipex/built_in/env.c \

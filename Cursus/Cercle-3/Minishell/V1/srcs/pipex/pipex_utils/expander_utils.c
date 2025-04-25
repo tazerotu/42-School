@@ -1,40 +1,47 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 13:09:19 by ttas             ###   ########.fr       */
+/*   Created: 2025/04/25 13:11:13 by ttas              #+#    #+#             */
+/*   Updated: 2025/04/25 13:39:10 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-int	bi_exit(t_pipe *pipe, char **cmd)
+static int	ft_isalpha_upper(int c)
+{
+	if ((c >= 'A' && c <= 'Z'))
+	{
+		return (1);
+	}
+	return (0);
+}
+
+static int	ft_isalnum_upper(int c)
+{
+	if (ft_isalpha_upper(c) || ft_isdigit(c))
+	{
+		return (1);
+	}
+	return (0);
+}
+
+int	expander_syntax(char *str, int *end)
 {
 	int	i;
-	int	exit;
 
-	i = 0;
-	while (cmd[i])
-		i++;
-	if (i > 2)
-		ft_printf("Too many arguments");
-	i = 0;
-	while (cmd[1][i])
+	i = *end;
+	if (!ft_isalpha_upper(str[i]) && str[i] != '_')
+		return (-1);
+	while (str[i] && str[i] != ' ')
 	{
-		if (ft_isdigit(cmd[1][i++]) == 0)
-		{
-			ft_printf("Non numerical argument");
-			pipe->exit = 127;
-			return (127);
-		}
+		if (!ft_isalnum_upper(str[i]) && str[i] != '_')
+			return (-2);
+		i++;
 	}
-	exit = atoi(cmd[1]);
-	while (exit > 255)
-		exit -= 256;
-	pipe->exit = exit;
-	return (exit);
+	return (i);
 }

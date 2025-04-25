@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 11:35:58 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/25 13:30:55 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	set_redirection(t_pipe *pipe, char **redir);
 char	**get_env_char(t_env *envp);
 char	*get_env(t_env *envp, char *str);
 char	*expander(char *str, t_env *envp, t_pipe *pipe);
+int		expander_syntax(char *str, int *end);
 
 	//	Built-in
 //	with option -n
@@ -105,7 +106,7 @@ void	bi_pwd(t_pipe *pipe);
 t_env	*bi_export(t_pipe *pipe, t_env *env, char **str);
 void	bi_unset(t_env *envp, char **str, t_pipe *pipe);
 void	bi_env(t_env *envp, t_pipe *pipe);
-void	bi_exit(t_pipe *pipe, char **cmd);
+int		bi_exit(t_pipe *pipe, char **cmd);
 
 		// Utils
 void	env_add_back(t_env *envp, t_env *new);
