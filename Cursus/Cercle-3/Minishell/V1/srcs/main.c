@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 11:08:03 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 11:21:25 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 */
 
 // Pipex
-/*	TEST Heredoc
+//	TEST Heredoc
 static void test_heredoc(t_pipe *pipe)
 {
 	here_doc(pipe, "delimiteur");
@@ -49,7 +49,7 @@ static void test_heredoc(t_pipe *pipe)
 	}
 	close(fd);
 }
-*/
+
 
 // Built-in
 /* TEST Echo
@@ -146,6 +146,7 @@ int main(int argc, char **argv, char **envp)
     system("clear");
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
+	test_heredoc(pipe);
 	free_pipe_env(pipe);
 	return(0);
 }

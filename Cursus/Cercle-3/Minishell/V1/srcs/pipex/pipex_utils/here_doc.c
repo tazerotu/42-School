@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 10:58:19 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 11:22:01 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,11 @@ void	here_doc(t_pipe *pipe, char *delimiter)
 
 	tmp = NULL;
 	heredoc = NULL;
+	ft_printf("\033[0;37mheredoc> \033[0m");
 	buffer = get_next_line(STDIN_FILENO);
 	while (ft_strnstr(buffer, delimiter, ft_strlen(delimiter)) == NULL)
 	{
-		ft_printf("\033[0;37mheredoc>\033[0m");
+		ft_printf("\033[0;37mheredoc> \033[0m");
 		heredoc = here_doc_join(heredoc, buffer, tmp);
 		buffer = get_next_line(STDIN_FILENO);
 	}
