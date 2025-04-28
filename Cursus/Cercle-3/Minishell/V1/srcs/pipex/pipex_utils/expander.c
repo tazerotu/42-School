@@ -43,6 +43,9 @@ static t_expander	*expand_copy(t_expander *expander, char *str)
 
 // ft_strlcpy(expander->ret, str + expander->end, 
 // expander->start - expander->end);
+// while (str[expander->end] && str[expander->end] != ' ')
+// 	expander->end++;
+// value = ft_substr(str, expander->start, expander->end - expander->start);
 static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 {
 	char	*value;
@@ -51,12 +54,14 @@ static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 
 	value = NULL;
 	i = 0;
-	// while (str[expander->end] && str[expander->end] != ' ')
-	// 	expander->end++;
-	// value = ft_substr(str, expander->start, expander->end - expander->start);
-	value = verify_syntax(str, &expander);
-	expander->var = get_env(envp, value);
-	free(value);
+	value = verify_syntax(str, expander);
+	if (value != NULL)
+	{
+		expander->var = get_env(envp, value);
+		free(value);
+	}
+	else
+		expander->var = NULL;
 	expander->tmp = ft_strjoin(expander->ret, expander->var);
 	free(expander->ret);
 	free(expander->var);
@@ -65,7 +70,7 @@ static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 	ft_strlcpy(expander->ret, tmp, ft_strlen(tmp)+1);
 	free(tmp);
 	expander->start = expander->end;
-	if(str[expander->end] == '\0')
+	if (str[expander->end] == '\0')
 		expander->start--;
 	return (expander);
 }
@@ -90,10 +95,10 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe)
 			else
 				expander = expand(expander, str, envp);
 		}
-			expander->start++;
+		expander->start++;
 	}
 	ret = ft_strjoin(expander->ret, str + expander->end);
-	if(expander->dollar == 1)
+	if (expander->dollar == 1)
 		free(expander->ret);
 	free(expander);
 	return (ret);

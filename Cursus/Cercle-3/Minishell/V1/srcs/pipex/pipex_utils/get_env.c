@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:30:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 11:14:20 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 09:55:15 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,13 @@ char	*get_env(t_env *envp, char *str)
 	int		i;
 
 	i = 0;
-	tmp = NULL;
 	while (str[i])
 		i++;
 	if (str[--i] != '\0')
 		str[i] = '\0';
 	while (envp)
 	{
-		if (ft_strnstr(envp->env, str, ft_strlen(str)))
+		if (ft_strncmp(envp->env, str, ft_strlen(str)) == 0)
 		{
 			env = ft_strdup(envp->env);
 			while (env[i] && env[i] != '=')

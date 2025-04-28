@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 14:03:17 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 09:59:26 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,33 @@
 	free_env(env);
 */
 
+// Test Expander
+/*
+static void test_expander(t_pipe *pipe)
+{
+	char *exp = expander("USEr : $USEr \n9USER : $9USER \nUSERt 
+	: $USERt \nUSER : $USER \n? : $? \n", pipe->envp, pipe);
+	ft_printf("%s", exp);
+	free(exp);
+}
+*/
+
 // Pipex
 /*	TEST Heredoc
-char *heredoc = here_doc("delimiteur");
-ft_printf("\n%s", heredoc);
-free(heredoc); 
+static void test_heredoc(t_pipe *pipe)
+{
+	here_doc(pipe, "delimiteur");
+	int fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp", O_RDONLY);
+	ft_printf("\n");
+	char *buffer = get_next_line(fd);
+	while(buffer)
+	{
+		ft_printf("%s", buffer);
+		free(buffer);
+		buffer = get_next_line(fd);
+	}
+	close(fd);
+}
 */
 
 // Built-in
@@ -79,8 +101,7 @@ free(heredoc);
 	bi_echo(pipe->cmd->cmd);
 */
 
-// TEST Export, Unset
-/*
+/* TEST Export, Unset
 static void test_export(t_pipe *pipe)
 {
 	char *export[] = {"export", "TEST1=1", "TEST2=2", "TEST3=3", NULL};
@@ -125,24 +146,6 @@ int main(int argc, char **argv, char **envp)
     system("clear");
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
-	
-	
-	// char *str = get_env(pipe->envp, "USER");
-	// ft_printf("\nUSER = %s\n\n", str);
-	char *exp = expander("USEr : $USEr \n9USER : $9USER \nUSERt : $USERt \nUSER : $USER \n? : $? \n", pipe->envp, pipe);
-	ft_printf("%s", exp);
-	free(exp);
-	// here_doc(pipe, "delimiteur");
-	// int fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp", O_RDONLY);
-	// ft_printf("\n");
-	// char *buffer = get_next_line(fd);
-	// while(buffer)
-	// {
-	// 	ft_printf("%s", buffer);
-	// 	free(buffer);
-	// 	buffer = get_next_line(fd);
-	// }
-	// close(fd);
 	free_pipe_env(pipe);
 	return(0);
 }

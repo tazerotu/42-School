@@ -6,14 +6,16 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:11:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 14:07:57 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 10:01:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-int is_valid_var_char(char c)
+static int	ft_isalpha_upper(char c)
 {
+	if (c >= 'A' && c <= 'Z')
+		return (1);
 	return (0);
 }
 
@@ -26,7 +28,17 @@ int is_valid_var_char(char c)
 // $USER9 -> NULL
 // $USEr  -> NULL
 // $USERt -> NULL
-char *verify_syntax(char *str, t_expander *expander)
+char	*verify_syntax(char *str, t_expander *expander)
 {
-	return (NULL);
+	char	*value;
+
+	expander->end++;
+	if (ft_isalpha_upper(str[expander->end++]) == 0)
+		return (NULL);
+	expander->end++;
+	while (str[expander->end] && str[expander->end] != ' ')
+		expander->end++;
+	value = ft_substr(str, expander->start,
+			(expander->end + 1) - expander->start);
+	return (value);
 }
