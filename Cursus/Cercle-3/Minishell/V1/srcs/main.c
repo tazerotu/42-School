@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 10:10:51 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 11:08:03 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@
 */
 
 // Test Expander
-/*
-static void test_expander(t_pipe *pipe)
+/*static void test_expander(t_pipe *pipe)
 {
 	char *exp = expander("USEr : $USEr \n9USER : $9USER \nUSERt 
-	: $USERt \nUSER : $USER \n? : $? \n", pipe->envp, pipe);
+		: $USERt \nUSER9 : $USER9 \nUSER 
+		: $USER \n? : $? \n", pipe->envp, pipe);
 	ft_printf("%s", exp);
 	free(exp);
 }
