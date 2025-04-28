@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:11:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 10:01:35 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 11:27:18 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,15 @@ static int	ft_isalpha_upper(char c)
 	if (c >= 'A' && c <= 'Z')
 		return (1);
 	return (0);
+}
+
+static int ft_isspace(int c)
+{
+    if ((c >= 9 && c <= 13) || c == ' ')
+    {
+        return (1);
+    }
+    return (0);
 }
 
 // Function to verify the syntax of an environment variable in a string
@@ -36,7 +45,7 @@ char	*verify_syntax(char *str, t_expander *expander)
 	if (ft_isalpha_upper(str[expander->end++]) == 0)
 		return (NULL);
 	expander->end++;
-	while (str[expander->end] && str[expander->end] != ' ')
+	while (str[expander->end] && ft_isspace(str[expander->end]) == 0)
 		expander->end++;
 	value = ft_substr(str, expander->start,
 			(expander->end + 1) - expander->start);
