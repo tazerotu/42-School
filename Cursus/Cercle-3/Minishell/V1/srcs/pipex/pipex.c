@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 09:56:25 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 10:22:07 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ void	pipex(t_pipe *pipe)
 
 	while (pipe->cmd)
 	{
+		if (pipe(fd) == -1)
+			return (ERROR_FD);
 		if (pipe->env)
 		{
 			free_env(pipe->env);
@@ -61,10 +63,8 @@ void	pipex(t_pipe *pipe)
 		else
 			pipe->env = get_env_char(pipe->envp);
 		fd = set_redirection(pipe->cmd->redir);
-		pipe->fd_in = dup2(set_redirection(fd[0], 0));
-		pipe->fd_out = dup2(set_redirection(fd[1], 1));
-		if (pipe->fd_in < 0 || pipe->fd_out < 0)
-			return (ERROR_FD);
+		dup2(fd[0], 0);
+		dup2(fd[1], 1);
 		if (verify_builtin(pipe) == 0)
 			launch_builtin(pipe);
 		else
