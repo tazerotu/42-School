@@ -6,23 +6,13 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 11:21:25 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 11:33:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/executor.h"
 
 // Others
-/* TEST get_env
-	char **env = get_env(pipe->envp);
-	int i = -1;
-	printf("\n\n");
-	while(env[++i])
-		ft_printf("\n%s", env[i]);
-	free_env(env);
-*/
-
-// Test Expander
 /*static void test_expander(t_pipe *pipe)
 {
 	char *exp = expander("USEr : $USEr \n9USER : $9USER \nUSERt 
@@ -34,8 +24,7 @@
 */
 
 // Pipex
-//	TEST Heredoc
-static void test_heredoc(t_pipe *pipe)
+/*static void test_heredoc(t_pipe *pipe)
 {
 	here_doc(pipe, "delimiteur");
 	int fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp", O_RDONLY);
@@ -48,8 +37,7 @@ static void test_heredoc(t_pipe *pipe)
 		buffer = get_next_line(fd);
 	}
 	close(fd);
-}
-
+}*/
 
 // Built-in
 /* TEST Echo
