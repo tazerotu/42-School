@@ -6,13 +6,14 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 12:13:09 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 12:13:59 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/executor.h"
 
 // Others
+//test_expander(pipe);
 /*static void test_expander(t_pipe *pipe)
 {
 	char *exp = expander("USEr : $USEr \n9USER : $9USER \nUSERt 
@@ -90,8 +91,9 @@
 	bi_echo(pipe->cmd->cmd);
 */
 
-/* TEST Export, Unset
-static void test_export(t_pipe *pipe)
+// TEST Export, Unset
+//test_export(pipe);
+/*static void test_export(t_pipe *pipe)
 {
 	char *export[] = {"export", "TEST1=1", "TEST2=2", "TEST3=3", NULL};
 	char *unset[] = {"unset", "TEST1", "TEST2", NULL};
