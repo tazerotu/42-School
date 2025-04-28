@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 11:33:35 by ttas             ###   ########.fr       */
+/*   Updated: 2025/04/28 12:13:09 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 */
 
 // Pipex
+//test_heredoc(pipe);
 /*static void test_heredoc(t_pipe *pipe)
 {
 	here_doc(pipe, "delimiteur");
@@ -110,20 +111,16 @@ static void test_export(t_pipe *pipe)
 
 // Main
 /* Readline
-// while ( i < 10 )
-// {
-//     input = readline("\033[0;32mMinishell>\033[0m");
-//     add_history(input);
-	// printf("%i\n\n", pipe.n_pipe);
-	// j = 0;
-	// while(j < pipe.n_pipe)
-	// {
-	// 	printf("cmd : %s\n", pipe.cmd[j]);
-	// 	printf("len : %zu\n\n", ft_strlen(pipe.cmd[j]));
-	// 	j++;
-	// }
-	// i++;
-// }
+	int i = 0;
+	char *input;
+	while ( i < 10 )
+{
+    input = readline("\033[0;32mMinishell>\033[0m");
+    add_history(input);
+	ft_printf("%s\n", input);
+	free(input);
+	i++;
+}
 */
 
 int main(int argc, char **argv, char **envp)
@@ -134,7 +131,6 @@ int main(int argc, char **argv, char **envp)
     system("clear");
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
-	test_heredoc(pipe);
 	free_pipe_env(pipe);
 	return(0);
 }
