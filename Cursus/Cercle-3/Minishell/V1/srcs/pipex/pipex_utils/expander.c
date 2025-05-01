@@ -50,10 +50,8 @@ static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
 {
 	char	*value;
 	char	*tmp;
-	int		i;
 
 	value = NULL;
-	i = 0;
 	value = verify_syntax(str, expander);
 	if (value != NULL)
 	{

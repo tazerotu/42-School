@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 10:22:07 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/01 18:29:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,32 +43,70 @@ char	*get_path(char *cmd, char **envp)
 	return (0);
 }
 
-void	execute(void);
-void	child_process(void);
-void	parent_process(void);
-
-void	pipex(t_pipe *pipe)
+void	execute(t_pipe *pipex)
 {
-	int	fd[2];
+	char	*path;
 
-	while (pipe->cmd)
+	verify_builtin(pipex);
+	if (pipex->exit == 0)
+		return;
+	path = get_path(pipex->cmd->cmd[0], pipex->env);
+	if (!path)
 	{
-		if (pipe(fd) == -1)
-			return (ERROR_FD);
-		if (pipe->env)
-		{
-			free_env(pipe->env);
-			pipe->env = get_env_char(pipe->envp);
-		}
-		else
-			pipe->env = get_env_char(pipe->envp);
-		fd = set_redirection(pipe->cmd->redir);
-		dup2(fd[0], 0);
-		dup2(fd[1], 1);
-		if (verify_builtin(pipe) == 0)
-			launch_builtin(pipe);
-		else
-			execute(void);
+		error_message(127, pipex->cmd->cmd[0]);
+		exit(127);
 	}
-	free_env(pipe->env);
+	if (execve(path, pipex->cmd->cmd, pipex->env) == -1)
+	{
+		perror("execve");
+		exit(EXIT_FAILURE);
+	}
+}
+
+void	do_pipe(char *cmd, char **env)
+{
+	pid_t	pid;
+	int		p_fd[2];
+
+	if (pipe(p_fd) == -1)
+		exit(0);
+	pid = fork();
+	if (pid == -1)
+		exit(0);
+	if (!pid)
+	{
+		close(p_fd[0]);
+		dup2(p_fd[1], 1);
+		exec(cmd, env);
+	}
+	else
+	{
+		close(p_fd[1]);
+		dup2(p_fd[0], 0);
+	}
+}pipex->exit = WEXITSTATUS(pipex->exit_status);
+}
+
+void	pipex(t_pipe *pipex)
+{
+	while (pipex->cmd)
+	{
+		if (pipe(pipex->pipe_fd) == -1)
+		{
+			perror("pipe");
+			exit(EXIT_FAILURE);
+		}
+		pipex->pid = fork();
+		if (pipex->pid == -1)
+		{
+			perror("fork");
+			exit(EXIT_FAILURE);
+		}
+		if (pipex->pid == 0)
+			child_process(pipex);
+		else
+			parent_process(pipex);
+		pipex->cmd = pipex->cmd->next;
+	}
+	free_pipe_env(pipex);
 }
