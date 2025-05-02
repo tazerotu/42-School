@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 09:25:14 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/02 11:04:24 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,23 @@ void	execute(t_pipe *pipex)
 {
 	char	*path;
 
-	verify_builtin(pipex);
-	if (pipex->exit == 0)
-		return;
-	path = get_path(pipex->cmd->cmd[0], pipex->env);
-	if (!path)
+	if (verify_builtin(pipex))
+		return ;
+	else
 	{
-		error_message(127, pipex->cmd->cmd[0]);
-		exit(127);
-	}
-	if (execve(path, pipex->cmd->cmd, pipex->env) == -1)
-	{
-		perror("execve");
-		exit(EXIT_FAILURE);
+		if (pipex->exit == 0)
+			return;
+		path = get_path(pipex->cmd->cmd[0], pipex->env);
+		if (!path)
+		{
+			error_message(127, pipex->cmd->cmd[0]);
+			exit(127);
+		}
+		if (execve(path, pipex->cmd->cmd, pipex->env) == -1)
+		{
+			perror("execve");
+			exit(EXIT_FAILURE);
+		}
 	}
 }
 
@@ -74,31 +78,27 @@ void	do_pipe(t_pipe *pipex)
 	{
 		ft_close(pipex->pipe_fd[0]);
 		dup2(pipex->pipe_fd[1], 1);
-		execute(pipex->cmd, pipex->env);
+		execute(pipex);
 	}
 	else
 	{
-		ft_close(p_fd[1]);
-		dup2(p_fd[0], 0);
+		ft_close(pipex->pipe_fd[1]);
+		dup2(pipex->pipe_fd[0], 0);
 	}
 	pipex->exit = WEXITSTATUS(pipex->exit_status);
 }
 
 void	pipex(t_pipe *pipex)
 {
-	t_cmd *tmp;
-
 	while (pipex->cmd)
 	{
+		pipex->env = get_env_char(pipex->envp, pipex->env);
 		do_pipe(pipex);
-		tmp = pipex->cmd;
 		pipex->cmd = pipex->cmd->next;
-		free(tmp->cmd);
-		free(tmp);
 	}
+	pipex->env = get_env_char(pipex->envp, pipex->env);
 	dup2(pipex->fd_out, 1);
 	execute(pipex);
-	free(pipex->cmd->cmd);
-	free(pipex->cmd);
-	free_pipe_env(pipex);
+	free_env(pipex->env);
+	ft_free_cmd(pipex->cmd);
 }

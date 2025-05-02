@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 09:11:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/02 10:37:45 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,10 @@ t_pipe	*init_env(t_pipe *pipe, char **envp);
 	// Free
 void	free_pipe_env(t_pipe *pipe);
 void	free_env(char **env);
+void	ft_free_cmd(t_cmd *cmd);
 
 	// Command initialization
-void	verify_builtin(t_pipe *pipe);
+int		verify_builtin(t_pipe *pipe);
 void	launch_builtin(t_pipe *pipe);
 void	here_doc(t_pipe *pipe, char *delimiter);
 
@@ -99,7 +100,7 @@ int		set_pipex(t_pipe *pipex);
 void	pipex(t_pipe *pipex);
 
 	// Execute Utils
-char	**get_env_char(t_env *envp);
+char	**get_env_char(t_env *envp, char **env);
 char	*get_env(t_env *envp, char *str);
 char	*expander(char *str, t_env *envp, t_pipe *pipe);
 char	*verify_syntax(char *str, t_expander *expander);

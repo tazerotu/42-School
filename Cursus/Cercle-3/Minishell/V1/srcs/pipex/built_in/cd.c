@@ -6,11 +6,18 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/23 12:35:39 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/02 10:09:02 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
+
+static char	*get_pwd(char *pwd)
+{
+	free(pwd);
+	pwd = getcwd(NULL, 0);
+	return (pwd);
+}
 
 t_env	*find_env_pos(t_env *env, int pos)
 {
@@ -72,26 +79,28 @@ static void	change_pwd(t_env *env, char *path, char *cwd)
 static int	change_dir(t_env *env, char *str, bool home)
 {
 	t_env	*tmp;
-	char	*pwd_previous;
+	char	*pwd;
 
 	tmp = env;
-	pwd_previous = getcwd(NULL, 0);
+	pwd = getcwd(NULL, 0);
 	if (home == true)
 	{
 		tmp = find_env_pos(tmp, variable_pos(tmp, "HOME"));
 		if (chdir(tmp->env))
 			return (error_message(ERROR_DIR, tmp->env));
-		change_pwd(tmp, "OLDPWD=", pwd_previous);
-		change_pwd(tmp, "PWD=", getcwd(NULL, 0));
+		change_pwd(tmp, "OLDPWD=", pwd);
+		pwd = get_pwd(pwd);
+		change_pwd(tmp, "PWD=", pwd);
 	}
 	else
 	{
 		if (chdir(str))
 			return (error_message(ERROR_DIR, str));
-		change_pwd(tmp, "OLDPWD=", pwd_previous);
-		change_pwd(tmp, "PWD=", getcwd(NULL, 0));
+		change_pwd(tmp, "OLDPWD=", pwd);
+		pwd = get_pwd(pwd);
+		change_pwd(tmp, "PWD=", pwd);
 	}
-	free(pwd_previous);
+	free(pwd);
 	return (0);
 }
 

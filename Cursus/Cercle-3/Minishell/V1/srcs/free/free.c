@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:23:16 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/01 20:55:55 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/02 10:47:30 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,17 @@ void	free_env(char **env)
 	i = -1;
 	while (env[++i])
 		free(env[i]);
+	free(env[i]);
 	free(env);
+}
+
+void	ft_free_cmd(t_cmd *cmd)
+{
+	int i;
+
+	i = 0;
+	// while(cmd->cmd[i])
+		// free(cmd->cmd[i++]);
+	free(cmd->cmd);
+	free(cmd);
 }

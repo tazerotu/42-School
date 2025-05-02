@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/01 11:23:42 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/02 11:05:01 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,33 @@
 */
 
 // Pipex
+//test_pipex(pipe);
+static void test_pipex(t_pipe *pipe)
+{
+	pipe->cmd = malloc(sizeof(t_cmd));
+	pipe->cmd->redir = NULL;
+	pipe->cmd->cmd = malloc(sizeof(char *) * 3);
+	pipe->cmd->cmd[0] = "cd";
+	pipe->cmd->cmd[1] = "./srcs/";
+	pipe->cmd->cmd[2] = NULL;
+	// pipe->cmd->next = NULL;
+	pipe->cmd->next = malloc(sizeof(t_cmd));
+	pipe->cmd->next->cmd = malloc(sizeof(char *) * 3);
+	pipe->cmd->next->cmd[0] = "cat";
+	pipe->cmd->next->cmd[1] = "./main.c";
+	pipe->cmd->next->cmd[2] = NULL;
+	pipe->cmd->next->next = NULL;
+	pipex(pipe);
+	char *pwd = getcwd(NULL, 0);
+	printf("\n%s\n\n", pwd);
+	free(pwd);
+	// chdir("/home/ttas/42-School/Cursus/Cercle-3/Minishell/V1");
+	// pwd = getcwd(NULL, 0);
+	// printf("\n%s\n\n", pwd);
+	// free(pwd);
+}
+
+
 //test_heredoc(pipe);
 /*static void test_heredoc(t_pipe *pipe)
 {
@@ -135,6 +162,7 @@ int main(int argc, char **argv, char **envp)
     system("clear");
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
+	test_pipex(pipe);
 	free_pipe_env(pipe);
 	return(0);
 }
