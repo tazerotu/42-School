@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_built_in.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/30 18:33:22 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/02 09:16:43 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,12 @@ void	verify_builtin(t_pipe *pipe)
 	char	*str;
 
 	str = pipe->cmd->cmd[0];
-	if (!ft_strncmp(str, "echo", 4) || !ft_strncmp(str, "cd", 2) || 
-		!ft_strncmp(str, "pwd", 3) || !ft_strncmp(str, "export", 6) || 
-		!ft_strncmp(str, "unset", 5) || !ft_strncmp(str, "env", 3) || 
-		!ft_strncmp(str, "exit", 4))
+	if (!ft_strncmp(str, "echo", 4) || !ft_strncmp(str, "cd", 2)
+		|| !ft_strncmp(str, "pwd", 3)
+		|| !ft_strncmp(str, "export", 6)
+		|| !ft_strncmp(str, "unset", 5)
+		|| !ft_strncmp(str, "env", 3)
+		|| !ft_strncmp(str, "exit", 4))
 	{
 		launch_builtin(pipe);
 	}

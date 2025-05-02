@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/01 18:29:11 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/02 09:25:14 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,50 +63,42 @@ void	execute(t_pipe *pipex)
 	}
 }
 
-void	do_pipe(char *cmd, char **env)
+void	do_pipe(t_pipe *pipex)
 {
-	pid_t	pid;
-	int		p_fd[2];
-
-	if (pipe(p_fd) == -1)
+	if (pipe(pipex->pipe_fd) == -1)
 		exit(0);
-	pid = fork();
-	if (pid == -1)
+	pipex->pid = fork();
+	if (pipex->pid == -1)
 		exit(0);
-	if (!pid)
+	if (!pipex->pid)
 	{
-		close(p_fd[0]);
-		dup2(p_fd[1], 1);
-		exec(cmd, env);
+		ft_close(pipex->pipe_fd[0]);
+		dup2(pipex->pipe_fd[1], 1);
+		execute(pipex->cmd, pipex->env);
 	}
 	else
 	{
-		close(p_fd[1]);
+		ft_close(p_fd[1]);
 		dup2(p_fd[0], 0);
 	}
-}pipex->exit = WEXITSTATUS(pipex->exit_status);
+	pipex->exit = WEXITSTATUS(pipex->exit_status);
 }
 
 void	pipex(t_pipe *pipex)
 {
+	t_cmd *tmp;
+
 	while (pipex->cmd)
 	{
-		if (pipe(pipex->pipe_fd) == -1)
-		{
-			perror("pipe");
-			exit(EXIT_FAILURE);
-		}
-		pipex->pid = fork();
-		if (pipex->pid == -1)
-		{
-			perror("fork");
-			exit(EXIT_FAILURE);
-		}
-		if (pipex->pid == 0)
-			child_process(pipex);
-		else
-			parent_process(pipex);
+		do_pipe(pipex);
+		tmp = pipex->cmd;
 		pipex->cmd = pipex->cmd->next;
+		free(tmp->cmd);
+		free(tmp);
 	}
+	dup2(pipex->fd_out, 1);
+	execute(pipex);
+	free(pipex->cmd->cmd);
+	free(pipex->cmd);
 	free_pipe_env(pipex);
 }

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:11:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/28 11:27:18 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/02 09:14:11 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@ static int	ft_isalpha_upper(char c)
 	return (0);
 }
 
-static int ft_isspace(int c)
+static int	ft_isspace(int c)
 {
-    if ((c >= 9 && c <= 13) || c == ' ')
-    {
-        return (1);
-    }
-    return (0);
+	if ((c >= 9 && c <= 13) || c == ' ')
+	{
+		return (1);
+	}
+	return (0);
 }
 
 // Function to verify the syntax of an environment variable in a string

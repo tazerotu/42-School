@@ -1,3 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   test_pipex.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/05/02 09:12:42 by ttas              #+#    #+#             */
+/*   Updated: 2025/05/02 09:12:42 by ttas             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -106,10 +119,10 @@ void test_pipex() {
 	free(cmd2->cmd);
 	free(cmd2);
 }
-
-int main() {
-	test_get_path();
-	test_execute();
-	test_pipex();
-	return 0;
-}
+*/
+// int main() {
+// 	test_get_path();
+// 	test_execute();
+// 	test_pipex();
+// 	return 0;
+// }
