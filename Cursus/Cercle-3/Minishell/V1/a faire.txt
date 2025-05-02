@@ -1,6 +1,7 @@
 ✓ Here doc (add to redirection input)
 ✓ Expander Syntax (Only Uppercase, syntax of export)
-Pipex (execution)
 ✓ Exit (built_in)
+Fix Built-in
+Pipex (execution)
 Merge
 Readline

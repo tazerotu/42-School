@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 11:05:01 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/02 11:07:25 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,14 @@ static void test_pipex(t_pipe *pipe)
 	pipe->cmd = malloc(sizeof(t_cmd));
 	pipe->cmd->redir = NULL;
 	pipe->cmd->cmd = malloc(sizeof(char *) * 3);
-	pipe->cmd->cmd[0] = "cd";
-	pipe->cmd->cmd[1] = "./srcs/";
+	pipe->cmd->cmd[0] = "cat";
+	pipe->cmd->cmd[1] = "./srcs/main.c";
 	pipe->cmd->cmd[2] = NULL;
 	// pipe->cmd->next = NULL;
 	pipe->cmd->next = malloc(sizeof(t_cmd));
 	pipe->cmd->next->cmd = malloc(sizeof(char *) * 3);
-	pipe->cmd->next->cmd[0] = "cat";
-	pipe->cmd->next->cmd[1] = "./main.c";
+	pipe->cmd->next->cmd[0] = "grep";
+	pipe->cmd->next->cmd[1] = "test";
 	pipe->cmd->next->cmd[2] = NULL;
 	pipe->cmd->next->next = NULL;
 	pipex(pipe);

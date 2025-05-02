@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 11:04:24 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/02 11:09:01 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	do_pipe(t_pipe *pipex)
 
 void	pipex(t_pipe *pipex)
 {
-	while (pipex->cmd)
+	while (pipex->cmd && pipex->cmd->next)
 	{
 		pipex->env = get_env_char(pipex->envp, pipex->env);
 		do_pipe(pipex);
