@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 11:09:01 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/02 12:26:42 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,16 +74,18 @@ void	do_pipe(t_pipe *pipex)
 	pipex->pid = fork();
 	if (pipex->pid == -1)
 		exit(0);
-	if (!pipex->pid)
+	if (pipex->pid == 0)
 	{
 		ft_close(pipex->pipe_fd[0]);
 		dup2(pipex->pipe_fd[1], 1);
 		execute(pipex);
+		ft_printf("C1\n");	
 	}
 	else
 	{
 		ft_close(pipex->pipe_fd[1]);
 		dup2(pipex->pipe_fd[0], 0);
+		ft_printf("C2\n");
 	}
 	pipex->exit = WEXITSTATUS(pipex->exit_status);
 }
@@ -92,10 +94,15 @@ void	pipex(t_pipe *pipex)
 {
 	while (pipex->cmd && pipex->cmd->next)
 	{
+		set_redirection(pipex, pipex->cmd->redir);
+		if(pipex->fd_in == 0)
+			dup2(pipex->fd_in, 0);
 		pipex->env = get_env_char(pipex->envp, pipex->env);
 		do_pipe(pipex);
+		ft_printf("%s\n", pipex->cmd->cmd[0]);
 		pipex->cmd = pipex->cmd->next;
 	}
+	ft_printf("%s\n", pipex->cmd->cmd[0]);
 	pipex->env = get_env_char(pipex->envp, pipex->env);
 	dup2(pipex->fd_out, 1);
 	execute(pipex);
