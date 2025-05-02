@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/05/01 11:23:39 by marvin           ###   ########.fr        #
+#    Updated: 2025/05/02 09:10:25 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS_PIPEX_UTILS =	./srcs/pipex/pipex_utils/get_env.c \
 					./srcs/pipex/pipex_utils/expander_utils.c \
 					./srcs/pipex/pipex_utils/here_doc.c \
 					./srcs/pipex/pipex_utils/redirection.c \
+					./srcs/pipex/pipex_utils/pipex_utils.c \
 
 SRCS_BUILT_IN =		./srcs/pipex/built_in/env.c \
 					./srcs/pipex/built_in/bi_utils/env_utils.c \
