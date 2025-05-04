@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 10:37:45 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/04 15:06:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,6 @@
 # define ERROR_ENV 131
 
 // Struct
-typedef struct s_env
-{
-	char			*env;
-	struct s_env	*previous;
-	struct s_env	*next;
-}	t_env;
-
 typedef struct s_expander
 {
 	char	*ret;
@@ -53,6 +46,14 @@ typedef struct s_expander
 	int		end;
 	int		dollar;
 }	t_expander;
+
+typedef struct s_env
+{
+	char			*env;
+	struct s_env	*previous;
+	struct s_env	*next;
+}	t_env;
+
 
 typedef struct s_cmd
 {
@@ -65,9 +66,10 @@ typedef struct s_pipe
 {
 	int				exit;
 	int				exit_status;
+	int				n_pipe;
 	int				fd_in;
 	int				fd_out;
-	int				pipe_fd[2];
+	int				*pipe_fd[2];
 	pid_t			pid;
 	char			*heredoc;
 	char			**env;
@@ -97,7 +99,7 @@ void	child_process(t_pipe *pipe);
 void	parent_process(t_pipe *pipe);
 void	set_redirection(t_pipe *pipe, char **redir);
 int		set_pipex(t_pipe *pipex);
-void	pipex(t_pipe *pipex);
+void	execute_pipeline(t_pipe *pipex);
 
 	// Execute Utils
 char	**get_env_char(t_env *envp, char **env);

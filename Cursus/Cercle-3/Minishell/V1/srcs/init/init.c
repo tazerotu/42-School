@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:06:28 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 10:31:06 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/04 14:42:42 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static void	init_pipe(t_pipe *pipe)
 	pipe->cmd = NULL;
 	pipe->envp = NULL;
 	pipe->env = NULL;
+	pipe->n_pipe = 0;
 	pipe->fd_in = 0;
 	pipe->fd_out = 1;
 }

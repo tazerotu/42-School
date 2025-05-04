@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 11:07:25 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/04 15:01:36 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void test_pipex(t_pipe *pipe)
 	pipe->cmd->next->cmd[1] = "test";
 	pipe->cmd->next->cmd[2] = NULL;
 	pipe->cmd->next->next = NULL;
-	pipex(pipe);
+	execute_pipeline(pipe);
 	char *pwd = getcwd(NULL, 0);
 	printf("\n%s\n\n", pwd);
 	free(pwd);
