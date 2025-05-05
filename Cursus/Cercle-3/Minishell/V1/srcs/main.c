@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 11:15:26 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 12:52:43 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,18 @@
 
 // Others
 //test_expander(pipe);
-/*static void test_expander(t_pipe *pipe)
+static void test_expander(t_pipe *pipe)
 {
-	char *exp = expander("USEr : $USEr \n9USER : $9USER \nUSERt 
-		: $USERt \nUSER9 : $USER9 \nUSER 
-		: $USER \n? : $? \n", pipe->envp, pipe);
+	char *str = {"USEr : $USEr \n9USER : $9USER \nUSERt : $USERt \nUSER9 : $USER9 \nUSER : $USER \n'USER' : '$USER'\n? : $? \n"};
+	char *exp = expander(str, pipe->envp, pipe);
 	ft_printf("%s", exp);
 	free(exp);
 }
-*/
+
 
 // Pipex
 //test_pipex(pipe);
-static void test_pipex(t_pipe *pipe)
+/*static void test_pipex(t_pipe *pipe)
 {
 	pipe->cmd = malloc(sizeof(t_cmd));
 	pipe->cmd->redir = NULL;
@@ -62,7 +61,7 @@ static void test_pipex(t_pipe *pipe)
 	// pwd = getcwd(NULL, 0);
 	// printf("\n%s\n\n", pwd);
 	// free(pwd);
-}
+}*/
 
 
 //test_heredoc(pipe);
@@ -175,7 +174,8 @@ int main(int argc, char **argv, char **envp)
 	t_pipe *pipe;
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
-	test_pipex(pipe);
+	test_expander(pipe);
+	// test_pipex(pipe);
 	free_pipe_env(pipe);
 	return(0);
 }
