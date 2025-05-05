@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 10:38:17 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 10:44:47 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,30 @@
 static void test_pipex(t_pipe *pipe)
 {
 	pipe->cmd = malloc(sizeof(t_cmd));
-	// pipe->cmd->redir = NULL;
-	pipe->cmd->redir = malloc(sizeof(char *) * 3);
-	pipe->cmd->redir[0] = "<<";
-	pipe->cmd->redir[1] = "test";
-	pipe->cmd->redir[2] = NULL;
+	pipe->cmd->redir = NULL;
+	// pipe->cmd->redir = malloc(sizeof(char *) * 3);
+	// pipe->cmd->redir[0] = "<<";
+	// pipe->cmd->redir[1] = "test";
+	// pipe->cmd->redir[2] = NULL;
 	pipe->cmd->cmd = malloc(sizeof(char *) * 2);
-	pipe->cmd->cmd[0] = "cat";
-	// pipe->cmd->cmd[1] = "./srcs/main.c";
+	pipe->cmd->cmd[0] = "env";
+	pipe->cmd->cmd[1] = "./srcs/main.c";
 	pipe->cmd->cmd[1] = NULL;
 	pipe->cmd->next = NULL;
-	// pipe->cmd->next = malloc(sizeof(t_cmd));
-	// pipe->cmd->next->redir = NULL;
-	// pipe->cmd->next->cmd = malloc(sizeof(char *) * 3);
-	// pipe->cmd->next->cmd[0] = "grep";
-	// pipe->cmd->next->cmd[1] = "test";
-	// pipe->cmd->next->cmd[2] = NULL;
-	// pipe->cmd->next->next = NULL;
-	// pipe->cmd->next->next = malloc(sizeof(t_cmd));
-	// pipe->cmd->next->next->redir = NULL;
-	// pipe->cmd->next->next->cmd = malloc(sizeof(char *) * 3);
-	// pipe->cmd->next->next->cmd[0] = "wc";
-	// pipe->cmd->next->next->cmd[1] = "-l";
-	// pipe->cmd->next->next->cmd[2] = NULL;
-	// pipe->cmd->next->next->next = NULL;
+	pipe->cmd->next = malloc(sizeof(t_cmd));
+	pipe->cmd->next->redir = NULL;
+	pipe->cmd->next->cmd = malloc(sizeof(char *) * 3);
+	pipe->cmd->next->cmd[0] = "grep";
+	pipe->cmd->next->cmd[1] = "test";
+	pipe->cmd->next->cmd[2] = NULL;
+	pipe->cmd->next->next = NULL;
+	pipe->cmd->next->next = malloc(sizeof(t_cmd));
+	pipe->cmd->next->next->redir = NULL;
+	pipe->cmd->next->next->cmd = malloc(sizeof(char *) * 3);
+	pipe->cmd->next->next->cmd[0] = "wc";
+	pipe->cmd->next->next->cmd[1] = "-l";
+	pipe->cmd->next->next->cmd[2] = NULL;
+	pipe->cmd->next->next->next = NULL;
 
 	pipex(pipe);
 	// char *pwd = getcwd(NULL, 0);
