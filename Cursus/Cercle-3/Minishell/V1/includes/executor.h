@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 09:28:42 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 10:13:57 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ typedef struct s_pipe
 	int				n_pipe;
 	int				fd_in;
 	int				fd_out;
-	int				*pipe_fd[2];
+	int				pipe_fd[2];
 	pid_t			pid;
 	char			*heredoc;
 	char			**env;
@@ -96,16 +96,13 @@ void	launch_builtin(t_pipe *pipe);
 void	here_doc(t_pipe *pipe, char *delimiter);
 
 	// Execute
-void	execute(t_pipe *pipe);
 char	*get_path(char *cmd, char **envp);
-void	child_process(t_pipe *pipe);
-void	parent_process(t_pipe *pipe);
 void	set_redirection(t_pipe *pipe, char **redir);
 int		set_pipex(t_pipe *pipex);
-void	execute_pipeline(t_pipe *pipex);
+void	pipex(t_pipe *pipex);
 
 	// Execute Utils
-char	**get_env_char(t_env *envp, char **env);
+char	**get_env_char(t_env *envp);
 char	*get_env(t_env *envp, char *str);
 char	*expander(char *str, t_env *envp, t_pipe *pipe);
 char	*verify_syntax(char *str, t_expander *expander);

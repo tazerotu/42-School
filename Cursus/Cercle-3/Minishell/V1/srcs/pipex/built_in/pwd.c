@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:07 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 09:20:26 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 09:58:55 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,15 @@ void	bi_pwd(t_pipe *pipe)
 	char	*cwd;
 
 	if (pipe->cmd->cmd[1] != NULL)
-		return (error_message(ERROR_PWD));
+	{
+		error_message(ERROR_PWD, NULL);
+		return ;
+	}
 	cwd = getcwd(NULL, 0);
 	if (!cwd)
 	{
 		pipe->exit_status = 127;
-		ft_fprintf(1, "ERROR : %d", ERROR_PWD);
+		error_message(ERROR_PWD, NULL);
 		return ;
 	}
 	ft_printf("%s\n", cwd);

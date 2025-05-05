@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:54 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 09:24:33 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 09:58:14 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,10 @@ void	bi_env(t_env *envp, t_pipe *pipe)
 	t_env	*tmp;
 
 	if (pipe->cmd->cmd[1] != NULL)
-		return (error_message(ERROR_ENV));
+	{
+		error_message(ERROR_ENV, NULL);
+		return ;
+	}
 	tmp = envp;
 	while (tmp && tmp->next)
 	{

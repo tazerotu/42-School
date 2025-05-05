@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/04 15:01:36 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/05 10:12:23 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,16 @@ static void test_pipex(t_pipe *pipe)
 	pipe->cmd->cmd[2] = NULL;
 	// pipe->cmd->next = NULL;
 	pipe->cmd->next = malloc(sizeof(t_cmd));
+	pipe->cmd->next->redir = NULL;
 	pipe->cmd->next->cmd = malloc(sizeof(char *) * 3);
 	pipe->cmd->next->cmd[0] = "grep";
 	pipe->cmd->next->cmd[1] = "test";
 	pipe->cmd->next->cmd[2] = NULL;
 	pipe->cmd->next->next = NULL;
-	execute_pipeline(pipe);
-	char *pwd = getcwd(NULL, 0);
-	printf("\n%s\n\n", pwd);
-	free(pwd);
+	pipex(pipe);
+	// char *pwd = getcwd(NULL, 0);
+	// printf("\n%s\n\n", pwd);
+	// free(pwd);
 	// chdir("/home/ttas/42-School/Cursus/Cercle-3/Minishell/V1");
 	// pwd = getcwd(NULL, 0);
 	// printf("\n%s\n\n", pwd);

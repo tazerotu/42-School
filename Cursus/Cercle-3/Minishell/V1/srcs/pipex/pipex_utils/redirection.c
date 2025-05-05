@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:37:03 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/04 16:45:28 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/05 09:45:46 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ void	set_redir_input(t_pipe *pipe, char **redir, int i)
 		if (pipe->fd_in < 0)
 			pipe->fd_in = 0;
 	}
-	if (pipe->fd_in > 0)
-	{
-		dup2(pipe->fd_in, STDIN_FILENO);
-		close(pipe->fd_in);
-		pipe->fd_in = 0;
-	}
+	// if (pipe->fd_in > 0)
+	// {
+	// 	dup2(pipe->fd_in, STDIN_FILENO);
+	// 	close(pipe->fd_in);
+	// 	pipe->fd_in = 0;
+	// }
 	return ;
 }
 
@@ -49,12 +49,12 @@ void	set_redir_output(t_pipe *pipe, char **redir, int i)
 		if (pipe->fd_out < 0)
 			pipe->fd_out = 1;
 	}
-	if (pipe->fd_out > 0)
-	{
-		dup2(pipe->fd_out, STDOUT_FILENO);
-		close(pipe->fd_out);
-		pipe->fd_out = 1;
-	}
+	// if (pipe->fd_out > 0)
+	// {
+	// 	dup2(pipe->fd_out, STDOUT_FILENO);
+	// 	close(pipe->fd_out);
+	// 	pipe->fd_out = 1;
+	// }
 	return ;
 }
 
