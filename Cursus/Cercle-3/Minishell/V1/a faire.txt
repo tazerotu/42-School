@@ -1,7 +1,8 @@
 ✓ Here doc (add to redirection input)
 ✓ Expander Syntax (Only Uppercase, syntax of export)
 ✓ Exit (built_in)
-Fix Built-in
-Pipex (execution)
+✓ Fix Built-in
+✓ Pipex (execution)
+Expander takes too much. Ex: "$USER" -> " instead of "$USER" -> $USER
 Merge
 Readline
