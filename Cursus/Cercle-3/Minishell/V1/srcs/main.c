@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 10:44:47 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 11:15:26 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static void test_pipex(t_pipe *pipe)
 	// pipe->cmd->redir[2] = NULL;
 	pipe->cmd->cmd = malloc(sizeof(char *) * 2);
 	pipe->cmd->cmd[0] = "env";
-	pipe->cmd->cmd[1] = "./srcs/main.c";
+	// pipe->cmd->cmd[1] = "./srcs/main.c";
 	pipe->cmd->cmd[1] = NULL;
 	pipe->cmd->next = NULL;
 	pipe->cmd->next = malloc(sizeof(t_cmd));
