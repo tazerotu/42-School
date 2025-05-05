@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/04 15:06:27 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/05 09:28:42 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,14 @@
 # define STDIN 0
 # define STDOUT 1
 
+# define CMD_NOT_FOUND 127
+# define INVALID_CMD 126
+
 // ERROR HANDLING
-# define ERROR_FD 101
-# define ERROR_DIR 111
-# define ERROR_PWD 121
-# define ERROR_ENV 131
+# define ERROR_FD 1101
+# define ERROR_DIR 1111
+# define ERROR_PWD 1121
+# define ERROR_ENV 1131
 
 // Struct
 typedef struct s_expander

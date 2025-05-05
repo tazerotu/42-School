@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/25 13:09:19 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 09:28:47 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ int	bi_exit(t_pipe *pipe, char **cmd)
 		if (ft_isdigit(cmd[1][i++]) == 0)
 		{
 			ft_printf("Non numerical argument");
-			pipe->exit = 127;
-			return (127);
+			pipe->exit = INVALID_CMD;
+			return (INVALID_CMD);
 		}
 	}
 	exit = atoi(cmd[1]);

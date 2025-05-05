@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/23 12:36:17 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 09:30:02 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	bi_unset(t_env *envp, char **str, t_pipe *pipe)
 	tmp = envp;
 	if (variable_amount(str) <= 1)
 	{
-		pipe->exit_status = 1;
+		pipe->exit_status = INVALID_CMD;
 		return ;
 	}
 	i = 1;
