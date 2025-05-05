@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 10:14:47 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/05 10:38:45 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	pipex(t_pipe *pipex)
 	}
 	if (pipex->env != NULL)
 		free_env(pipex->env);
+	set_redirection(pipex, pipex->cmd->redir);
 	pipex->env = get_env_char(pipex->envp);
 	dup2(pipex->fd_out, 1);
 	exec(pipex);
