@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   redirection.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:37:03 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 10:29:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/09 11:53:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	set_redir_input(t_pipe *pipe, char **redir, int i)
 		if (redir[i][1] == '<')
 		{
 			here_doc(pipe, redir[i + 1]);
-			pipe->fd_in = open("./srcs/pipex/pipex_utils/.heredoc.tmp",
+			pipe->fd_in = open("./tmp/.heredoc.tmp",
 					O_RDONLY, S_IRWXU);
 		}
 		else

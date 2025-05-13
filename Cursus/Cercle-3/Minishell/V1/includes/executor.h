@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 10:13:57 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/13 18:32:40 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ typedef struct s_pipe
 	int				n_pipe;
 	int				fd_in;
 	int				fd_out;
+	int				previous_fd_in;
+	int				previous_fd_out;
 	int				pipe_fd[2];
 	pid_t			pid;
 	char			*heredoc;

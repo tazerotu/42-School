@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 12:52:43 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/13 08:47:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,55 +14,77 @@
 
 // Others
 //test_expander(pipe);
-static void test_expander(t_pipe *pipe)
+/*static void test_expander(t_pipe *pipe)
 {
 	char *str = {"USEr : $USEr \n9USER : $9USER \nUSERt : $USERt \nUSER9 : $USER9 \nUSER : $USER \n'USER' : '$USER'\n? : $? \n"};
 	char *exp = expander(str, pipe->envp, pipe);
 	ft_printf("%s", exp);
 	free(exp);
-}
+}*/
 
 
 // Pipex
 //test_pipex(pipe);
-/*static void test_pipex(t_pipe *pipe)
+static void test_pipex(t_pipe *pipe)
 {
-	pipe->cmd = malloc(sizeof(t_cmd));
-	pipe->cmd->redir = NULL;
-	// pipe->cmd->redir = malloc(sizeof(char *) * 3);
-	// pipe->cmd->redir[0] = "<<";
-	// pipe->cmd->redir[1] = "test";
-	// pipe->cmd->redir[2] = NULL;
-	pipe->cmd->cmd = malloc(sizeof(char *) * 2);
-	pipe->cmd->cmd[0] = "env";
-	// pipe->cmd->cmd[1] = "./srcs/main.c";
-	pipe->cmd->cmd[1] = NULL;
-	pipe->cmd->next = NULL;
-	pipe->cmd->next = malloc(sizeof(t_cmd));
-	pipe->cmd->next->redir = NULL;
-	pipe->cmd->next->cmd = malloc(sizeof(char *) * 3);
-	pipe->cmd->next->cmd[0] = "grep";
-	pipe->cmd->next->cmd[1] = "test";
-	pipe->cmd->next->cmd[2] = NULL;
-	pipe->cmd->next->next = NULL;
-	pipe->cmd->next->next = malloc(sizeof(t_cmd));
-	pipe->cmd->next->next->redir = NULL;
-	pipe->cmd->next->next->cmd = malloc(sizeof(char *) * 3);
-	pipe->cmd->next->next->cmd[0] = "wc";
-	pipe->cmd->next->next->cmd[1] = "-l";
-	pipe->cmd->next->next->cmd[2] = NULL;
-	pipe->cmd->next->next->next = NULL;
+	t_cmd *cmd1;
+	t_cmd *cmd2;
+	t_cmd *cmd3;
 
+	cmd3 = malloc(sizeof(t_cmd));
+	cmd3->redir = NULL;
+	cmd3->cmd = malloc(sizeof(char *) * 3);
+	cmd3->cmd[0] = "wc";
+	cmd3->cmd[1] = "-l";
+	cmd3->cmd[2] = NULL;
+	cmd3->next = NULL;
+
+	cmd2 = malloc(sizeof(t_cmd));
+	cmd2->redir = NULL;
+	cmd2->cmd = malloc(sizeof(char *) * 3);
+	cmd2->cmd[0] = "grep";
+	cmd2->cmd[1] = "test";
+	cmd2->cmd[2] = NULL;
+	cmd2->next = NULL;
+
+	cmd1 = malloc(sizeof(t_cmd));
+	// cmd1->redir = NULL;
+	cmd1->redir = malloc(sizeof(char *) * 3);
+	cmd1->redir[0] = "<<";
+	cmd1->redir[1] = "delimiteur";
+	cmd1->redir[2] = NULL;
+	cmd1->cmd = malloc(sizeof(char *) * 2);
+	cmd1->cmd[0] = "cat";
+	cmd1->cmd[1] = NULL;
+	cmd1->next = cmd2;
+	// pipe->cmd = malloc(sizeof(t_cmd));
+	// pipe->cmd->redir = NULL;
+	// // pipe->cmd->redir = malloc(sizeof(char *) * 3);
+	// // pipe->cmd->redir[0] = "<<";
+	// // pipe->cmd->redir[1] = "test";
+	// // pipe->cmd->redir[2] = NULL;
+	// pipe->cmd->cmd = malloc(sizeof(char *) * 2);
+	// pipe->cmd->cmd[0] = "cat";
+	// pipe->cmd->cmd[1] = NULL;
+	// // pipe->cmd->next = NULL;
+	// // pipe->cmd->cmd[1] = "./srcs/main.c";
+	// pipe->cmd->next = malloc(sizeof(t_cmd));
+	// pipe->cmd->next->redir = NULL;
+	// pipe->cmd->next->cmd = malloc(sizeof(char *) * 3);
+	// pipe->cmd->next->cmd[0] = "grep";
+	// pipe->cmd->next->cmd[1] = "test";
+	// pipe->cmd->next->cmd[2] = NULL;
+	// pipe->cmd->next->next = NULL;
+	// pipe->cmd->next->next = malloc(sizeof(t_cmd));
+	// pipe->cmd->next->next->redir = NULL;
+	// pipe->cmd->next->next->cmd = malloc(sizeof(char *) * 3);
+	// pipe->cmd->next->next->cmd[0] = "wc";
+	// pipe->cmd->next->next->cmd[1] = "-l";
+	// pipe->cmd->next->next->cmd[2] = NULL;
+	// pipe->cmd->next->next->next = NULL;
+	pipe->cmd = cmd1;
 	pipex(pipe);
-	// char *pwd = getcwd(NULL, 0);
-	// printf("\n%s\n\n", pwd);
-	// free(pwd);
-	// chdir("/home/ttas/42-School/Cursus/Cercle-3/Minishell/V1");
-	// pwd = getcwd(NULL, 0);
-	// printf("\n%s\n\n", pwd);
-	// free(pwd);
-}*/
-
+}
 
 //test_heredoc(pipe);
 /*static void test_heredoc(t_pipe *pipe)
@@ -174,8 +196,9 @@ int main(int argc, char **argv, char **envp)
 	t_pipe *pipe;
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
-	test_expander(pipe);
-	// test_pipex(pipe);
+	// bi_env(pipe->envp, pipe);
+	// test_expander(pipe);
+	test_pipex(pipe);
 	free_pipe_env(pipe);
 	return(0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 10:42:30 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/09 11:51:00 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	here_doc(t_pipe *pipe, char *delimiter)
 	if (heredoc)
 		tmp = expander(heredoc, pipe->envp, pipe);
 	free(heredoc);
-	fd = open("./srcs/pipex/pipex_utils/.heredoc.tmp",
+	fd = open("./tmp/.heredoc.tmp",
 			O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (tmp)
 		ft_fprintf(fd, "%s", tmp);

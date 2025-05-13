@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_built_in.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/02 11:06:11 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/09 08:52:23 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	verify_builtin(t_pipe *pipe)
 	char	*str;
 
 	str = pipe->cmd->cmd[0];
+	if(pipe->cmd->cmd[0] == NULL)
+		return (0);
 	if (ft_strncmp(str, "echo", INT_MAX) == 0|| ft_strncmp(str, "cd", INT_MAX) == 0
 		|| ft_strncmp(str, "pwd", INT_MAX) == 0
 		|| ft_strncmp(str, "export", INT_MAX) == 0
@@ -27,7 +29,8 @@ int	verify_builtin(t_pipe *pipe)
 		launch_builtin(pipe);
 		return (1);
 	}
-	return (0);
+	else
+		return (0);
 }
 
 void	launch_builtin(t_pipe *pipe)

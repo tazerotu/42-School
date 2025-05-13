@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 10:38:45 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/13 18:38:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,25 +47,28 @@ static void	exec(t_pipe *pipex)
 {
 	char	*path;
 
-	if(pipex->cmd != NULL)
+	if(pipex->cmd)
 	{
-		path = get_path(pipex->cmd->cmd[0], pipex->env);
-		if (execve(path, pipex->cmd->cmd, pipex->env) == -1)
+		if(verify_builtin(pipex) == 0)
 		{
-			ft_putstr_fd("pipex: command not found: ", 1);
-			ft_putendl_fd(pipex->cmd->cmd[0], 1);
-			exit(0);
+			path = get_path(pipex->cmd->cmd[0], pipex->env);
+			if (execve(path, pipex->cmd->cmd, pipex->env) == -1)
+			{
+				ft_putstr_fd("command not found: ", 1);
+				ft_putendl_fd(pipex->cmd->cmd[0], 1);
+			}
 		}
+		
 	}
 }
 
 static void	do_pipe(t_pipe *pipex)
 {
 	if (pipe(pipex->pipe_fd) == -1)
-		exit(0);
+		return ;
 	pipex->pid = fork();
 	if (pipex->pid == -1)
-		exit(0);
+		return ;
 	if (!pipex->pid)
 	{
 		close(pipex->pipe_fd[0]);
@@ -83,7 +86,6 @@ void	pipex(t_pipe *pipex)
 {
 	while (pipex->cmd && pipex->cmd->next)
 	{
-		
 		set_redirection(pipex, pipex->cmd->redir);
 		dup2(pipex->fd_in, 0);
 		if (pipex->env != NULL)

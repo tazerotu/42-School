@@ -3,6 +3,9 @@
 ✓ Exit (built_in)
 ✓ Fix Built-in
 ✓ Pipex (execution)
-Expander takes too much. Ex: "$USER" -> " instead of "$USER" -> $USER
+✓ Fix Here_doc
+Pipex -> fix verify built-in (pid)
+expander '$USER' -> tazerotu instead of '$USER' -> $USER
+( Expander takes too much. Ex: "$USER" -> " instead of "$USER" -> $USER )
 Merge
 Readline
