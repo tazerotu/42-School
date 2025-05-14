@@ -9,5 +9,6 @@ Readline
 
 
 To verify :
-( Expander takes too much. Ex: "$USER" -> " instead of "$USER" -> $USER )
-expander '$USER' -> tazerotu instead of '$USER' -> $USER
+	Expander :
+		"$USER" -> ttas
+		'$USER' -> $USER
