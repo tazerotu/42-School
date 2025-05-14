@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/13 08:47:32 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/14 09:37:14 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,13 @@ static void test_pipex(t_pipe *pipe)
 	cmd2->next = NULL;
 
 	cmd1 = malloc(sizeof(t_cmd));
-	// cmd1->redir = NULL;
-	cmd1->redir = malloc(sizeof(char *) * 3);
-	cmd1->redir[0] = "<<";
-	cmd1->redir[1] = "delimiteur";
-	cmd1->redir[2] = NULL;
+	cmd1->redir = NULL;
+	// cmd1->redir = malloc(sizeof(char *) * 3);
+	// cmd1->redir[0] = "<<";
+	// cmd1->redir[1] = "delimiteur";
+	// cmd1->redir[2] = NULL;
 	cmd1->cmd = malloc(sizeof(char *) * 2);
-	cmd1->cmd[0] = "cat";
+	cmd1->cmd[0] = "env";
 	cmd1->cmd[1] = NULL;
 	cmd1->next = cmd2;
 	// pipe->cmd = malloc(sizeof(t_cmd));

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/13 18:38:15 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/14 09:46:31 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,16 +49,21 @@ static void	exec(t_pipe *pipex)
 
 	if(pipex->cmd)
 	{
-		if(verify_builtin(pipex) == 0)
+		if(verify_builtin(pipex) == 1)
+		{
+			launch_builtin(pipex);
+			exit(0);
+		}
+		else
 		{
 			path = get_path(pipex->cmd->cmd[0], pipex->env);
 			if (execve(path, pipex->cmd->cmd, pipex->env) == -1)
 			{
 				ft_putstr_fd("command not found: ", 1);
 				ft_putendl_fd(pipex->cmd->cmd[0], 1);
+				exit(127);
 			}
 		}
-		
 	}
 }
 
@@ -100,6 +105,7 @@ void	pipex(t_pipe *pipex)
 	pipex->env = get_env_char(pipex->envp);
 	dup2(pipex->fd_out, 1);
 	exec(pipex);
+	
 	free_env(pipex->env);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_built_in.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/09 08:52:23 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/14 09:44:50 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	verify_builtin(t_pipe *pipe)
 		|| ft_strncmp(str, "env", INT_MAX) == 0
 		|| ft_strncmp(str, "exit", INT_MAX) == 0)
 	{
-		launch_builtin(pipe);
+		// launch_builtin(pipe);
 		return (1);
 	}
 	else
