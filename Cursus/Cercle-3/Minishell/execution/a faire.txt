@@ -1,0 +1,13 @@
+✓ Here doc (add to redirection input)
+✓ Expander Syntax (Only Uppercase, syntax of export)
+✓ Exit (built_in)
+✓ Fix Built-in
+✓ Pipex (execution)
+✓ Fix Here_doc
+Merge
+Readline
+
+
+To verify :
+( Expander takes too much. Ex: "$USER" -> " instead of "$USER" -> $USER )
+expander '$USER' -> tazerotu instead of '$USER' -> $USER
