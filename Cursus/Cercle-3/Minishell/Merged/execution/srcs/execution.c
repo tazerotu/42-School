@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   execution.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/14 09:37:14 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/14 09:48:44 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 // Pipex
 //test_pipex(pipe);
-static void test_pipex(t_pipe *pipe)
+/*static void test_pipex(t_pipe *pipe)
 {
 	t_cmd *cmd1;
 	t_cmd *cmd2;
@@ -84,7 +84,7 @@ static void test_pipex(t_pipe *pipe)
 	// pipe->cmd->next->next->next = NULL;
 	pipe->cmd = cmd1;
 	pipex(pipe);
-}
+}*/
 
 //test_heredoc(pipe);
 /*static void test_heredoc(t_pipe *pipe)
@@ -188,7 +188,7 @@ static void test_pipex(t_pipe *pipe)
 
 
 // test_heredoc(pipe);
-int main(int argc, char **argv, char **envp)
+int execution(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
@@ -196,9 +196,7 @@ int main(int argc, char **argv, char **envp)
 	t_pipe *pipe;
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
-	// bi_env(pipe->envp, pipe);
-	// test_expander(pipe);
-	test_pipex(pipe);
+	// test_pipex(pipe);
 	free_pipe_env(pipe);
 	return(0);
 }
