@@ -4,11 +4,10 @@
 ✓ Fix Built-in
 ✓ Pipex (execution)
 ✓ Fix Here_doc
-Pipex -> fix stuck in read
 Merge
 Readline
 
 
-optional : 
+To verify :
 ( Expander takes too much. Ex: "$USER" -> " instead of "$USER" -> $USER )
 expander '$USER' -> tazerotu instead of '$USER' -> $USER
