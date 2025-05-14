@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/19 10:28:49 by ttas              #+#    #+#              #
-#    Updated: 2025/05/13 08:47:27 by marvin           ###   ########.fr        #
+#    Updated: 2025/05/14 09:56:11 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@
 EXE = Executor
 
 # Files
-SRC =				./srcs/main.c 
+SRC =				./srcs/execution.c 
 
 SRCS_INIT =			./srcs/init/init.c \
 					./srcs/free/free.c \

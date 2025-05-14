@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/14 09:44:50 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/14 09:57:53 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,16 @@ int	verify_builtin(t_pipe *pipe)
 	char	*str;
 
 	str = pipe->cmd->cmd[0];
-	if(pipe->cmd->cmd[0] == NULL)
+	if (pipe->cmd->cmd[0] == NULL)
 		return (0);
-	if (ft_strncmp(str, "echo", INT_MAX) == 0|| ft_strncmp(str, "cd", INT_MAX) == 0
+	if (ft_strncmp(str, "echo", INT_MAX) == 0
+		|| ft_strncmp(str, "cd", INT_MAX) == 0
 		|| ft_strncmp(str, "pwd", INT_MAX) == 0
 		|| ft_strncmp(str, "export", INT_MAX) == 0
 		|| ft_strncmp(str, "unset", INT_MAX) == 0
 		|| ft_strncmp(str, "env", INT_MAX) == 0
 		|| ft_strncmp(str, "exit", INT_MAX) == 0)
-	{
-		// launch_builtin(pipe);
 		return (1);
-	}
 	else
 		return (0);
 }

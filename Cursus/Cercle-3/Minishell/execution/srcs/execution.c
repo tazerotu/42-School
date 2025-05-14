@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/14 09:48:44 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/14 10:00:31 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@
 //test_expander(pipe);
 /*static void test_expander(t_pipe *pipe)
 {
-	char *str = {"USEr : $USEr \n9USER : $9USER \nUSERt : $USERt \nUSER9 : $USER9 \nUSER : $USER \n'USER' : '$USER'\n? : $? \n"};
+	char *str = {"USEr : $USEr \n9USER : $9USER \nUSERt :
+	$USERt \nUSER9 : $USER9 \nUSER : 
+	$USER \n'USER' : '$USER'\n? : $? \n"};
 	char *exp = expander(str, pipe->envp, pipe);
 	ft_printf("%s", exp);
 	free(exp);
 }*/
-
 
 // Pipex
 //test_pipex(pipe);
@@ -45,7 +46,7 @@
 	cmd2->cmd[0] = "grep";
 	cmd2->cmd[1] = "test";
 	cmd2->cmd[2] = NULL;
-	cmd2->next = NULL;
+	cmd2->next = cmd3;
 
 	cmd1 = malloc(sizeof(t_cmd));
 	cmd1->redir = NULL;
@@ -186,9 +187,8 @@
 }
 */
 
-
 // test_heredoc(pipe);
-int execution(int argc, char **argv, char **envp)
+int main(int argc, char **argv, char **envp)
 {
 	(void)argc;
 	(void)argv;
@@ -196,7 +196,7 @@ int execution(int argc, char **argv, char **envp)
 	t_pipe *pipe;
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
-	// test_pipex(pipe);
+	test_pipex(pipe);
 	free_pipe_env(pipe);
 	return(0);
 }

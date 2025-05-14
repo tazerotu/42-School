@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:30:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 10:06:08 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/14 09:58:32 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ char	**get_env_char(t_env *envp)
 	int		i;
 	int		j;
 
-	
 	i = env_size(envp);
-	// env = NULL;
 	env = malloc((i + 1) * sizeof(char *));
 	j = -1;
 	while (envp)

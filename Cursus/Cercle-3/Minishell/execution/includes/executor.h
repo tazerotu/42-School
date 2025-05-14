@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/14 09:27:37 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/14 09:55:16 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ typedef struct s_env
 	struct s_env	*previous;
 	struct s_env	*next;
 }	t_env;
-
 
 typedef struct s_cmd
 {

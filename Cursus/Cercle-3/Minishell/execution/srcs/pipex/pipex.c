@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/14 09:46:31 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/14 09:59:04 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,9 @@ static void	exec(t_pipe *pipex)
 {
 	char	*path;
 
-	if(pipex->cmd)
+	if (pipex->cmd)
 	{
-		if(verify_builtin(pipex) == 1)
+		if (verify_builtin(pipex) == 1)
 		{
 			launch_builtin(pipex);
 			exit(0);
@@ -105,7 +105,6 @@ void	pipex(t_pipe *pipex)
 	pipex->env = get_env_char(pipex->envp);
 	dup2(pipex->fd_out, 1);
 	exec(pipex);
-	
 	free_env(pipex->env);
 }
 
