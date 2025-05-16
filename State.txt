@@ -1,0 +1,12 @@
+Execution :
+	- clear -> quit program
+	- pipes -> quit program (env | grep USER)
+
+
+
+Parser :
+	- split redir
+
+
+All :
+	- free -> not everything is freed
