@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/16 12:53:39 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/16 12:54:48 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static void	exec(t_pipe *pipex)
 		if (verify_builtin(pipex) == 1)
 		{
 			launch_builtin(pipex);
-			if(!pipex->pid)
+			// if(!pipex->pid)
 				exit(0);
 		}
 		else
