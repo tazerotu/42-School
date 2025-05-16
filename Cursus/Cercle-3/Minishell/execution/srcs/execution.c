@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:17 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/14 12:15:50 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/16 10:37:46 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 //test_expander(pipe);
 static void test_expander(t_pipe *pipe)
 {
-	char *str = {"USEr : $USEr \n9USER : $9USER \nUSERt : $USERt \nUSER9 : $USER9 \nUSER : $USER \n'USER' : '$USER'\n? : $? \n"};
+	char *str = {"USEr : $USEr \n9USER : $9USER \nUSERt : $USERt \nUSER9 : $USER9 \nUSER : $USER \n'USER' : '$USER'\nUSERUSER : $USER$USER\n? : $? \n"};
 	char *exp = expander(str, pipe->envp, pipe);
 	ft_printf("%s", exp);
 	free(exp);
