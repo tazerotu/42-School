@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/14 09:55:16 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/17 13:07:35 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ char	*get_env(t_env *envp, char *str);
 char	*expander(char *str, t_env *envp, t_pipe *pipe);
 char	*verify_syntax(char *str, t_expander *expander);
 void	ft_close(int fd);
+void	free_split(char **arr);
 
 	//	Built-in
 //	with option -n
