@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/17 14:35:58 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/18 21:45:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,14 +173,11 @@ static void	child_process(t_pipe *pipex, int prev_fd, int *pipe_fd)
 		close(pipe_fd[0]);
 		close(pipe_fd[1]);
 	}
-
 	set_redirection(pipex, pipex->cmd->redir);
-
 	if (pipex->fd_in != -1)
 		dup2(pipex->fd_in, STDIN_FILENO);
 	if (pipex->fd_out != -1)
 		dup2(pipex->fd_out, STDOUT_FILENO);
-
 	execute_cmd(pipex);
 }
 
@@ -195,34 +192,40 @@ static void	parent_cleanup(int *prev_fd, int *pipe_fd)
 	}
 }
 
+static void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
+{
+	int		pipe_fd[2];
+	pid_t	pid;
+
+	if (cmd_ptr->next && pipe(pipe_fd) == -1)
+		exit(1);
+	pid = fork();
+	if (pid == -1)
+		exit(1);
+	if (pid == 0)
+	{
+		pipex->cmd = cmd_ptr;
+		pipex->env = get_env_char(pipex->envp);
+		child_process(pipex, *prev_fd, cmd_ptr->next ? pipe_fd : NULL);
+	}
+	else
+	{
+		pipex->pid = pid;
+		parent_cleanup(prev_fd, cmd_ptr->next ? pipe_fd : NULL);
+	}
+}
+
 void	pipex(t_pipe *pipex)
 {
 	t_cmd	*cmd_ptr;
-	int		pipe_fd[2];
 	int		prev_fd;
-	pid_t	pid;
 
 	cmd_ptr = pipex->cmd;
 	prev_fd = -1;
 	while (cmd_ptr)
 	{
-		if (cmd_ptr->next && pipe(pipe_fd) == -1)
-			exit(1);
-		pid = fork();
-		if (pid == -1)
-			exit(1);
-		if (pid == 0)
-		{
-			pipex->cmd = cmd_ptr;
-			pipex->env = get_env_char(pipex->envp);
-			child_process(pipex, prev_fd, cmd_ptr->next ? pipe_fd : NULL);
-		}
-		else
-		{
-			pipex->pid = pid;
-			parent_cleanup(&prev_fd, cmd_ptr->next ? pipe_fd : NULL);
-			cmd_ptr = cmd_ptr->next;
-		}
+		do_pipe(pipex, cmd_ptr, &prev_fd);
+		cmd_ptr = cmd_ptr->next;
 	}
 	while (wait(NULL) > 0)
 		;
