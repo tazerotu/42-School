@@ -12,6 +12,7 @@ Parser :
 	- if redirection symbol followed by nothing, it breaks
 
 All :
+	- history
 	- free -> not everything is freed
 	- Signals -> nothing done yet
 	- Norm
