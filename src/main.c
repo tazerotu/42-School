@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:23:12 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 13:24:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int	main(int argc, char **argv, char **envp)
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
 	main2(pipe);
+	clear_history();
 	free_pipe_env(pipe);
 	return (1);
 }
