@@ -10,6 +10,10 @@ Parser :
 				leaks when exit/multiple command in a row, to fix in main together)
 	- process line (leaks -> to be fixed in main together)
 	- fill_cmds (leaks -> to be fixed in main together)
+	- no exit code to 2 when parsing error
+	- do not expand if here doc delimiter
 
 All :
 	- free -> not everything is freed
+	- Signals -> nothing done yet
+	- Norm

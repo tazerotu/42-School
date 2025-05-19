@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:27:04 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/04/25 16:59:08 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:56:32 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ void	ft_dblstclear_after(t_dblst *lst, void (*del)(void *))
 void	ft_dblstclear(t_dblst *lst, void (*del)(void *))
 {
 	if (!lst)
-		return;
+		return ;
 	ft_dblstclear_before(lst, del);
 	ft_dblstclear_after(lst, del);
 	ft_dblstdelone(lst, del);
 }
-

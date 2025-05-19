@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 10:48:25 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 12:53:13 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,10 +50,11 @@ static t_env	*verify_exist(t_env *env, char *str)
 	t_env	*tmp;
 	int		pos;
 	char	*sub;
+	int		i;
 
 	tmp = env;
-	int i = 0;
-	while(str[i] && str[i] != '=')
+	i = 0;
+	while (str[i] && str[i] != '=')
 		i++;
 	sub = ft_substr(str, 0, i);
 	ft_printf("\nsubstr : %s\n", sub);

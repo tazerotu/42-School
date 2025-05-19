@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 09:51:19 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 13:02:42 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	pipex(t_pipe *pipex)
 	prev_fd = -1;
 	while (cmd_ptr)
 	{
-		if(verify_builtin2(cmd_ptr))
+		if (verify_builtin2(cmd_ptr))
 		{
 			pipex->cmd = cmd_ptr;
 			launch_builtin(pipex);

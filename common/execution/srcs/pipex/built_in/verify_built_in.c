@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_built_in.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 10:36:00 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 12:52:06 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	verify_builtin1(t_pipe *pipe)
 		return (0);
 }
 
-int verify_builtin2(t_cmd *cmd)
+int	verify_builtin2(t_cmd *cmd)
 {
 	char	*str;
 

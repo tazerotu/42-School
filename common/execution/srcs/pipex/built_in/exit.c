@@ -3,28 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 09:29:19 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 12:55:03 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-static int exit_args(char **cmd)
+static int	exit_args(char **cmd)
 {
-	int exit;
-	
+	int	exit;
+
 	exit = atoi(cmd[1]);
-	while(exit > 255)
+	while (exit > 255)
 		exit -= 256;
 	return (exit);
 }
 
-static int syntax(char *str)
+static int	syntax(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (str[i])
@@ -52,9 +52,9 @@ int	bi_exit(t_pipe *pipe, char **cmd)
 		return (pipe->exit = INVALID_CMD);
 	}
 	i = 0;
-	if(cmd[1])
+	if (cmd[1])
 	{
-		if(syntax(cmd[1]) != 1)
+		if (syntax(cmd[1]) != 1)
 			return (pipe->exit = INVALID_CMD);
 		exit = exit_args(cmd);
 	}

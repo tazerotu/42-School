@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 17:24:39 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/02 12:41:42 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:57:03 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,3 @@ char	*ft_strjoin_multi(int strs_size, char **strs, char *sep)
 	ft_my_join(strs_size, strs, sep, dest);
 	return (dest);
 }
-

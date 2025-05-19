@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 10:36:14 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 12:55:56 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct s_cmd
 {
 	char				**redir_tok;
 	char				**arg_tok;
-	struct s_cmd	*next;
+	struct s_cmd		*next;
 }	t_cmd;
 
 typedef struct s_pipe
@@ -91,7 +91,7 @@ void	ft_free_cmd(t_cmd *cmd);
 
 	// Command initialization
 int		verify_builtin1(t_pipe *pipe);
-int 	verify_builtin2(t_cmd *cmd);
+int		verify_builtin2(t_cmd *cmd);
 void	launch_builtin(t_pipe *pipe);
 void	here_doc(t_pipe *pipe, char *delimiter);
 

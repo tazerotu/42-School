@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:03:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 09:20:41 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 12:51:36 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	cmd_count(t_cmd *cmd)
 	}
 	return (i);
 }
+
 void	free_split(char **arr)
 {
 	int	i;
