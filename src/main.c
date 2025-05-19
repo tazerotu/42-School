@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:20:07 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 13:23:12 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,7 @@ void	main2(t_pipe *pipe)
 	while (1)
 	{
 		input = readline("\033[0;32mMinishell>\033[0m");
-		if(input)
-			add_history(input);
+		add_history(input);
 		pipe->cmd = process_line(input, pipe);
 		pipex(pipe);
 		free(input);
