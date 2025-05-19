@@ -12,8 +12,18 @@
 
 #include "../../../includes/parser.h"
 
-// printf("ret : %s\n\n", expander->ret);
-static t_expander	*expand_dollar(t_expander *expander, t_pipe *pipe)
+static t_expander	*init_expander(void)
+{
+	t_expander	*expander;
+
+	expander = malloc(sizeof(t_expander));
+	expander->start = 0;
+	expander->end = 0;
+	expander->ret = NULL;
+	return (expander);
+}
+
+static t_expander	*expand_exit_code(t_expander *expander, t_pipe *pipe)
 {
 	char	*itoa;
 
@@ -31,7 +41,7 @@ static t_expander	*expand_dollar(t_expander *expander, t_pipe *pipe)
 static t_expander	*expand_copy(t_expander *expander, char *str)
 {
 	char	*tmp;
-printf("entered expand copy\n");
+
 	expander->dollar = 0;
 	tmp = ft_substr(str, expander->end, expander->start - (expander->end));
 	expander->tmp = ft_strjoin(expander->ret, tmp);
@@ -41,39 +51,30 @@ printf("entered expand copy\n");
 	return (expander);
 }
 
-// ft_strlcpy(expander->ret, str + expander->end, 
-// expander->start - expander->end);
-// while (str[expander->end] && str[expander->end] != ' ')
-// 	expander->end++;
-// value = ft_substr(str, expander->start, expander->end - expander->start);
-static t_expander	*expand(t_expander *expander, char *str, t_env *envp)
+static t_expander	*expand_var(t_expander *expander, char *str, t_env *envp)
 {
-	char	*value;
+	char	*var_name;
 	char	*tmp;
 	int		i;
-printf("entered expand\n");
-	value = NULL;
+
+	var_name = NULL;
 	i = 0;
-	value = verify_syntax(str, expander);
-	if (value != NULL)
+	var_name = verify_syntax(str, expander);
+	if (var_name != NULL)
 	{
-		expander->var = get_env(envp, value);
-		free(value);
+		expander->var = get_env(envp, var_name);
+		free(var_name);
 	}
 	else
-	{
 		expander->var = NULL;
-	}
 	expander->tmp = ft_strjoin(expander->ret, expander->var);
 	free(expander->ret);
 	free(expander->var);
 	tmp = ft_strjoin(expander->ret, expander->tmp);
 	free(expander->tmp);
-	ft_strlcpy(expander->ret, tmp, ft_strlen(tmp)+1);
+	ft_strlcpy(expander->ret, tmp, ft_strlen(tmp) + 1);
 	free(tmp);
 	expander->start = expander->end;
-	// if (str[expander->end] == '\0')
-	// 	expander->start--;
 	return (expander);
 }
 
@@ -81,21 +82,19 @@ char	*expander(char *str, t_env *envp, t_pipe *pipe)
 {
 	t_expander	*expander;
 	char		*ret;
-printf("entered expander\n");
-	expander = malloc(sizeof(t_expander));
-	expander->start = 0;
-	expander->end = 0;
-	expander->ret = NULL;
+
+	expander = init_expander();
 	while (str[expander->start])
 	{
-		if (str[expander->start] == '$')
+		if (str[expander->start] == '$'
+			&& !is_special_dollar_char(str[expander->start + 1]))
 		{
 			expander = expand_copy(expander, str);
 			expander->end = expander->start;
 			if (str[++expander->start] == '?')
-				expander = expand_dollar(expander, pipe);
+				expander = expand_exit_code(expander, pipe);
 			else
-				expander = expand(expander, str, envp);
+				expander = expand_var(expander, str, envp);
 		}
 		else
 			expander->start++;

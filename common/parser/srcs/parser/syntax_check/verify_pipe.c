@@ -24,3 +24,4 @@ int	check_first_or_last_is_pipe(t_dblst **words)
 		return (RET_TRUE);
 	return (RET_FALSE);
 }
+

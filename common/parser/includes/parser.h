@@ -103,7 +103,7 @@ void	free_cmds(t_cmd *cmds);
 int		error_message(int error, char *str);
 
 int		check_incorrect_quotes(char *input);
-t_cmd	*process_line(char *input, t_env *envp, t_pipe *pipe);
+t_cmd	*process_line(char *input, t_pipe *pipe);
 int		split_input(char *input, t_dblst **ret_dblst);
 int		split_nonquote_space(char *input, t_dblst *tok_dblst);
 int		split_special_char(t_dblst **tok_dblst);
@@ -123,8 +123,11 @@ int		create_cmd_list(t_dblst **words, t_cmd **cmds);
 int		fill_cmds(t_dblst **words, t_cmd *cmds);
 
 int		count_split_quotes(char *str);
-unsigned int		skip_past_quote_end(char *str, int i, char quote);
-void	expand_tok_rm_quote(t_cmd *cmd, t_env *envp, t_pipe *pipe);
+int		rm_empty_quote_tok(char *tok);
+int		skip_past_quote_end(char *str, int i, char quote);
+void	expand_token2(char *str, t_pipe *pipe, char **tmp);
+int		expand_tok_rm_quote(t_cmd *cmd, t_pipe *pipe);
+int		is_special_dollar_char(char c);
 /////////////BY TTAS
 
 // // Functions

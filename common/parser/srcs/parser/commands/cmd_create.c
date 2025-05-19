@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../../../includes/parser.h"
 
 int	add_cmd(t_cmd **cur_cmd)
@@ -29,7 +28,7 @@ int	create_cmd_list(t_dblst **words, t_cmd **cmds)
 {
 	t_dblst	*cur_word;
 	t_cmd	*cur_cmd;
-	
+
 	cur_word = ft_dblstfirst(*words);
 	cur_cmd = *cmds;
 	cur_cmd->next = NULL;

@@ -6,144 +6,70 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:19:46 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/16 10:37:50 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:49:31 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/parser.h"
 
-//todo check something about the split count
-char	*expand_tokens3(char *str, t_env *envp, t_pipe *pipe)
+static char	*expand_token(char *str, t_pipe *pipe)
 {
-	unsigned int	i;
-	unsigned int	tmp_idx;
-	unsigned int	split_start;
-	char			**tmp;
-	unsigned int	split_count;
-	char			*ret_str;
-	char			*tmp_ret;
-printf("exp tok 3 received str: %s\n", str);
-	i = 0;
-	split_start = 0;
+	char	**tmp;
+	int		split_count;
+	char	*ret_str;
+	int		i;
+
 	split_count = count_split_quotes(str);
-printf("split into %u\n", split_count);
 	tmp = ft_calloc(split_count, sizeof(char *));
 	if (!tmp)
 		return (NULL);
-	tmp_idx = 0;
-	while (str[i])
-	{
-		if (str[i] == '\'')
-		{
-			if (split_start < i)
-			{
-				tmp[tmp_idx] = ft_substr(str, split_start,
-					(size_t) i - split_start);
-printf("extracted: %s\n", tmp[tmp_idx]);
-				tmp_ret = expander(tmp[tmp_idx], envp, pipe);
-printf("expander result: %s\n", tmp_ret);
-				free(tmp[tmp_idx]);
-printf("tmp_idx=%u\n", tmp_idx);
-				tmp[tmp_idx++] = tmp_ret;
-			}
-			split_start = i + 1;
-printf("pre-skip quote i=%u\n", i);
-			i = skip_past_quote_end(str, i, str[i]);
-printf("post skip quote i=%u\n", i);
-			tmp[tmp_idx++] = ft_substr(str, split_start,
-				(size_t) i - split_start - 1);
-			split_start = i;
-		}
-		else if (str[i] == '"')
-		{
-			if (split_start < i)
-			{
-				tmp[tmp_idx] = ft_substr(str, split_start,
-					(size_t) i - split_start);
-printf("extracted: %s\n", tmp[tmp_idx]);
-				tmp_ret = expander(tmp[tmp_idx], envp, pipe);
-				free(tmp[tmp_idx]);
-				tmp[tmp_idx++] = tmp_ret;
-printf("post expansion: %s\n", tmp[tmp_idx - 1]);
-			}
-			split_start = i + 1;
-			i = skip_past_quote_end(str, i, str[i]);
-			tmp[tmp_idx] = ft_substr(str, split_start,
-				(size_t) i - split_start - 1);
-printf("extracted: %s\n", tmp[tmp_idx]);
-			tmp_ret = expander(tmp[tmp_idx], envp, pipe);
-			free(tmp[tmp_idx]);
-			tmp[tmp_idx++] = tmp_ret;
-printf("post expansion: %s\n", tmp[tmp_idx - 1]);
-			split_start = i;
-		}
-		else
-			++i;
-	}
-	if (split_start < i)
-	{
-		tmp[tmp_idx] = ft_substr(str, split_start, (size_t) i - split_start);
-printf("extracted: %s\n", tmp[tmp_idx]);
-		tmp_ret = expander(tmp[tmp_idx], envp, pipe);
-		free(tmp[tmp_idx]);
-		tmp[tmp_idx] = tmp_ret;
-		++tmp_idx;
-printf("post expansion: %s\n", tmp[tmp_idx - 1]);
-	}
+	expand_token2(str, pipe, tmp);
 	free(str);
 	ret_str = ft_strjoin_multi(split_count, tmp, NULL);
-	tmp_idx = 0;
-	while (tmp[tmp_idx])
-		free(tmp[tmp_idx++]);
+	i = 0;
+	while (i < split_count)
+		free(tmp[i++]);
 	free(tmp);
 	return (ret_str);
 }
 
-static int	rm_empty_quote_tok(char *tok)
+static int	expand_tok_rm_quote2(t_cmd *cmds, char **tokens, t_pipe *pipe)
 {
 	int	i;
-	int	j;
 
 	i = 0;
-	j = 0;
-	while (tok[j])
+	while (tokens[i])
 	{
-		if ((tok[j] == '\'' || tok[j] == '"') && tok[j] == tok[j + 1])
-			j += 2;
-		tok[i] = tok[j];
+		rm_empty_quote_tok(tokens[i]);
+		tokens[i] = expand_token(tokens[i], pipe);
+		if (!tokens[i])
+		{
+			while (tokens[i])
+				free(tokens[i++]);
+			free_cmds(cmds);
+			error_message(RET_MALLOC_ERR, "expanding");
+			return (RET_MALLOC_ERR);
+		}
 		++i;
-		++j;
 	}
-	tok[i] = '\0';
 	return (RET_PROCESSED);
 }
 
-//the main expander function
-//todo check if received null
-void	expand_tok_rm_quote(t_cmd *cmd, t_env *envp, t_pipe *pipe)
+int	expand_tok_rm_quote(t_cmd *cmd, t_pipe *pipe)
 {
-	int	i;
+	int		ret_val;
+	t_cmd	*first_cmd;
 
+	first_cmd = cmd;
 	while (cmd)
 	{
-		i = 0;
-		while (cmd->arg_tok[i])
-		{
-			printf("input %s\n", cmd->arg_tok[i]);
-			rm_empty_quote_tok(cmd->arg_tok[i]);
-			cmd->arg_tok[i] = expand_tokens3(cmd->arg_tok[i], envp, pipe);
-			printf("output %s\n", cmd->arg_tok[i]);
-			++i;
-		}
-		i = 0;
-		while (cmd->redir_tok[i])
-		{
-			printf("input %s\n", cmd->redir_tok[i]);
-			rm_empty_quote_tok(cmd->redir_tok[i]);
-			cmd->redir_tok[i] = expand_tokens3(cmd->redir_tok[i], envp, pipe);
-			printf("output %s\n", cmd->redir_tok[i]);
-			++i;
-		}
+		ret_val = expand_tok_rm_quote2(first_cmd, cmd->arg_tok, pipe);
+		if (ret_val != RET_PROCESSED)
+			return (ret_val);
+		ret_val = expand_tok_rm_quote2(first_cmd, cmd->redir_tok, pipe);
+		if (ret_val != RET_PROCESSED)
+			return (ret_val);
 		cmd = cmd->next;
 	}
+	return (RET_PROCESSED);
 }

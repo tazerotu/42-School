@@ -85,3 +85,4 @@ char	*ft_strjoin_multi(int strs_size, char **strs, char *sep)
 	ft_my_join(strs_size, strs, sep, dest);
 	return (dest);
 }
+

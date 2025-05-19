@@ -17,13 +17,13 @@ static void	count_words_per_cmd(t_dblst	*first_node,
 {
 	t_dblst	*cur_node;
 	char	*str;
-	
+
 	cur_node = first_node;
 	while (cur_node)
 	{
 		str = (char *) cur_node->content;
 		if (word_is_pipe(str))
-			break;
+			break ;
 		else if (word_is_redirection(str))
 		{
 			*redir_count += 2;
@@ -101,6 +101,7 @@ int	fill_cmds(t_dblst **words, t_cmd *cmd)
 	t_dblst	*first_node;
 	int		redir_count;
 	int		arg_count;
+
 	first_node = ft_dblstfirst(*words);
 	while (cmd && first_node)
 	{

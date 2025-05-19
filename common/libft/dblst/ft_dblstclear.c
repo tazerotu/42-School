@@ -57,3 +57,4 @@ void	ft_dblstclear(t_dblst *lst, void (*del)(void *))
 	ft_dblstclear_after(lst, del);
 	ft_dblstdelone(lst, del);
 }
+

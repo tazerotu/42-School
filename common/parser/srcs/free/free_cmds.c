@@ -57,3 +57,4 @@ void	free_cmds(t_cmd *cmds)
 		cur = next;
 	}
 }
+

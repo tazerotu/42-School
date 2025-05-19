@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
+#    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/19 10:46:08 by ttas             ###   ########.fr        #
+#    Updated: 2025/05/19 11:27:25 by clai-ton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,9 @@ SRC_PARSER =		./common/parser/srcs/main_parser.c \
 					./common/parser/srcs/parser/commands/cmd_create.c \
 					./common/parser/srcs/parser/commands/cmd_fill.c \
 					./common/parser/srcs/parser/expander/expand_tok_rm_quote.c \
+					./common/parser/srcs/parser/expander/expand_tok.c \
 					./common/parser/srcs/parser/expander/expander_utils.c \
+					./common/parser/srcs/parser/expander/expander_utils2.c \
 					./common/parser/srcs/parser/expander/expander.c \
 					./common/parser/srcs/parser/split_prompt/split_prompt.c \
 					./common/parser/srcs/parser/split_prompt/split_special.c \

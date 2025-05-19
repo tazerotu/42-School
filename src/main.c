@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 09:55:37 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 11:26:25 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void main2(t_pipe *pipe)
 	{
     	input = readline("\033[0;32mMinishell>\033[0m");
     	add_history(input);
-		pipe->cmd = process_line(input, pipe->envp, pipe);
+		pipe->cmd = process_line(input, pipe);
 		pipex(pipe);
 		free(input);
 		if(pipe->exit > 0)

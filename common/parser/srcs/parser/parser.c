@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:07:03 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/16 10:45:49 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/16 16:25:14 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static t_cmd	*process_line_cmds(t_dblst **words)
 		return (NULL);
 	}
 	if (create_cmd_list(words, &cmds) == RET_MALLOC_ERR
-			|| fill_cmds(words, cmds) == RET_MALLOC_ERR)
+		|| fill_cmds(words, cmds) == RET_MALLOC_ERR)
 	{
 		free_words_dblst(words);
 		free_cmds(cmds);
@@ -67,16 +67,7 @@ static t_cmd	*process_line_cmds(t_dblst **words)
 	return (cmds);
 }
 
-static int	process_line_variables(t_cmd *cmds, t_env *envp, t_pipe *pipe)
-{
-	(void) cmds;
-	(void) envp;
-	(void) pipe;
-	// expand_tok_rm_quote(cmds, envp, pipe);
-	return (RET_PROCESSED);
-}
-
-t_cmd	*process_line(char *input, t_env *envp, t_pipe *pipe)
+t_cmd	*process_line(char *input, t_pipe *pipe)
 {
 	t_dblst	**words;
 	t_cmd	*cmds;
@@ -92,7 +83,7 @@ t_cmd	*process_line(char *input, t_env *envp, t_pipe *pipe)
 	cmds = process_line_cmds(words);
 	if (!cmds)
 		return (NULL);
-	if (process_line_variables(cmds, envp, pipe) != RET_PROCESSED)
+	if (expand_tok_rm_quote(cmds, pipe) != RET_PROCESSED)
 		return (NULL);
 	return (cmds);
 }
