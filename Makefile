@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/16 11:38:26 by ttas             ###   ########.fr        #
+#    Updated: 2025/05/19 09:20:24 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ EXE = Minishell
 # Files
 SRC =				./src/main.c
 
-SRC_EXECUTION =		./common/execution/srcs/execution.c \
-					./common/execution/srcs/init/init.c \
+SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					./common/execution/srcs/free/free.c \
 					./common/execution/srcs/pipex/pipex.c \
 					./common/execution/srcs/pipex/pipex_utils/here_doc.c \
@@ -33,6 +32,7 @@ SRC_EXECUTION =		./common/execution/srcs/execution.c \
 					./common/execution/srcs/pipex/built_in/exit.c \
 					./common/execution/srcs/pipex/built_in/verify_built_in.c \
 					./common/execution/srcs/utils/error.c \
+					# ./common/execution/srcs/execution.c \
 					# ./common/execution/srcs/pipex/pipex_utils/get_env.c \
 					# ./common/execution/srcs/pipex/pipex_utils/expander.c \
 					# ./common/execution/srcs/pipex/pipex_utils/expander_utils.c \

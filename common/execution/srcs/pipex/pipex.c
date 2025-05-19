@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/16 12:54:48 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 09:37:56 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Get the path of the command
 // If the command is not found, return an error
-static char	*get_path(char *cmd, char **envp)
+char	*get_path(char *cmd, char **envp)
 {
 	char	**paths;
 	char	*path;
@@ -43,7 +43,7 @@ static char	*get_path(char *cmd, char **envp)
 	return (0);
 }
 
-static void	exec(t_pipe *pipex)
+void	execute_cmd(t_pipe *pipex)
 {
 	char	*path;
 
@@ -52,125 +52,58 @@ static void	exec(t_pipe *pipex)
 		if (verify_builtin(pipex) == 1)
 		{
 			launch_builtin(pipex);
-			// if(!pipex->pid)
-				exit(0);
+			exit(0);
 		}
-		else
+		path = get_path(pipex->cmd->arg_tok[0], pipex->env);
+		if (!path || execve(path, pipex->cmd->arg_tok, pipex->env) == -1)
 		{
-			path = get_path(pipex->cmd->arg_tok[0], pipex->env);
-			if (execve(path, pipex->cmd->arg_tok, pipex->env) == -1)
-			{
-				ft_putstr_fd("command not found: ", 1);
-				ft_putendl_fd(pipex->cmd->arg_tok[0], 1);
-				exit(127);
-			}
+			ft_putstr_fd("command not found: ", 2);
+			ft_putendl_fd(pipex->cmd->arg_tok[0], 2);
+			exit(127);
 		}
 	}
 }
 
-static void	do_pipe(t_pipe *pipex)
+static void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
 {
-	if (pipe(pipex->pipe_fd) == -1)
-		return ;
-	pipex->pid = fork();
-	if (pipex->pid == -1)
-		return ;
-	if (!pipex->pid)
+	int		pipe_fd[2];
+	pid_t	pid;
+
+	if (cmd_ptr->next && pipe(pipe_fd) == -1)
+		exit(1);
+	pid = fork();
+	if (pid == -1)
+		exit(1);
+	if (pid == 0)
 	{
-		close(pipex->pipe_fd[0]);
-		dup2(pipex->pipe_fd[1], 1);
-		exec(pipex);
+		pipex->cmd = cmd_ptr;
+		pipex->env = get_env_char(pipex->envp);
+		child_process(pipex, *prev_fd, cmd_ptr->next ? pipe_fd : NULL);
 	}
 	else
 	{
-		close(pipex->pipe_fd[1]);
-		dup2(pipex->pipe_fd[0], 0);
+		pipex->pid = pid;
+		parent_cleanup(prev_fd, cmd_ptr->next ? pipe_fd : NULL);
 	}
 }
 
-// if (pipex->env != NULL)
-// 	free_env(pipex->env);
 void	pipex(t_pipe *pipex)
 {
-	while (pipex->cmd && pipex->cmd->next)
+	t_cmd	*cmd_ptr;
+	int		prev_fd;
+
+	cmd_ptr = pipex->cmd;
+	prev_fd = -1;
+	while (cmd_ptr)
 	{
-		set_redirection(pipex, pipex->cmd->redir_tok);
-		dup2(pipex->fd_in, 0);
-		pipex->env = get_env_char(pipex->envp);
-		do_pipe(pipex);
-		pipex->cmd = pipex->cmd->next;
+		if(ft_strncmp(cmd_ptr->arg_tok[0], "exit", INT_MAX) == 0)
+		{
+			bi_exit(pipex, cmd_ptr->arg_tok);
+			break ;
+		}
+		do_pipe(pipex, cmd_ptr, &prev_fd);
+		cmd_ptr = cmd_ptr->next;
 	}
-	pipex->pid = 0;
-	set_redirection(pipex, pipex->cmd->redir_tok);
-	pipex->env = get_env_char(pipex->envp);
-	dup2(pipex->fd_out, 1);
-	exec(pipex);
-	free_env(pipex->env);
+	while (wait(NULL) > 0)
+		;
 }
-
-// void	execute(t_pipe *pipex)
-// {
-// 	char	*path;
-
-// 	if (verify_builtin(pipex))
-// 		return ;
-// 	else
-// 	{
-// 		if (pipex->exit == 0)
-// 			return;
-// 		path = get_path(pipex->cmd->cmd[0], pipex->env);
-// 		if (!path)
-// 		{
-// 			error_message(127, pipex->cmd->cmd[0]);
-// 			exit(127);
-// 		}
-// 		if (execve(path, pipex->cmd->cmd, pipex->env) == -1)
-// 		{
-// 			perror("execve");
-// 			exit(EXIT_FAILURE);
-// 		}
-// 	}
-// }
-
-// void	do_pipe(t_pipe *pipex)
-// {
-// 	if (pipe(pipex->pipe_fd) == -1)
-// 		exit(0);
-// 	pipex->pid = fork();
-// 	if (pipex->pid == -1)
-// 		exit(0);
-// 	if (pipex->pid == 0)
-// 	{
-// 		ft_close(pipex->pipe_fd[0]);
-// 		dup2(pipex->pipe_fd[1], 1);
-// 		execute(pipex);
-// 		ft_printf("C1\n");	
-// 	}
-// 	else
-// 	{
-// 		ft_close(pipex->pipe_fd[1]);
-// 		dup2(pipex->pipe_fd[0], 0);
-// 		ft_printf("C2\n");
-// 	}
-// 	pipex->exit = WEXITSTATUS(pipex->exit_status);
-// }
-
-// void	pipex(t_pipe *pipex)
-// {
-// 	while (pipex->cmd && pipex->cmd->next)
-// 	{
-// 		set_redirection(pipex, pipex->cmd->redir);
-// 		if(pipex->fd_in == 0)
-// 			dup2(pipex->fd_in, 0);
-// 		pipex->env = get_env_char(pipex->envp, pipex->env);
-// 		do_pipe(pipex);
-// 		ft_printf("%s\n", pipex->cmd->cmd[0]);
-// 		pipex->cmd = pipex->cmd->next;
-// 	}
-// 	ft_printf("%s\n", pipex->cmd->cmd[0]);
-// 	pipex->env = get_env_char(pipex->envp, pipex->env);
-// 	dup2(pipex->fd_out, 1);
-// 	execute(pipex);
-// 	free_env(pipex->env);
-// 	ft_free_cmd(pipex->cmd);
-// }

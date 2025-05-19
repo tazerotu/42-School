@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/16 11:40:46 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 09:32:36 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,8 +97,8 @@ void	here_doc(t_pipe *pipe, char *delimiter);
 	// Execute
 // char	*get_path(char *cmd, char **envp);
 void	set_redirection(t_pipe *pipe, char **redir);
-int		set_pipex(t_pipe *pipex);
 void	pipex(t_pipe *pipex);
+void	execute_cmd(t_pipe *pipex);
 
 	// Execute Utils
 char	**get_env_char(t_env *envp);
@@ -106,6 +106,8 @@ char	*get_env(t_env *envp, char *str);
 char	*expander(char *str, t_env *envp, t_pipe *pipe);
 char	*verify_syntax(char *str, t_expander *expander);
 void	ft_close(int fd);
+void	child_process(t_pipe *pipex, int prev_fd, int *pipe_fd);
+void	parent_cleanup(int *prev_fd, int *pipe_fd);
 
 	//	Built-in
 //	with option -n

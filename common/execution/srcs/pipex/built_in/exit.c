@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/16 12:44:32 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 09:29:19 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,22 @@ static int exit_args(char **cmd)
 	return (exit);
 }
 
+static int syntax(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (ft_isdigit(str[i++]) == 0)
+		{
+			ft_printf("Non numerical argument");
+			return (INVALID_CMD);
+		}
+	}
+	return (1);
+}
+
 int	bi_exit(t_pipe *pipe, char **cmd)
 {
 	int	i;
@@ -31,19 +47,15 @@ int	bi_exit(t_pipe *pipe, char **cmd)
 	while (cmd[i])
 		i++;
 	if (i > 2)
+	{
 		ft_printf("Too many arguments");
+		return (pipe->exit = INVALID_CMD);
+	}
 	i = 0;
 	if(cmd[1])
 	{
-		while (cmd[1][i])
-		{
-			if (ft_isdigit(cmd[1][i++]) == 0)
-			{
-				ft_printf("Non numerical argument");
-				pipe->exit = INVALID_CMD;
-				return (INVALID_CMD);
-			}
-		}
+		if(syntax(cmd[1]) != 1)
+			return (pipe->exit = INVALID_CMD);
 		exit = exit_args(cmd);
 	}
 	else
