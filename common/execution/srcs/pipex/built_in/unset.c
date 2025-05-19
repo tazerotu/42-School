@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 12:01:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 14:56:24 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,9 @@ int	variable_pos(t_env *envp, char *str)
 
 	pos = 1;
 	tmp = envp;
-	char *sub;
-	int i = 0;
-	while(str[i] && str[i] != '=')
-		i++;
-	sub = ft_substr(str, 0, i);
 	while (tmp)
 	{
-		if (ft_strncmp(tmp->env, str, ft_strlen(str)-1) == 0)
+		if (ft_strncmp(tmp->env, str, ft_strlen(str)) == 0)
 			return (pos-1);
 		pos++;
 		tmp = tmp->next;
@@ -80,7 +75,7 @@ void	bi_unset(char **str, t_pipe *pipe)
 	while (str[i])
 	{
 		tmp = pipe->envp;
-		delete_variable(tmp, variable_pos(tmp->next, str[i]));
+		delete_variable(tmp, variable_pos(tmp->next, str[i]) + 1);
 		i++;
 	}
 	pipe->exit_status = 0;

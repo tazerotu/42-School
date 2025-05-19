@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:11:15 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:59:06 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,16 @@ static t_env	*verify_exist(t_env *env, char *str)
 {
 	t_env	*tmp;
 	int		pos;
+	int		i; 
+	char	*sub;
 
 	tmp = env;
-	pos = variable_pos(tmp, str);
+	i = 0;
+	while(str[i] && str[i] != '=')
+		i++;
+	sub = ft_substr(str, 0, i);
+	pos = variable_pos(tmp, sub);
+	free(sub);
 	if (pos == -1)
 		return (NULL);
 	else
@@ -91,7 +98,6 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 		else
 		{
 			tmp = find_env_pos(tmp, variable_pos(tmp, str[i]));
-			ft_printf("tmp, str : %s, %s, %d\n\n", tmp->env, str[i], i);
 			if (tmp)
 				ft_strlcpy(tmp->env, str[i], ft_strlen(str[i])+1);
 		}
