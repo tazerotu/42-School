@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 12:55:03 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 18:59:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static int	exit_args(char **cmd)
 {
 	int	exit;
 
-	exit = atoi(cmd[1]);
+	exit = ft_atoi(cmd[1]);
 	while (exit > 255)
 		exit -= 256;
 	return (exit);
