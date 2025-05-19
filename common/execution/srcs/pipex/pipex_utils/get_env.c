@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   get_env.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:30:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/14 09:58:32 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 17:34:37 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-// ft_printf("line %d : %s\n", j, envp->env);
 char	**get_env_char(t_env *envp)
 {
 	char	**env;
@@ -35,26 +34,26 @@ char	**get_env_char(t_env *envp)
 
 char	*get_env(t_env *envp, char *str)
 {
-	char	*env;
-	char	*tmp;
-	int		i;
+	int	i;
+	int	env_name_len;
+	int	max_len;
 
-	i = 0;
-	while (str[i])
-		i++;
-	if (str[--i] != '\0')
-		str[i] = '\0';
+	i = ft_strlen(str);
 	while (envp)
 	{
-		if (ft_strncmp(envp->env, str, ft_strlen(str)) == 0)
+		env_name_len = 0;
+		while (envp->env[env_name_len] && envp->env[env_name_len] != '=')
+			++env_name_len;
+		if (i > env_name_len)
+			max_len = i;
+		else
+			max_len = env_name_len;
+		if (ft_strncmp(envp->env, str, max_len) == 0)
 		{
-			env = ft_strdup(envp->env);
-			while (env[i] && env[i] != '=')
-				i++;
-			i++;
-			tmp = ft_substr(env, i, ft_strlen(env) - i);
-			free(env);
-			return (tmp);
+			while (envp->env[i] && envp->env[i] != '=')
+				++i;
+			++i;
+			return (ft_substr(envp->env, i, env_name_len - i));
 		}
 		envp = envp->next;
 	}

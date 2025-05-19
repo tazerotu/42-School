@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   unset.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 12:01:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 19:18:08 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,37 +30,56 @@ int	variable_pos(t_env *envp, char *str)
 {
 	int		pos;
 	t_env	*tmp;
+	int		env_name_len;
+	int		max_len;
+	int		var_len;
 
 	pos = 1;
 	tmp = envp;
-	char *sub;
-	int i = 0;
-	while(str[i] && str[i] != '=')
-		i++;
-	sub = ft_substr(str, 0, i);
+	var_len = 0;
+	while (str[var_len] && str[var_len] != '=')
+			++var_len;
 	while (tmp)
 	{
-		if (ft_strncmp(tmp->env, str, ft_strlen(str)-1) == 0)
-			return (pos-1);
-		pos++;
+		env_name_len = 0;
+		while (tmp->env[env_name_len] && tmp->env[env_name_len] != '=')
+			++env_name_len;
+		if (var_len < env_name_len)
+			max_len = env_name_len;
+		else
+			max_len = var_len;
+		if (!ft_strncmp(tmp->env, str, max_len))
+			return (pos - 1);
+		++pos;
 		tmp = tmp->next;
 	}
 	return (-1);
 }
 
-static void	delete_variable(t_env *envp, int pos)
+static void	delete_variable(t_env *envp, char *var_name)
 {
 	t_env	*tmp;
+	int		env_name_len;
+	int		max_len;
+	int		var_len;
 
 	tmp = envp;
-	if (pos != -1)
+	var_len = ft_strlen(var_name);
+	while (tmp)
 	{
-		while (tmp && pos > 0)
+		env_name_len = 0;
+		while (tmp->env[env_name_len] && tmp->env[env_name_len] != '=')
+			++env_name_len;
+		if (var_len < env_name_len)
+			max_len = env_name_len;
+		else
+			max_len = var_len;
+		if (!ft_strncmp(tmp->env, var_name, max_len))
 		{
-			tmp = tmp->next;
-			pos--;
+			env_delone(tmp);
+			return ;
 		}
-		env_delone(tmp);
+		tmp = tmp->next;
 	}
 }
 
@@ -80,7 +99,7 @@ void	bi_unset(char **str, t_pipe *pipe)
 	while (str[i])
 	{
 		tmp = pipe->envp;
-		delete_variable(tmp, variable_pos(tmp->next, str[i]));
+		delete_variable(tmp, str[i]);
 		i++;
 	}
 	pipe->exit_status = 0;

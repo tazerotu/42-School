@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:23:16 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/16 11:34:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 19:02:36 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void	free_pipe_env(t_pipe *pipe)
 	while (pipe->envp)
 	{
 		tmp = pipe->envp->next;
+		free(pipe->envp->env);
 		free(pipe->envp);
 		pipe->envp = tmp;
 	}
-	free(pipe->envp);
 	free(pipe);
 }
 
@@ -44,8 +44,8 @@ void	free_env(char **env)
 // i = 0;
 // while(cmd->cmd[i])
 	// free(cmd->cmd[i++]);
-void	ft_free_cmd(t_cmd *cmd)
-{
-	free(cmd->arg_tok);
-	free(cmd);
-}
+// void	ft_free_cmd(t_cmd *cmd)
+// {
+// 	free(cmd->arg_tok);
+// 	free(cmd);
+// }

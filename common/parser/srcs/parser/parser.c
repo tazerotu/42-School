@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:07:03 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/19 15:29:11 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:38:55 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,10 @@ static t_dblst	**process_line_split(char *input, t_pipe *pipe)
 	return (words);
 }
 
-static t_cmd	*process_line_cmds(t_dblst **words, t_pipe *pipe)
+static t_cmd	*process_line_cmds(t_dblst **words)
 {
 	t_cmd	*cmds;
 
-	if (check_first_or_last_is_pipe(words) || check_invalid_follow_up(words))
-	{
-		free_words_dblst(words);
-		error_message(RET_SYNTAX_ERR, "checking the special characters");
-		pipe->exit_status = 2;
-		return (NULL);
-	}
 	cmds = malloc(sizeof(t_cmd));
 	if (!cmds)
 	{
@@ -83,7 +76,14 @@ t_cmd	*process_line(char *input, t_pipe *pipe)
 	words = process_line_split(input, pipe);
 	if (!words)
 		return (NULL);
-	cmds = process_line_cmds(words, pipe);
+	if (check_first_or_last_is_pipe(words) || check_invalid_follow_up(words))
+	{
+		free_words_dblst(words);
+		error_message(RET_SYNTAX_ERR, "checking the special characters");
+		pipe->exit_status = 2;
+		return (NULL);
+	}
+	cmds = process_line_cmds(words);
 	if (!cmds)
 		return (NULL);
 	if (expand_tok_rm_quote(cmds, pipe) != RET_PROCESSED)

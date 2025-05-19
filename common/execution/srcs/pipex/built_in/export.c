@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:11:15 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 19:20:36 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ static t_env	*verify_exist(t_env *env, char *str)
 
 	tmp = env;
 	pos = variable_pos(tmp, str);
+printf("variable_pos returned %i\n", pos);
 	if (pos == -1)
 		return (NULL);
 	else
@@ -74,6 +75,7 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 {
 	int		i;
 	t_env	*tmp;
+	int		pos;
 
 	i = 0;
 	if (!str[1])
@@ -86,14 +88,18 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 			pipe->exit_status = INVALID_CMD;
 			return (NULL);
 		}
-		if (verify_exist(tmp, str[i]) == NULL)
-			env_add_back(tmp, env_new(str[i]));
+		tmp = verify_exist(tmp, str[i]);
+		if (!tmp)
+			env_add_back(pipe->envp, env_new(str[i]));
 		else
 		{
-			tmp = find_env_pos(tmp, variable_pos(tmp, str[i]));
-			ft_printf("tmp, str : %s, %s, %d\n\n", tmp->env, str[i], i);
+			pos = variable_pos(tmp, str[i]);
+			tmp = find_env_pos(tmp, pos);
 			if (tmp)
-				ft_strlcpy(tmp->env, str[i], ft_strlen(str[i])+1);
+			{
+				free(tmp->env);
+				tmp->env = ft_strdup(str[i]);
+			}
 		}
 	}
 	pipe->exit_status = 0;

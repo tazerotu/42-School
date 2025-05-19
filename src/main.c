@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 16:03:12 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:18:52 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	main2(t_pipe *pipe)
 		pipex(pipe);
 		free(input);
 		free_cmds(pipe->cmd);
+		pipe->cmd = NULL;
 		if (pipe->exit > 0)
 			break ;
 	}

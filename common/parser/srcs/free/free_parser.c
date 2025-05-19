@@ -6,11 +6,18 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:52:33 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/19 12:58:08 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 17:35:56 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parser.h"
+
+void	free_words_dblst(t_dblst **words)
+{
+	ft_dblstclear(*words, free);
+	free (words);
+	words = NULL;
+}
 
 void	free_redir_early(t_cmd *cmd, int redir_count)
 {
@@ -56,4 +63,5 @@ void	free_cmds(t_cmd *cmds)
 		free(cur);
 		cur = next;
 	}
+	cmds = NULL;
 }

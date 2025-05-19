@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:04:47 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/16 11:37:59 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 18:18:35 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,22 +17,6 @@
 # include <stdio.h>
 # include <stdlib.h>
 
-# include <unistd.h>
-# include <string.h>
-# include <stdbool.h>
-# include <dirent.h>
-# include <readline/readline.h>
-# include <readline/history.h>
-# include <sys/types.h>
-# include <sys/wait.h>
-# include <sys/stat.h>
-
-// ERROR HANDLING
-// # define ERROR_FD 101
-// # define ERROR_DIR 111
-// # define ERROR_PWD 121
-// # define ERROR_ENV 131
-
 # define RET_NOTHING_DONE 100
 # define RET_PROCESSED 101
 # define RET_MALLOC_ERR 102
@@ -40,53 +24,12 @@
 # define RET_TRUE 1
 # define RET_FALSE 0
 
-//////BY TTAS
-
-// typedef struct s_env
-// {
-// 	char			*env;
-// 	struct s_env	*previous;
-// 	struct s_env	*next;
-// }	t_env;
-
-// typedef struct s_expander
-// {
-// 	char	*ret;
-// 	char	*var;
-// 	char	*tmp;
-// 	int		start;
-// 	int		end;
-// 	int		dollar;
-// }	t_expander;
-
-// typedef struct s_pipe
-// {
-// 	int				exit;
-// 	int				exit_status;
-// 	int				n_pipe;
-// 	int				fd_in;
-// 	int				fd_out;
-// 	char			*heredoc;
-// 	char			**env;
-// 	struct s_env	*envp;
-// 	struct s_cmd	*cmd;
-// }	t_pipe;
-
-//////
-
 enum e_token_quote_type
 {
 	Q_NONE,
 	Q_SIMPLE,
 	Q_DOUBLE
 };
-
-// typedef struct s_command
-// {
-// 	char				**redir_tok;
-// 	char				**arg_tok;
-// 	struct s_command	*next;
-// }	t_cmd;
 
 typedef struct s_quote_checker
 {
@@ -128,43 +71,5 @@ int		skip_past_quote_end(char *str, int i, char quote);
 void	expand_token2(char *str, t_pipe *pipe, char **tmp);
 int		expand_tok_rm_quote(t_cmd *cmd, t_pipe *pipe);
 int		is_special_dollar_char(char c);
-/////////////BY TTAS
 
-// // Functions
-// 	// Init
-// t_pipe	*init(t_pipe *pipe, char **envp);
-// t_pipe	*init_env(t_pipe *pipe, char **envp);
-
-// 	// Free
-// void	free_pipe_env(t_pipe *pipe);
-// void	free_env(char **env);
-
-// 	// Command initialization
-// void	verify_builtin(t_pipe *pipe);
-// void	launch_builtin(t_pipe *pipe);
-// void	here_doc(t_pipe *pipe, char *delimiter);
-
-// 	// Execute
-// void	execute(void);
-// void	get_path(void);
-// void	child_process(void);
-// void	parent_process(void);
-// void	set_redirection(t_pipe *pipe, char **redir);
-
-// 	// Execute Utils
-// char	**get_env_char(t_env *envp);
-// char	*get_env(t_env *envp, char *str);
-// char	*expander(char *str, t_env *envp, t_pipe *pipe);
-// char	*verify_syntax(char *str, t_expander *expander);
-
-// 	// Utils
-// void	env_add_back(t_env *envp, t_env *new);
-// void	env_delone(t_env *envp);
-// t_env	*env_new(char *content);
-// t_env	*env_last(t_env *env);
-// int		env_size(t_env *env);
-// int		variable_pos(t_env *envp, char *str);
-// t_env	*find_env_pos(t_env *env, int pos);
-
-///////////
 #endif
