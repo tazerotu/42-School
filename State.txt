@@ -2,10 +2,7 @@ Execution :
 
 
 Parser :
-	- split redir (ne fonctionne pas avec le heredoc, 
-				leaks when exit/multiple command in a row, to fix in main together)
-	- process line (leaks -> to be fixed in main together)
-	- fill_cmds (leaks -> to be fixed in main together)
+	- split redir (ne fonctionne pas avec le heredoc)
 	- no exit code to 2 when parsing error
 	- do not expand if here doc delimiter
 
