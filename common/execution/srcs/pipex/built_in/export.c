@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 10:43:23 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 10:48:25 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,8 @@ static t_env	*verify_exist(t_env *env, char *str)
 
 	tmp = env;
 	int i = 0;
-	while(str && str[i] != '=')
-	{
+	while(str[i] && str[i] != '=')
 		i++;
-	}
 	sub = ft_substr(str, 0, i);
 	ft_printf("\nsubstr : %s\n", sub);
 	pos = variable_pos(tmp, sub);

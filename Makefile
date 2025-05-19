@@ -6,7 +6,7 @@
 #    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/19 09:45:23 by ttas             ###   ########.fr        #
+#    Updated: 2025/05/19 10:46:08 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,8 +66,8 @@ LIBFT = ./common/libft
 
 # Variables
 CC = cc
-# -fsanitize=address -g
-CFLAGS = -Wall -Werror -Wextra -Includes 
+# 
+CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=address -g
 RM = rm -f
 
 # Makefile
