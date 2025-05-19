@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:07 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/16 11:41:22 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 14:04:05 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,6 @@ void	bi_pwd(t_pipe *pipe)
 {
 	char	*cwd;
 
-	if (pipe->cmd->arg_tok[1] != NULL)
-	{
-		error_message_exec(ERROR_PWD, NULL);
-		return ;
-	}
 	cwd = getcwd(NULL, 0);
 	if (!cwd)
 	{

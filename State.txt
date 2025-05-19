@@ -1,6 +1,5 @@
 Execution :
 	- exit code
-	- pwd -> work regardless of extra input or not
 	- env -> heap use after free (free_cmd)
 	- export -> substr leak
 	- cd -> if previous file rm shouldn't break
