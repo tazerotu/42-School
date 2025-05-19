@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:03:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/17 13:07:30 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/19 09:13:30 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,34 @@ void	free_split(char **arr)
 	free(arr);
 }
 
-// void	start_pipe(t_pipe *pipe)
-// {
-// 	if (pipe(pipe->fds) == -1)
-// 	{
-// 		perror("pipe");
-// 		exit(EXIT_FAILURE);
-// 	}
-// }
+void	child_process(t_pipe *pipex, int prev_fd, int *pipe_fd)
+{
+	if (prev_fd != -1)
+	{
+		dup2(prev_fd, STDIN_FILENO);
+		close(prev_fd);
+	}
+	if (pipex->cmd->next)
+	{
+		dup2(pipe_fd[1], STDOUT_FILENO);
+		close(pipe_fd[0]);
+		close(pipe_fd[1]);
+	}
+	set_redirection(pipex, pipex->cmd->redir);
+	if (pipex->fd_in != -1)
+		dup2(pipex->fd_in, STDIN_FILENO);
+	if (pipex->fd_out != -1)
+		dup2(pipex->fd_out, STDOUT_FILENO);
+	execute_cmd(pipex);
+}
 
-// void	close_pipe(t_pipe *pipe)
-// {
-// 	if (pipe->fd_in)
-// 		close(pipe->fd_in);
-// 	if (pipe->fd_out)
-// 		close(pipe->fd_out);
-// }
+void	parent_cleanup(int *prev_fd, int *pipe_fd)
+{
+	if (*prev_fd != -1)
+		close(*prev_fd);
+	if (pipe_fd)
+	{
+		*prev_fd = pipe_fd[0];
+		close(pipe_fd[1]);
+	}
+}
