@@ -3,7 +3,7 @@ Execution :
 	- env -> heap use after free (free_cmd)
 	- export -> substr leak
 	- cd -> if previous file rm shouldn't break
-	- unset -> doesn't work
+	- export -> doesn't modify existing var
 
 Parser :
 	- split redir (ne fonctionne pas avec le heredoc)
