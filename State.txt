@@ -1,5 +1,5 @@
 Execution :
-
+	- exit code
 
 Parser :
 	- split redir (ne fonctionne pas avec le heredoc)
