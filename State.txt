@@ -1,5 +1,5 @@
 Execution :
-	- here_doc -> quotes not included in expand
+
 
 Parser :
 	- split redir (ne fonctionne pas avec le heredoc, 
