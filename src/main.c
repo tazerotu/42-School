@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:29:39 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 13:54:41 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	main2(t_pipe *pipe)
 		pipe->cmd = process_line(input, pipe);
 		pipex(pipe);
 		free(input);
-		free_cmds(pipe->cmd);
+		// free_cmds(pipe->cmd);
 		if (pipe->exit > 0)
 			break ;
 	}
