@@ -1,13 +1,15 @@
 Execution :
-	- clear -> quit program
-	- pipes -> quit program (env | grep USER)
+	- export (not modifying if variable already exist) -> verify variable_pos
+	- export (seg fault if multiple times the same variable ex: test1=1 test1=2 test1=3)
+	- echo (expander to be added)
 
 
 
 Parser :
-	- split redir
-
-
+	- split redir (ne fonctionne pas avec le heredoc, 
+				leaks when exit/multiple command in a row, to fix in main together)
+	- process line (leaks -> to be fixed in main together)
+	- fill_cmds (leaks -> to be fixed in main together)
 
 All :
 	- free -> not everything is freed

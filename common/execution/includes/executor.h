@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 09:32:36 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 10:36:14 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	free_env(char **env);
 void	ft_free_cmd(t_cmd *cmd);
 
 	// Command initialization
-int		verify_builtin(t_pipe *pipe);
+int		verify_builtin1(t_pipe *pipe);
+int 	verify_builtin2(t_cmd *cmd);
 void	launch_builtin(t_pipe *pipe);
 void	here_doc(t_pipe *pipe, char *delimiter);
 
@@ -117,8 +118,8 @@ void	bi_echo(char **str, t_pipe *pipe);
 void	bi_cd(t_env *env, char **path, t_pipe *pipe);
 
 void	bi_pwd(t_pipe *pipe);
-t_env	*bi_export(t_pipe *pipe, t_env *env, char **str);
-void	bi_unset(t_env *envp, char **str, t_pipe *pipe);
+t_env	*bi_export(t_pipe *pipe, char **str);
+void	bi_unset(char **str, t_pipe *pipe);
 void	bi_env(t_env *envp, t_pipe *pipe);
 int		bi_exit(t_pipe *pipe, char **cmd);
 

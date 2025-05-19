@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/05 09:29:09 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 10:43:23 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,18 @@ static t_env	*verify_exist(t_env *env, char *str)
 {
 	t_env	*tmp;
 	int		pos;
+	char	*sub;
 
 	tmp = env;
-	pos = variable_pos(tmp, str);
+	int i = 0;
+	while(str && str[i] != '=')
+	{
+		i++;
+	}
+	sub = ft_substr(str, 0, i);
+	ft_printf("\nsubstr : %s\n", sub);
+	pos = variable_pos(tmp, sub);
+	free(sub);
 	if (pos == -1)
 		return (NULL);
 	else
@@ -70,29 +79,30 @@ static t_env	*verify_exist(t_env *env, char *str)
 // If export VARIABLE_NAME1=$VARIABLE_NAME2 -> 
 // find variable in env and set VARIABLE_NAME2 value to VARIABLE_NAME1
 // Multiple variables possible
-t_env	*bi_export(t_pipe *pipe, t_env *env, char **str)
+t_env	*bi_export(t_pipe *pipe, char **str)
 {
 	int		i;
 	t_env	*tmp;
 
 	i = 1;
-	tmp = env;
 	if (!str[1])
 		return (NULL);
 	while (str[i])
 	{
+		ft_printf("export str : %s", str[i]);
+		tmp = pipe->envp;
 		if (syntax(str[i]) < 0)
 		{
 			pipe->exit_status = INVALID_CMD;
 			return (NULL);
 		}
-		if (verify_exist(tmp, str[i]) == NULL)
-			env_add_back(tmp, env_new(str[i]));
-		else
+		if (verify_exist(tmp, str[i]))
 		{
 			tmp = find_env_pos(tmp, variable_pos(tmp, str[i]));
 			ft_strlcpy(tmp->env, str[i], ft_strlen(str[i]));
 		}
+		else
+			env_add_back(tmp, env_new(str[i]));
 		i++;
 	}
 	pipe->exit_status = 0;

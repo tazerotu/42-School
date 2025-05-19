@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 09:37:56 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 09:51:19 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	execute_cmd(t_pipe *pipex)
 
 	if (pipex->cmd)
 	{
-		if (verify_builtin(pipex) == 1)
+		if (verify_builtin1(pipex) == 1)
 		{
 			launch_builtin(pipex);
 			exit(0);
@@ -96,9 +96,10 @@ void	pipex(t_pipe *pipex)
 	prev_fd = -1;
 	while (cmd_ptr)
 	{
-		if(ft_strncmp(cmd_ptr->arg_tok[0], "exit", INT_MAX) == 0)
+		if(verify_builtin2(cmd_ptr))
 		{
-			bi_exit(pipex, cmd_ptr->arg_tok);
+			pipex->cmd = cmd_ptr;
+			launch_builtin(pipex);
 			break ;
 		}
 		do_pipe(pipex, cmd_ptr, &prev_fd);
