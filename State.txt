@@ -3,12 +3,13 @@ Execution :
 	- env -> heap use after free (free_cmd)
 	- export -> substr leak
 	- cd -> if previous file rm shouldn't break
-	- unset -> doesn't work
 	- cannot launch another minishell within minishell
+	- export -> doesn't modify existing var
 
 Parser :
 
 All :
+	- history
 	- free -> not everything is freed, or frees do too much
 	- Signals -> nothing done yet
 	- Norm
