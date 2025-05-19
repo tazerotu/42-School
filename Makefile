@@ -6,7 +6,7 @@
 #    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/19 13:14:01 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/05/19 15:28:05 by clai-ton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,19 +69,19 @@ LIBFT = ./common/libft
 
 # Variables
 CC = cc
-# 
-CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=address -g
+CLEAKS = -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra -Includes
 RM = rm -f
 
 # Makefile
 %.o:		%.c
-		${CC} ${CFLAGS} -c $? -o $@
+		${CC} ${CFLAGS} ${CLEAKS} -c $? -o $@
 
 all:		${EXE}
 
 ${EXE}:		${OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
-		@${CC} ${CFLAGS} ${OBJECTS} ${LIBFT}/libft.a -lreadline -o ${EXE}
+		@${CC} ${CFLAGS} ${CLEAKS} ${OBJECTS} ${LIBFT}/libft.a -lreadline -o ${EXE}
 ac: all clean
 
 clean:

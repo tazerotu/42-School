@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:54:41 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 16:03:12 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	main2(t_pipe *pipe)
 		pipe->cmd = process_line(input, pipe);
 		pipex(pipe);
 		free(input);
-		// free_cmds(pipe->cmd);
+		free_cmds(pipe->cmd);
 		if (pipe->exit > 0)
 			break ;
 	}
@@ -40,7 +40,7 @@ int	main(int argc, char **argv, char **envp)
 	main2(pipe);
 	clear_history();
 	free_pipe_env(pipe);
-	return (1);
+	return (0);
 }
 
 // Main

@@ -6,13 +6,13 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:07:03 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/16 16:25:14 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:29:11 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/parser.h"
 
-static t_dblst	**process_line_split(char *input)
+static t_dblst	**process_line_split(char *input, t_pipe *pipe)
 {
 	t_dblst	**words;
 	int		ret_val;
@@ -33,12 +33,13 @@ static t_dblst	**process_line_split(char *input)
 	{
 		free_words_dblst(words);
 		error_message(ret_val, "splitting prompt");
+		pipe->exit_status = 2;
 		return (NULL);
 	}
 	return (words);
 }
 
-static t_cmd	*process_line_cmds(t_dblst **words)
+static t_cmd	*process_line_cmds(t_dblst **words, t_pipe *pipe)
 {
 	t_cmd	*cmds;
 
@@ -46,6 +47,7 @@ static t_cmd	*process_line_cmds(t_dblst **words)
 	{
 		free_words_dblst(words);
 		error_message(RET_SYNTAX_ERR, "checking the special characters");
+		pipe->exit_status = 2;
 		return (NULL);
 	}
 	cmds = malloc(sizeof(t_cmd));
@@ -75,12 +77,13 @@ t_cmd	*process_line(char *input, t_pipe *pipe)
 	if (check_incorrect_quotes(input))
 	{
 		error_message(RET_SYNTAX_ERR, "checking quote validity");
+		pipe->exit_status = 2;
 		return (NULL);
 	}
-	words = process_line_split(input);
+	words = process_line_split(input, pipe);
 	if (!words)
 		return (NULL);
-	cmds = process_line_cmds(words);
+	cmds = process_line_cmds(words, pipe);
 	if (!cmds)
 		return (NULL);
 	if (expand_tok_rm_quote(cmds, pipe) != RET_PROCESSED)

@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 11:54:45 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/14 18:02:04 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:58:28 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	count_words_per_cmd(t_dblst	*first_node,
 		str = (char *) cur_node->content;
 		if (word_is_pipe(str))
 			break ;
-		else if (word_is_redirection(str))
+		else if (word_is_redirection(str) || word_is_heredoc(str))
 		{
 			*redir_count += 2;
 			cur_node = cur_node->next;
