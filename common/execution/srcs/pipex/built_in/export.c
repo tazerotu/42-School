@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 19:20:36 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 20:13:31 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ static t_env	*verify_exist(t_env *env, char *str)
 
 	tmp = env;
 	pos = variable_pos(tmp, str);
-printf("variable_pos returned %i\n", pos);
 	if (pos == -1)
 		return (NULL);
 	else

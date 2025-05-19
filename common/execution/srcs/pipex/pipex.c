@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:02:42 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 21:17:20 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,21 @@ void	execute_cmd(t_pipe *pipex)
 		if (verify_builtin1(pipex) == 1)
 		{
 			launch_builtin(pipex);
-			exit(0);
+			exit(pipex->exit_status);
+		}
+		if(ft_strncmp(pipex->cmd->arg_tok[0], "./Minishell", 10) == 0)
+		{
+			if(execve(pipex->cmd->arg_tok[0], 
+				pipex->cmd->arg_tok, pipex->env) == -1)
+			{
+				ft_fprintf(2, "1 command not found: %s\n", pipex->cmd->arg_tok[0]);
+				exit(127);
+			}
 		}
 		path = get_path(pipex->cmd->arg_tok[0], pipex->env);
 		if (!path || execve(path, pipex->cmd->arg_tok, pipex->env) == -1)
 		{
-			ft_putstr_fd("command not found: ", 2);
-			ft_putendl_fd(pipex->cmd->arg_tok[0], 2);
+			ft_fprintf(2, "command not found: %s\n", pipex->cmd->arg_tok[0]);
 			exit(127);
 		}
 	}
@@ -96,11 +104,10 @@ void	pipex(t_pipe *pipex)
 	prev_fd = -1;
 	while (cmd_ptr)
 	{
-		if (verify_builtin2(cmd_ptr))
+		if(verify_builtin2(cmd_ptr) == 1)
 		{
-			pipex->cmd = cmd_ptr;
 			launch_builtin(pipex);
-			break ;
+			return ;
 		}
 		do_pipe(pipex, cmd_ptr, &prev_fd);
 		cmd_ptr = cmd_ptr->next;

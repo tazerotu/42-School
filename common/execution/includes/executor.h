@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 12:55:56 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 21:02:27 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,7 @@ void	bi_echo(char **str, t_pipe *pipe);
 
 //	with absolute or relative path
 void	bi_cd(t_env *env, char **path, t_pipe *pipe);
+int		free_pwd(char *pwd, char *str);
 
 void	bi_pwd(t_pipe *pipe);
 t_env	*bi_export(t_pipe *pipe, char **str);

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   bi_utils.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/10 16:55:13 by marvin            #+#    #+#             */
-/*   Updated: 2025/03/10 16:55:13 by marvin           ###   ########.fr       */
+/*   Created: 2025/05/19 20:59:24 by marvin            #+#    #+#             */
+/*   Updated: 2025/05/19 20:59:24 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/executor.h"
+#include "../../../../includes/executor.h"
 
-int	error_message_exec(int error, char *str)
+int	free_pwd(char *pwd, char *str)
 {
-	if (error == ERROR_FD)
-		ft_fprintf(2, "ERROR : %d\n", ERROR_FD);
-	else if (error == ERROR_DIR)
-		ft_fprintf(2, "cd: no such file or directory: %s\n", str);
-	else if (error == ERROR_PWD)
-		ft_fprintf(2, "ERROR : %d\n", ERROR_PWD);
-	else if (error == ERROR_ENV)
-		ft_fprintf(2, "ERROR : %d\n", ERROR_ENV);
-	return (-1);
+	if (pwd)
+		free(pwd);
+	error_message_exec(ERROR_DIR, str);
+	return (127);
 }

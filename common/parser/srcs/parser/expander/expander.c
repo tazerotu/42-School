@@ -55,10 +55,8 @@ static t_expander	*expand_var(t_expander *expander, char *str, t_env *envp)
 {
 	char	*var_name;
 	char	*tmp;
-	int		i;
 
 	var_name = NULL;
-	i = 0;
 	var_name = verify_syntax(str, expander);
 	if (var_name != NULL)
 	{
