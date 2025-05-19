@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 10:41:52 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 12:01:22 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,15 @@ int	variable_pos(t_env *envp, char *str)
 
 	pos = 1;
 	tmp = envp;
-	ft_printf("str : %s\n\n", str);
+	char *sub;
+	int i = 0;
+	while(str[i] && str[i] != '=')
+		i++;
+	sub = ft_substr(str, 0, i);
 	while (tmp)
 	{
-		if (ft_strncmp(tmp->env, str, ft_strlen(str)) == 0)
-			return (pos);
+		if (ft_strncmp(tmp->env, str, ft_strlen(str)-1) == 0)
+			return (pos-1);
 		pos++;
 		tmp = tmp->next;
 	}

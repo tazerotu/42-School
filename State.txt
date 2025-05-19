@@ -1,8 +1,4 @@
 Execution :
-	- export (not modifying if variable already exist) -> verify variable_pos
-	- export (seg fault if multiple times the same variable ex: test1=1 test1=2 test1=3)
-	- echo (expander to be added)
-
 
 
 Parser :
