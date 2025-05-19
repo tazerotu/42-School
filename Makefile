@@ -6,7 +6,7 @@
 #    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/19 11:27:25 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/05/19 13:14:01 by clai-ton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,7 @@ SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					# ./common/execution/srcs/pipex/pipex_utils/expander_utils.c \
 
 					
-SRC_PARSER =		./common/parser/srcs/main_parser.c \
-					./common/parser/srcs/env/get_env.c \
+SRC_PARSER =		./common/parser/srcs/env/get_env.c \
 					./common/parser/srcs/free/free.c \
 					./common/parser/srcs/free/free_cmds.c \
 					./common/parser/srcs/init/init.c \
@@ -59,6 +58,8 @@ SRC_PARSER =		./common/parser/srcs/main_parser.c \
 					./common/parser/srcs/parser/syntax_check/verify_quotes.c \
 					./common/parser/srcs/parser/syntax_check/verify_words.c \
 					# ./common/parser/srcs/env/env_utils.c \
+					# ./common/parser/srcs/main_parser.c \
+					
 					
 
 
