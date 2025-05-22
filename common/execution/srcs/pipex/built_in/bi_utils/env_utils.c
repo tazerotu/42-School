@@ -14,12 +14,15 @@
 
 void	env_add_back(t_env *envp, t_env *new)
 {
+	t_env	*last;
+
 	if (!envp || !new)
 		return ;
 	if (envp)
 	{
-		new->previous = env_last(envp);
-		env_last(envp)->next = new;
+		last = env_last(envp);
+		new->previous = last;
+		last->next = new;
 	}
 	else
 		envp = new;
@@ -36,6 +39,7 @@ void	env_delone(t_env *envp)
 		tmp->previous->next = tmp->next;
 	if (tmp->next)
 		tmp->next->previous = tmp->previous;
+	free(tmp->env);
 	free(tmp);
 }
 
@@ -46,7 +50,7 @@ t_env	*env_new(char *content)
 	env1 = malloc(sizeof(t_env));
 	if (!env1)
 		return (NULL);
-	env1->env = content;
+	env1->env = ft_strdup(content);
 	env1->next = NULL;
 	env1->previous = NULL;
 	return (env1);

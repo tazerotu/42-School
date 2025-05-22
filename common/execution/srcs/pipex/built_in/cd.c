@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 09:42:49 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 21:01:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,31 +30,6 @@ t_env	*find_env_pos(t_env *env, int pos)
 		env = env->next;
 	return (env);
 }
-
-// static char	*expand_pwd(t_env *envp, char *str)
-// {
-// 	t_env	*tmp;
-// 	char	*new_str;
-// 	char	*env;
-//
-// 	tmp = envp;
-// 	if (str[0] == '~')
-// 	{
-// 		// int pos = variable_pos(tmp, "HOME");
-// 		// while(pos > 0)
-// 		// {
-// 		// 	printf("%s\t\t%d\n", tmp->env, pos);
-// 		// 	pos--;
-// 		// 	tmp = tmp->next;
-// 		// }
-// 		tmp = find_env_pos(tmp, variable_pos(tmp->next, "HOME"));
-// 		printf("\n%s\n", tmp->env);
-// 		env = ft_strnstr(tmp->env , "=", 5);
-// 		new_str = ft_strjoin(new_str, env);
-// 	}
-// 	new_str = ft_strjoin(new_str, str);
-// 	return (new_str);
-// }
 
 static void	change_pwd(t_env *env, char *path, char *cwd)
 {
@@ -87,7 +62,7 @@ static int	change_dir(t_env *env, char *str, bool home)
 	{
 		tmp = find_env_pos(tmp, variable_pos(tmp, "HOME"));
 		if (chdir(tmp->env))
-			return (error_message_exec(ERROR_DIR, tmp->env));
+			return (free_pwd(pwd, str));
 		change_pwd(tmp, "OLDPWD=", pwd);
 		pwd = get_pwd(pwd);
 		change_pwd(tmp, "PWD=", pwd);
@@ -95,7 +70,7 @@ static int	change_dir(t_env *env, char *str, bool home)
 	else
 	{
 		if (chdir(str))
-			return (error_message_exec(ERROR_DIR, str));
+			return (free_pwd(pwd, str));
 		change_pwd(tmp, "OLDPWD=", pwd);
 		pwd = get_pwd(pwd);
 		change_pwd(tmp, "PWD=", pwd);
@@ -126,6 +101,6 @@ void	bi_cd(t_env *env, char **path, t_pipe *pipe)
 	if (err == 0)
 		pipe->exit_status = 0;
 	else
-		pipe->exit_status = 126;
+		pipe->exit_status = 127;
 	return ;
 }

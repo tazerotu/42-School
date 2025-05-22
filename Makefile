@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/19 13:14:01 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/05/19 21:01:10 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC =				./src/main.c
 SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					./common/execution/srcs/free/free.c \
 					./common/execution/srcs/pipex/pipex.c \
+					./common/execution/srcs/pipex/pipex_utils/get_env.c \
 					./common/execution/srcs/pipex/pipex_utils/here_doc.c \
 					./common/execution/srcs/pipex/pipex_utils/redirection.c \
 					./common/execution/srcs/pipex/pipex_utils/pipex_utils.c \
@@ -32,16 +33,13 @@ SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					./common/execution/srcs/pipex/built_in/exit.c \
 					./common/execution/srcs/pipex/built_in/verify_built_in.c \
 					./common/execution/srcs/utils/error.c \
+					./common/execution/srcs/pipex/built_in/bi_utils/bi_utils.c \
 					# ./common/execution/srcs/execution.c \
-					# ./common/execution/srcs/pipex/pipex_utils/get_env.c \
 					# ./common/execution/srcs/pipex/pipex_utils/expander.c \
 					# ./common/execution/srcs/pipex/pipex_utils/expander_utils.c \
 
 					
-SRC_PARSER =		./common/parser/srcs/env/get_env.c \
-					./common/parser/srcs/free/free.c \
-					./common/parser/srcs/free/free_cmds.c \
-					./common/parser/srcs/init/init.c \
+SRC_PARSER =		./common/parser/srcs/free/free_parser.c \
 					./common/parser/srcs/utils/error.c \
 					./common/parser/srcs/parser/parser_utils.c \
 					./common/parser/srcs/parser/parser.c \
@@ -57,8 +55,6 @@ SRC_PARSER =		./common/parser/srcs/env/get_env.c \
 					./common/parser/srcs/parser/syntax_check/verify_pipe.c \
 					./common/parser/srcs/parser/syntax_check/verify_quotes.c \
 					./common/parser/srcs/parser/syntax_check/verify_words.c \
-					# ./common/parser/srcs/env/env_utils.c \
-					# ./common/parser/srcs/main_parser.c \
 					
 					
 
@@ -69,19 +65,19 @@ LIBFT = ./common/libft
 
 # Variables
 CC = cc
-# 
-CFLAGS = -Wall -Werror -Wextra -Includes -fsanitize=address -g
+CLEAKS = -fsanitize=address -g
+CFLAGS = -Wall -Werror -Wextra -Includes
 RM = rm -f
 
 # Makefile
 %.o:		%.c
-		${CC} ${CFLAGS} -c $? -o $@
+		${CC} ${CFLAGS} ${CLEAKS} -c $? -o $@
 
 all:		${EXE}
 
 ${EXE}:		${OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
-		@${CC} ${CFLAGS} ${OBJECTS} ${LIBFT}/libft.a -lreadline -o ${EXE}
+		@${CC} ${CFLAGS} ${CLEAKS} ${OBJECTS} ${LIBFT}/libft.a -lreadline -o ${EXE}
 ac: all clean
 
 clean:

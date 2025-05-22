@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/23 15:13:07 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/14 15:27:04 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/19 16:08:22 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,7 @@ int	check_invalid_follow_up(t_dblst **words)
 		prev_is_pipe = cur_is_pipe;
 		cur = cur->next;
 	}
+	if (prev_is_pipe || prev_is_redir)
+		return (RET_TRUE);
 	return (RET_FALSE);
 }

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 18:59:04 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/21 18:51:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static int	syntax(char *str)
 int	bi_exit(t_pipe *pipe, char **cmd)
 {
 	int	i;
-	int	exit;
+	int	exit_nbr;
 
 	i = 0;
 	while (cmd[i])
@@ -56,10 +56,10 @@ int	bi_exit(t_pipe *pipe, char **cmd)
 	{
 		if (syntax(cmd[1]) != 1)
 			return (pipe->exit = INVALID_CMD);
-		exit = exit_args(cmd);
+		exit_nbr = exit_args(cmd);
 	}
 	else
-		exit = 1;
-	pipe->exit = exit;
-	return (exit);
+		exit_nbr = 1;
+	pipe->exit = exit_nbr;
+	exit(pipe->exit);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:02:42 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/21 20:17:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,21 @@ void	execute_cmd(t_pipe *pipex)
 		if (verify_builtin1(pipex) == 1)
 		{
 			launch_builtin(pipex);
-			exit(0);
+			exit(pipex->exit_status);
+		}
+		if(ft_strncmp(pipex->cmd->arg_tok[0], "./Minishell", 10) == 0)
+		{
+			if(execve(pipex->cmd->arg_tok[0], 
+				pipex->cmd->arg_tok, pipex->env) == -1)
+			{
+				ft_fprintf(2, "1 command not found: %s\n", pipex->cmd->arg_tok[0]);
+				exit(127);
+			}
 		}
 		path = get_path(pipex->cmd->arg_tok[0], pipex->env);
 		if (!path || execve(path, pipex->cmd->arg_tok, pipex->env) == -1)
 		{
-			ft_putstr_fd("command not found: ", 2);
-			ft_putendl_fd(pipex->cmd->arg_tok[0], 2);
+			ft_fprintf(2, "command not found: %s\n", pipex->cmd->arg_tok[0]);
 			exit(127);
 		}
 	}
@@ -68,7 +76,7 @@ static void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
 {
 	int		pipe_fd[2];
 	pid_t	pid;
-
+	
 	if (cmd_ptr->next && pipe(pipe_fd) == -1)
 		exit(1);
 	pid = fork();
@@ -91,20 +99,24 @@ void	pipex(t_pipe *pipex)
 {
 	t_cmd	*cmd_ptr;
 	int		prev_fd;
+	int		status;
+	pid_t	pid;
 
 	cmd_ptr = pipex->cmd;
 	prev_fd = -1;
 	while (cmd_ptr)
 	{
-		if (verify_builtin2(cmd_ptr))
-		{
-			pipex->cmd = cmd_ptr;
+		if (verify_builtin2(cmd_ptr) == 1)
 			launch_builtin(pipex);
-			break ;
-		}
-		do_pipe(pipex, cmd_ptr, &prev_fd);
+		else
+			do_pipe(pipex, cmd_ptr, &prev_fd);
 		cmd_ptr = cmd_ptr->next;
 	}
-	while (wait(NULL) > 0)
-		;
+
+	// Wait for all children and get the last exit status
+	while ((pid = wait(&status)) > 0)
+	{
+		if (WIFEXITED(status))
+			pipex->exit_status = WEXITSTATUS(status);
+	}
 }

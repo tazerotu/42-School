@@ -1,20 +1,13 @@
 Execution :
-	- exit code
-	- env -> heap use after free (free_cmd)
-	- export -> substr leak
+✔	- cannot launch another minishell within minishell
+✔	- exit code
+✔	- cd -> not freed if folder not existing
 	- cd -> if previous file rm shouldn't break
-	- export -> doesn't modify existing var
+	- here_doc not showing, and added to the here_doc later on
 
 Parser :
-	- split redir (ne fonctionne pas avec le heredoc)
-	- no exit code to 2 when parsing error
-	- do not expand if here doc delimiter
-	- if redirection symbol followed by nothing, it breaks
 
 All :
 	- history
-	- free -> not everything is freed
 	- Signals -> nothing done yet
 	- Norm
-
-	- export -> env -> heap use after free (free_cmd)

@@ -3,14 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 13:54:41 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/19 21:14:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
+
+// static int ft_exit(t_pipe *pipe)
+// {
+// 	// free_pipe_env(pipe);
+// 	// free(pipe);
+// 	// exit(0);
+// 	return (0);
+// }
 
 void	main2(t_pipe *pipe)
 {
@@ -23,9 +31,11 @@ void	main2(t_pipe *pipe)
 		pipe->cmd = process_line(input, pipe);
 		pipex(pipe);
 		free(input);
-		// free_cmds(pipe->cmd);
+		free_cmds(pipe->cmd);
+		pipe->cmd = NULL;
 		if (pipe->exit > 0)
-			break ;
+			exit(pipe->exit_status);
+			// ft_exit(pipe);
 	}
 }
 
@@ -40,7 +50,7 @@ int	main(int argc, char **argv, char **envp)
 	main2(pipe);
 	clear_history();
 	free_pipe_env(pipe);
-	return (1);
+	return (0);
 }
 
 // Main
