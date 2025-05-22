@@ -1,7 +1,7 @@
 Execution :
 ✔	- cannot launch another minishell within minishell
 ✔	- exit code
-	- cd -> not freed if folder not existing
+✔	- cd -> not freed if folder not existing
 	- cd -> if previous file rm shouldn't break
 
 Parser :
