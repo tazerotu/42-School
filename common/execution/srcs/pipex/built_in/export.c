@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 20:13:31 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/23 12:29:23 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,9 @@ static int	syntax(char *str)
 			return (-2);
 		i++;
 	}
-	if (!str[i])
+	if(ft_strlen(str) > 2097152)
 		return (-3);
-	else
-	{
-		i++;
-		if (str[i] == ' ')
-			return (-4);
-		return (1);
-	}
+	return (1);
 }
 
 // Verify if it exist
@@ -65,6 +59,17 @@ static t_env	*verify_exist(t_env *env, char *str)
 	return (tmp);
 }
 
+static t_env	*modify_export(t_env *tmp, char *str)
+{
+	tmp = find_env_pos(tmp, variable_pos(tmp, str));
+	if (tmp)
+	{
+		free(tmp->env);
+		tmp->env = ft_strdup(str);
+	}
+	return (tmp);
+}
+
 // Add Variable -> env_addback if not existing
 // Modify Variable if already existing
 // If export VARIABLE_NAME1=$VARIABLE_NAME2 -> 
@@ -74,7 +79,6 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 {
 	int		i;
 	t_env	*tmp;
-	int		pos;
 
 	i = 0;
 	if (!str[1])
@@ -84,6 +88,10 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 	{
 		if (syntax(str[i]) < 0)
 		{
+			for (int j = 0; str[j]; j++)
+    			printf("str[%d] = '%c' (%d)\n", j, str[i][j], (unsigned char)str[i][j]);
+			printf("\nexport : %s\n", str[i]);
+			printf("syntax : %d\n", syntax(str[i]));
 			pipe->exit_status = INVALID_CMD;
 			return (NULL);
 		}
@@ -92,13 +100,7 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 			env_add_back(pipe->envp, env_new(str[i]));
 		else
 		{
-			pos = variable_pos(tmp, str[i]);
-			tmp = find_env_pos(tmp, pos);
-			if (tmp)
-			{
-				free(tmp->env);
-				tmp->env = ft_strdup(str[i]);
-			}
+			modify_export(tmp, str[i]);
 		}
 	}
 	pipe->exit_status = 0;

@@ -1,5 +1,6 @@
 *.out
 *.a
 *.o
+*Zone.identifier
 .vscode
 Executor

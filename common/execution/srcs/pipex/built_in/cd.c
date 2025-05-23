@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 21:01:59 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/23 12:06:10 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,6 @@ static char	*get_pwd(char *pwd)
 	free(pwd);
 	pwd = getcwd(NULL, 0);
 	return (pwd);
-}
-
-t_env	*find_env_pos(t_env *env, int pos)
-{
-	if (pos == -1)
-	{
-		ft_fprintf(2, "ERROR : %d\n", ERROR_ENV);
-		return (NULL);
-	}
-	while (pos-- > 0)
-		env = env->next;
-	return (env);
 }
 
 static void	change_pwd(t_env *env, char *path, char *cwd)
@@ -43,10 +31,14 @@ static void	change_pwd(t_env *env, char *path, char *cwd)
 		ft_fprintf(1, "ERROR : %d\n", ERROR_PWD);
 		return ;
 	}
-	tmp = find_env_pos(tmp, variable_pos(tmp->next, path));
+	tmp = find_env_pos(tmp, variable_pos(tmp->next, path) + 1);
 	new_str = path;
 	new_str = ft_strjoin(new_str, cwd);
-	ft_strlcpy(tmp->env, new_str, ft_strlen(new_str) + 1);
+	if (tmp->env)
+	{
+		free(tmp->env);
+		tmp->env = ft_strdup(new_str);
+	}
 	free(new_str);
 	return ;
 }
@@ -61,7 +53,7 @@ static int	change_dir(t_env *env, char *str, bool home)
 	if (home == true)
 	{
 		tmp = find_env_pos(tmp, variable_pos(tmp, "HOME"));
-		if (chdir(tmp->env))
+		if (chdir(tmp->env + 5))
 			return (free_pwd(pwd, str));
 		change_pwd(tmp, "OLDPWD=", pwd);
 		pwd = get_pwd(pwd);

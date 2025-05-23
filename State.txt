@@ -2,10 +2,11 @@ Execution :
 ✔	- cannot launch another minishell within minishell
 ✔	- exit code
 ✔	- cd -> not freed if folder not existing
-	- cd -> if previous file rm shouldn't break
-	- here_doc not showing, and added to the here_doc later on
+✔	- cd -> if previous file deleted shouldn't break -> if getcwd() = NULL, verify if folder still exits, if not, go to trash
+	- export not sorting the env when no parameter given -> bubble sort
 
 Parser :
+	- export, cd, unset, exit not working with env variable ($HOME, $PWD) -> expander keeps control char before the value of ex : $HOME (when tested, $HOME = (ASCII 1)/home/USER)
 
 All :
 	- history
