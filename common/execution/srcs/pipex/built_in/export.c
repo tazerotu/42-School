@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/23 12:29:23 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/23 14:35:19 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,16 +88,12 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 	{
 		if (syntax(str[i]) < 0)
 		{
-			for (int j = 0; str[j]; j++)
-    			printf("str[%d] = '%c' (%d)\n", j, str[i][j], (unsigned char)str[i][j]);
-			printf("\nexport : %s\n", str[i]);
-			printf("syntax : %d\n", syntax(str[i]));
 			pipe->exit_status = INVALID_CMD;
 			return (NULL);
 		}
 		tmp = verify_exist(tmp, str[i]);
 		if (!tmp)
-			env_add_back(pipe->envp, env_new(str[i]));
+		env_add_back(pipe->envp, env_new(str[i]));
 		else
 		{
 			modify_export(tmp, str[i]);
@@ -106,3 +102,7 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 	pipe->exit_status = 0;
 	return (tmp);
 }
+// for (int j = 0; str[j]; j++)
+// 	printf("str[%d] = '%c' (%d)\n", j, str[i][j], (unsigned char)str[i][j]);
+// printf("\nexport : %s\n", str[i]);
+// printf("syntax : %d\n", syntax(str[i]));

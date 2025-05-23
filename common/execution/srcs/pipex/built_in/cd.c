@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/23 12:06:10 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/23 14:56:03 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	change_pwd(t_env *env, char *path, char *cwd)
 
 	new_str = NULL;
 	tmp = env;
+	while(tmp->previous)
+		tmp = tmp->previous;
 	if (!cwd)
 	{
 		ft_fprintf(1, "ERROR : %d\n", ERROR_PWD);

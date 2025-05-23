@@ -3,6 +3,7 @@ Execution :
 ✔	- exit code
 ✔	- cd -> not freed if folder not existing
 ✔	- cd -> if previous file deleted shouldn't break -> if getcwd() = NULL, verify if folder still exits, if not, go to trash
+✔	- cd (removes $HOME when doing : cd)
 	- export not sorting the env when no parameter given -> bubble sort
 
 Parser :
