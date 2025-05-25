@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 21:17:20 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/21 20:17:47 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
 {
 	int		pipe_fd[2];
 	pid_t	pid;
-
+	
 	if (cmd_ptr->next && pipe(pipe_fd) == -1)
 		exit(1);
 	pid = fork();
@@ -99,19 +99,24 @@ void	pipex(t_pipe *pipex)
 {
 	t_cmd	*cmd_ptr;
 	int		prev_fd;
+	int		status;
+	pid_t	pid;
 
 	cmd_ptr = pipex->cmd;
 	prev_fd = -1;
 	while (cmd_ptr)
 	{
-		if(verify_builtin2(cmd_ptr) == 1)
-		{
+		if (verify_builtin2(cmd_ptr) == 1)
 			launch_builtin(pipex);
-			return ;
-		}
-		do_pipe(pipex, cmd_ptr, &prev_fd);
+		else
+			do_pipe(pipex, cmd_ptr, &prev_fd);
 		cmd_ptr = cmd_ptr->next;
 	}
-	while (wait(NULL) > 0)
-		;
+
+	// Wait for all children and get the last exit status
+	while ((pid = wait(&status)) > 0)
+	{
+		if (WIFEXITED(status))
+			pipex->exit_status = WEXITSTATUS(status);
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 21:17:10 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/21 18:19:04 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	verify_builtin2(t_cmd *cmd)
 	str = cmd->arg_tok[0];
 	if (cmd->arg_tok[0] == NULL)
 		return (0);
-	if (ft_strncmp(str, "exit", INT_MAX) == 0)
+	if (ft_strncmp(str, "exit", INT_MAX) == 0
+		|| ft_strncmp(str, "cd", INT_MAX) == 0
+		|| ft_strncmp(str, "export", INT_MAX) == 0
+		|| ft_strncmp(str, "unset", INT_MAX) == 0)
 		return (1);
 	else
 		return (0);
