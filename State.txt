@@ -4,7 +4,7 @@ Execution :
 ✔	- cd -> not freed if folder not existing
 ✔	- cd -> if previous file deleted shouldn't break -> if getcwd() = NULL, verify if folder still exits, if not, go to trash
 ✔	- cd (removes $HOME when doing : cd)
-	- export not sorting the env when no parameter given -> bubble sort
+✔	- export not sorting the env when no parameter given -> bubble sort
 
 Parser :
 	- export, cd, unset, exit not working with env variable ($HOME, $PWD) -> expander keeps control char before the value of ex : $HOME (when tested, $HOME = (ASCII 1)/home/USER)
