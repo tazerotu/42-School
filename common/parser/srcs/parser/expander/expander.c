@@ -55,16 +55,16 @@ static t_expander	*expand_var(t_expander *expander, char *str, t_env *envp)
 {
 	char	*var_name;
 	char	*tmp;
-	
+
 	var_name = NULL;
 	var_name = verify_syntax(str, expander);
 	if (var_name != NULL)
 	{
-	expander->var = get_env(envp, var_name);
-	free(var_name);
+		expander->var = get_env(envp, var_name);
+		free(var_name);
 	}
 	else
-	expander->var = NULL;
+		expander->var = NULL;
 	expander->tmp = ft_strjoin(expander->ret, expander->var);
 	free(expander->ret);
 	free(expander->var);
