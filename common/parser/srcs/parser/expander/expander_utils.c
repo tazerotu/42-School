@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:11:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 14:16:25 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 14:20:43 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,20 @@ char	*verify_syntax(char *str, t_expander *expander)
 char	*clean_expand(char *str)
 {
 	char *ret;
+	int i;
+	int j;
 	
+	i = -1;
+	j = 0;
+	while(str[++i])
+		if(str[i] >= 32 && str[i] <= 126)
+			j++;
+	ret = malloc(sizeof(char) * j + 1);
+	i = -1;
+	j = 0;
+	while(str[++i])
+		if(str[i] >= 32 && str[i] <= 126)
+			ret[j++] = str[i];
+	ret[j] = '\0';
 	return (ret);
 }

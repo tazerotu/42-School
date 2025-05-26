@@ -70,7 +70,7 @@ static t_expander	*expand_var(t_expander *expander, char *str, t_env *envp)
 	free(expander->var);
 	tmp = ft_strjoin(expander->ret, expander->tmp);
 	free(expander->tmp);
-	expander->tmp = clean_expand(tmp)
+	expander->tmp = clean_expand(tmp);
 	free(tmp);
 	ft_strlcpy(expander->ret, expander->tmp, ft_strlen(expander->tmp) + 1);
 	free(expander->tmp);
