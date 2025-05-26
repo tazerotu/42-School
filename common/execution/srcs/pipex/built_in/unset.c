@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/23 11:02:03 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:57:11 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,25 +30,24 @@ int	variable_pos(t_env *envp, char *str)
 {
 	int		pos;
 	t_env	*tmp;
-	int		env_name_len;
-	int		max_len;
-	int		var_len;
+	t_pos	env_pos;
 
 	pos = 1;
 	tmp = envp;
-	var_len = 0;
-	while (str[var_len] && str[var_len] != '=')
-			++var_len;
+	env_pos->var_len = 0;
+	while (str[env_pos->var_len] && str[env_pos->var_len] != '=')
+		++env_pos->var_len;
 	while (tmp)
 	{
-		env_name_len = 0;
-		while (tmp->env[env_name_len] && tmp->env[env_name_len] != '=')
-			++env_name_len;
-		if (var_len < env_name_len)
-			max_len = env_name_len;
+		env_pos->env_name_len = 0;
+		while (tmp->env[env_pos->env_name_len]
+			&& tmp->env[env_pos->env_name_len] != '=')
+			++env_pos->env_name_len;
+		if (env_pos->var_len < env_pos->env_name_len)
+			env_pos->max_len = env_pos->env_name_len;
 		else
-			max_len = var_len;
-		if (!ft_strncmp(tmp->env, str, max_len))
+			env_pos->max_len = env_pos->var_len;
+		if (!ft_strncmp(tmp->env, str, env_pos->max_len))
 			return (pos - 1);
 		++pos;
 		tmp = tmp->next;

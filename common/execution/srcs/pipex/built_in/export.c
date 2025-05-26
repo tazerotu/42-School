@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/23 14:35:19 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:49:25 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	syntax(char *str)
 			return (-2);
 		i++;
 	}
-	if(ft_strlen(str) > 2097152)
+	if (ft_strlen(str) > 2097152)
 		return (-3);
 	return (1);
 }
@@ -82,7 +82,7 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 
 	i = 0;
 	if (!str[1])
-		return (NULL);
+		return (bubble_sort(pipe->envp));
 	tmp = pipe->envp;
 	while (str[++i])
 	{
@@ -93,7 +93,7 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 		}
 		tmp = verify_exist(tmp, str[i]);
 		if (!tmp)
-		env_add_back(pipe->envp, env_new(str[i]));
+			env_add_back(pipe->envp, env_new(str[i]));
 		else
 		{
 			modify_export(tmp, str[i]);
