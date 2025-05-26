@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/19 21:01:10 by marvin           ###   ########.fr        #
+#    Updated: 2025/05/26 09:49:53 by ttas             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					./common/execution/srcs/pipex/built_in/verify_built_in.c \
 					./common/execution/srcs/utils/error.c \
 					./common/execution/srcs/pipex/built_in/bi_utils/bi_utils.c \
+					./common/execution/srcs/pipex/built_in/bi_utils/export_utils.c \
 					# ./common/execution/srcs/execution.c \
 					# ./common/execution/srcs/pipex/pipex_utils/expander.c \
 					# ./common/execution/srcs/pipex/pipex_utils/expander_utils.c \

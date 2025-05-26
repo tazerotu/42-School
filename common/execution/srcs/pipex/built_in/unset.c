@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/23 11:02:03 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:17:59 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	variable_pos(t_env *envp, char *str)
 	tmp = envp;
 	var_len = 0;
 	while (str[var_len] && str[var_len] != '=')
-			++var_len;
+		++var_len;
 	while (tmp)
 	{
 		env_name_len = 0;

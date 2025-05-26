@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/23 12:03:02 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:49:10 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define ERROR_DIR 1111
 # define ERROR_PWD 1121
 # define ERROR_ENV 1131
+# define ERROR_CMD 1141
 
 // Struct
 typedef struct s_expander
@@ -119,7 +120,10 @@ void	bi_cd(t_env *env, char **path, t_pipe *pipe);
 int		free_pwd(char *pwd, char *str);
 
 void	bi_pwd(t_pipe *pipe);
+
 t_env	*bi_export(t_pipe *pipe, char **str);
+t_env	*bubble_sort(t_env *envp);
+
 void	bi_unset(char **str, t_pipe *pipe);
 void	bi_env(t_env *envp, t_pipe *pipe);
 int		bi_exit(t_pipe *pipe, char **cmd);

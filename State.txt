@@ -10,6 +10,6 @@ Parser :
 	- export, cd, unset, exit not working with env variable ($HOME, $PWD) -> expander keeps control char before the value of ex : $HOME (when tested, $HOME = (ASCII 1)/home/USER)
 
 All :
-	- history
+	- history (appears to be only at 42 so far)
 	- Signals -> nothing done yet
 	- Norm

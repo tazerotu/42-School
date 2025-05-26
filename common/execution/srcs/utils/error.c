@@ -22,5 +22,7 @@ int	error_message_exec(int error, char *str)
 		ft_fprintf(2, "ERROR : %d\n", ERROR_PWD);
 	else if (error == ERROR_ENV)
 		ft_fprintf(2, "ERROR : %d\n", ERROR_ENV);
+	else if (error == ERROR_CMD)
+		ft_fprintf(2, "command not found: %s\n", str);
 	return (-1);
 }
