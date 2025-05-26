@@ -12,4 +12,4 @@ Parser :
 All :
 	- history (appears to be only at 42 so far)
 	- Signals -> nothing done yet
-	- Norm
+	- Norm -> seems done

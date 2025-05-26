@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 09:49:10 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:55:55 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,13 @@ typedef struct s_expander
 	int		dollar;
 }	t_expander;
 
+typedef struct s_pos
+{
+	int		env_name_len;
+	int		max_len;
+	int		var_len;
+}	t_pos;
+
 typedef struct s_env
 {
 	char			*env;
@@ -69,12 +76,10 @@ typedef struct s_pipe
 {
 	int				exit;
 	int				exit_status;
-	int				n_pipe;
 	int				fd_in;
 	int				fd_out;
 	int				pipe_fd[2];
 	pid_t			pid;
-	char			*heredoc;
 	char			**env;
 	struct s_env	*envp;
 	struct s_cmd	*cmd;

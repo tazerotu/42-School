@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/23 09:58:11 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:58:34 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ void	main2(t_pipe *pipe)
 		pipe->cmd = NULL;
 		if (pipe->exit > 0)
 			exit(pipe->exit_status);
-			// ft_exit(pipe);
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 12:06:28 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/16 12:39:07 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 09:54:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ static void	init_pipe(t_pipe *pipe)
 	pipe->exit = 0;
 	pipe->cmd = NULL;
 	pipe->env = NULL;
-	pipe->n_pipe = 0;
 	pipe->fd_in = 0;
 	pipe->fd_out = 1;
 }
