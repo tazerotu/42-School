@@ -6,7 +6,7 @@
 #    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/26 13:38:31 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/05/26 17:32:45 by clai-ton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,9 +36,8 @@ SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					./common/execution/srcs/pipex/built_in/bi_utils/export_utils.c \
 					./common/execution/srcs/utils/error.c \
 					./common/execution/srcs/signal/signal.c \
+					./common/execution/srcs/signal/signal_heredoc.c \
 					# ./common/execution/srcs/execution.c \
-					# ./common/execution/srcs/pipex/pipex_utils/expander.c \
-					# ./common/execution/srcs/pipex/pipex_utils/expander_utils.c \
 
 					
 SRC_PARSER =		./common/parser/srcs/free/free_parser.c \

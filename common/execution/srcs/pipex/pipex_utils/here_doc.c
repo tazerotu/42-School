@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/09 11:51:00 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/26 19:41:55 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
+
+extern int g_sig_status;
 
 static char	*here_doc_join(char *heredoc, char *buffer, char *tmp)
 {
@@ -24,31 +26,40 @@ static char	*here_doc_join(char *heredoc, char *buffer, char *tmp)
 	return (heredoc);
 }
 
-void	here_doc(t_pipe *pipe, char *delimiter)
+void	here_doc(t_pipe *pipe, char *delim)
 {
 	char	*heredoc;
 	char	*buffer;
 	char	*tmp;
 	int		fd;
+	size_t	len;
 
 	tmp = NULL;
 	heredoc = NULL;
+	len = ft_strlen(delim);
+	heredoc_handle_sigint();
+	ignore_sig(SIGQUIT);
 	ft_printf("\033[0;37mheredoc> \033[0m");
 	buffer = get_next_line(STDIN_FILENO);
-	while (ft_strnstr(buffer, delimiter, ft_strlen(delimiter)) == NULL)
+	while (!g_sig_status && buffer
+		&& !(ft_strnstr(buffer, delim, len) && ft_strlen(buffer) == len + 1))
 	{
 		heredoc = here_doc_join(heredoc, buffer, tmp);
 		buffer = get_next_line(STDIN_FILENO);
 	}
+	if (!buffer)
+		printf("\n");
 	free(buffer);
 	if (heredoc)
 		tmp = expander(heredoc, pipe->envp, pipe);
 	free(heredoc);
 	fd = open("./tmp/.heredoc.tmp",
 			O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (tmp)
+	if (tmp && !g_sig_status)
 		ft_fprintf(fd, "%s", tmp);
 	close(fd);
 	free(tmp);
-	return ;
+	if (g_sig_status)
+		pipe->exit_status = g_sig_status;
+	init_sigintquit_handling();
 }

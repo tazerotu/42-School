@@ -12,7 +12,7 @@
 
 #include "../../includes/parser.h"
 
-int	error_message(int error, char *str)
+int	error_message_parsing(int error, char *str)
 {
 	if (error == RET_MALLOC_ERR)
 		ft_fprintf(2, "Malloc Error when %s.\n", str);

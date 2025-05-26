@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:04:47 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/26 14:17:46 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 17:21:00 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	free_words_dblst(t_dblst **words);
 void	free_redir_early(t_cmd *cmd, int redir_count);
 void	free_cmds(t_cmd *cmds);
 
-int		error_message(int error, char *str);
+int		error_message_parsing(int error, char *str);
 
 int		check_incorrect_quotes(char *input);
 t_cmd	*process_line(char *input, t_pipe *pipe);

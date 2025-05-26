@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 13:30:14 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/26 17:32:08 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,5 +143,12 @@ int		env_size(t_env *env);
 int		variable_pos(t_env *envp, char *str);
 t_env	*find_env_pos(t_env *env, int pos);
 int		error_message_exec(int error, char *str);
+
+	//Signals
+void	basic_handle_sig(int signum);
+void	ignore_sig(int signum);
+void	init_sigintquit_handling(void);
+void	init_sigintquit_ignore(void);
+void	heredoc_handle_sigint(void);
 
 #endif

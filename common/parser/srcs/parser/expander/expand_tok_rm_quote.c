@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/02 12:19:46 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/19 16:17:37 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/26 17:21:00 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	expand_tok_rm_quote2(t_cmd *cmds, char **tokens, t_pipe *pipe)
 			while (tokens[i])
 				free(tokens[i++]);
 			free_cmds(cmds);
-			error_message(RET_MALLOC_ERR, "expanding");
+			error_message_parsing(RET_MALLOC_ERR, "expanding");
 			return (RET_MALLOC_ERR);
 		}
 		++i;

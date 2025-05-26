@@ -3,14 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 09:35:32 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/26 18:45:37 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/executor.h"
+
+extern int g_sig_status;
 
 // Get the path of the command
 // If the command is not found, return an error
@@ -49,6 +51,7 @@ void	execute_cmd(t_pipe *pipex)
 
 	if (pipex->cmd)
 	{
+		basic_handle_sig(SIGQUIT);
 		if (verify_builtin1(pipex) == 1)
 		{
 			launch_builtin(pipex);
@@ -70,6 +73,11 @@ void	execute_cmd(t_pipe *pipex)
 			exit(127);
 		}
 	}
+	if (g_sig_status)
+	{
+		pipex->exit_status = g_sig_status;
+		g_sig_status = 0;
+	}
 }
 
 static void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
@@ -84,6 +92,7 @@ static void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
 		exit(1);
 	if (pid == 0)
 	{
+		init_sigintquit_handling();
 		pipex->cmd = cmd_ptr;
 		pipex->env = get_env_char(pipex->envp);
 		if (cmd_ptr->next)
@@ -93,6 +102,7 @@ static void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
 	}
 	else
 	{
+		init_sigintquit_ignore();
 		pipex->pid = pid;
 		if (cmd_ptr->next)
 			parent_cleanup(prev_fd, pipe_fd);
@@ -124,5 +134,6 @@ void	pipex(t_pipe *pipex)
 		pid = wait(&status);
 		if (WIFEXITED(status))
 			pipex->exit_status = WEXITSTATUS(status);
+		init_sigintquit_handling();
 	}
 }
