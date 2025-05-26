@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:04:47 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/19 18:18:35 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/26 14:17:46 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ int		rm_empty_quote_tok(char *tok);
 int		skip_past_quote_end(char *str, int i, char quote);
 void	expand_token2(char *str, t_pipe *pipe, char **tmp);
 int		expand_tok_rm_quote(t_cmd *cmd, t_pipe *pipe);
+char	*clean_expand(char *str);
 int		is_special_dollar_char(char c);
 
 #endif
