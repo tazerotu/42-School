@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/21 18:51:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/26 14:04:31 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static int	syntax(char *str)
 	{
 		if (ft_isdigit(str[i++]) == 0)
 		{
-			ft_printf("Non numerical argument");
+			ft_printf("Non numerical argument\n");
 			return (INVALID_CMD);
 		}
 	}
@@ -48,7 +48,7 @@ int	bi_exit(t_pipe *pipe, char **cmd)
 		i++;
 	if (i > 2)
 	{
-		ft_printf("Too many arguments");
+		ft_printf("Too many arguments\n");
 		return (pipe->exit = INVALID_CMD);
 	}
 	i = 0;
