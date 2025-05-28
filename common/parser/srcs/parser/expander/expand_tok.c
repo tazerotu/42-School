@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/16 15:56:29 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/16 16:41:52 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:32:40 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*expand_double_quote(char *src, t_pipe *pipe,
 
 	*split_start = *i + 1;
 	*i = skip_past_quote_end(src, *i, src[*i]);
-	len = (size_t)(*i) - (*split_start) - 1;
+	len = (size_t) ((*i) - (*split_start) - 1);
 	tmp = ft_substr(src, *split_start, len);
 	processed = expander(tmp, pipe->envp, pipe);
 	free(tmp);

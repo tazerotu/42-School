@@ -6,12 +6,12 @@
 #    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/28 15:04:20 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/05/28 18:11:02 by clai-ton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Program Executable
-EXE = Minishell
+EXE = minishell
 
 # Files
 SRC =				./src/main.c
@@ -52,7 +52,7 @@ SRC_PARSER =		./common/parser/srcs/free/free_parser.c \
 					./common/parser/srcs/parser/expander/expander_utils.c \
 					./common/parser/srcs/parser/expander/expander_utils2.c \
 					./common/parser/srcs/parser/expander/expander.c \
-					./common/parser/srcs/parser/split_prompt/split_prompt.c \
+					./common/parser/srcs/parser/split_prompt/split_initial.c \
 					./common/parser/srcs/parser/split_prompt/split_special.c \
 					./common/parser/srcs/parser/syntax_check/verify_pipe.c \
 					./common/parser/srcs/parser/syntax_check/verify_quotes.c \

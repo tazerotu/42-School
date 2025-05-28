@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   expander_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/25 13:11:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 14:25:07 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/28 18:36:26 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,3 +59,32 @@ char	*clean_expand(char *str)
 	ret[j] = '\0';
 	return (ret);
 }
+
+/*static int	count_tokens(char **tok)
+{
+	int	i;
+
+	i = 0;
+	while (tok[i])
+		++i;
+	return (i);
+}
+
+void	post_expander_split(t_cmd *cmds)
+{
+	int		i;
+	char	*tmp;
+
+	while (cmds)
+	{
+		tmp = ft_strjoin_multi(count_tokens(cmds->arg_tok), cmds->arg_tok, " ");
+		printf("tmp=%s\n", tmp);
+		i = 0;
+		while (cmds->arg_tok[i])
+			free(cmds->arg_tok[i++]);
+		free(cmds->arg_tok);
+		cmds->arg_tok = ft_split_set(tmp, " ");
+		free(tmp);
+		cmds = cmds->next;
+	}
+}*/

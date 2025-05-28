@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:04:47 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/28 14:40:46 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 18:45:00 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,5 +72,7 @@ void	expand_token2(char *str, t_pipe *pipe, char **tmp);
 int		expand_tok_rm_quote(t_cmd *cmd, t_pipe *pipe);
 char	*clean_expand(char *str);
 int		is_special_dollar_char(char c);
+
+void	remove_empty_args(t_cmd *cmds);
 
 #endif

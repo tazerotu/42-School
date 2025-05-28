@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 14:45:31 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 17:54:07 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ typedef struct s_expander
 	char	*tmp;
 	int		start;
 	int		end;
-	int		dollar;
 }	t_expander;
 
 typedef struct s_pos

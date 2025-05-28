@@ -7,6 +7,6 @@ Execution :
 Parser :
 
 All :
-	- history
-	- Signals -> nothing done yet
-	- Norm
+	- history -> sometimes has display issues
+	- Signals -> done, but missing exit codes changing when canceling a command
+	- Norm -> done

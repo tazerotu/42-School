@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 09:52:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/04/30 15:48:41 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 18:06:47 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -521,7 +521,6 @@ void				ft_dblstinsert_before(t_dblst *lst_node, t_dblst *new);
 void				ft_dblstinsert_after(t_dblst *lst_node, t_dblst *new);
 int					ft_dblstsize(t_dblst *lst);
 
-//EXTRA
 char				*ft_strjoin_multi(int size, char **strs, char *sep);
 
 #endif
