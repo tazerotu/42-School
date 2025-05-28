@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 14:04:31 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 15:33:27 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,9 @@ static int	exit_args(char **cmd)
 	int	exit;
 
 	exit = ft_atoi(cmd[1]);
-	while (exit > 255)
-		exit -= 256;
+	exit %= 256;
+	if (exit < 0)
+		exit += 256;
 	return (exit);
 }
 
@@ -27,6 +28,8 @@ static int	syntax(char *str)
 	int	i;
 
 	i = 0;
+	if (str[i] == '+' || str[i] == '-')
+		++i;
 	while (str[i])
 	{
 		if (ft_isdigit(str[i++]) == 0)
