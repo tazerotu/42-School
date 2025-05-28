@@ -6,12 +6,12 @@ Execution :
 ✔	- cd (removes $HOME when doing : cd)
 ✔	- export not sorting the env when no parameter given -> bubble sort
 ✔	- if path not found (in ft_split) -> get path leaks 
-	- exit if negative -> +255
+✔	- exit if negative -> +255
 
 Parser :
 ✔	- export, cd, unset, exit not working with env variable ($HOME, $PWD) -> expander keeps control char before the value of ex : $HOME (when tested, $HOME = (ASCII 1)/home/USER)
 
 All :
 	- history (appears to be only at 42 so far)
-	- Signals -> nothing done yet
-	- Norm -> seems done
+	- signals -> handling is undergoing, but linking these with the exit code is giving me trouble
+	- Norm -> seems done (to be verified once merged with signals)

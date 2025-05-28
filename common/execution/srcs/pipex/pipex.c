@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 11:05:34 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/28 11:11:33 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ char	*search_path(char **paths, char *cmd)
 		free(full_path);
 		i++;
 	}
+	free_strs(paths);
 	return (NULL);
 }
 
