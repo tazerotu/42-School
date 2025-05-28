@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/21 18:51:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/28 11:06:47 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ static int	exit_args(char **cmd)
 	int	exit;
 
 	exit = ft_atoi(cmd[1]);
-	while (exit > 255)
-		exit -= 256;
+	if (exit < 0)
+		while (exit < 0)
+			exit +=256;
+	else
+		while (exit > 255)
+			exit -= 256;
 	return (exit);
 }
 
@@ -31,7 +35,7 @@ static int	syntax(char *str)
 	{
 		if (ft_isdigit(str[i++]) == 0)
 		{
-			ft_printf("Non numerical argument");
+			ft_printf("Non numerical argument\n");
 			return (INVALID_CMD);
 		}
 	}

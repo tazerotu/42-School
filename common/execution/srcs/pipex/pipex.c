@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 11:04:17 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/28 11:05:34 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,6 @@ char	*get_path(char *cmd, char **envp)
 		return (NULL);
 	return (search_path(paths, cmd));
 }
-
 
 void	execute_cmd(t_pipe *pipex)
 {

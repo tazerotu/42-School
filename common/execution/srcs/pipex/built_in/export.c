@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 10:53:47 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/28 11:05:28 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,6 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 	tmp = pipe->envp;
 	while (str[++i])
 	{
-		
 		if (syntax(str[i]) < 0)
 		{
 			pipe->exit_status = INVALID_CMD;
@@ -94,7 +93,7 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 		}
 		tmp = verify_exist(tmp, str[i]);
 		if (!tmp)
-		env_add_back(pipe->envp, env_new(str[i]));
+			env_add_back(pipe->envp, env_new(str[i]));
 		else
 		{
 			modify_export(tmp, str[i]);
