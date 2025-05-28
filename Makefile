@@ -6,7 +6,7 @@
 #    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/26 17:32:45 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/05/28 15:04:20 by clai-ton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRC =				./src/main.c
 SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					./common/execution/srcs/free/free.c \
 					./common/execution/srcs/pipex/pipex.c \
+					./common/execution/srcs/pipex/do_pipe.c \
 					./common/execution/srcs/pipex/pipex_utils/get_env.c \
 					./common/execution/srcs/pipex/pipex_utils/here_doc.c \
 					./common/execution/srcs/pipex/pipex_utils/redirection.c \

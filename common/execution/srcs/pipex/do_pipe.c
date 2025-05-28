@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 14:42:06 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/28 14:45:15 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 15:05:26 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,17 +24,6 @@ static void	do_pipe_child(t_pipe *pipex, t_cmd *cmd_ptr,
 		child_process(pipex, *prev_fd, NULL);
 }
 
-static void	do_pipe_parent(t_pipe *pipex, t_cmd *cmd_ptr,
-	int *prev_fd, int *pipe_fd)
-{
-	init_sigintquit_ignore();
-	pipex->pid = pid;
-	if (cmd_ptr->next)
-		parent_cleanup(prev_fd, pipe_fd);
-	else
-		parent_cleanup(prev_fd, NULL);
-}
-
 void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
 {
 	int		pipe_fd[2];
@@ -48,5 +37,12 @@ void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
 	if (pid == 0)
 		do_pipe_child(pipex, cmd_ptr, prev_fd, pipe_fd);
 	else
-		do_pipe_parent(pipex, cmd_ptr, prev_fd, pipe_fd);
+	{
+		init_sigintquit_ignore();
+		pipex->pid = pid;
+		if (cmd_ptr->next)
+			parent_cleanup(prev_fd, pipe_fd);
+		else
+			parent_cleanup(prev_fd, NULL);
+	}
 }

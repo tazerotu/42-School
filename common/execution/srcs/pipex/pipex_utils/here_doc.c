@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 14:56:21 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 15:02:58 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static char	*get_here_doc(char *buffer, char *tmp, char *delim)
 	return (heredoc);
 }
 
-static	void	here_doc_expand(t_pipe *pipe, char *buffer, char *heredoc,
+static char	*here_doc_expand(t_pipe *pipe, char *buffer, char *heredoc,
 	char *tmp)
 {
 	if (!buffer)
@@ -62,6 +62,7 @@ void	here_doc(t_pipe *pipe, char *delim)
 
 	tmp = NULL;
 	heredoc = NULL;
+	buffer = NULL;
 	heredoc_handle_sigint();
 	ignore_sig(SIGQUIT);
 	ft_printf("\033[0;37mheredoc> \033[0m");
