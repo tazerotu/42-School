@@ -7,6 +7,7 @@ Execution :
 ✔	- export not sorting the env when no parameter given -> bubble sort
 	- exit if negative -> +255
 	- export (remove debug printf)
+	- if path not found (in ft_split) -> get path leaks 
 
 Parser :
 ✔	- export, cd, unset, exit not working with env variable ($HOME, $PWD) -> expander keeps control char before the value of ex : $HOME (when tested, $HOME = (ASCII 1)/home/USER)
