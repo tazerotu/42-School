@@ -6,13 +6,11 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/26 17:28:37 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/26 19:45:52 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:35:14 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/executor.h"
-
-extern int g_sig_status;
 
 static void	heredoc_my_handler(int signum)
 {

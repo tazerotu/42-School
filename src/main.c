@@ -6,13 +6,11 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 18:23:12 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:35:06 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minishell.h"
-
-extern int g_sig_status;
 
 void	main2(t_pipe *pipe)
 {

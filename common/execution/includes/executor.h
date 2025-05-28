@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 17:32:08 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/28 14:45:31 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define ERROR_PWD 1121
 # define ERROR_ENV 1131
 # define ERROR_CMD 1141
+
+extern int	g_sig_status;
 
 // Struct
 typedef struct s_expander
@@ -107,6 +109,7 @@ void	here_doc(t_pipe *pipe, char *delimiter);
 void	set_redirection(t_pipe *pipe, char **redir);
 void	pipex(t_pipe *pipex);
 void	execute_cmd(t_pipe *pipex);
+void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd);
 
 	// Execute Utils
 char	**get_env_char(t_env *envp);
