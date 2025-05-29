@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 17:54:07 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/29 12:12:02 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,7 @@ t_pipe	*init_env(t_pipe *pipe, char **envp);
 void	free_pipe_env(t_pipe *pipe);
 void	free_env(char **env);
 void	ft_free_cmd(t_cmd *cmd);
+void	free_strs(char **strs);
 
 	// Command initialization
 int		verify_builtin1(t_pipe *pipe);

@@ -3,44 +3,59 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 14:47:33 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/29 12:11:25 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/executor.h"
+
+char	*search_path(char **paths, char *cmd)
+{
+	char	*part_path;
+	char	*full_path;
+	int		i;
+
+	i = 0;
+	while (paths[i])
+	{
+		part_path = ft_strjoin(paths[i], "/");
+		if (!part_path)
+			return (NULL);
+		full_path = ft_strjoin(part_path, cmd);
+		free(part_path);
+		if (!full_path)
+			return (NULL);
+		if (access(full_path, F_OK) == 0)
+		{
+			free_strs(paths);
+			return (full_path);
+		}
+		free(full_path);
+		i++;
+	}
+	free_strs(paths);
+	return (NULL);
+}
 
 // Get the path of the command
 // If the command is not found, return an error
 char	*get_path(char *cmd, char **envp)
 {
 	char	**paths;
-	char	*path;
 	int		i;
-	char	*part_path;
 
 	i = 0;
-	while (ft_strnstr(envp[i], "PATH", 4) == 0)
+	while (envp[i] && ft_strnstr(envp[i], "PATH=", 5) == 0)
 		i++;
+	if (!envp[i])
+		return (NULL);
 	paths = ft_split(envp[i] + 5, ':');
-	i = 0;
-	while (paths[i])
-	{
-		part_path = ft_strjoin(paths[i], "/");
-		path = ft_strjoin(part_path, cmd);
-		free(part_path);
-		if (access(path, F_OK) == 0)
-			return (path);
-		free(path);
-		i++;
-	}
-	i = -1;
-	while (paths[++i])
-		free(paths[i]);
-	free(paths);
-	return (0);
+	if (!paths)
+		return (NULL);
+	return (search_path(paths, cmd));
 }
 
 void	execute_cmd(t_pipe *pipex)
