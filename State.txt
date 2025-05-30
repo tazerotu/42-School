@@ -9,6 +9,8 @@ Execution :
 
 	cd .. not handled correctly if previous rm
 
+	heredoc called before command
+
 Parser :
 
 All :
