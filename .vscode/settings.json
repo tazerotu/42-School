@@ -1,14 +1,6 @@
 {
-	"C_Cpp.errorSquiggles": "disabled",
 	"files.associations": {
-		"so_long.h": "c",
-		"philosopher.h": "c",
-		"stdbool.h": "c",
-		"pthread.h": "c",
-		"minishell.h": "c",
 		"executor.h": "c",
-		"libft.h": "c",
-		"cmath": "c",
-		"stdlib.h": "c"
-	},
+		"sstream": "c"
+	}
 }

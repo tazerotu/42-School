@@ -1,12 +1,15 @@
 Execution :
-✔	- cannot launch another minishell within minishell
-✔	- exit code
-✔	- cd -> not freed if folder not existing
-	- cd -> if previous file rm shouldn't break
+	exit -> if no arg, exit should be exit = 0
+	exit -> too many arg -> no exit -> exit code = 1
+	priorise arg 1 (num)
+	exit -> int overflow (long)
+	exit | exit should not exit
+
+	export (vefrifier egal) pour env (afficher si = present, ne pas afficher si aucun egal)
+
+	cd .. not handled correctly if previous rm
 
 Parser :
 
 All :
-	- history -> sometimes has display issues
-	- Signals -> done, but missing exit codes changing when canceling a command
-	- Norm -> done
+	- Norm -> to be verified

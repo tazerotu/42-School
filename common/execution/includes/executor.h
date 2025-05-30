@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/29 12:12:02 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/30 13:50:29 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ typedef struct s_cmd
 
 typedef struct s_pipe
 {
+	char			*path_minishell;
 	int				exit;
 	int				exit_status;
 	int				fd_in;
@@ -109,7 +110,7 @@ void	here_doc(t_pipe *pipe, char *delimiter);
 void	set_redirection(t_pipe *pipe, char **redir);
 void	pipex(t_pipe *pipex);
 void	execute_cmd(t_pipe *pipex);
-void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd);
+void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd, pid_t pid);
 
 	// Execute Utils
 char	**get_env_char(t_env *envp);

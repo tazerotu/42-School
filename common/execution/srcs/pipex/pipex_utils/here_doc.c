@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/30 09:09:15 by ttas             ###   ########.fr       */
+/*   Updated: 2025/05/30 11:23:00 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*here_doc_join(char *heredoc, char *buffer, char *tmp)
 	free(buffer);
 	if (heredoc)
 		free(heredoc);
-	heredoc = ft_strjoin(heredoc, tmp);
+	heredoc = ft_strdup(tmp);
 	free(tmp);
 	return (heredoc);
 }
@@ -28,7 +28,6 @@ static char	*get_here_doc(char *heredoc, char *buffer, char *tmp, char *delim)
 {
 	size_t	len;
 
-	
 	len = ft_strlen(delim);
 	buffer = get_next_line(STDIN_FILENO);
 	while (!g_sig_status && buffer
@@ -37,15 +36,14 @@ static char	*get_here_doc(char *heredoc, char *buffer, char *tmp, char *delim)
 		heredoc = here_doc_join(heredoc, buffer, tmp);
 		buffer = get_next_line(STDIN_FILENO);
 	}
-	free(buffer);
+	if (!buffer)
+		printf("\n");
 	return (heredoc);
 }
 
 static char	*here_doc_expand(t_pipe *pipe, char *buffer, char *heredoc,
 	char *tmp)
 {
-	if (!buffer)
-		printf("\n");
 	free(buffer);
 	if (heredoc)
 		tmp = expander(heredoc, pipe->envp, pipe);

@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:19:16 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/28 19:18:44 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/30 10:55:01 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static void	remove_empty_args2(char **tok)
 		++j;
 	}
 	while (i < j)
-		tok[i++] = NULL;	
+		tok[i++] = NULL;
 }
 
 void	remove_empty_args(t_cmd *cmds)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/29 12:11:25 by marvin           ###   ########.fr       */
+/*   Updated: 2025/05/30 14:37:50 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*search_path(char **paths, char *cmd)
 		i++;
 	}
 	free_strs(paths);
-	return (NULL);
+	return (cmd);
 }
 
 // Get the path of the command
@@ -70,7 +70,7 @@ void	execute_cmd(t_pipe *pipex)
 			launch_builtin(pipex);
 			exit(pipex->exit_status);
 		}
-		if (ft_strncmp(pipex->cmd->arg_tok[0], "./Minishell", 10) == 0)
+		if (ft_strncmp(pipex->cmd->arg_tok[0], "./minishell", 11) == 0)
 		{
 			if (execve(pipex->cmd->arg_tok[0],
 					pipex->cmd->arg_tok, pipex->env) == -1)
@@ -89,6 +89,7 @@ void	pipex(t_pipe *pipex)
 	int		status;
 	pid_t	pid;
 
+	pid = 0;
 	cmd_ptr = pipex->cmd;
 	prev_fd = -1;
 	while (cmd_ptr)
@@ -96,7 +97,7 @@ void	pipex(t_pipe *pipex)
 		if (verify_builtin2(cmd_ptr) == 1)
 			launch_builtin(pipex);
 		else
-			do_pipe(pipex, cmd_ptr, &prev_fd);
+			do_pipe(pipex, cmd_ptr, &prev_fd, pid);
 		cmd_ptr = cmd_ptr->next;
 	}
 	pid = wait(&status);
