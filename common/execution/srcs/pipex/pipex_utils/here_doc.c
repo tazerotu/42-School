@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 15:02:58 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/05/30 09:09:15 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,20 @@ static char	*here_doc_join(char *heredoc, char *buffer, char *tmp)
 	return (heredoc);
 }
 
-static char	*get_here_doc(char *buffer, char *tmp, char *delim)
+static char	*get_here_doc(char *heredoc, char *buffer, char *tmp, char *delim)
 {
 	size_t	len;
-	char	*heredoc;
 
+	
 	len = ft_strlen(delim);
 	buffer = get_next_line(STDIN_FILENO);
 	while (!g_sig_status && buffer
 		&& !(ft_strnstr(buffer, delim, len) && ft_strlen(buffer) == len + 1))
 	{
 		heredoc = here_doc_join(heredoc, buffer, tmp);
-		free(buffer);
 		buffer = get_next_line(STDIN_FILENO);
 	}
+	free(buffer);
 	return (heredoc);
 }
 
@@ -66,7 +66,7 @@ void	here_doc(t_pipe *pipe, char *delim)
 	heredoc_handle_sigint();
 	ignore_sig(SIGQUIT);
 	ft_printf("\033[0;37mheredoc> \033[0m");
-	heredoc = get_here_doc(buffer, tmp, delim);
+	heredoc = get_here_doc(heredoc, buffer, tmp, delim);
 	tmp = here_doc_expand(pipe, buffer, heredoc, tmp);
 	fd = open("./tmp/.heredoc.tmp",
 			O_WRONLY | O_CREAT | O_TRUNC, 0644);
