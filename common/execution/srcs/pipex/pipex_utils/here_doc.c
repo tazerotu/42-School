@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   here_doc.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:13 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/30 11:23:00 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/06/02 17:10:32 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,12 @@ static char	*get_here_doc(char *heredoc, char *buffer, char *tmp, char *delim)
 	}
 	if (!buffer)
 		printf("\n");
+	free(buffer);
 	return (heredoc);
 }
 
-static char	*here_doc_expand(t_pipe *pipe, char *buffer, char *heredoc,
-	char *tmp)
+static char	*here_doc_expand(t_pipe *pipe, char *heredoc, char *tmp)
 {
-	free(buffer);
 	if (heredoc)
 		tmp = expander(heredoc, pipe->envp, pipe);
 	free(heredoc);
@@ -65,7 +64,7 @@ void	here_doc(t_pipe *pipe, char *delim)
 	ignore_sig(SIGQUIT);
 	ft_printf("\033[0;37mheredoc> \033[0m");
 	heredoc = get_here_doc(heredoc, buffer, tmp, delim);
-	tmp = here_doc_expand(pipe, buffer, heredoc, tmp);
+	tmp = here_doc_expand(pipe, heredoc, tmp);
 	fd = open("./tmp/.heredoc.tmp",
 			O_WRONLY | O_CREAT | O_TRUNC, 0644);
 	if (tmp && !g_sig_status)

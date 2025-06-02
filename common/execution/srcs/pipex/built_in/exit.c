@@ -3,103 +3,84 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:01 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/30 14:44:30 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/02 11:14:57 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/executor.h"
 
-static int	exit_len(char *cmd)
+int	is_number(char *str)
 {
-	size_t	len;
-
-	len = ft_strlen(cmd);
-	if (len >= 12
-		|| (len == 11
-			&& ((cmd[0] != '-' && cmd[0] != '+')
-				|| (cmd[0] == '+'
-					&& ft_strncmp(cmd, "+9223372036854775807", 11) > 0)
-				|| (cmd[0] == '-'
-					&& ft_strncmp(cmd, "-9223372036854775808", 11) > 0)))
-		|| (len == 10 && ft_strncmp(cmd, "9223372036854775807", 10) > 0))
-		return (1);
-	else
-		return (0);
-}
-
-static int	exit_error(t_pipe *pipe, char **cmd)
-{
-	int	j;
-
-	j = -1;
-	while (cmd[1][++j])
-		if (!ft_isdigit(cmd[1][j]))
-			return (pipe->exit_status = 2);
-	if (i > 2)
-	{
-		ft_printf("too many arguments\n");
-		return (pipe->exit_status = 1);
-	}
-	if (exit_len(cmd[1]) == 1)
-		return (pipe->exit_status = 2);
-	return (pipe->exit_status = 127);
-}
-
-static int	exit_args(char **cmd)
-{
-	int	exit;
-
-	if(exit_len(cmd[1]) == 1)
-		ft_printf("exit : %s: numeric argument required\n", cmd[1]);
-	exit = ft_atol(cmd[1]);
-	exit %= 256;
-	if (exit < 0)
-		exit += 256;
-	return (exit);
-}
-
-static int	syntax(char *str)
-{
-	int	i;
+	int i;
 
 	i = 0;
+	if (!str || !str[0])
+		return (0);
 	if (str[i] == '+' || str[i] == '-')
-		++i;
+		i++;
 	while (str[i])
 	{
-		if (ft_isdigit(str[i++]) == 0)
-		{
-			ft_printf("Non numerical argument\n");
-			return (INVALID_CMD);
-		}
+		if (!ft_isdigit(str[i]))
+			return (0);
+		i++;
 	}
 	return (1);
 }
 
+static int	is_overflow(char *str)
+{
+	long long	nb;
+
+	if (!is_number(str))
+		return (1);
+	nb = ft_atol(str);
+	if (nb > LLONG_MAX || nb < LLONG_MIN)
+		return (1);
+	return (0);
+}
+
+static void	exit_error(char *arg)
+{
+	ft_fprintf(2, "exit: %s: numeric argument required\n", arg);
+	exit(2);
+}
+
+static int	get_exit_code(char **cmd, t_pipe *pipe)
+{
+	long long	code;
+	int			argc;
+
+	argc = 0;
+	while (cmd[argc])
+		argc++;
+	if (argc >= 2)
+	{
+		if (!is_number(cmd[1]) || is_overflow(cmd[1]))
+			exit_error(cmd[1]);
+		if (argc > 2)
+		{
+			ft_fprintf(2, "exit: too many arguments\n");
+			pipe->exit_status = 1;
+			return (-1);
+		}
+		code = ft_atol(cmd[1]) % 256;
+		if (code < 0)
+			code += 256;
+		return ((int)code);
+	}
+	return (pipe->exit_status);
+}
+
 int	bi_exit(t_pipe *pipe, char **cmd)
 {
-	int	i;
-	int	exit_nbr;
+	int	exit_code;
 
-	i = 0;
-	while (cmd[i])
-		i++;
-	if (i > 2)
-	{
-		ft_printf("Too many arguments\n");
-		return (pipe->exit = INVALID_CMD);
-	}
-	if (cmd[1])
-	{
-		if (syntax(cmd[1]) != 1)
-			return (pipe->exit = INVALID_CMD);
-		exit_nbr = exit_args(cmd);
-	}
-	else
-		exit_nbr = 1;
-	pipe->exit = exit_nbr;
-	exit(pipe->exit);
+	ft_putstr_fd("exit\n", STDERR_FILENO);
+	exit_code = get_exit_code(cmd, pipe);
+	if (exit_code == -1)
+		return (1);
+	exit(exit_code);
 }

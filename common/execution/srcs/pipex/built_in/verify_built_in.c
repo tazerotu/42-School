@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/21 18:19:04 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/02 17:26:14 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,10 @@ void	launch_builtin(t_pipe *pipe)
 	char	*str;
 
 	str = pipe->cmd->arg_tok[0];
+	if (is_exit_command(pipe->cmd) && (pipe->cmd->next || pipe->prev_fd != -1))
+	{
+		return ;
+	}
 	if (ft_strncmp(str, "echo", INT_MAX) == 0)
 		bi_echo(pipe->cmd->arg_tok, pipe);
 	else if (ft_strncmp(str, "cd", INT_MAX) == 0)

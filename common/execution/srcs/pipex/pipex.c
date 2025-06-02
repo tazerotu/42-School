@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/30 14:37:50 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/02 17:26:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,24 +82,10 @@ void	execute_cmd(t_pipe *pipex)
 	}
 }
 
-void	pipex(t_pipe *pipex)
+static int ft_wait(t_pipe *pipex, pid_t pid)
 {
-	t_cmd	*cmd_ptr;
-	int		prev_fd;
 	int		status;
-	pid_t	pid;
 
-	pid = 0;
-	cmd_ptr = pipex->cmd;
-	prev_fd = -1;
-	while (cmd_ptr)
-	{
-		if (verify_builtin2(cmd_ptr) == 1)
-			launch_builtin(pipex);
-		else
-			do_pipe(pipex, cmd_ptr, &prev_fd, pid);
-		cmd_ptr = cmd_ptr->next;
-	}
 	pid = wait(&status);
 	while (pid > 0)
 	{
@@ -108,4 +94,35 @@ void	pipex(t_pipe *pipex)
 			pipex->exit_status = WEXITSTATUS(status);
 		init_sigintquit_handling();
 	}
+	return (pipex->exit_status);
+}
+
+int is_exit_command(t_cmd *cmd)
+{
+	return (cmd && cmd->arg_tok && cmd->arg_tok[0]
+		&& ft_strncmp(cmd->arg_tok[0], "exit", 5) == 0
+		&& ft_strlen(cmd->arg_tok[0]) == 4);
+}
+
+void	pipex(t_pipe *pipex)
+{
+	t_cmd	*cmd_ptr;
+	pid_t	pid;
+
+	pid = 0;
+	cmd_ptr = pipex->cmd;
+while (cmd_ptr)
+{
+	if (is_exit_command(cmd_ptr) && (cmd_ptr->next || pipex->prev_fd != -1))
+	{
+		cmd_ptr = cmd_ptr->next;
+		continue;
+	}
+	if (verify_builtin2(cmd_ptr) == 1)
+		launch_builtin(pipex);
+	else
+		do_pipe(pipex, cmd_ptr, &pipex->prev_fd, pid);
+	cmd_ptr = cmd_ptr->next;
+}
+	pipex->exit_status = ft_wait(pipex, pid);
 }
