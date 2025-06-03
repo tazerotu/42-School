@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/02 17:27:50 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/03 16:34:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,11 @@ void	bi_echo(char **str, t_pipe *pipe);
 
 //	with absolute or relative path
 void	bi_cd(t_env *env, char **path, t_pipe *pipe);
+void	change_pwd(t_env *env, char *path, char *cwd);
+int		change_dir(t_env *env, char *str, bool home);
+int		previous_cd(t_env *env);
 int		free_pwd(char *pwd, char *str);
+t_env	*find_env_var(t_env *env, char *name);
 
 void	bi_pwd(t_pipe *pipe);
 

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/30 12:31:37 by ttas             ###   ########.fr        #
+#    Updated: 2025/06/03 16:32:57 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,6 +35,7 @@ SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					./common/execution/srcs/pipex/built_in/verify_built_in.c \
 					./common/execution/srcs/pipex/built_in/bi_utils/bi_utils.c \
 					./common/execution/srcs/pipex/built_in/bi_utils/export_utils.c \
+					./common/execution/srcs/pipex/built_in/bi_utils/cd_utils.c \
 					./common/execution/srcs/utils/error.c \
 					./common/execution/srcs/signal/signal.c \
 					./common/execution/srcs/signal/signal_heredoc.c \
