@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/03 16:34:16 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/03 17:48:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,9 +102,9 @@ void	free_strs(char **strs);
 
 	// Command initialization
 int		verify_builtin1(t_pipe *pipe);
+int		verify_builtin2(t_cmd *cmd);
 void	launch_builtin(t_pipe *pipe);
 void	here_doc(t_pipe *pipe, char *delimiter);
-int		verify_builtin2(t_cmd *cmd);
 
 	// Execute
 // char	*get_path(char *cmd, char **envp);
