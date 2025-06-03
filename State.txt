@@ -10,7 +10,7 @@ Execution :
 ✔	env (afficher si = present, ne pas afficher si aucun egal) -> ex: abc= (affiché); abc (pas affiché)
 
 ✔	PWD should show PWD from env, not getcwd()
-	cd .. not handled correctly if previous rm
+✔	cd .. not handled correctly if previous rm
 
 
 Parser :
