@@ -30,34 +30,29 @@ size_t	count_occurences(char *str, int i)
 	return (occ);
 }
 
-static void	remove_empty_args2(char **tok)
+void	remove_empty_args(t_cmd *cmds)
 {
 	int	i;
 	int	j;
 
-	i = 0;
-	j = 0;
-	while (tok[i] && tok[j])
-	{
-		while (tok[j] && tok[j][0] == '\0')
-		{
-			free(tok[j]);
-			tok[j] = NULL;
-			++j;
-		}
-		tok[i] = tok[j];
-		++i;
-		++j;
-	}
-	while (i < j)
-		tok[i++] = NULL;
-}
-
-void	remove_empty_args(t_cmd *cmds)
-{
 	while (cmds)
 	{
-		remove_empty_args2(cmds->arg_tok);
+		i = 0;
+		j = 0;
+		while (cmds->arg_tok[i] && cmds->arg_tok[j])
+		{
+			while (cmds->arg_tok[j] && cmds->arg_tok[j][0] == '\0')
+			{
+				free(cmds->arg_tok[j]);
+				cmds->arg_tok[j] = NULL;
+				++j;
+			}
+			cmds->arg_tok[i] = cmds->arg_tok[j];
+			++i;
+			++j;
+		}
+		while (i < j)
+			cmds->arg_tok[i++] = NULL;
 		cmds = cmds->next;
 	}
 }

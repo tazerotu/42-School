@@ -66,11 +66,6 @@ t_cmd	*process_line_expand(t_pipe *pipe, t_cmd *cmds)
 {
 	if (expand_tok_rm_quote(cmds, pipe) != RET_PROCESSED)
 		return (NULL);
-	if (!cmds->arg_tok[0] || (cmds->arg_tok[0][0] == '\0' && !cmds->arg_tok[1]))
-	{
-		free_cmds(cmds);
-		return (NULL);
-	}
 	remove_empty_args(cmds);
 	return (cmds);
 }
