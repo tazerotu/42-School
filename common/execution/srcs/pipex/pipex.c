@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/02 17:26:33 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/03 17:05:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	execute_cmd(t_pipe *pipex)
 {
 	char	*path;
 
-	if (pipex->cmd)
+	if (pipex->cmd->arg_tok != NULL && pipex->cmd->arg_tok[0] != NULL)
 	{
 		basic_handle_sig(SIGQUIT);
 		if (verify_builtin1(pipex) == 1)
@@ -80,6 +80,8 @@ void	execute_cmd(t_pipe *pipex)
 		if (!path || execve(path, pipex->cmd->arg_tok, pipex->env) == -1)
 			exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
 	}
+	else
+		exit(0);
 }
 
 static int ft_wait(t_pipe *pipex, pid_t pid)
