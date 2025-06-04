@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/04 09:27:30 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 09:46:17 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,6 @@ void	bi_cd(t_env *env, char **path, t_pipe *pipe)
 	if (err == 0)
 		pipe->exit_status = 0;
 	else
-		pipe->exit_status = 126;
+		pipe->exit_status = 1;
 	return ;
 }

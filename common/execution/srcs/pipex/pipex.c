@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/03 17:05:38 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/04 09:45:43 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	execute_cmd(t_pipe *pipex)
 			exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
 	}
 	else
-		exit(0);
+		exit(1);
 }
 
 static int ft_wait(t_pipe *pipex, pid_t pid)

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/04 09:15:01 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 09:43:26 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 	{
 		if (syntax(str[i]) < 0)
 		{
-			pipe->exit_status = INVALID_CMD;
+			pipe->exit_status = 126;
 			return (NULL);
 		}
 		tmp = verify_exist(tmp, str[i]);

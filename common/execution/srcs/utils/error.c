@@ -28,6 +28,9 @@ int	error_message_exec(int error, char *str)
 		return (127);
 	}
 	else if (error == ERROR_EXPORT)
+	{
 		ft_fprintf(2, "%s : not a valid identifier\n", str);
+		return (1);
+	}
 	return (0);
 }
