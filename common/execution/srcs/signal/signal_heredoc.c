@@ -26,6 +26,7 @@ void	heredoc_handle_sigint(void)
 	struct sigaction	sa;
 
 	sa.sa_handler = heredoc_my_handler;
+	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	sigaction(SIGINT, &sa, NULL);
 }

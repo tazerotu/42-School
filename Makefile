@@ -73,13 +73,13 @@ RM = rm -f
 
 # Makefile
 %.o:		%.c
-		${CC} ${CFLAGS} ${CLEAKS} -c $? -o $@
+		${CC} ${CFLAGS} -c $? -o $@
 
 all:		${EXE}
 
 ${EXE}:		${OBJECTS} 
 		@${MAKE} --silent -C ${LIBFT}
-		@${CC} ${CFLAGS} ${CLEAKS} ${OBJECTS} ${LIBFT}/libft.a -lreadline -o ${EXE}
+		@${CC} ${CFLAGS} ${OBJECTS} ${LIBFT}/libft.a -lreadline -o ${EXE}
 ac: all clean
 
 clean:

@@ -30,6 +30,7 @@ void	basic_handle_sig(int signum)
 	struct sigaction	sa;
 
 	sa.sa_handler = sigaction_my_handler;
+	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	sigaction(signum, &sa, NULL);
 }
@@ -39,6 +40,7 @@ void	ignore_sig(int signum)
 	struct sigaction	sa;
 
 	sa.sa_handler = SIG_IGN;
+	sa.sa_flags = 0;
 	sigemptyset(&sa.sa_mask);
 	sigaction(signum, &sa, NULL);
 }
