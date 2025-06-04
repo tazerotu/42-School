@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/04 10:10:38 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 12:14:40 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	execute_cmd(t_pipe *pipex)
 			exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
 	}
 	else
-		exit(1);
+		exit(0);
 }
 
 static int	ft_wait(t_pipe *pipex, pid_t pid)
@@ -123,14 +123,14 @@ void	pipex(t_pipe *pipex)
 	cmd_ptr = pipex->cmd;
 	while (cmd_ptr)
 	{
-		if ((cmd_ptr && cmd_ptr->arg_tok && cmd_ptr->arg_tok[0]
-				&& ft_strncmp(cmd_ptr->arg_tok[0], "exit", 5) == 0
-				&& ft_strlen(cmd_ptr->arg_tok[0]) == 4)
-			&& (cmd_ptr->next || pipex->prev_fd != -1))
-		{
-			cmd_ptr = cmd_ptr->next;
-			continue ;
-		}
+		// if ((cmd_ptr && cmd_ptr->arg_tok && cmd_ptr->arg_tok[0]
+		// 		&& ft_strncmp(cmd_ptr->arg_tok[0], "exit", 5) == 0
+		// 		&& ft_strlen(cmd_ptr->arg_tok[0]) == 4)
+		// 	&& (cmd_ptr->next || pipex->prev_fd != -1))
+		// {
+		// 	cmd_ptr = cmd_ptr->next;
+		// 	continue ;
+		// }
 		if (verify_builtin2(cmd_ptr) == 1)
 			launch_builtin(pipex);
 		else
