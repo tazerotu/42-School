@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/23 09:44:39 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 09:57:41 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 10:11:35 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,21 @@ static void	*str_swap(char **ret, int current, int checking)
 	ret[current] = ret[checking];
 	ret[checking] = tmp;
 	return (ret);
+}
+
+static void	print_export(char *str)
+{
+	char	*equal_sign;
+
+	equal_sign = ft_strchr(str, '=');
+	if (str)
+	{
+		ft_printf("declare -x ");
+		if (equal_sign != NULL && *(equal_sign + 1) == '\0')
+			ft_printf("%s''\n", str);
+		else
+			ft_printf("%s\n", str);
+	}
 }
 
 t_env	*bubble_sort(t_env *envp)
@@ -43,7 +58,7 @@ t_env	*bubble_sort(t_env *envp)
 	}
 	current = -1;
 	while (ret[++current])
-		ft_printf("declare -x %s\n", ret[current]);
+		print_export(ret[current]);
 	free_env(ret);
 	return (NULL);
 }

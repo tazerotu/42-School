@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:03:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/23 09:40:05 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 10:09:01 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,24 +31,11 @@ int	cmd_count(t_cmd *cmd)
 	return (i);
 }
 
-void	free_split(char **arr)
-{
-	int	i;
-
-	if (!arr)
-		return ;
-	i = 0;
-	while (arr[i])
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
 void	child_process(t_pipe *pipex, int prev_fd, int *pipe_fd)
 {
 	set_redirection(pipex, pipex->cmd->redir_tok);
+	if (pipex->fd_in == -1 || pipex->fd_out == -1)
+		exit(1);
 	if (prev_fd != -1)
 	{
 		dup2(prev_fd, STDIN_FILENO);

@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 09:17:45 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 10:10:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static char	*get_pwd(char *pwd)
 	return (pwd);
 }
 
-static void	change_pwd(t_env *env, char *path, char *cwd)
+void	change_pwd(t_env *env, char *path, char *cwd)
 {
 	char	*new_str;
 	t_env	*tmp;
@@ -45,7 +45,7 @@ static void	change_pwd(t_env *env, char *path, char *cwd)
 	return ;
 }
 
-static int	change_dir(t_env *env, char *str, bool home)
+int	change_dir(t_env *env, char *str, bool home)
 {
 	t_env	*tmp;
 	char	*pwd;
@@ -85,16 +85,19 @@ void	bi_cd(t_env *env, char **path, t_pipe *pipe)
 	if (i > 2)
 	{
 		ft_fprintf(2, "ERROR : %d", ERROR_DIR);
-		pipe->exit_status = 127;
+		pipe->exit_status = 1;
 		return ;
 	}
 	if (i == 1)
 		err = change_dir(env, path[0], true);
+	else if (ft_strncmp(path[1], "..", 3) == 0
+		|| ft_strncmp(path[1], "../", 4) == 0)
+		err = previous_cd(env);
 	else
 		err = change_dir(env, path[1], false);
 	if (err == 0)
 		pipe->exit_status = 0;
 	else
-		pipe->exit_status = 127;
+		pipe->exit_status = 1;
 	return ;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/14 09:50:26 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 19:21:25 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/06/04 09:12:05 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ int	main(int argc, char **argv, char **envp)
 	pipe = malloc(sizeof(t_pipe));
 	init(pipe, envp);
 	init_sigintquit_handling();
+	pipe->path_minishell = ft_substr((env_last(pipe->envp))->env + 2, 0,
+			ft_strlen((env_last(pipe->envp))->env + 2) - 11);
 	main2(pipe);
 	clear_history();
 	free_pipe_env(pipe);

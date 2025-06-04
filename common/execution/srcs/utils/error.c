@@ -27,5 +27,15 @@ int	error_message_exec(int error, char *str)
 		ft_fprintf(2, "command not found: %s\n", str);
 		return (127);
 	}
-	return (-1);
+	else if (error == ERROR_PERM)
+	{
+		ft_fprintf(2, "minishell : %s : permission denied\n", str);
+		return (126);
+	}
+	else if (error == ERROR_EXPORT)
+	{
+		ft_fprintf(2, "%s : not a valid identifier\n", str);
+		return (1);
+	}
+	return (0);
 }

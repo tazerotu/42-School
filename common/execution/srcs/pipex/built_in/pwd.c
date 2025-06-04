@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pwd.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:07 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/19 14:04:05 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/02 15:48:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,16 @@
 // Get the current working directory
 void	bi_pwd(t_pipe *pipe)
 {
-	char	*cwd;
+	t_env	*tmp;
 
-	cwd = getcwd(NULL, 0);
-	if (!cwd)
+	tmp = find_env_pos(pipe->envp, variable_pos(pipe->envp, "PWD"));
+	if (!tmp || !tmp->env)
 	{
-		pipe->exit_status = 127;
 		error_message_exec(ERROR_PWD, NULL);
+		pipe->exit_status = 1;
 		return ;
 	}
-	ft_printf("%s\n", cwd);
-	free(cwd);
+	ft_printf("%s\n", tmp->env + 4);
 	pipe->exit_status = 0;
 	return ;
 }

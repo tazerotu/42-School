@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   do_pipe.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/28 14:42:06 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/28 15:05:26 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:14:45 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,9 @@ static void	do_pipe_child(t_pipe *pipex, t_cmd *cmd_ptr,
 		child_process(pipex, *prev_fd, NULL);
 }
 
-void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd)
+void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd, pid_t pid)
 {
 	int		pipe_fd[2];
-	pid_t	pid;
 
 	if (cmd_ptr->next && pipe(pipe_fd) == -1)
 		exit(1);

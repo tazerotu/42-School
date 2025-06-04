@@ -31,3 +31,25 @@ int	free_pwd(char *pwd, char *str)
 	error_message_exec(ERROR_DIR, str);
 	return (127);
 }
+
+t_env	*find_env_var(t_env *env, char *name)
+{
+	t_env	*tmp;
+	int		var_len;
+	int		env_len;
+
+	tmp = env;
+	var_len = 0;
+	while (name[var_len] && name[var_len] != '=')
+		++var_len;
+	while (tmp)
+	{
+		env_len = 0;
+		while (tmp->env[env_len] && tmp->env[env_len] != '=')
+			++env_len;
+		if (env_len == var_len && !ft_strncmp(tmp->env, name, var_len))
+			return (tmp);
+		tmp = tmp->next;
+	}
+	return (NULL);
+}

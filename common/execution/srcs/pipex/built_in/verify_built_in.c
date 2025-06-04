@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verify_built_in.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:06:09 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/21 18:19:04 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/04 10:11:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,11 @@ void	launch_builtin(t_pipe *pipe)
 	char	*str;
 
 	str = pipe->cmd->arg_tok[0];
+	if ((pipe->cmd && pipe->cmd->arg_tok && pipe->cmd->arg_tok[0]
+			&& ft_strncmp(pipe->cmd->arg_tok[0], "exit", 5) == 0
+			&& ft_strlen(pipe->cmd->arg_tok[0]) == 4)
+		&& (pipe->cmd->next || pipe->prev_fd != -1))
+		return ;
 	if (ft_strncmp(str, "echo", INT_MAX) == 0)
 		bi_echo(pipe->cmd->arg_tok, pipe);
 	else if (ft_strncmp(str, "cd", INT_MAX) == 0)

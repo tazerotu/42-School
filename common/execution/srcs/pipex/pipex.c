@@ -3,51 +3,81 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 14:47:33 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/06/04 12:14:40 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/executor.h"
+
+char	*search_path(char **paths, char *cmd)
+{
+	char	*part_path;
+	char	*full_path;
+	int		i;
+
+	i = 0;
+	while (paths[i])
+	{
+		part_path = ft_strjoin(paths[i], "/");
+		if (!part_path)
+			return (NULL);
+		full_path = ft_strjoin(part_path, cmd);
+		free(part_path);
+		if (!full_path)
+			return (NULL);
+		if (access(full_path, F_OK) == 0)
+		{
+			free_strs(paths);
+			return (full_path);
+		}
+		free(full_path);
+		i++;
+	}
+	free_strs(paths);
+	return (cmd);
+}
 
 // Get the path of the command
 // If the command is not found, return an error
 char	*get_path(char *cmd, char **envp)
 {
 	char	**paths;
-	char	*path;
 	int		i;
-	char	*part_path;
 
 	i = 0;
-	while (ft_strnstr(envp[i], "PATH", 4) == 0)
+	while (envp[i] && ft_strnstr(envp[i], "PATH=", 5) == 0)
 		i++;
+	if (!envp[i])
+		return (NULL);
 	paths = ft_split(envp[i] + 5, ':');
-	i = 0;
-	while (paths[i])
-	{
-		part_path = ft_strjoin(paths[i], "/");
-		path = ft_strjoin(part_path, cmd);
-		free(part_path);
-		if (access(path, F_OK) == 0)
-			return (path);
-		free(path);
-		i++;
-	}
-	i = -1;
-	while (paths[++i])
-		free(paths[i]);
-	free(paths);
-	return (0);
+	if (!paths)
+		return (NULL);
+	return (search_path(paths, cmd));
 }
+
+// void	path_errors(t_pipe *pipex, char *path)
+// {
+// 	if (path)
+// 	{
+// 		if (access(path, F_OK) != 0)
+// 			exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
+// 		if (access(path, X_OK) != 0)
+// 			exit(error_message_exec(ERROR_PERM, pipex->cmd->arg_tok[0]));
+// 		if (execve(path, pipex->cmd->arg_tok, pipex->env) == -1)
+// 			exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
+// 	}
+// 	else
+// 		exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
+// }
 
 void	execute_cmd(t_pipe *pipex)
 {
 	char	*path;
 
-	if (pipex->cmd)
+	if (pipex->cmd->arg_tok != NULL && pipex->cmd->arg_tok[0] != NULL)
 	{
 		basic_handle_sig(SIGQUIT);
 		if (verify_builtin1(pipex) == 1)
@@ -55,7 +85,7 @@ void	execute_cmd(t_pipe *pipex)
 			launch_builtin(pipex);
 			exit(pipex->exit_status);
 		}
-		if (ft_strncmp(pipex->cmd->arg_tok[0], "./Minishell", 10) == 0)
+		if (ft_strncmp(pipex->cmd->arg_tok[0], "./minishell", 11) == 0)
 		{
 			if (execve(pipex->cmd->arg_tok[0],
 					pipex->cmd->arg_tok, pipex->env) == -1)
@@ -65,25 +95,14 @@ void	execute_cmd(t_pipe *pipex)
 		if (!path || execve(path, pipex->cmd->arg_tok, pipex->env) == -1)
 			exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
 	}
+	else
+		exit(0);
 }
 
-void	pipex(t_pipe *pipex)
+static int	ft_wait(t_pipe *pipex, pid_t pid)
 {
-	t_cmd	*cmd_ptr;
-	int		prev_fd;
 	int		status;
-	pid_t	pid;
 
-	cmd_ptr = pipex->cmd;
-	prev_fd = -1;
-	while (cmd_ptr)
-	{
-		if (verify_builtin2(cmd_ptr) == 1)
-			launch_builtin(pipex);
-		else
-			do_pipe(pipex, cmd_ptr, &prev_fd);
-		cmd_ptr = cmd_ptr->next;
-	}
 	pid = wait(&status);
 	while (pid > 0)
 	{
@@ -92,4 +111,31 @@ void	pipex(t_pipe *pipex)
 			pipex->exit_status = WEXITSTATUS(status);
 		init_sigintquit_handling();
 	}
+	return (pipex->exit_status);
+}
+
+void	pipex(t_pipe *pipex)
+{
+	t_cmd	*cmd_ptr;
+	pid_t	pid;
+
+	pid = 0;
+	cmd_ptr = pipex->cmd;
+	while (cmd_ptr)
+	{
+		// if ((cmd_ptr && cmd_ptr->arg_tok && cmd_ptr->arg_tok[0]
+		// 		&& ft_strncmp(cmd_ptr->arg_tok[0], "exit", 5) == 0
+		// 		&& ft_strlen(cmd_ptr->arg_tok[0]) == 4)
+		// 	&& (cmd_ptr->next || pipex->prev_fd != -1))
+		// {
+		// 	cmd_ptr = cmd_ptr->next;
+		// 	continue ;
+		// }
+		if (verify_builtin2(cmd_ptr) == 1)
+			launch_builtin(pipex);
+		else
+			do_pipe(pipex, cmd_ptr, &pipex->prev_fd, pid);
+		cmd_ptr = cmd_ptr->next;
+	}
+	pipex->exit_status = ft_wait(pipex, pid);
 }

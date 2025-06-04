@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   executor.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/28 17:54:07 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/06/04 09:59:58 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 # define ERROR_PWD 1121
 # define ERROR_ENV 1131
 # define ERROR_CMD 1141
+# define ERROR_EXPORT 1151
+# define ERROR_PERM 1161
 
 extern int	g_sig_status;
 
@@ -76,10 +78,12 @@ typedef struct s_cmd
 
 typedef struct s_pipe
 {
+	char			*path_minishell;
 	int				exit;
 	int				exit_status;
 	int				fd_in;
 	int				fd_out;
+	int				prev_fd;
 	int				pipe_fd[2];
 	pid_t			pid;
 	char			**env;
@@ -96,6 +100,7 @@ t_pipe	*init_env(t_pipe *pipe, char **envp);
 void	free_pipe_env(t_pipe *pipe);
 void	free_env(char **env);
 void	ft_free_cmd(t_cmd *cmd);
+void	free_strs(char **strs);
 
 	// Command initialization
 int		verify_builtin1(t_pipe *pipe);
@@ -108,7 +113,7 @@ void	here_doc(t_pipe *pipe, char *delimiter);
 void	set_redirection(t_pipe *pipe, char **redir);
 void	pipex(t_pipe *pipex);
 void	execute_cmd(t_pipe *pipex);
-void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd);
+void	do_pipe(t_pipe *pipex, t_cmd *cmd_ptr, int *prev_fd, pid_t pid);
 
 	// Execute Utils
 char	**get_env_char(t_env *envp);
@@ -118,6 +123,7 @@ char	*verify_syntax(char *str, t_expander *expander);
 void	ft_close(int fd);
 void	child_process(t_pipe *pipex, int prev_fd, int *pipe_fd);
 void	parent_cleanup(int *prev_fd, int *pipe_fd);
+int		is_exit_command(t_cmd *cmd);
 
 	//	Built-in
 //	with option -n
@@ -125,7 +131,11 @@ void	bi_echo(char **str, t_pipe *pipe);
 
 //	with absolute or relative path
 void	bi_cd(t_env *env, char **path, t_pipe *pipe);
+void	change_pwd(t_env *env, char *path, char *cwd);
+int		change_dir(t_env *env, char *str, bool home);
+int		previous_cd(t_env *env);
 int		free_pwd(char *pwd, char *str);
+t_env	*find_env_var(t_env *env, char *name);
 
 void	bi_pwd(t_pipe *pipe);
 

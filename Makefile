@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/14 09:50:03 by ttas              #+#    #+#              #
-#    Updated: 2025/05/28 18:11:02 by clai-ton         ###   ########.fr        #
+#    Updated: 2025/06/03 17:48:21 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,11 +35,10 @@ SRC_EXECUTION =		./common/execution/srcs/init/init.c \
 					./common/execution/srcs/pipex/built_in/verify_built_in.c \
 					./common/execution/srcs/pipex/built_in/bi_utils/bi_utils.c \
 					./common/execution/srcs/pipex/built_in/bi_utils/export_utils.c \
+					./common/execution/srcs/pipex/built_in/bi_utils/cd_utils.c \
 					./common/execution/srcs/utils/error.c \
 					./common/execution/srcs/signal/signal.c \
 					./common/execution/srcs/signal/signal_heredoc.c \
-					# ./common/execution/srcs/execution.c \
-
 					
 SRC_PARSER =		./common/parser/srcs/free/free_parser.c \
 					./common/parser/srcs/utils/error.c \
@@ -57,9 +56,6 @@ SRC_PARSER =		./common/parser/srcs/free/free_parser.c \
 					./common/parser/srcs/parser/syntax_check/verify_pipe.c \
 					./common/parser/srcs/parser/syntax_check/verify_quotes.c \
 					./common/parser/srcs/parser/syntax_check/verify_words.c \
-					
-					
-
 
 SOURCES =		${SRC} ${SRC_EXECUTION} ${SRC_PARSER}
 OBJECTS =		${SOURCES:.c=.o}
@@ -67,7 +63,7 @@ LIBFT = ./common/libft
 
 # Variables
 CC = cc
-CLEAKS = -fsanitize=address -g
+CLEAKS = -fsanitize=address,leak -g
 CFLAGS = -Wall -Werror -Wextra -Includes
 RM = rm -f
 

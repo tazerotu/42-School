@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/05/26 13:25:18 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 11:01:53 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static int	syntax(char *str)
 
 	i = 0;
 	if (!ft_isalpha(str[i]) && str[i] != '_')
-		return (-1);
+		return (error_message_exec(ERROR_EXPORT, str));
 	while (str[i] && str[i] != '=')
 	{
 		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (-2);
+			return (error_message_exec(ERROR_EXPORT, str));
 		i++;
 	}
 	if (ft_strlen(str) > 2097152)
-		return (-3);
+		return (error_message_exec(ERROR_EXPORT, str));
 	return (1);
 }
 
@@ -88,7 +88,7 @@ t_env	*bi_export(t_pipe *pipe, char **str)
 	{
 		if (syntax(str[i]) < 0)
 		{
-			pipe->exit_status = INVALID_CMD;
+			pipe->exit_status = 1;
 			return (NULL);
 		}
 		tmp = verify_exist(tmp, str[i]);
