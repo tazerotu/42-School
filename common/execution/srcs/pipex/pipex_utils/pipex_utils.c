@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex_utils.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/28 10:03:22 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/01 21:22:29 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/04 09:23:07 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@ void	free_split(char **arr)
 void	child_process(t_pipe *pipex, int prev_fd, int *pipe_fd)
 {
 	set_redirection(pipex, pipex->cmd->redir_tok);
+	if (pipex->fd_in == -1 || pipex->fd_out == -1)
+		exit(1);
 	if (prev_fd != -1)
 	{
 		dup2(prev_fd, STDIN_FILENO);

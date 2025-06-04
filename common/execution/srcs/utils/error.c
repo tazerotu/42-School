@@ -27,5 +27,7 @@ int	error_message_exec(int error, char *str)
 		ft_fprintf(2, "command not found: %s\n", str);
 		return (127);
 	}
-	return (-1);
+	else if (error == ERROR_EXPORT)
+		ft_fprintf(2, "%s : not a valid identifier\n", str);
+	return (0);
 }

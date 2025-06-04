@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   export.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:05:04 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/02 15:46:23 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/04 09:15:01 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static int	syntax(char *str)
 
 	i = 0;
 	if (!ft_isalpha(str[i]) && str[i] != '_')
-		return (-1);
+		return (error_message_exec(ERROR_EXPORT, str));
 	while (str[i] && str[i] != '=')
 	{
 		if (!ft_isalnum(str[i]) && str[i] != '_')
-			return (-2);
+			return (error_message_exec(ERROR_EXPORT, str));
 		i++;
 	}
 	if (ft_strlen(str) > 2097152)
-		return (-3);
+		return (error_message_exec(ERROR_EXPORT, str));
 	return (1);
 }
 

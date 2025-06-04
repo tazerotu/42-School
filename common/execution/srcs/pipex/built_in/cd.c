@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cd.c                                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/03 16:34:21 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/04 09:27:30 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	bi_cd(t_env *env, char **path, t_pipe *pipe)
 	if (i > 2)
 	{
 		ft_fprintf(2, "ERROR : %d", ERROR_DIR);
-		pipe->exit_status = 127;
+		pipe->exit_status = 1;
 		return ;
 	}
 	if (i == 1)
@@ -97,6 +97,6 @@ void	bi_cd(t_env *env, char **path, t_pipe *pipe)
 	if (err == 0)
 		pipe->exit_status = 0;
 	else
-		pipe->exit_status = 127;
+		pipe->exit_status = 126;
 	return ;
 }
