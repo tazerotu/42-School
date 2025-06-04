@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 12:07:03 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/28 18:38:47 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:29:59 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ t_cmd	*process_line_expand(t_pipe *pipe, t_cmd *cmds)
 {
 	if (expand_tok_rm_quote(cmds, pipe) != RET_PROCESSED)
 		return (NULL);
-	remove_empty_args(cmds);
 	return (cmds);
 }
 

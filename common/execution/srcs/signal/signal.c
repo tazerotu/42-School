@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   signal.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/21 14:28:17 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/30 13:23:32 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 15:32:50 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	sigaction_my_handler(int signum)
 	g_sig_status = 128 + signum;
 	if (signum == SIGQUIT)
 	{
-		printf("Quit (core dumped)\n");
+		printf("Quit (core dumped)");
 		ignore_sig(SIGQUIT);
 	}
 	printf("\n");

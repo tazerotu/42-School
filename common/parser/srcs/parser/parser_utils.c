@@ -6,7 +6,7 @@
 /*   By: clai-ton <clai-ton@student.42nice.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/18 16:19:16 by clai-ton          #+#    #+#             */
-/*   Updated: 2025/05/30 10:55:01 by clai-ton         ###   ########.fr       */
+/*   Updated: 2025/06/04 15:29:38 by clai-ton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,29 @@ size_t	count_occurences(char *str, int i)
 	return (occ);
 }
 
-void	remove_empty_args(t_cmd *cmds)
-{
-	int	i;
-	int	j;
+// void	remove_empty_args(t_cmd *cmds)
+// {
+// 	int	i;
+// 	int	j;
 
-	while (cmds)
-	{
-		i = 0;
-		j = 0;
-		while (cmds->arg_tok[i] && cmds->arg_tok[j])
-		{
-			while (cmds->arg_tok[j] && cmds->arg_tok[j][0] == '\0')
-			{
-				free(cmds->arg_tok[j]);
-				cmds->arg_tok[j] = NULL;
-				++j;
-			}
-			cmds->arg_tok[i] = cmds->arg_tok[j];
-			++i;
-			++j;
-		}
-		while (i < j)
-			cmds->arg_tok[i++] = NULL;
-		cmds = cmds->next;
-	}
-}
+// 	while (cmds)
+// 	{
+// 		i = 0;
+// 		j = 0;
+// 		while (cmds->arg_tok[i] && cmds->arg_tok[j])
+// 		{
+// 			while (cmds->arg_tok[j] && cmds->arg_tok[j][0] == '\0')
+// 			{
+// 				free(cmds->arg_tok[j]);
+// 				cmds->arg_tok[j] = NULL;
+// 				++j;
+// 			}
+// 			cmds->arg_tok[i] = cmds->arg_tok[j];
+// 			++i;
+// 			++j;
+// 		}
+// 		while (i < j)
+// 			cmds->arg_tok[i++] = NULL;
+// 		cmds = cmds->next;
+// 	}
+// }
