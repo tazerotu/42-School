@@ -89,7 +89,7 @@ char	*ft_read_file(int fd, char *res)
 			return (ft_free_join(buffer, res));
 		buffer[bytes_read] = '\0';
 		tmp = ft_strjoin(res, buffer);
-		free(res);  // FREE old res before overwrite!
+		free(res);
 		res = tmp;
 		if (res == NULL)
 			return (ft_free_join(buffer, NULL));
@@ -100,18 +100,18 @@ char	*ft_read_file(int fd, char *res)
 	return (res);
 }
 
-char *get_next_line_no_static(int fd, char **buffer)
+char	*get_next_line_no_static(int fd, char **buffer)
 {
-    char *line;
+	char	*line;
 
-    if (fd < 0 || BUFFER_SIZE <= 0 || !buffer)
-        return (NULL);
-    if (*buffer == NULL)
-        *buffer = ft_calloc(1, 1);
-    *buffer = ft_read_file(fd, *buffer);
-    if (*buffer == NULL)
-        return (NULL);
-    line = ft_current_line(*buffer);
-    *buffer = ft_next_line(*buffer);
-    return (line);
+	if (fd < 0 || BUFFER_SIZE <= 0 || !buffer)
+		return (NULL);
+	if (*buffer == NULL)
+		*buffer = ft_calloc(1, 1);
+	*buffer = ft_read_file(fd, *buffer);
+	if (*buffer == NULL)
+		return (NULL);
+	line = ft_current_line(*buffer);
+	*buffer = ft_next_line(*buffer);
+	return (line);
 }

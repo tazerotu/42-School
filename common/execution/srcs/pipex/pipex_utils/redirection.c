@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/18 09:37:03 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/04 09:31:18 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 10:10:50 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void	set_redir_output(t_pipe *pipe, char **redir, int i)
 			pipe->fd_out = open(redir[i + 1], O_WRONLY
 					| O_CREAT | O_TRUNC, S_IRWXU);
 		if (pipe->fd_out < 0)
-				ft_fprintf(2, "minishell: Error when opening file or directory\n");
+			ft_fprintf(2, "minishell: Error when opening file or directory\n");
 	}
 	return ;
 }

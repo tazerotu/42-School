@@ -40,6 +40,7 @@ static void	update_pwd_logical(t_env *env)
 	change_pwd(env, "PWD=", logical);
 	free(logical);
 }
+
 int	previous_cd(t_env *env)
 {
 	char	*old_pwd;

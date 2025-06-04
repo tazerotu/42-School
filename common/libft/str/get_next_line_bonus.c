@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/16 13:51:52 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/03 18:05:05 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/04 10:15:41 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ char	*get_next_line(int fd)
 	buffer[fd] = ft_read_file(fd, buffer[fd]);
 	if (buffer[fd] && buffer[fd][0] == '\0')
 	{
-	    free(buffer[fd]);
+		free(buffer[fd]);
 		buffer[fd] = NULL;
 	}
 	line = ft_current_line(buffer[fd]);

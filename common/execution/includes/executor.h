@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:15:50 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/04 09:14:26 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 09:59:58 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define ERROR_ENV 1131
 # define ERROR_CMD 1141
 # define ERROR_EXPORT 1151
+# define ERROR_PERM 1161
 
 extern int	g_sig_status;
 

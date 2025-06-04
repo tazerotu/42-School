@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   env.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:54 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/02 16:01:05 by marvin           ###   ########.fr       */
+/*   Updated: 2025/06/04 10:09:19 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	bi_env(t_env *envp, t_pipe *pipe)
 	tmp = envp;
 	while (tmp)
 	{
-		if(ft_strchr(tmp->env, '=') != NULL)
+		if (ft_strchr(tmp->env, '=') != NULL)
 			ft_printf("%s\n", tmp->env);
 		tmp = tmp->next;
 	}

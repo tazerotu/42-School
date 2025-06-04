@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/20 11:37:15 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/04 09:45:43 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 10:10:38 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,21 @@ char	*get_path(char *cmd, char **envp)
 	return (search_path(paths, cmd));
 }
 
+// void	path_errors(t_pipe *pipex, char *path)
+// {
+// 	if (path)
+// 	{
+// 		if (access(path, F_OK) != 0)
+// 			exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
+// 		if (access(path, X_OK) != 0)
+// 			exit(error_message_exec(ERROR_PERM, pipex->cmd->arg_tok[0]));
+// 		if (execve(path, pipex->cmd->arg_tok, pipex->env) == -1)
+// 			exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
+// 	}
+// 	else
+// 		exit(error_message_exec(ERROR_CMD, pipex->cmd->arg_tok[0]));
+// }
+
 void	execute_cmd(t_pipe *pipex)
 {
 	char	*path;
@@ -84,7 +99,7 @@ void	execute_cmd(t_pipe *pipex)
 		exit(1);
 }
 
-static int ft_wait(t_pipe *pipex, pid_t pid)
+static int	ft_wait(t_pipe *pipex, pid_t pid)
 {
 	int		status;
 
@@ -99,13 +114,6 @@ static int ft_wait(t_pipe *pipex, pid_t pid)
 	return (pipex->exit_status);
 }
 
-int is_exit_command(t_cmd *cmd)
-{
-	return (cmd && cmd->arg_tok && cmd->arg_tok[0]
-		&& ft_strncmp(cmd->arg_tok[0], "exit", 5) == 0
-		&& ft_strlen(cmd->arg_tok[0]) == 4);
-}
-
 void	pipex(t_pipe *pipex)
 {
 	t_cmd	*cmd_ptr;
@@ -113,18 +121,21 @@ void	pipex(t_pipe *pipex)
 
 	pid = 0;
 	cmd_ptr = pipex->cmd;
-while (cmd_ptr)
-{
-	if (is_exit_command(cmd_ptr) && (cmd_ptr->next || pipex->prev_fd != -1))
+	while (cmd_ptr)
 	{
+		if ((cmd_ptr && cmd_ptr->arg_tok && cmd_ptr->arg_tok[0]
+				&& ft_strncmp(cmd_ptr->arg_tok[0], "exit", 5) == 0
+				&& ft_strlen(cmd_ptr->arg_tok[0]) == 4)
+			&& (cmd_ptr->next || pipex->prev_fd != -1))
+		{
+			cmd_ptr = cmd_ptr->next;
+			continue ;
+		}
+		if (verify_builtin2(cmd_ptr) == 1)
+			launch_builtin(pipex);
+		else
+			do_pipe(pipex, cmd_ptr, &pipex->prev_fd, pid);
 		cmd_ptr = cmd_ptr->next;
-		continue;
 	}
-	if (verify_builtin2(cmd_ptr) == 1)
-		launch_builtin(pipex);
-	else
-		do_pipe(pipex, cmd_ptr, &pipex->prev_fd, pid);
-	cmd_ptr = cmd_ptr->next;
-}
 	pipex->exit_status = ft_wait(pipex, pid);
 }

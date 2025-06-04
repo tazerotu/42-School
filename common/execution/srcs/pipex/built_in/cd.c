@@ -6,7 +6,7 @@
 /*   By: ttas <ttas@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/23 10:04:58 by ttas              #+#    #+#             */
-/*   Updated: 2025/06/04 09:46:17 by ttas             ###   ########.fr       */
+/*   Updated: 2025/06/04 10:10:00 by ttas             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,8 @@ void	bi_cd(t_env *env, char **path, t_pipe *pipe)
 	}
 	if (i == 1)
 		err = change_dir(env, path[0], true);
-	else if (ft_strncmp(path[1], "..", 3) == 0 || ft_strncmp(path[1], "../", 4) == 0)
+	else if (ft_strncmp(path[1], "..", 3) == 0
+		|| ft_strncmp(path[1], "../", 4) == 0)
 		err = previous_cd(env);
 	else
 		err = change_dir(env, path[1], false);
