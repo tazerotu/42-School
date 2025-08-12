@@ -1,21 +1,34 @@
-# List of projects : 
+## Piscine
+[https://github.com/tazerotu/42-Piscine](https://github.com/tazerotu/42-Piscine)
 
-## Circle 0
-- **[Libft](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-0/libft):** Your first own library
+<details>
+<summary><strong>Cursus</strong></summary>
 
-## Circle 1
-- **[Printf](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-1/ft_printf):** Because ft_putnbr() and ft_putstr() aren't enough
-- **[GNL](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-1/gnl):** Reading a line on a fd is way too tedious
+### Cercle 0
+- **[libft](https://github.com/tazerotu/Libft)**
 
-## Circle 2
-- **[Push Swap](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-2/Push-Swap):** Because Swap_push isn't as natural
-- **[Pipex](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-2/Pipex):** Unix Pipes in C
-- **[So long](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-2/So_long):** And thanks for the fish ! (Small game)
+### Cercle 1
+- **[ft_printf](https://github.com/tazerotu/ft_printf)**
+- **[GNL](https://github.com/tazerotu/GNL)**
 
-## Circle 3
-- **[Philospher](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-3/Philosopher):** I never thought philosophy would be so deadly (Threads)
-- **[MiniShell](https://github.com/tazerotu/42-School/tree/main/Cursus/Cercle-3/Minishell):** As beautiful as a shell
+### Cercle 2
+- **[Pipex](https://github.com/tazerotu/Pipex)**
+- **[So Long](https://github.com/tazerotu/So_Long)**
+- **[Push Swap](https://github.com/tazerotu/PushSwap)**
+- **[Exam Rank 02](https://github.com/tazerotu/Exam/tree/main/Exam%20Rank%202)**
 
-## CPP
-- **[Module 00](https://github.com/tazerotu/42-School/tree/main/Cursus/CPP/CPP_Module_00):**
-- **[Module 01](https://github.com/tazerotu/42-School/tree/main/Cursus/CPP/CPP_Module_01):**
+### Cercle 3
+- **[Philosopher](https://github.com/tazerotu/Philosopher)**
+- **[Minishell (Made with clai-ton)]()**  <!-- link missing -->
+- **[Exam Rank 03](https://github.com/tazerotu/Exam/tree/main/Exam%20Rank%203/Deprecated)**
+
+### Cercle 4
+- **[Cub3d](https://github.com/tazerotu/Cub3D)**
+- **[NetPractice](https://github.com/tazerotu/NetPractice)**
+- **[Exam Rank 04](https://github.com/tazerotu/Exam/tree/main/Exam_Rank_04)**
+
+</details>
+
+## [CPP](https://github.com/tazerotu/CPP)
+
+
