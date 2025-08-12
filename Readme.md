@@ -1,6 +1,6 @@
 <details>
 <summary><strong>Piscine</strong> - <a href="https://github.com/tazerotu/42-Piscine">github.com/tazerotu/42-Piscine</a></summary>
-
+</details>
 
 <details>
 <summary><strong>Cursus</strong></summary>
