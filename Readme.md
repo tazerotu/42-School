@@ -1,3 +1,4 @@
+(Sections are collapsible)
 <details>
 <summary><strong>Piscine</strong></summary>
   - https://github.com/tazerotu/42-Piscine
