@@ -1,6 +1,6 @@
 <details>
 <summary><strong>Piscine</strong></summary>
-  - **https://github.com/tazerotu/42-Piscine**
+  - https://github.com/tazerotu/42-Piscine
 </details>
 
 <details>
