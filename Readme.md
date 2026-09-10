@@ -30,6 +30,16 @@
 - **[NetPractice](https://github.com/tazerotu/NetPractice)**
 - **[Exam Rank 04](https://github.com/tazerotu/Exam/tree/main/Exam_Rank_04)**
 
+### Cercle 5
+- **[Webserv](https://github.com/tazerotu/Webserv)**
+- **[Inception](https://github.com/tazerotu/Inception)**
+- **[Exam Rank 05](https://github.com/tazerotu/Exam/tree/main/Exam_Rank_05)**
+
+### Cercle 6
+- **[Transcendence](https://github.com/tazerotu/Exam/tree/main/Exam_Rank_06)**
+- **[ft_resume]()**
+- **[Exam Rank 06](https://github.com/tazerotu/Exam/tree/main/Exam_Rank_06)**
+
 ### CPP
 - https://github.com/tazerotu/CPP
 
