@@ -37,7 +37,7 @@
 
 ### Cercle 6
 - **[Transcendence](https://github.com/tazerotu/Exam/tree/main/Exam_Rank_06)**
-- **[ft_resume]()**
+- **ft_resume**
 - **[Exam Rank 06](https://github.com/tazerotu/Exam/tree/main/Exam_Rank_06)**
 
 ### CPP
